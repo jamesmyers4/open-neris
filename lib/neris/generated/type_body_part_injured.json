@@ -1,0 +1,178 @@
+[
+  {
+    "": "0",
+    "active": "True",
+    "value": "EAR",
+    "description": "Ear",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "1",
+    "active": "True",
+    "value": "EYE",
+    "description": "Eye",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "2",
+    "active": "True",
+    "value": "NOSE",
+    "description": "Nose",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "3",
+    "active": "True",
+    "value": "MOUTH",
+    "description": "Mouth",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "4",
+    "active": "True",
+    "value": "HEAD_OTHER",
+    "description": "Head, other",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "5",
+    "active": "True",
+    "value": "NECK_SHOULDERS",
+    "description": "Neck or shoulders",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "6",
+    "active": "True",
+    "value": "BACK_SPINE",
+    "description": "Back, spine",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "7",
+    "active": "True",
+    "value": "BACK_OTHER",
+    "description": "Back, other",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "8",
+    "active": "True",
+    "value": "CHEST",
+    "description": "Chest",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "9",
+    "active": "True",
+    "value": "ABDOMEN",
+    "description": "Abdomen",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "10",
+    "active": "True",
+    "value": "PELVIS_GROIN",
+    "description": "Pelvis or groin",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "11",
+    "active": "True",
+    "value": "HIP_LOWER_BACK_BUTTOCKS",
+    "description": "Hip, lower back, or buttocks",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "12",
+    "active": "True",
+    "value": "ARM",
+    "description": "Arm",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "13",
+    "active": "True",
+    "value": "LEG",
+    "description": "Leg",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "14",
+    "active": "True",
+    "value": "HANDS_FINGERS",
+    "description": "Hands or fingers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "15",
+    "active": "True",
+    "value": "FOOT_TOES",
+    "description": "Foot or toes",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "16",
+    "active": "True",
+    "value": "LUNGS",
+    "description": "Lungs",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "17",
+    "active": "True",
+    "value": "HEART",
+    "description": "Heart",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "18",
+    "active": "True",
+    "value": "STOMACH",
+    "description": "Stomach",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "19",
+    "active": "True",
+    "value": "INTESTINAL_TRACT",
+    "description": "Intestinal tract",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "20",
+    "active": "True",
+    "value": "GENITO_URINARY",
+    "description": "Genito-urinary",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "21",
+    "active": "True",
+    "value": "OTHER",
+    "description": "Other",
+    "definition": "",
+    "source": ""
+  }
+]

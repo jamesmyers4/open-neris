@@ -1,0 +1,1745 @@
+[
+  {
+    "value": "AD",
+    "active": "TRUE",
+    "description": "Andorra",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "AE",
+    "active": "TRUE",
+    "description": "United Arab Emirates",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "AF",
+    "active": "TRUE",
+    "description": "Afghanistan",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "AG",
+    "active": "TRUE",
+    "description": "Antigua and Barbuda",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "AI",
+    "active": "TRUE",
+    "description": "Anguilla",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "AL",
+    "active": "TRUE",
+    "description": "Albania",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "AM",
+    "active": "TRUE",
+    "description": "Armenia",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "AO",
+    "active": "TRUE",
+    "description": "Angola",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "AQ",
+    "active": "TRUE",
+    "description": "Antarctica",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "AR",
+    "active": "TRUE",
+    "description": "Argentina",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "AS",
+    "active": "TRUE",
+    "description": "American Samoa",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "AT",
+    "active": "TRUE",
+    "description": "Austria",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "AU",
+    "active": "TRUE",
+    "description": "Australia",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "AW",
+    "active": "TRUE",
+    "description": "Aruba",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "AX",
+    "active": "TRUE",
+    "description": "Aland Islands",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "AZ",
+    "active": "TRUE",
+    "description": "Azerbaijan",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "BA",
+    "active": "TRUE",
+    "description": "Bosnia and Herzegovina",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "BB",
+    "active": "TRUE",
+    "description": "Barbados",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "BD",
+    "active": "TRUE",
+    "description": "Bangladesh",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "BE",
+    "active": "TRUE",
+    "description": "Belgium",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "BF",
+    "active": "TRUE",
+    "description": "Burkina Faso",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "BG",
+    "active": "TRUE",
+    "description": "Bulgaria",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "BH",
+    "active": "TRUE",
+    "description": "Bahrain",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "BI",
+    "active": "TRUE",
+    "description": "Burundi",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "BJ",
+    "active": "TRUE",
+    "description": "Benin",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "BL",
+    "active": "TRUE",
+    "description": "Saint Barthelemy",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "BM",
+    "active": "TRUE",
+    "description": "Bermuda",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "BN",
+    "active": "TRUE",
+    "description": "Brunei Darussalam",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "BO",
+    "active": "TRUE",
+    "description": "Bolivia, Plurinational State of",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "BQ",
+    "active": "TRUE",
+    "description": "Bonaire, Sint Eustatius and Saba",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "BR",
+    "active": "TRUE",
+    "description": "Brazil",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "BS",
+    "active": "TRUE",
+    "description": "Bahamas",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "BT",
+    "active": "TRUE",
+    "description": "Bhutan",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "BV",
+    "active": "TRUE",
+    "description": "Bouvet Island",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "BW",
+    "active": "TRUE",
+    "description": "Botswana",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "BY",
+    "active": "TRUE",
+    "description": "Belarus",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "BZ",
+    "active": "TRUE",
+    "description": "Belize",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "CA",
+    "active": "TRUE",
+    "description": "Canada",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "CC",
+    "active": "TRUE",
+    "description": "Cocos (Keeling) Islands",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "CD",
+    "active": "TRUE",
+    "description": "Congo, Democratic Republic of the",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "CF",
+    "active": "TRUE",
+    "description": "Central African Republic",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "CG",
+    "active": "TRUE",
+    "description": "Congo",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "CH",
+    "active": "TRUE",
+    "description": "Switzerland",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "CI",
+    "active": "TRUE",
+    "description": "Cote d'Ivoire",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "CK",
+    "active": "TRUE",
+    "description": "Cook Islands",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "CL",
+    "active": "TRUE",
+    "description": "Chile",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "CM",
+    "active": "TRUE",
+    "description": "Cameroon",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "CN",
+    "active": "TRUE",
+    "description": "China",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "CO",
+    "active": "TRUE",
+    "description": "Colombia",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "CR",
+    "active": "TRUE",
+    "description": "Costa Rica",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "CU",
+    "active": "TRUE",
+    "description": "Cuba",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "CV",
+    "active": "TRUE",
+    "description": "Cabo Verde",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "CW",
+    "active": "TRUE",
+    "description": "Curacao",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "CX",
+    "active": "TRUE",
+    "description": "Christmas Island",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "CY",
+    "active": "TRUE",
+    "description": "Cyprus",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "CZ",
+    "active": "TRUE",
+    "description": "Czechia",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "DE",
+    "active": "TRUE",
+    "description": "Germany",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "DJ",
+    "active": "TRUE",
+    "description": "Djibouti",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "DK",
+    "active": "TRUE",
+    "description": "Denmark",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "DM",
+    "active": "TRUE",
+    "description": "Dominica",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "DO",
+    "active": "TRUE",
+    "description": "Dominican Republic",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "DZ",
+    "active": "TRUE",
+    "description": "Algeria",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "EC",
+    "active": "TRUE",
+    "description": "Ecuador",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "EE",
+    "active": "TRUE",
+    "description": "Estonia",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "EG",
+    "active": "TRUE",
+    "description": "Egypt",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "EH",
+    "active": "TRUE",
+    "description": "Western Sahara",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "ER",
+    "active": "TRUE",
+    "description": "Eritrea",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "ES",
+    "active": "TRUE",
+    "description": "Spain",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "ET",
+    "active": "TRUE",
+    "description": "Ethiopia",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "FI",
+    "active": "TRUE",
+    "description": "Finland",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "FJ",
+    "active": "TRUE",
+    "description": "Fiji",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "FK",
+    "active": "TRUE",
+    "description": "Falkland Islands (Malvinas)",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "FM",
+    "active": "TRUE",
+    "description": "Micronesia, Federated States of",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "FO",
+    "active": "TRUE",
+    "description": "Faroe Islands",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "FR",
+    "active": "TRUE",
+    "description": "France",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "GA",
+    "active": "TRUE",
+    "description": "Gabon",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "GB",
+    "active": "TRUE",
+    "description": "United Kingdom of Great Britain and Northern Ireland",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "GD",
+    "active": "TRUE",
+    "description": "Grenada",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "GE",
+    "active": "TRUE",
+    "description": "Georgia",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "GF",
+    "active": "TRUE",
+    "description": "French Guiana",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "GG",
+    "active": "TRUE",
+    "description": "Guernsey",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "GH",
+    "active": "TRUE",
+    "description": "Ghana",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "GI",
+    "active": "TRUE",
+    "description": "Gibraltar",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "GL",
+    "active": "TRUE",
+    "description": "Greenland",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "GM",
+    "active": "TRUE",
+    "description": "Gambia",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "GN",
+    "active": "TRUE",
+    "description": "Guinea",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "GP",
+    "active": "TRUE",
+    "description": "Guadeloupe",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "GQ",
+    "active": "TRUE",
+    "description": "Equatorial Guinea",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "GR",
+    "active": "TRUE",
+    "description": "Greece",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "GS",
+    "active": "TRUE",
+    "description": "South Georgia and the South Sandwich Islands",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "GT",
+    "active": "TRUE",
+    "description": "Guatemala",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "GU",
+    "active": "TRUE",
+    "description": "Guam",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "GW",
+    "active": "TRUE",
+    "description": "Guinea-Bissau",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "GY",
+    "active": "TRUE",
+    "description": "Guyana",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "HK",
+    "active": "TRUE",
+    "description": "Hong Kong",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "HM",
+    "active": "TRUE",
+    "description": "Heard Island and McDonald Islands",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "HN",
+    "active": "TRUE",
+    "description": "Honduras",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "HR",
+    "active": "TRUE",
+    "description": "Croatia",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "HT",
+    "active": "TRUE",
+    "description": "Haiti",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "HU",
+    "active": "TRUE",
+    "description": "Hungary",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "ID",
+    "active": "TRUE",
+    "description": "Indonesia",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "IE",
+    "active": "TRUE",
+    "description": "Ireland",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "IL",
+    "active": "TRUE",
+    "description": "Israel",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "IM",
+    "active": "TRUE",
+    "description": "Isle of Man",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "IN",
+    "active": "TRUE",
+    "description": "India",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "IO",
+    "active": "TRUE",
+    "description": "British Indian Ocean Territory",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "IQ",
+    "active": "TRUE",
+    "description": "Iraq",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "IR",
+    "active": "TRUE",
+    "description": "Iran, Islamic Republic of",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "IS",
+    "active": "TRUE",
+    "description": "Iceland",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "IT",
+    "active": "TRUE",
+    "description": "Italy",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "JE",
+    "active": "TRUE",
+    "description": "Jersey",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "JM",
+    "active": "TRUE",
+    "description": "Jamaica",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "JO",
+    "active": "TRUE",
+    "description": "Jordan",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "JP",
+    "active": "TRUE",
+    "description": "Japan",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "KE",
+    "active": "TRUE",
+    "description": "Kenya",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "KG",
+    "active": "TRUE",
+    "description": "Kyrgyzstan",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "KH",
+    "active": "TRUE",
+    "description": "Cambodia",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "KI",
+    "active": "TRUE",
+    "description": "Kiribati",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "KM",
+    "active": "TRUE",
+    "description": "Comoros",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "KN",
+    "active": "TRUE",
+    "description": "Saint Kitts and Nevis",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "KP",
+    "active": "TRUE",
+    "description": "Korea, Democratic People's Republic of",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "KR",
+    "active": "TRUE",
+    "description": "Korea, Republic of",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "KW",
+    "active": "TRUE",
+    "description": "Kuwait",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "KY",
+    "active": "TRUE",
+    "description": "Cayman Islands",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "KZ",
+    "active": "TRUE",
+    "description": "Kazakhstan",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "LA",
+    "active": "TRUE",
+    "description": "Lao People's Democratic Republic",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "LB",
+    "active": "TRUE",
+    "description": "Lebanon",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "LC",
+    "active": "TRUE",
+    "description": "Saint Lucia",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "LI",
+    "active": "TRUE",
+    "description": "Liechtenstein",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "LK",
+    "active": "TRUE",
+    "description": "Sri Lanka",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "LR",
+    "active": "TRUE",
+    "description": "Liberia",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "LS",
+    "active": "TRUE",
+    "description": "Lesotho",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "LT",
+    "active": "TRUE",
+    "description": "Lithuania",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "LU",
+    "active": "TRUE",
+    "description": "Luxembourg",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "LV",
+    "active": "TRUE",
+    "description": "Latvia",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "LY",
+    "active": "TRUE",
+    "description": "Libya",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "MA",
+    "active": "TRUE",
+    "description": "Morocco",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "MC",
+    "active": "TRUE",
+    "description": "Monaco",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "MD",
+    "active": "TRUE",
+    "description": "Moldova, Republic of",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "ME",
+    "active": "TRUE",
+    "description": "Montenegro",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "MF",
+    "active": "TRUE",
+    "description": "Saint Martin (French part)",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "MG",
+    "active": "TRUE",
+    "description": "Madagascar",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "MH",
+    "active": "TRUE",
+    "description": "Marshall Islands",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "MK",
+    "active": "TRUE",
+    "description": "North Macedonia",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "ML",
+    "active": "TRUE",
+    "description": "Mali",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "MM",
+    "active": "TRUE",
+    "description": "Myanmar",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "MN",
+    "active": "TRUE",
+    "description": "Mongolia",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "MO",
+    "active": "TRUE",
+    "description": "Macao",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "MP",
+    "active": "TRUE",
+    "description": "Northern Mariana Islands",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "MQ",
+    "active": "TRUE",
+    "description": "Martinique",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "MR",
+    "active": "TRUE",
+    "description": "Mauritania",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "MS",
+    "active": "TRUE",
+    "description": "Montserrat",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "MT",
+    "active": "TRUE",
+    "description": "Malta",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "MU",
+    "active": "TRUE",
+    "description": "Mauritius",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "MV",
+    "active": "TRUE",
+    "description": "Maldives",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "MW",
+    "active": "TRUE",
+    "description": "Malawi",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "MX",
+    "active": "TRUE",
+    "description": "Mexico",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "MY",
+    "active": "TRUE",
+    "description": "Malaysia",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "MZ",
+    "active": "TRUE",
+    "description": "Mozambique",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "NA",
+    "active": "TRUE",
+    "description": "Namibia",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "NC",
+    "active": "TRUE",
+    "description": "New Caledonia",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "NE",
+    "active": "TRUE",
+    "description": "Niger",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "NF",
+    "active": "TRUE",
+    "description": "Norfolk Island",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "NG",
+    "active": "TRUE",
+    "description": "Nigeria",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "NI",
+    "active": "TRUE",
+    "description": "Nicaragua",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "NL",
+    "active": "TRUE",
+    "description": "Netherlands, Kingdom of the",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "NO",
+    "active": "TRUE",
+    "description": "Norway",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "NP",
+    "active": "TRUE",
+    "description": "Nepal",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "NR",
+    "active": "TRUE",
+    "description": "Nauru",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "NU",
+    "active": "TRUE",
+    "description": "Niue",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "NZ",
+    "active": "TRUE",
+    "description": "New Zealand",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "OM",
+    "active": "TRUE",
+    "description": "Oman",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "PA",
+    "active": "TRUE",
+    "description": "Panama",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "PE",
+    "active": "TRUE",
+    "description": "Peru",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "PF",
+    "active": "TRUE",
+    "description": "French Polynesia",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "PG",
+    "active": "TRUE",
+    "description": "Papua New Guinea",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "PH",
+    "active": "TRUE",
+    "description": "Philippines",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "PK",
+    "active": "TRUE",
+    "description": "Pakistan",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "PL",
+    "active": "TRUE",
+    "description": "Poland",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "PM",
+    "active": "TRUE",
+    "description": "Saint Pierre and Miquelon",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "PN",
+    "active": "TRUE",
+    "description": "Pitcairn",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "PR",
+    "active": "TRUE",
+    "description": "Puerto Rico",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "PS",
+    "active": "TRUE",
+    "description": "Palestine, State of",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "PT",
+    "active": "TRUE",
+    "description": "Portugal",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "PW",
+    "active": "TRUE",
+    "description": "Palau",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "PY",
+    "active": "TRUE",
+    "description": "Paraguay",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "QA",
+    "active": "TRUE",
+    "description": "Qatar",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "RE",
+    "active": "TRUE",
+    "description": "R�union",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "RO",
+    "active": "TRUE",
+    "description": "Romania",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "RS",
+    "active": "TRUE",
+    "description": "Serbia",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "RU",
+    "active": "TRUE",
+    "description": "Russian Federation",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "RW",
+    "active": "TRUE",
+    "description": "Rwanda",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "SA",
+    "active": "TRUE",
+    "description": "Saudi Arabia",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "SB",
+    "active": "TRUE",
+    "description": "Solomon Islands",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "SC",
+    "active": "TRUE",
+    "description": "Seychelles",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "SD",
+    "active": "TRUE",
+    "description": "Sudan",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "SE",
+    "active": "TRUE",
+    "description": "Sweden",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "SG",
+    "active": "TRUE",
+    "description": "Singapore",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "SH",
+    "active": "TRUE",
+    "description": "Saint Helena, Ascension and Tristan da Cunha",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "SI",
+    "active": "TRUE",
+    "description": "Slovenia",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "SJ",
+    "active": "TRUE",
+    "description": "Svalbard and Jan Mayen",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "SK",
+    "active": "TRUE",
+    "description": "Slovakia",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "SL",
+    "active": "TRUE",
+    "description": "Sierra Leone",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "SM",
+    "active": "TRUE",
+    "description": "San Marino",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "SN",
+    "active": "TRUE",
+    "description": "Senegal",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "SO",
+    "active": "TRUE",
+    "description": "Somalia",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "SR",
+    "active": "TRUE",
+    "description": "Suriname",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "SS",
+    "active": "TRUE",
+    "description": "South Sudan",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "ST",
+    "active": "TRUE",
+    "description": "Sao Tome and Principe",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "SV",
+    "active": "TRUE",
+    "description": "El Salvador",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "SX",
+    "active": "TRUE",
+    "description": "Sint Maarten (Dutch part)",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "SY",
+    "active": "TRUE",
+    "description": "Syrian Arab Republic",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "SZ",
+    "active": "TRUE",
+    "description": "Eswatini",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "TC",
+    "active": "TRUE",
+    "description": "Turks and Caicos Islands",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "TD",
+    "active": "TRUE",
+    "description": "Chad",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "TF",
+    "active": "TRUE",
+    "description": "French Southern Territories",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "TG",
+    "active": "TRUE",
+    "description": "Togo",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "TH",
+    "active": "TRUE",
+    "description": "Thailand",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "TJ",
+    "active": "TRUE",
+    "description": "Tajikistan",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "TK",
+    "active": "TRUE",
+    "description": "Tokelau",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "TL",
+    "active": "TRUE",
+    "description": "Timor-Leste",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "TM",
+    "active": "TRUE",
+    "description": "Turkmenistan",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "TN",
+    "active": "TRUE",
+    "description": "Tunisia",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "TO",
+    "active": "TRUE",
+    "description": "Tonga",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "TR",
+    "active": "TRUE",
+    "description": "Turkiye",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "TT",
+    "active": "TRUE",
+    "description": "Trinidad and Tobago",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "TV",
+    "active": "TRUE",
+    "description": "Tuvalu",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "TW",
+    "active": "TRUE",
+    "description": "Taiwan",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "TZ",
+    "active": "TRUE",
+    "description": "Tanzania, United Republic of",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "UA",
+    "active": "TRUE",
+    "description": "Ukraine",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "UG",
+    "active": "TRUE",
+    "description": "Uganda",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "UM",
+    "active": "TRUE",
+    "description": "United States Minor Outlying Islands",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "US",
+    "active": "TRUE",
+    "description": "United States of America",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "UY",
+    "active": "TRUE",
+    "description": "Uruguay",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "UZ",
+    "active": "TRUE",
+    "description": "Uzbekistan",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "VA",
+    "active": "TRUE",
+    "description": "Holy See",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "VC",
+    "active": "TRUE",
+    "description": "Saint Vincent and the Grenadines",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "VE",
+    "active": "TRUE",
+    "description": "Venezuela, Bolivarian Republic of",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "VG",
+    "active": "TRUE",
+    "description": "Virgin Islands (British)",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "VI",
+    "active": "TRUE",
+    "description": "Virgin Islands (U.S.)",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "VN",
+    "active": "TRUE",
+    "description": "Viet Nam",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "VU",
+    "active": "TRUE",
+    "description": "Vanuatu",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "WF",
+    "active": "TRUE",
+    "description": "Wallis and Futuna",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "WS",
+    "active": "TRUE",
+    "description": "Samoa",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "YE",
+    "active": "TRUE",
+    "description": "Yemen",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "YT",
+    "active": "TRUE",
+    "description": "Mayotte",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "ZA",
+    "active": "TRUE",
+    "description": "South Africa",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "ZM",
+    "active": "TRUE",
+    "description": "Zambia",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  },
+  {
+    "value": "ZW",
+    "active": "TRUE",
+    "description": "Zimbabwe",
+    "definition": "",
+    "source": "ISO 3166-1 alpha-2"
+  }
+]

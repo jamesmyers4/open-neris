@@ -1,0 +1,6402 @@
+[
+  {
+    "": "0",
+    "active": "TRUE",
+    "value_2": "ALARM_ESCAPE_PROTECTION_DEVICES",
+    "value_1": "Lightning rods or arresters, antenna discharge units or other grounding devices",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "1",
+    "active": "TRUE",
+    "value_2": "ALARM_ESCAPE_PROTECTION_DEVICES",
+    "value_1": "Burglar alarms",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "2",
+    "active": "TRUE",
+    "value_2": "ALARM_ESCAPE_PROTECTION_DEVICES",
+    "value_1": "Electric timers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "3",
+    "active": "TRUE",
+    "value_2": "ALARM_ESCAPE_PROTECTION_DEVICES",
+    "value_1": "Fire escape devices (excluding ladders)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "4",
+    "active": "TRUE",
+    "value_2": "ALARM_ESCAPE_PROTECTION_DEVICES",
+    "value_1": "Padlocks, chain locks or other locks",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "5",
+    "active": "TRUE",
+    "value_2": "ALARM_ESCAPE_PROTECTION_DEVICES",
+    "value_1": "Carbon monoxide detectors",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "6",
+    "active": "TRUE",
+    "value_2": "ALARM_ESCAPE_PROTECTION_DEVICES",
+    "value_1": "Safes",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "7",
+    "active": "TRUE",
+    "value_2": "ALARM_ESCAPE_PROTECTION_DEVICES",
+    "value_1": "Fire sprinklers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "8",
+    "active": "TRUE",
+    "value_2": "ALARM_ESCAPE_PROTECTION_DEVICES",
+    "value_1": "Fire extinguishers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "9",
+    "active": "TRUE",
+    "value_2": "ALARM_ESCAPE_PROTECTION_DEVICES",
+    "value_1": "Fire or smoke alarms",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "10",
+    "active": "TRUE",
+    "value_2": "CHILD_NURSERY_EQUIPMENT",
+    "value_1": "Baby gates or barriers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "11",
+    "active": "TRUE",
+    "value_2": "CHILD_NURSERY_EQUIPMENT",
+    "value_1": "Playpens and play yards",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "12",
+    "active": "TRUE",
+    "value_2": "CHILD_NURSERY_EQUIPMENT",
+    "value_1": "Other soft baby carriers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "13",
+    "active": "TRUE",
+    "value_2": "CHILD_NURSERY_EQUIPMENT",
+    "value_1": "Potty chairs or training seats (for children)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "14",
+    "active": "TRUE",
+    "value_2": "CHILD_NURSERY_EQUIPMENT",
+    "value_1": "Shoelace fasteners (for infants)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "15",
+    "active": "TRUE",
+    "value_2": "CHILD_NURSERY_EQUIPMENT",
+    "value_1": "Baby bathtub seats or rings (not toys)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "16",
+    "active": "TRUE",
+    "value_2": "CHILD_NURSERY_EQUIPMENT",
+    "value_1": "Baby exercisers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "17",
+    "active": "TRUE",
+    "value_2": "CHILD_NURSERY_EQUIPMENT",
+    "value_1": "Framed baby carriers (carried on the back)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "18",
+    "active": "TRUE",
+    "value_2": "CHILD_NURSERY_EQUIPMENT",
+    "value_1": "Baby harnesses",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "19",
+    "active": "TRUE",
+    "value_2": "CHILD_NURSERY_EQUIPMENT",
+    "value_1": "Crib mobiles or crib gyms",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "20",
+    "active": "TRUE",
+    "value_2": "CHILD_NURSERY_EQUIPMENT",
+    "value_1": "Baby carriers (bicycle-mounted)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "21",
+    "active": "TRUE",
+    "value_2": "CHILD_NURSERY_EQUIPMENT",
+    "value_1": "Baby mattresses or pads",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "22",
+    "active": "TRUE",
+    "value_2": "CHILD_NURSERY_EQUIPMENT",
+    "value_1": "Diaper fasteners (excluding safety pins)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "23",
+    "active": "TRUE",
+    "value_2": "CHILD_NURSERY_EQUIPMENT",
+    "value_1": "Bottle warmers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "24",
+    "active": "TRUE",
+    "value_2": "CHILD_NURSERY_EQUIPMENT",
+    "value_1": "Baby scales",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "25",
+    "active": "TRUE",
+    "value_2": "CHILD_NURSERY_EQUIPMENT",
+    "value_1": "High chairs",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "26",
+    "active": "TRUE",
+    "value_2": "CHILD_NURSERY_EQUIPMENT",
+    "value_1": "Baby carriages",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "27",
+    "active": "TRUE",
+    "value_2": "CHILD_NURSERY_EQUIPMENT",
+    "value_1": "Cribs, not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "28",
+    "active": "TRUE",
+    "value_2": "CHILD_NURSERY_EQUIPMENT",
+    "value_1": "Baby carriers, not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "29",
+    "active": "TRUE",
+    "value_2": "CHILD_NURSERY_EQUIPMENT",
+    "value_1": "Other baby carriers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "30",
+    "active": "TRUE",
+    "value_2": "CHILD_NURSERY_EQUIPMENT",
+    "value_1": "Portable cribs",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "31",
+    "active": "TRUE",
+    "value_2": "CHILD_NURSERY_EQUIPMENT",
+    "value_1": "Portable baby swings (for home use)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "32",
+    "active": "TRUE",
+    "value_2": "CHILD_NURSERY_EQUIPMENT",
+    "value_1": "Sterilizers (home use)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "33",
+    "active": "TRUE",
+    "value_2": "CHILD_NURSERY_EQUIPMENT",
+    "value_1": "Baby strollers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "34",
+    "active": "TRUE",
+    "value_2": "CHILD_NURSERY_EQUIPMENT",
+    "value_1": "Cribs, nonportable",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "35",
+    "active": "TRUE",
+    "value_2": "CHILD_NURSERY_EQUIPMENT",
+    "value_1": "Car seats (for infants or children)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "36",
+    "active": "TRUE",
+    "value_2": "CHILD_NURSERY_EQUIPMENT",
+    "value_1": "Baby slings and wraps",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "37",
+    "active": "TRUE",
+    "value_2": "CHILD_NURSERY_EQUIPMENT",
+    "value_1": "Baby bottles or nipples",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "38",
+    "active": "TRUE",
+    "value_2": "CHILD_NURSERY_EQUIPMENT",
+    "value_1": "Baby rattles",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "39",
+    "active": "TRUE",
+    "value_2": "CHILD_NURSERY_EQUIPMENT",
+    "value_1": "Bassinets or cradles",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "40",
+    "active": "TRUE",
+    "value_2": "CHILD_NURSERY_EQUIPMENT",
+    "value_1": "Baby changing tables",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "41",
+    "active": "TRUE",
+    "value_2": "CHILD_NURSERY_EQUIPMENT",
+    "value_1": "Pacifiers or teething rings",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "42",
+    "active": "TRUE",
+    "value_2": "CHILD_NURSERY_EQUIPMENT",
+    "value_1": "Diaper pails",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "43",
+    "active": "TRUE",
+    "value_2": "CHILD_NURSERY_EQUIPMENT",
+    "value_1": "Baby baths or bathinettes",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "44",
+    "active": "TRUE",
+    "value_2": "CHILD_NURSERY_EQUIPMENT",
+    "value_1": "Safety pins",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "45",
+    "active": "TRUE",
+    "value_2": "CHILD_NURSERY_EQUIPMENT",
+    "value_1": "Attachable high chairs (including booster seats)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "46",
+    "active": "TRUE",
+    "value_2": "CHILD_NURSERY_EQUIPMENT",
+    "value_1": "Baby bouncer seats (excl jumpers)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "47",
+    "active": "TRUE",
+    "value_2": "CHILD_NURSERY_EQUIPMENT",
+    "value_1": "Baby walkers or jumpers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "48",
+    "active": "TRUE",
+    "value_2": "CHILD_NURSERY_EQUIPMENT",
+    "value_1": "Diapers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "49",
+    "active": "TRUE",
+    "value_2": "CHILD_NURSERY_EQUIPMENT",
+    "value_1": "Night-lights",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "50",
+    "active": "TRUE",
+    "value_2": "CHILD_NURSERY_EQUIPMENT",
+    "value_1": "Infant and toddler play centers (excluding jumpers, bouncers, and exercisers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "51",
+    "active": "TRUE",
+    "value_2": "FARM_SUPPLIES_EQUIPMENT",
+    "value_1": "Fertilizers and other chemicals for outdoor use (excluding pesticides)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "52",
+    "active": "TRUE",
+    "value_2": "FARM_SUPPLIES_EQUIPMENT",
+    "value_1": "Tractors, other or not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "53",
+    "active": "TRUE",
+    "value_2": "FARM_SUPPLIES_EQUIPMENT",
+    "value_1": "Fertilizers, not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "54",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Convertible beds, hideaway beds or sofa beds",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "55",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Books, magazines, albums or scrapbooks",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "56",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Clocks, not electric or not battery operated or not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "57",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Residential alternative energy systems for on-site power generation",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "58",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Bathtubs or showers (including fixtures or accessories",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "59",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Butane or LP gas meters",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "60",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Fireplace equipment",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "61",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Footlockers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "62",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Bedding, not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "63",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Other furniture",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "64",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Other electric lighting equipment",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "65",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Floor lamps or table lamps, halogen",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "66",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Sinks (excluding faucets)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "67",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Pictures, picture frames or wall decorations",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "68",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Chair, recliner",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "69",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Sheets or pillowcases",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "70",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Tables, not elsewhere classified (excl. baby changing tables, billiard or pool tables and television tables or stands)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "71",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Nonelectric blankets",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "72",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Drapery or curtain rods, hooks or rings",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "73",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Floor lamps or table lamps, electric (excluding halogen lamps)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "74",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Chair, rocking",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "75",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Toilets",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "76",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Bedspreads, throws or comforters",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "77",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Hot tubs or home spas",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "78",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Glass bathtub or shower enclosures",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "79",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Bunk beds",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "80",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Laundry hampers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "81",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Mattresses, not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "82",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Pillows (excluding water pillows)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "83",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Step stools",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "84",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Knickknacks, statues, vases or urns",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "85",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Blankets, not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "86",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Faucets or spigots",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "87",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Beds or bedframes, other or not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "88",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Desks, dressers, chests, bureaus, or buffets",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "89",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Window shades, venetian blinds or indoor shutters",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "90",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Extension cords",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "91",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Electric chandeliers, hanging lamps or other attached light fixtures",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "92",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Clothespins",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "93",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Lighting equipment, not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "94",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Other bedding",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "95",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Bars and bar accessories (excluding gymnastic and weight lifting equipment)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "96",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Electrical outlets or receptacles",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "97",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Footstools, ottomans or hassocks",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "98",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Flashlights or battery-powered lanterns",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "99",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Sofas, couches, davenports, divans or studio couches",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "100",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Filters (excluding swimming pool and aquarium filters)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "101",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Scales, not electric or not battery operated or not specified (excluding baby scales)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "102",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Draperies, curtains or shower curtains (fabric or plastic)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "103",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Stepladders (excluding step stools)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "104",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Futons",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "105",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Ladders, other or not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "106",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Towel racks or bars",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "107",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Benches (excluding work benches)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "108",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Surge suppressors or power strips",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "109",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Table linens",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "110",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Fuel-burning lighting equipment",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "111",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Bed rails",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "112",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Rugs or carpets, not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "113",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Clocks, electric or battery operated",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "114",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Scales, electric or battery operated (excluding baby scales)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "115",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Cots",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "116",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Cabinets, racks, room dividers and shelves, not elsewhere classified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "117",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Chairs, other or not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "118",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Mirrors or mirror glass (excluding lighted make-up mirrors)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "119",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Toddler beds",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "120",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Waterbeds or water pillows",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "121",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Magazine racks or book ends",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "122",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Bathtub or shower enclosures, not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "123",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Electric lighting equipment, not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "124",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Cords, electrical, other or not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "125",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Nonglass bathtub or shower enclosures",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "126",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Stools, other or not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "127",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Generators or power plants",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "128",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Runners, throw rugs or doormats (excluding bathtub mats)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "129",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Room-sized, wall-to-wall or outdoor carpeting (excluding runners)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "130",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Light bulbs (excluding Christmas tree light bulbs)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "131",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Inflatable furniture",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "132",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Furniture, not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "133",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Fabrics (not part of finished item)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "134",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Nonbaby mattresses (excluding camp mattresses)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "135",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Panelboards, circuit breakers, ground fault circuit interrupters (GFCIs) or fuses",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "136",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Slipcovers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "137",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Artificial flowers or plants",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "138",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Towels or cloths",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "139",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Beach chairs or folding chairs",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "140",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Barstools or kitchen stools",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "141",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Electrical wire or wiring systems (excluding panelboards, receptacles or interrupters)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "142",
+    "active": "TRUE",
+    "value_2": "FURNISHINGS_FIXTURES",
+    "value_1": "Extension or straight ladders",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "143",
+    "active": "TRUE",
+    "value_2": "GENERAL_HOUSEHOLD_APPLIANCE",
+    "value_1": "Other water heaters",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "144",
+    "active": "TRUE",
+    "value_2": "GENERAL_HOUSEHOLD_APPLIANCE",
+    "value_1": "Vacuum cleaners",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "145",
+    "active": "TRUE",
+    "value_2": "GENERAL_HOUSEHOLD_APPLIANCE",
+    "value_1": "Electric clothes dryers without washers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "146",
+    "active": "TRUE",
+    "value_2": "GENERAL_HOUSEHOLD_APPLIANCE",
+    "value_1": "Sewing machines or accessories",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "147",
+    "active": "TRUE",
+    "value_2": "GENERAL_HOUSEHOLD_APPLIANCE",
+    "value_1": "Floor buffers or waxers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "148",
+    "active": "TRUE",
+    "value_2": "GENERAL_HOUSEHOLD_APPLIANCE",
+    "value_1": "Wringer washing machines",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "149",
+    "active": "TRUE",
+    "value_2": "GENERAL_HOUSEHOLD_APPLIANCE",
+    "value_1": "Drinking fountains",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "150",
+    "active": "TRUE",
+    "value_2": "GENERAL_HOUSEHOLD_APPLIANCE",
+    "value_1": "Automatic doors or door openers (excluding garage doors)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "151",
+    "active": "TRUE",
+    "value_2": "GENERAL_HOUSEHOLD_APPLIANCE",
+    "value_1": "Gas clothes dryers without washers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "152",
+    "active": "TRUE",
+    "value_2": "GENERAL_HOUSEHOLD_APPLIANCE",
+    "value_1": "Water softeners or conditioners (appliances)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "153",
+    "active": "TRUE",
+    "value_2": "GENERAL_HOUSEHOLD_APPLIANCE",
+    "value_1": "Incinerators",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "154",
+    "active": "TRUE",
+    "value_2": "GENERAL_HOUSEHOLD_APPLIANCE",
+    "value_1": "Clothes dryers, not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "155",
+    "active": "TRUE",
+    "value_2": "GENERAL_HOUSEHOLD_APPLIANCE",
+    "value_1": "Washing machines, other or not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "156",
+    "active": "TRUE",
+    "value_2": "GENERAL_HOUSEHOLD_APPLIANCE",
+    "value_1": "Automatic garage doors or door openers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "157",
+    "active": "TRUE",
+    "value_2": "GENERAL_HOUSEHOLD_APPLIANCE",
+    "value_1": "Electric brooms",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "158",
+    "active": "TRUE",
+    "value_2": "GENERAL_HOUSEHOLD_APPLIANCE",
+    "value_1": "Electric water heaters (excluding immersion heaters)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "159",
+    "active": "TRUE",
+    "value_2": "GENERAL_HOUSEHOLD_APPLIANCE",
+    "value_1": "Propane, LP or butane gas tanks or fittings",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "160",
+    "active": "TRUE",
+    "value_2": "GENERAL_HOUSEHOLD_APPLIANCE",
+    "value_1": "Rug shampooers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "161",
+    "active": "TRUE",
+    "value_2": "GENERAL_HOUSEHOLD_APPLIANCE",
+    "value_1": "Gas water heaters",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "162",
+    "active": "TRUE",
+    "value_2": "GENERAL_HOUSEHOLD_APPLIANCE",
+    "value_1": "Electric blankets or sheets",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "163",
+    "active": "TRUE",
+    "value_2": "GENERAL_HOUSEHOLD_APPLIANCE",
+    "value_1": "Water heaters, not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "164",
+    "active": "TRUE",
+    "value_2": "GENERAL_HOUSEHOLD_APPLIANCE",
+    "value_1": "Electric heating pads",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "165",
+    "active": "TRUE",
+    "value_2": "HEATING_COOLING_VENT_APPLIANCE",
+    "value_1": "Oil furnaces (excluding floor furnaces)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "166",
+    "active": "TRUE",
+    "value_2": "HEATING_COOLING_VENT_APPLIANCE",
+    "value_1": "Gas-burning fireplaces, factory built",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "167",
+    "active": "TRUE",
+    "value_2": "HEATING_COOLING_VENT_APPLIANCE",
+    "value_1": "Radiators (excluding vehicle radiators)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "168",
+    "active": "TRUE",
+    "value_2": "HEATING_COOLING_VENT_APPLIANCE",
+    "value_1": "Electric heaters, not elsewhere classified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "169",
+    "active": "TRUE",
+    "value_2": "HEATING_COOLING_VENT_APPLIANCE",
+    "value_1": "Fans",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "170",
+    "active": "TRUE",
+    "value_2": "HEATING_COOLING_VENT_APPLIANCE",
+    "value_1": "Furnaces, other or not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "171",
+    "active": "TRUE",
+    "value_2": "HEATING_COOLING_VENT_APPLIANCE",
+    "value_1": "Air purifiers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "172",
+    "active": "TRUE",
+    "value_2": "HEATING_COOLING_VENT_APPLIANCE",
+    "value_1": "Brick, stone or masonry chimneys",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "173",
+    "active": "TRUE",
+    "value_2": "HEATING_COOLING_VENT_APPLIANCE",
+    "value_1": "Chimneys, not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "174",
+    "active": "TRUE",
+    "value_2": "HEATING_COOLING_VENT_APPLIANCE",
+    "value_1": "Floor furnaces (built into floor)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "175",
+    "active": "TRUE",
+    "value_2": "HEATING_COOLING_VENT_APPLIANCE",
+    "value_1": "Vaporizers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "176",
+    "active": "TRUE",
+    "value_2": "HEATING_COOLING_VENT_APPLIANCE",
+    "value_1": "Gas furnaces (excluding floor furnaces)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "177",
+    "active": "TRUE",
+    "value_2": "HEATING_COOLING_VENT_APPLIANCE",
+    "value_1": "Wood burning fireplaces, factory built",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "178",
+    "active": "TRUE",
+    "value_2": "HEATING_COOLING_VENT_APPLIANCE",
+    "value_1": "Metal chimneys, stovepipes or flues",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "179",
+    "active": "TRUE",
+    "value_2": "HEATING_COOLING_VENT_APPLIANCE",
+    "value_1": "Portable gas or LP heaters",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "180",
+    "active": "TRUE",
+    "value_2": "HEATING_COOLING_VENT_APPLIANCE",
+    "value_1": "Electric fireplaces, factory built",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "181",
+    "active": "TRUE",
+    "value_2": "HEATING_COOLING_VENT_APPLIANCE",
+    "value_1": "Outdoor patio heaters or firepits (manufactured)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "182",
+    "active": "TRUE",
+    "value_2": "HEATING_COOLING_VENT_APPLIANCE",
+    "value_1": "Coal or wood-burning stoves",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "183",
+    "active": "TRUE",
+    "value_2": "HEATING_COOLING_VENT_APPLIANCE",
+    "value_1": "Dehumidifiers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "184",
+    "active": "TRUE",
+    "value_2": "HEATING_COOLING_VENT_APPLIANCE",
+    "value_1": "Boilers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "185",
+    "active": "TRUE",
+    "value_2": "HEATING_COOLING_VENT_APPLIANCE",
+    "value_1": "Coal furnaces",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "186",
+    "active": "TRUE",
+    "value_2": "HEATING_COOLING_VENT_APPLIANCE",
+    "value_1": "Kerosene or oil heaters",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "187",
+    "active": "TRUE",
+    "value_2": "HEATING_COOLING_VENT_APPLIANCE",
+    "value_1": "Heaters or heating systems, other or not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "188",
+    "active": "TRUE",
+    "value_2": "HEATING_COOLING_VENT_APPLIANCE",
+    "value_1": "Electric furnaces (excluding floor furnaces)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "189",
+    "active": "TRUE",
+    "value_2": "HEATING_COOLING_VENT_APPLIANCE",
+    "value_1": "Fireplaces, not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "190",
+    "active": "TRUE",
+    "value_2": "HEATING_COOLING_VENT_APPLIANCE",
+    "value_1": "Pipes (excluding smoking pipes)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "191",
+    "active": "TRUE",
+    "value_2": "HEATING_COOLING_VENT_APPLIANCE",
+    "value_1": "Gas or LP heaters, other or not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "192",
+    "active": "TRUE",
+    "value_2": "HEATING_COOLING_VENT_APPLIANCE",
+    "value_1": "Heat tapes, electric",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "193",
+    "active": "TRUE",
+    "value_2": "HEATING_COOLING_VENT_APPLIANCE",
+    "value_1": "Humidifiers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "194",
+    "active": "TRUE",
+    "value_2": "HEATING_COOLING_VENT_APPLIANCE",
+    "value_1": "Heat pumps",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "195",
+    "active": "TRUE",
+    "value_2": "HEATING_COOLING_VENT_APPLIANCE",
+    "value_1": "Electric baseboard heaters",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "196",
+    "active": "TRUE",
+    "value_2": "HEATING_COOLING_VENT_APPLIANCE",
+    "value_1": "Thermostats (for heating or cooling systems)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "197",
+    "active": "TRUE",
+    "value_2": "HEATING_COOLING_VENT_APPLIANCE",
+    "value_1": "Built-in fireplaces",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "198",
+    "active": "TRUE",
+    "value_2": "HEATING_COOLING_VENT_APPLIANCE",
+    "value_1": "Portable electric heaters",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "199",
+    "active": "TRUE",
+    "value_2": "HEATING_COOLING_VENT_APPLIANCE",
+    "value_1": "Ductwork for heating or cooling systems (excluding flues)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "200",
+    "active": "TRUE",
+    "value_2": "HEATING_COOLING_VENT_APPLIANCE",
+    "value_1": "Air conditioners",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "201",
+    "active": "TRUE",
+    "value_2": "HOME_COMM_ENTERTAINMENT_HOBBY_EQUIPMENT",
+    "value_1": "Radios (self-contained units",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "202",
+    "active": "TRUE",
+    "value_2": "HOME_COMM_ENTERTAINMENT_HOBBY_EQUIPMENT",
+    "value_1": "Sound recording, reproducing or receiving equipment, not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "203",
+    "active": "TRUE",
+    "value_2": "HOME_COMM_ENTERTAINMENT_HOBBY_EQUIPMENT",
+    "value_1": "Amateur two-way radios",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "204",
+    "active": "TRUE",
+    "value_2": "HOME_COMM_ENTERTAINMENT_HOBBY_EQUIPMENT",
+    "value_1": "Recording tapes",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "205",
+    "active": "TRUE",
+    "value_2": "HOME_COMM_ENTERTAINMENT_HOBBY_EQUIPMENT",
+    "value_1": "Projectors",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "206",
+    "active": "TRUE",
+    "value_2": "HOME_COMM_ENTERTAINMENT_HOBBY_EQUIPMENT",
+    "value_1": "Tape recorders or players (self-contained units)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "207",
+    "active": "TRUE",
+    "value_2": "HOME_COMM_ENTERTAINMENT_HOBBY_EQUIPMENT",
+    "value_1": "Remote control, universal or not stated (excl. remote controls for toys)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "208",
+    "active": "TRUE",
+    "value_2": "HOME_COMM_ENTERTAINMENT_HOBBY_EQUIPMENT",
+    "value_1": "Antennas, not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "209",
+    "active": "TRUE",
+    "value_2": "HOME_COMM_ENTERTAINMENT_HOBBY_EQUIPMENT",
+    "value_1": "Art and ceramic supplies or equipment (excl. paintbrushes)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "210",
+    "active": "TRUE",
+    "value_2": "HOME_COMM_ENTERTAINMENT_HOBBY_EQUIPMENT",
+    "value_1": "Telescopes, binoculars, microscopes or magnifying glasses",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "211",
+    "active": "TRUE",
+    "value_2": "HOME_COMM_ENTERTAINMENT_HOBBY_EQUIPMENT",
+    "value_1": "Video players and recorders (excl. cameras)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "212",
+    "active": "TRUE",
+    "value_2": "HOME_COMM_ENTERTAINMENT_HOBBY_EQUIPMENT",
+    "value_1": "Stereo or hi-fi components or accessories (excluding self-contained units)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "213",
+    "active": "TRUE",
+    "value_2": "HOME_COMM_ENTERTAINMENT_HOBBY_EQUIPMENT",
+    "value_1": "Computers (equipment and electronic games)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "214",
+    "active": "TRUE",
+    "value_2": "HOME_COMM_ENTERTAINMENT_HOBBY_EQUIPMENT",
+    "value_1": "Television tables or stands",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "215",
+    "active": "TRUE",
+    "value_2": "HOME_COMM_ENTERTAINMENT_HOBBY_EQUIPMENT",
+    "value_1": "Outdoor antennas (separate)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "216",
+    "active": "TRUE",
+    "value_2": "HOME_COMM_ENTERTAINMENT_HOBBY_EQUIPMENT",
+    "value_1": "Phonograph records",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "217",
+    "active": "TRUE",
+    "value_2": "HOME_COMM_ENTERTAINMENT_HOBBY_EQUIPMENT",
+    "value_1": "Lapidary equipment",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "218",
+    "active": "TRUE",
+    "value_2": "HOME_COMM_ENTERTAINMENT_HOBBY_EQUIPMENT",
+    "value_1": "Musical instruments, not electric or not battery operated or not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "219",
+    "active": "TRUE",
+    "value_2": "HOME_COMM_ENTERTAINMENT_HOBBY_EQUIPMENT",
+    "value_1": "Coaxial Cable",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "220",
+    "active": "TRUE",
+    "value_2": "HOME_COMM_ENTERTAINMENT_HOBBY_EQUIPMENT",
+    "value_1": "Laser pointers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "221",
+    "active": "TRUE",
+    "value_2": "HOME_COMM_ENTERTAINMENT_HOBBY_EQUIPMENT",
+    "value_1": "Compact disks (CDs) and DVDs",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "222",
+    "active": "TRUE",
+    "value_2": "HOME_COMM_ENTERTAINMENT_HOBBY_EQUIPMENT",
+    "value_1": "Televisions",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "223",
+    "active": "TRUE",
+    "value_2": "HOME_COMM_ENTERTAINMENT_HOBBY_EQUIPMENT",
+    "value_1": "Telephones or telephone accessories",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "224",
+    "active": "TRUE",
+    "value_2": "HOME_COMM_ENTERTAINMENT_HOBBY_EQUIPMENT",
+    "value_1": "Other sound recording, reproducing or receiving equipment",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "225",
+    "active": "TRUE",
+    "value_2": "HOME_COMM_ENTERTAINMENT_HOBBY_EQUIPMENT",
+    "value_1": "Photographic equipment (excluding chemicals and projectors)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "226",
+    "active": "TRUE",
+    "value_2": "HOME_COMM_ENTERTAINMENT_HOBBY_EQUIPMENT",
+    "value_1": "Musical instruments, electric or battery operated",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "227",
+    "active": "TRUE",
+    "value_2": "HOME_COMM_ENTERTAINMENT_HOBBY_EQUIPMENT",
+    "value_1": "Record players (self-contained units)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "228",
+    "active": "TRUE",
+    "value_2": "HOME_COMM_ENTERTAINMENT_HOBBY_EQUIPMENT",
+    "value_1": "Glass bottle cutting equipment",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "229",
+    "active": "TRUE",
+    "value_2": "HOME_COMM_ENTERTAINMENT_HOBBY_EQUIPMENT",
+    "value_1": "Radios, not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "230",
+    "active": "TRUE",
+    "value_2": "HOME_COMM_ENTERTAINMENT_HOBBY_EQUIPMENT",
+    "value_1": "Indoor antennas (separate)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "231",
+    "active": "TRUE",
+    "value_2": "HOME_COMM_ENTERTAINMENT_HOBBY_EQUIPMENT",
+    "value_1": "Business and office machines",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "232",
+    "active": "TRUE",
+    "value_2": "HOME_FAMILY_MAINTENANCE_PRODUCT",
+    "value_1": "Lubricants",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "233",
+    "active": "TRUE",
+    "value_2": "HOME_FAMILY_MAINTENANCE_PRODUCT",
+    "value_1": "Photographic chemicals",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "234",
+    "active": "TRUE",
+    "value_2": "HOME_FAMILY_MAINTENANCE_PRODUCT",
+    "value_1": "Ammonia, household",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "235",
+    "active": "TRUE",
+    "value_2": "HOME_FAMILY_MAINTENANCE_PRODUCT",
+    "value_1": "Polishes, not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "236",
+    "active": "TRUE",
+    "value_2": "HOME_FAMILY_MAINTENANCE_PRODUCT",
+    "value_1": "Diesel fuels",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "237",
+    "active": "TRUE",
+    "value_2": "HOME_FAMILY_MAINTENANCE_PRODUCT",
+    "value_1": "Wallpaper cleaners (chemical)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "238",
+    "active": "TRUE",
+    "value_2": "HOME_FAMILY_MAINTENANCE_PRODUCT",
+    "value_1": "Solvents, other or not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "239",
+    "active": "TRUE",
+    "value_2": "HOME_FAMILY_MAINTENANCE_PRODUCT",
+    "value_1": "Rust preventatives",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "240",
+    "active": "TRUE",
+    "value_2": "HOME_FAMILY_MAINTENANCE_PRODUCT",
+    "value_1": "Fuel oils, not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "241",
+    "active": "TRUE",
+    "value_2": "HOME_FAMILY_MAINTENANCE_PRODUCT",
+    "value_1": "Methyl alcohol",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "242",
+    "active": "TRUE",
+    "value_2": "HOME_FAMILY_MAINTENANCE_PRODUCT",
+    "value_1": "Automotive chemicals (excluding antifreeze, lubricants, waxes and windshield wiper fluids)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "243",
+    "active": "TRUE",
+    "value_2": "HOME_FAMILY_MAINTENANCE_PRODUCT",
+    "value_1": "Liquid room deodorizers or fresheners",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "244",
+    "active": "TRUE",
+    "value_2": "HOME_FAMILY_MAINTENANCE_PRODUCT",
+    "value_1": "Gasoline cans",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "245",
+    "active": "TRUE",
+    "value_2": "HOME_FAMILY_MAINTENANCE_PRODUCT",
+    "value_1": "Turpentine",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "246",
+    "active": "TRUE",
+    "value_2": "HOME_FAMILY_MAINTENANCE_PRODUCT",
+    "value_1": "Soaps (excluding laundry soaps or detergents)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "247",
+    "active": "TRUE",
+    "value_2": "HOME_FAMILY_MAINTENANCE_PRODUCT",
+    "value_1": "Tapes (with adhesive surfaces)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "248",
+    "active": "TRUE",
+    "value_2": "HOME_FAMILY_MAINTENANCE_PRODUCT",
+    "value_1": "Adhesives (excluding tapes)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "249",
+    "active": "TRUE",
+    "value_2": "HOME_FAMILY_MAINTENANCE_PRODUCT",
+    "value_1": "Chemicals, not elsewhere classified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "250",
+    "active": "TRUE",
+    "value_2": "HOME_FAMILY_MAINTENANCE_PRODUCT",
+    "value_1": "Lye",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "251",
+    "active": "TRUE",
+    "value_2": "HOME_FAMILY_MAINTENANCE_PRODUCT",
+    "value_1": "Oven cleaners",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "252",
+    "active": "TRUE",
+    "value_2": "HOME_FAMILY_MAINTENANCE_PRODUCT",
+    "value_1": "Paints, varnishes or shellacs",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "253",
+    "active": "TRUE",
+    "value_2": "HOME_FAMILY_MAINTENANCE_PRODUCT",
+    "value_1": "Room deodorizers or fresheners, not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "254",
+    "active": "TRUE",
+    "value_2": "HOME_FAMILY_MAINTENANCE_PRODUCT",
+    "value_1": "Caustics (excluding lye)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "255",
+    "active": "TRUE",
+    "value_2": "HOME_FAMILY_MAINTENANCE_PRODUCT",
+    "value_1": "Lamp oils",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "256",
+    "active": "TRUE",
+    "value_2": "HOME_FAMILY_MAINTENANCE_PRODUCT",
+    "value_1": "Dyes (noncosmetic)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "257",
+    "active": "TRUE",
+    "value_2": "HOME_FAMILY_MAINTENANCE_PRODUCT",
+    "value_1": "Antifreeze",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "258",
+    "active": "TRUE",
+    "value_2": "HOME_FAMILY_MAINTENANCE_PRODUCT",
+    "value_1": "Lighter fluids",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "259",
+    "active": "TRUE",
+    "value_2": "HOME_FAMILY_MAINTENANCE_PRODUCT",
+    "value_1": "Drain cleaners",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "260",
+    "active": "TRUE",
+    "value_2": "HOME_FAMILY_MAINTENANCE_PRODUCT",
+    "value_1": "Shoe polishes",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "261",
+    "active": "TRUE",
+    "value_2": "HOME_FAMILY_MAINTENANCE_PRODUCT",
+    "value_1": "Rust removers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "262",
+    "active": "TRUE",
+    "value_2": "HOME_FAMILY_MAINTENANCE_PRODUCT",
+    "value_1": "Automotive waxes, polishes or cleaners",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "263",
+    "active": "TRUE",
+    "value_2": "HOME_FAMILY_MAINTENANCE_PRODUCT",
+    "value_1": "Dry ice",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "264",
+    "active": "TRUE",
+    "value_2": "HOME_FAMILY_MAINTENANCE_PRODUCT",
+    "value_1": "Paint or varnish removers, paintbrush cleaners (excluding turpentine)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "265",
+    "active": "TRUE",
+    "value_2": "HOME_FAMILY_MAINTENANCE_PRODUCT",
+    "value_1": "Bleaches (noncosmetic)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "266",
+    "active": "TRUE",
+    "value_2": "HOME_FAMILY_MAINTENANCE_PRODUCT",
+    "value_1": "Detergents, not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "267",
+    "active": "TRUE",
+    "value_2": "HOME_FAMILY_MAINTENANCE_PRODUCT",
+    "value_1": "Furniture polishes or waxes",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "268",
+    "active": "TRUE",
+    "value_2": "HOME_FAMILY_MAINTENANCE_PRODUCT",
+    "value_1": "Fuels for chafing dishes or fondue pots",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "269",
+    "active": "TRUE",
+    "value_2": "HOME_FAMILY_MAINTENANCE_PRODUCT",
+    "value_1": "Spot removers or cleaning fluids",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "270",
+    "active": "TRUE",
+    "value_2": "HOME_FAMILY_MAINTENANCE_PRODUCT",
+    "value_1": "Dishwashing liquid",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "271",
+    "active": "TRUE",
+    "value_2": "HOME_FAMILY_MAINTENANCE_PRODUCT",
+    "value_1": "Toilet bowl products",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "272",
+    "active": "TRUE",
+    "value_2": "HOME_FAMILY_MAINTENANCE_PRODUCT",
+    "value_1": "Fabric treatment products (excluding spot removers, cleaning fluids, bleaches and dyes)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "273",
+    "active": "TRUE",
+    "value_2": "HOME_FAMILY_MAINTENANCE_PRODUCT",
+    "value_1": "Pine oil cleaning and disinfectant preparations",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "274",
+    "active": "TRUE",
+    "value_2": "HOME_FAMILY_MAINTENANCE_PRODUCT",
+    "value_1": "General purpose household cleaners (excluding abrasives, ammonia, pine oil and toilet bowl products)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "275",
+    "active": "TRUE",
+    "value_2": "HOME_FAMILY_MAINTENANCE_PRODUCT",
+    "value_1": "Fuel storage tanks (excluding propane, LP and butane tanks)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "276",
+    "active": "TRUE",
+    "value_2": "HOME_FAMILY_MAINTENANCE_PRODUCT",
+    "value_1": "Paint or varnish thinners (excluding turpentine)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "277",
+    "active": "TRUE",
+    "value_2": "HOME_FAMILY_MAINTENANCE_PRODUCT",
+    "value_1": "Charcoal",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "278",
+    "active": "TRUE",
+    "value_2": "HOME_FAMILY_MAINTENANCE_PRODUCT",
+    "value_1": "Metal polishes, tarnish removers or preventatives",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "279",
+    "active": "TRUE",
+    "value_2": "HOME_FAMILY_MAINTENANCE_PRODUCT",
+    "value_1": "Dishwasher detergents",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "280",
+    "active": "TRUE",
+    "value_2": "HOME_FAMILY_MAINTENANCE_PRODUCT",
+    "value_1": "School laboratory chemicals",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "281",
+    "active": "TRUE",
+    "value_2": "HOME_FAMILY_MAINTENANCE_PRODUCT",
+    "value_1": "Swimming pool chemicals",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "282",
+    "active": "TRUE",
+    "value_2": "HOME_FAMILY_MAINTENANCE_PRODUCT",
+    "value_1": "Caulking or spackling compounds",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "283",
+    "active": "TRUE",
+    "value_2": "HOME_FAMILY_MAINTENANCE_PRODUCT",
+    "value_1": "Kerosene",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "284",
+    "active": "TRUE",
+    "value_2": "HOME_FAMILY_MAINTENANCE_PRODUCT",
+    "value_1": "Wallpaper steamers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "285",
+    "active": "TRUE",
+    "value_2": "HOME_FAMILY_MAINTENANCE_PRODUCT",
+    "value_1": "Gasoline",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "286",
+    "active": "TRUE",
+    "value_2": "HOME_FAMILY_MAINTENANCE_PRODUCT",
+    "value_1": "Paintbrushes or rollers, manual",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "287",
+    "active": "TRUE",
+    "value_2": "HOME_FAMILY_MAINTENANCE_PRODUCT",
+    "value_1": "Windshield wiper fluids",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "288",
+    "active": "TRUE",
+    "value_2": "HOME_FAMILY_MAINTENANCE_PRODUCT",
+    "value_1": "Laundry soaps or detergents",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "289",
+    "active": "TRUE",
+    "value_2": "HOME_FAMILY_MAINTENANCE_PRODUCT",
+    "value_1": "Solid room deodorizers or fresheners",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "290",
+    "active": "TRUE",
+    "value_2": "HOME_FAMILY_MAINTENANCE_PRODUCT",
+    "value_1": "Acids (excluding drain cleaners and battery acids)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "291",
+    "active": "TRUE",
+    "value_2": "HOME_FAMILY_MAINTENANCE_PRODUCT",
+    "value_1": "Other polishes",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "292",
+    "active": "TRUE",
+    "value_2": "HOME_FAMILY_MAINTENANCE_PRODUCT",
+    "value_1": "Floor waxes",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "293",
+    "active": "TRUE",
+    "value_2": "HOME_FAMILY_MAINTENANCE_PRODUCT",
+    "value_1": "Abrasive cleaners",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "294",
+    "active": "TRUE",
+    "value_2": "HOUSEHOLD_PACKAGING_CONTAINER",
+    "value_1": "Paper products (excluding bags, cups, straws and cardboard products)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "295",
+    "active": "TRUE",
+    "value_2": "HOUSEHOLD_PACKAGING_CONTAINER",
+    "value_1": "Other glass bottles or jars",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "296",
+    "active": "TRUE",
+    "value_2": "HOUSEHOLD_PACKAGING_CONTAINER",
+    "value_1": "Nonglass bottles or jars (excluding baby bottles)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "297",
+    "active": "TRUE",
+    "value_2": "HOUSEHOLD_PACKAGING_CONTAINER",
+    "value_1": "Other specified plastic products",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "298",
+    "active": "TRUE",
+    "value_2": "HOUSEHOLD_PACKAGING_CONTAINER",
+    "value_1": "Metal containers (excluding aerosols, trash and gasoline cans)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "299",
+    "active": "TRUE",
+    "value_2": "HOUSEHOLD_PACKAGING_CONTAINER",
+    "value_1": "Cardboard products",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "300",
+    "active": "TRUE",
+    "value_2": "HOUSEHOLD_PACKAGING_CONTAINER",
+    "value_1": "Containers with key openers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "301",
+    "active": "TRUE",
+    "value_2": "HOUSEHOLD_PACKAGING_CONTAINER",
+    "value_1": "Aluminum foil wrapping products",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "302",
+    "active": "TRUE",
+    "value_2": "HOUSEHOLD_PACKAGING_CONTAINER",
+    "value_1": "Vacuum containers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "303",
+    "active": "TRUE",
+    "value_2": "HOUSEHOLD_PACKAGING_CONTAINER",
+    "value_1": "Other containers (excluding vacuum or pressurized containers)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "304",
+    "active": "TRUE",
+    "value_2": "HOUSEHOLD_PACKAGING_CONTAINER",
+    "value_1": "Glass tubing or test tubes",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "305",
+    "active": "TRUE",
+    "value_2": "HOUSEHOLD_PACKAGING_CONTAINER",
+    "value_1": "Plastic containers (rigid or semi-rigid, excluding bottles and jars)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "306",
+    "active": "TRUE",
+    "value_2": "HOUSEHOLD_PACKAGING_CONTAINER",
+    "value_1": "Plastic bags",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "307",
+    "active": "TRUE",
+    "value_2": "HOUSEHOLD_PACKAGING_CONTAINER",
+    "value_1": "Wooden containers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "308",
+    "active": "TRUE",
+    "value_2": "HOUSEHOLD_PACKAGING_CONTAINER",
+    "value_1": "Glass bottles or jars, not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "309",
+    "active": "TRUE",
+    "value_2": "HOUSEHOLD_PACKAGING_CONTAINER",
+    "value_1": "Self-contained openers (e.g., zip-top or pull-top cans)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "310",
+    "active": "TRUE",
+    "value_2": "HOUSEHOLD_PACKAGING_CONTAINER",
+    "value_1": "Glass alcoholic beverage bottles",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "311",
+    "active": "TRUE",
+    "value_2": "HOUSEHOLD_PACKAGING_CONTAINER",
+    "value_1": "Plastic wrapping products (excluding plastic bags)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "312",
+    "active": "TRUE",
+    "value_2": "HOUSEHOLD_PACKAGING_CONTAINER",
+    "value_1": "Aerosol containers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "313",
+    "active": "TRUE",
+    "value_2": "HOUSEHOLD_PACKAGING_CONTAINER",
+    "value_1": "Paper bags",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "314",
+    "active": "TRUE",
+    "value_2": "HOUSEHOLD_PACKAGING_CONTAINER",
+    "value_1": "Bottles or jars, not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "315",
+    "active": "TRUE",
+    "value_2": "HOUSEHOLD_PACKAGING_CONTAINER",
+    "value_1": "Glass soft drink bottles",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "316",
+    "active": "TRUE",
+    "value_2": "HOUSEHOLD_PACKAGING_CONTAINER",
+    "value_1": "Canning jars",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "317",
+    "active": "TRUE",
+    "value_2": "HOUSEHOLD_PACKAGING_CONTAINER",
+    "value_1": "Bags, not elsewhere classified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "318",
+    "active": "TRUE",
+    "value_2": "HOUSEHOLD_PACKAGING_CONTAINER",
+    "value_1": "Containers, not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "319",
+    "active": "TRUE",
+    "value_2": "HOUSEHOLD_PACKAGING_CONTAINER",
+    "value_1": "Buckets or pails",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "320",
+    "active": "TRUE",
+    "value_2": "HOUSEHOLD_PACKAGING_CONTAINER",
+    "value_1": "Pressurized containers (nonaerosol",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "321",
+    "active": "TRUE",
+    "value_2": "HOUSEWARE_NON_POWERED",
+    "value_1": "Potholders, oven mitts or hot pads",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "322",
+    "active": "TRUE",
+    "value_2": "HOUSEWARE_NON_POWERED",
+    "value_1": "Coffee makers or teapots, not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "323",
+    "active": "TRUE",
+    "value_2": "HOUSEWARE_NON_POWERED",
+    "value_1": "Metal cookware (nonelectric",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "324",
+    "active": "TRUE",
+    "value_2": "HOUSEWARE_NON_POWERED",
+    "value_1": "Slicers and choppers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "325",
+    "active": "TRUE",
+    "value_2": "HOUSEWARE_NON_POWERED",
+    "value_1": "Waste containers, trash baskets or refuse bins",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "326",
+    "active": "TRUE",
+    "value_2": "HOUSEWARE_NON_POWERED",
+    "value_1": "Manual cleaning equipment (excluding buckets or pails)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "327",
+    "active": "TRUE",
+    "value_2": "HOUSEWARE_NON_POWERED",
+    "value_1": "Flatware (excluding knives)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "328",
+    "active": "TRUE",
+    "value_2": "HOUSEWARE_NON_POWERED",
+    "value_1": "Bottle openers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "329",
+    "active": "TRUE",
+    "value_2": "HOUSEWARE_NON_POWERED",
+    "value_1": "Chafing dishes or fondue pots",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "330",
+    "active": "TRUE",
+    "value_2": "HOUSEWARE_NON_POWERED",
+    "value_1": "Other cookware",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "331",
+    "active": "TRUE",
+    "value_2": "HOUSEWARE_NON_POWERED",
+    "value_1": "Cookware, not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "332",
+    "active": "TRUE",
+    "value_2": "HOUSEWARE_NON_POWERED",
+    "value_1": "Food grinders",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "333",
+    "active": "TRUE",
+    "value_2": "HOUSEWARE_NON_POWERED",
+    "value_1": "Ice picks",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "334",
+    "active": "TRUE",
+    "value_2": "HOUSEWARE_NON_POWERED",
+    "value_1": "Toothpicks or hor d'oeuvres picks",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "335",
+    "active": "TRUE",
+    "value_2": "HOUSEWARE_NON_POWERED",
+    "value_1": "Nonelectric can openers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "336",
+    "active": "TRUE",
+    "value_2": "HOUSEWARE_NON_POWERED",
+    "value_1": "Manual scissors",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "337",
+    "active": "TRUE",
+    "value_2": "HOUSEWARE_NON_POWERED",
+    "value_1": "Tie racks, belt racks or other clothes hangers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "338",
+    "active": "TRUE",
+    "value_2": "HOUSEWARE_NON_POWERED",
+    "value_1": "Drinking glasses, cups, and mugs",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "339",
+    "active": "TRUE",
+    "value_2": "HOUSEWARE_NON_POWERED",
+    "value_1": "Nonelectric knife sharpeners",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "340",
+    "active": "TRUE",
+    "value_2": "HOUSEWARE_NON_POWERED",
+    "value_1": "Pressure cookers or canners",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "341",
+    "active": "TRUE",
+    "value_2": "HOUSEWARE_NON_POWERED",
+    "value_1": "Food skewers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "342",
+    "active": "TRUE",
+    "value_2": "HOUSEWARE_NON_POWERED",
+    "value_1": "Doorstops",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "343",
+    "active": "TRUE",
+    "value_2": "HOUSEWARE_NON_POWERED",
+    "value_1": "Knives, not elsewhere classified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "344",
+    "active": "TRUE",
+    "value_2": "HOUSEWARE_NON_POWERED",
+    "value_1": "Ironing boards or covers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "345",
+    "active": "TRUE",
+    "value_2": "HOUSEWARE_NON_POWERED",
+    "value_1": "Thermometers (excluding medical thermometers)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "346",
+    "active": "TRUE",
+    "value_2": "HOUSEWARE_NON_POWERED",
+    "value_1": "Can openers, not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "347",
+    "active": "TRUE",
+    "value_2": "HOUSEWARE_NON_POWERED",
+    "value_1": "Appliances, other or not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "348",
+    "active": "TRUE",
+    "value_2": "HOUSEWARE_NON_POWERED",
+    "value_1": "Scissors, not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "349",
+    "active": "TRUE",
+    "value_2": "HOUSEWARE_NON_POWERED",
+    "value_1": "Kitchen gadgets, not elsewhere classified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "350",
+    "active": "TRUE",
+    "value_2": "HOUSEWARE_NON_POWERED",
+    "value_1": "Trays (excluding food warmers)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "351",
+    "active": "TRUE",
+    "value_2": "HOUSEWARE_NON_POWERED",
+    "value_1": "Bread making machines",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "352",
+    "active": "TRUE",
+    "value_2": "HOUSEWARE_NON_POWERED",
+    "value_1": "Unpowered coffee makers or teapots",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "353",
+    "active": "TRUE",
+    "value_2": "HOUSEWARE_NON_POWERED",
+    "value_1": "Corkscrews",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "354",
+    "active": "TRUE",
+    "value_2": "HOUSEWARE_NON_POWERED",
+    "value_1": "Laundry baskets",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "355",
+    "active": "TRUE",
+    "value_2": "HOUSEWARE_NON_POWERED",
+    "value_1": "Knife sharpeners, not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "356",
+    "active": "TRUE",
+    "value_2": "HOUSEWARE_NON_POWERED",
+    "value_1": "Nonmetal cookware (nonelectric)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "357",
+    "active": "TRUE",
+    "value_2": "HOUSEWARE_NON_POWERED",
+    "value_1": "Candles, candlesticks and other candle holders",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "358",
+    "active": "TRUE",
+    "value_2": "HOUSEWARE_NON_POWERED",
+    "value_1": "Kitchen mixing bowls, canisters or similar containers (excluding plastic products)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "359",
+    "active": "TRUE",
+    "value_2": "HOUSEWARE_NON_POWERED",
+    "value_1": "Drinking straws",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "360",
+    "active": "TRUE",
+    "value_2": "HOUSEWARE_NON_POWERED",
+    "value_1": "Tableware and accessories (excluding drinking glasses, cups, and mugs)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "361",
+    "active": "TRUE",
+    "value_2": "KITCHEN_APPLIANCE",
+    "value_1": "Electric griddles",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "362",
+    "active": "TRUE",
+    "value_2": "KITCHEN_APPLIANCE",
+    "value_1": "Toasters (excluding toaster ovens)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "363",
+    "active": "TRUE",
+    "value_2": "KITCHEN_APPLIANCE",
+    "value_1": "Ice crushers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "364",
+    "active": "TRUE",
+    "value_2": "KITCHEN_APPLIANCE",
+    "value_1": "Ice cream makers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "365",
+    "active": "TRUE",
+    "value_2": "KITCHEN_APPLIANCE",
+    "value_1": "Gas ranges or ovens",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "366",
+    "active": "TRUE",
+    "value_2": "KITCHEN_APPLIANCE",
+    "value_1": "Other ranges or ovens",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "367",
+    "active": "TRUE",
+    "value_2": "KITCHEN_APPLIANCE",
+    "value_1": "Dishwashers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "368",
+    "active": "TRUE",
+    "value_2": "KITCHEN_APPLIANCE",
+    "value_1": "Electric scissors",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "369",
+    "active": "TRUE",
+    "value_2": "KITCHEN_APPLIANCE",
+    "value_1": "Electric counter-top ovens, broilers or toaster ovens",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "370",
+    "active": "TRUE",
+    "value_2": "KITCHEN_APPLIANCE",
+    "value_1": "Electric knife sharpeners",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "371",
+    "active": "TRUE",
+    "value_2": "KITCHEN_APPLIANCE",
+    "value_1": "Food processors",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "372",
+    "active": "TRUE",
+    "value_2": "KITCHEN_APPLIANCE",
+    "value_1": "Juicers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "373",
+    "active": "TRUE",
+    "value_2": "KITCHEN_APPLIANCE",
+    "value_1": "Garbage disposers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "374",
+    "active": "TRUE",
+    "value_2": "KITCHEN_APPLIANCE",
+    "value_1": "Ranges or ovens, not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "375",
+    "active": "TRUE",
+    "value_2": "KITCHEN_APPLIANCE",
+    "value_1": "Microwave ovens",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "376",
+    "active": "TRUE",
+    "value_2": "KITCHEN_APPLIANCE",
+    "value_1": "Refrigerators",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "377",
+    "active": "TRUE",
+    "value_2": "KITCHEN_APPLIANCE",
+    "value_1": "Electric frying pans and skillets",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "378",
+    "active": "TRUE",
+    "value_2": "KITCHEN_APPLIANCE",
+    "value_1": "Electric immersion water heaters",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "379",
+    "active": "TRUE",
+    "value_2": "KITCHEN_APPLIANCE",
+    "value_1": "Electric coffee makers or teapots",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "380",
+    "active": "TRUE",
+    "value_2": "KITCHEN_APPLIANCE",
+    "value_1": "Electric kettles or hot pots",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "381",
+    "active": "TRUE",
+    "value_2": "KITCHEN_APPLIANCE",
+    "value_1": "Electric corn poppers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "382",
+    "active": "TRUE",
+    "value_2": "KITCHEN_APPLIANCE",
+    "value_1": "Freezers (separate from refrigerators)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "383",
+    "active": "TRUE",
+    "value_2": "KITCHEN_APPLIANCE",
+    "value_1": "Electric blenders",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "384",
+    "active": "TRUE",
+    "value_2": "KITCHEN_APPLIANCE",
+    "value_1": "Hot plates",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "385",
+    "active": "TRUE",
+    "value_2": "KITCHEN_APPLIANCE",
+    "value_1": "Rotisseries",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "386",
+    "active": "TRUE",
+    "value_2": "KITCHEN_APPLIANCE",
+    "value_1": "Clothing irons",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "387",
+    "active": "TRUE",
+    "value_2": "KITCHEN_APPLIANCE",
+    "value_1": "Electric waffle irons",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "388",
+    "active": "TRUE",
+    "value_2": "KITCHEN_APPLIANCE",
+    "value_1": "Faucet water heaters",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "389",
+    "active": "TRUE",
+    "value_2": "KITCHEN_APPLIANCE",
+    "value_1": "Clothes steamers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "390",
+    "active": "TRUE",
+    "value_2": "KITCHEN_APPLIANCE",
+    "value_1": "Trash compactors",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "391",
+    "active": "TRUE",
+    "value_2": "KITCHEN_APPLIANCE",
+    "value_1": "Food warmers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "392",
+    "active": "TRUE",
+    "value_2": "KITCHEN_APPLIANCE",
+    "value_1": "Electric mixers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "393",
+    "active": "TRUE",
+    "value_2": "KITCHEN_APPLIANCE",
+    "value_1": "Ice makers (separate from refrigerators)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "394",
+    "active": "TRUE",
+    "value_2": "KITCHEN_APPLIANCE",
+    "value_1": "Electric can openers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "395",
+    "active": "TRUE",
+    "value_2": "KITCHEN_APPLIANCE",
+    "value_1": "Electric or battery-powered knives",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "396",
+    "active": "TRUE",
+    "value_2": "KITCHEN_APPLIANCE",
+    "value_1": "Electric deep fryers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "397",
+    "active": "TRUE",
+    "value_2": "KITCHEN_APPLIANCE",
+    "value_1": "Electric ranges or ovens (excl. counter-top ovens)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "398",
+    "active": "TRUE",
+    "value_2": "KITCHEN_APPLIANCE",
+    "value_1": "Slow cookers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "399",
+    "active": "TRUE",
+    "value_2": "MISC_PRODUCT",
+    "value_1": "Christmas tree lights",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "400",
+    "active": "TRUE",
+    "value_2": "MISC_PRODUCT",
+    "value_1": "Lunch boxes or pails",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "401",
+    "active": "TRUE",
+    "value_2": "MISC_PRODUCT",
+    "value_1": "Christmas decorations (nonelectric)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "402",
+    "active": "TRUE",
+    "value_2": "MISC_PRODUCT",
+    "value_1": "Motorized vehicles, not elsewhere classified (three or more wheels)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "403",
+    "active": "TRUE",
+    "value_2": "MISC_PRODUCT",
+    "value_1": "Pet supplies (excluding foods and medicines)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "404",
+    "active": "TRUE",
+    "value_2": "MISC_PRODUCT",
+    "value_1": "Flares",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "405",
+    "active": "TRUE",
+    "value_2": "MISC_PRODUCT",
+    "value_1": "Public equipment, not elsewhere classified (including conveyor belts, signs)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "406",
+    "active": "TRUE",
+    "value_2": "MISC_PRODUCT",
+    "value_1": "Electric Christmas decorations (excluding Christmas tree lights)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "407",
+    "active": "TRUE",
+    "value_2": "MISC_PRODUCT",
+    "value_1": "Tarpaulins",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "408",
+    "active": "TRUE",
+    "value_2": "MISC_PRODUCT",
+    "value_1": "Matchbooks",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "409",
+    "active": "TRUE",
+    "value_2": "MISC_PRODUCT",
+    "value_1": "Heating or cooling comfort packs (nonelectric)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "410",
+    "active": "TRUE",
+    "value_2": "MISC_PRODUCT",
+    "value_1": "Christmas tree stands or supports",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "411",
+    "active": "TRUE",
+    "value_2": "MISC_PRODUCT",
+    "value_1": "Seasonal decorations (excluding Christmas decorations)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "412",
+    "active": "TRUE",
+    "value_2": "MISC_PRODUCT",
+    "value_1": "Wooden matches",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "413",
+    "active": "TRUE",
+    "value_2": "MISC_PRODUCT",
+    "value_1": "Coin-operated car washing equipment",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "414",
+    "active": "TRUE",
+    "value_2": "MISC_PRODUCT",
+    "value_1": "Music boxes or chimes",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "415",
+    "active": "TRUE",
+    "value_2": "MISC_PRODUCT",
+    "value_1": "Party favors",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "416",
+    "active": "TRUE",
+    "value_2": "MISC_PRODUCT",
+    "value_1": "Ashtrays, not electric or not battery operated or not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "417",
+    "active": "TRUE",
+    "value_2": "MISC_PRODUCT",
+    "value_1": "Matches, not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "418",
+    "active": "TRUE",
+    "value_2": "MISC_PRODUCT",
+    "value_1": "Lockers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "419",
+    "active": "TRUE",
+    "value_2": "MISC_PRODUCT",
+    "value_1": "Ashtrays, electric or battery operated",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "420",
+    "active": "TRUE",
+    "value_2": "MISC_PRODUCT",
+    "value_1": "Artificial Christmas trees",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "421",
+    "active": "TRUE",
+    "value_2": "MISC_PRODUCT",
+    "value_1": "Vending machines (excluding car washing machines)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "422",
+    "active": "TRUE",
+    "value_2": "PERSONAL_USE_ITEM",
+    "value_1": "Footwear",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "423",
+    "active": "TRUE",
+    "value_2": "PERSONAL_USE_ITEM",
+    "value_1": "Pins and needles (excluding safety pins and knitting needles)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "424",
+    "active": "TRUE",
+    "value_2": "PERSONAL_USE_ITEM",
+    "value_1": "Nightwear",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "425",
+    "active": "TRUE",
+    "value_2": "PERSONAL_USE_ITEM",
+    "value_1": "Bath or facial cleansing brushes",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "426",
+    "active": "TRUE",
+    "value_2": "PERSONAL_USE_ITEM",
+    "value_1": "Carts, other or not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "427",
+    "active": "TRUE",
+    "value_2": "PERSONAL_USE_ITEM",
+    "value_1": "Lighted make-up mirrors",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "428",
+    "active": "TRUE",
+    "value_2": "PERSONAL_USE_ITEM",
+    "value_1": "Combs, not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "429",
+    "active": "TRUE",
+    "value_2": "PERSONAL_USE_ITEM",
+    "value_1": "Outerwear",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "430",
+    "active": "TRUE",
+    "value_2": "PERSONAL_USE_ITEM",
+    "value_1": "Hair clippers and trimmers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "431",
+    "active": "TRUE",
+    "value_2": "PERSONAL_USE_ITEM",
+    "value_1": "Hair dryers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "432",
+    "active": "TRUE",
+    "value_2": "PERSONAL_USE_ITEM",
+    "value_1": "Watches",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "433",
+    "active": "TRUE",
+    "value_2": "PERSONAL_USE_ITEM",
+    "value_1": "Luggage (excluding foot lockers)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "434",
+    "active": "TRUE",
+    "value_2": "PERSONAL_USE_ITEM",
+    "value_1": "Electric razors or shavers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "435",
+    "active": "TRUE",
+    "value_2": "PERSONAL_USE_ITEM",
+    "value_1": "Fuel multi-purpose lighters (incl. micro torches)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "436",
+    "active": "TRUE",
+    "value_2": "PERSONAL_USE_ITEM",
+    "value_1": "Grocery or shopping carts",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "437",
+    "active": "TRUE",
+    "value_2": "PERSONAL_USE_ITEM",
+    "value_1": "Clothing accessories",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "438",
+    "active": "TRUE",
+    "value_2": "PERSONAL_USE_ITEM",
+    "value_1": "Manicure, pedicure, and make-up brushes and tools (excluding cosmetics)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "439",
+    "active": "TRUE",
+    "value_2": "PERSONAL_USE_ITEM",
+    "value_1": "Umbrellas",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "440",
+    "active": "TRUE",
+    "value_2": "PERSONAL_USE_ITEM",
+    "value_1": "Nonelectric razors or shavers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "441",
+    "active": "TRUE",
+    "value_2": "PERSONAL_USE_ITEM",
+    "value_1": "Other clothing",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "442",
+    "active": "TRUE",
+    "value_2": "PERSONAL_USE_ITEM",
+    "value_1": "Heat or infrared lamps",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "443",
+    "active": "TRUE",
+    "value_2": "PERSONAL_USE_ITEM",
+    "value_1": "Multi-purpose lighters, not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "444",
+    "active": "TRUE",
+    "value_2": "PERSONAL_USE_ITEM",
+    "value_1": "Razors or shavers, not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "445",
+    "active": "TRUE",
+    "value_2": "PERSONAL_USE_ITEM",
+    "value_1": "Hair curlers, curling irons, clips & hairpins",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "446",
+    "active": "TRUE",
+    "value_2": "PERSONAL_USE_ITEM",
+    "value_1": "Cigarette or pipe lighters",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "447",
+    "active": "TRUE",
+    "value_2": "PERSONAL_USE_ITEM",
+    "value_1": "Eye protection devices",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "448",
+    "active": "TRUE",
+    "value_2": "PERSONAL_USE_ITEM",
+    "value_1": "Saunas",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "449",
+    "active": "TRUE",
+    "value_2": "PERSONAL_USE_ITEM",
+    "value_1": "Sewing basket articles (excluding scissors, pins, needles and sewing machine accessories)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "450",
+    "active": "TRUE",
+    "value_2": "PERSONAL_USE_ITEM",
+    "value_1": "Pens and pencils",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "451",
+    "active": "TRUE",
+    "value_2": "PERSONAL_USE_ITEM",
+    "value_1": "Ear protection devices",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "452",
+    "active": "TRUE",
+    "value_2": "PERSONAL_USE_ITEM",
+    "value_1": "Respiratory protection devices",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "453",
+    "active": "TRUE",
+    "value_2": "PERSONAL_USE_ITEM",
+    "value_1": "Lighters, not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "454",
+    "active": "TRUE",
+    "value_2": "PERSONAL_USE_ITEM",
+    "value_1": "Electric shoe polishers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "455",
+    "active": "TRUE",
+    "value_2": "PERSONAL_USE_ITEM",
+    "value_1": "Desk supplies (excluding pens and pencils)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "456",
+    "active": "TRUE",
+    "value_2": "PERSONAL_USE_ITEM",
+    "value_1": "Hair grooming equipment or accessories, not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "457",
+    "active": "TRUE",
+    "value_2": "PERSONAL_USE_ITEM",
+    "value_1": "Electric multi-purpose lighters",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "458",
+    "active": "TRUE",
+    "value_2": "PERSONAL_USE_ITEM",
+    "value_1": "Clothes brushes",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "459",
+    "active": "TRUE",
+    "value_2": "PERSONAL_USE_ITEM",
+    "value_1": "Clothing, not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "460",
+    "active": "TRUE",
+    "value_2": "PERSONAL_USE_ITEM",
+    "value_1": "Massage devices or vibrators (excluding shower attachments)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "461",
+    "active": "TRUE",
+    "value_2": "PERSONAL_USE_ITEM",
+    "value_1": "Personal protection devices",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "462",
+    "active": "TRUE",
+    "value_2": "PERSONAL_USE_ITEM",
+    "value_1": "Wigs, falls or hairpieces",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "463",
+    "active": "TRUE",
+    "value_2": "PERSONAL_USE_ITEM",
+    "value_1": "Electric combs",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "464",
+    "active": "TRUE",
+    "value_2": "PERSONAL_USE_ITEM",
+    "value_1": "Jewelry (excluding watches)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "465",
+    "active": "TRUE",
+    "value_2": "PERSONAL_USE_ITEM",
+    "value_1": "Combs or hairbrushes, unpowered",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "466",
+    "active": "TRUE",
+    "value_2": "PERSONAL_USE_ITEM",
+    "value_1": "Keys, key rings or key chains",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "467",
+    "active": "TRUE",
+    "value_2": "PERSONAL_USE_ITEM",
+    "value_1": "Dollies, handtrucks or luggage carriers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "468",
+    "active": "TRUE",
+    "value_2": "PERSONAL_USE_ITEM",
+    "value_1": "Coins",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "469",
+    "active": "TRUE",
+    "value_2": "PERSONAL_USE_ITEM",
+    "value_1": "Day wear",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "470",
+    "active": "TRUE",
+    "value_2": "PERSONAL_USE_ITEM",
+    "value_1": "Paper cutters",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "471",
+    "active": "TRUE",
+    "value_2": "REGULATED_PRODUCTS",
+    "value_1": "Hot water",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "472",
+    "active": "TRUE",
+    "value_2": "REGULATED_PRODUCTS",
+    "value_1": "BBs or pellets",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "473",
+    "active": "TRUE",
+    "value_2": "REGULATED_PRODUCTS",
+    "value_1": "Gunpowder or ammunition (excluding BBs and pellets)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "474",
+    "active": "TRUE",
+    "value_2": "REGULATED_PRODUCTS",
+    "value_1": "Liquid drugs (excluding aspirin, aspirin substitutes, iron preparations and antihistamines)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "475",
+    "active": "TRUE",
+    "value_2": "REGULATED_PRODUCTS",
+    "value_1": "Pesticides",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "476",
+    "active": "TRUE",
+    "value_2": "REGULATED_PRODUCTS",
+    "value_1": "Cosmetics, including facial and eye make-up, deodorants, hair preparations, nail polish and removers, bath oils, skin creams and lotions, etc.",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "477",
+    "active": "TRUE",
+    "value_2": "REGULATED_PRODUCTS",
+    "value_1": "Liniments or rubbing compounds",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "478",
+    "active": "TRUE",
+    "value_2": "REGULATED_PRODUCTS",
+    "value_1": "Antihistamines",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "479",
+    "active": "TRUE",
+    "value_2": "REGULATED_PRODUCTS",
+    "value_1": "Aspirin or aspirin compounds",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "480",
+    "active": "TRUE",
+    "value_2": "REGULATED_PRODUCTS",
+    "value_1": "Tablet or capsule drugs (excluding aspirin, aspirin substitutes, iron preparations and antihistamines)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "481",
+    "active": "TRUE",
+    "value_2": "REGULATED_PRODUCTS",
+    "value_1": "Other drugs or medications",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "482",
+    "active": "TRUE",
+    "value_2": "REGULATED_PRODUCTS",
+    "value_1": "Drugs or medications, not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "483",
+    "active": "TRUE",
+    "value_2": "REGULATED_PRODUCTS",
+    "value_1": "Veterinary medicines",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "484",
+    "active": "TRUE",
+    "value_2": "REGULATED_PRODUCTS",
+    "value_1": "Preparations containing iron salts",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "485",
+    "active": "TRUE",
+    "value_2": "REGULATED_PRODUCTS",
+    "value_1": "Aspirin substitutes",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "486",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Monkey bars, playground gyms or other playground climbing apparatus",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "487",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Electric grills",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "488",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Cheerleading (activity, apparel or equipment",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "489",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Horseback riding (activity, apparel or equipment)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "490",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Ice skating (activity, apparel or equipment)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "491",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Golf (activity, apparel or equipment)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "492",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Golf carts, motorized vehicle",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "493",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Other guns or firearms",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "494",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Billiards or pool (activity, apparel or equipment)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "495",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Swimming pool slides",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "496",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Hockey (activity, apparel or equipment), not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "497",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Playground equipment, not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "498",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Gas, air or spring-operated guns (including BB guns)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "499",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Above-ground swimming pools (excluding portable pools)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "500",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Gas or LP grills or stoves (for outdoor use)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "501",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Go-carts",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "502",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Football (activity, apparel or equipment)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "503",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Amusement attractions (including rides)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "504",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Grills, not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "505",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Guns, not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "506",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Water tubing (activity, apparel or equipment)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "507",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "All-terrain vehicles (three wheels only",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "508",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Slides or sliding boards (excluding swimming pool slides)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "509",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Shuffleboard (activity, apparel or equipment)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "510",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Snowmobiles (activity, apparel or equipment)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "511",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Pedal-powered adult vehicles (three or more wheels)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "512",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Boxing (activity, apparel or equipment)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "513",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Skeet shooting (activity, apparel or equipment",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "514",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Swings or swing sets (excluding portable baby swings)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "515",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Flotation toys (excluding official life-saving devices)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "516",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Wrestling (activity, apparel or equipment)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "517",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Gymnastics (activity, apparel or equipment",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "518",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Scuba diving (activity, apparel or equipment)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "519",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Diving or diving boards",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "520",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "All-terrain vehicles (more than four wheels",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "521",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Table tennis (activity, apparel or equipment)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "522",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Other playground equipment",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "523",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Kerosene grills or stoves",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "524",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Badminton (activity, apparel or equipment)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "525",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Portable food or beverage coolers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "526",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "All-terrain vehicles (number of wheels not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "527",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Horseshoes (activity, apparel or equipment)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "528",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Unicycles",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "529",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Swimming (activity, apparel or equipment",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "530",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Water slides, public (stationary amusement rides)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "531",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Swimming pools, not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "532",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Bleachers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "533",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "All-terrain vehicles (four wheels, excluding dune buggies",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "534",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Lacrosse (activity, apparel or equipment)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "535",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Surfing (activity, apparel or equipment)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "536",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Other ball sports (activity, apparel or equipment)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "537",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "In-line skating (activity, apparel or equipment)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "538",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Sleeping bags",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "539",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Mountain climbing (activity, apparel or equipment)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "540",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Batons",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "541",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Handball (activity, apparel or equipment)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "542",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Roller skating (activity, apparel or equipment)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "543",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Rugby (activity, apparel or equipment)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "544",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Squash, racquet ball or paddle ball (activity, apparel or equipment)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "545",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Weight lifting (activity, apparel or equipment)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "546",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Darts, not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "547",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Exercise (activity or apparel without equipment), including aerobics, stretching, walking, jogging, running (excluding track and field)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "548",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Seesaws or teeterboards",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "549",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Ice hockey (activity, apparel or equipment)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "550",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Bowling (activity, apparel or equipment)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "551",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "T oboggans",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "552",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Ball sports (activity, apparel or equipment), not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "553",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Street hockey (activity, apparel or equipment)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "554",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Martial arts (activity, apparel or equipment)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "555",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Treehouses or playhouses",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "556",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Archery (activity, apparel or equipment)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "557",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Water skiing (activity, apparel or equipment)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "558",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Curling (activity, apparel or equipment)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "559",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Darts, lawn (activity or equipment)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "560",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Snow disks",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "561",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Field hockey (activity, apparel or equipment)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "562",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Mopeds or power-assisted cycles",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "563",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Charcoal or wood-burning grills",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "564",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Dancing (activity, apparel or equipment)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "565",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Soccer (activity, apparel or equipment)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "566",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Built-in swimming pools",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "567",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Trampolines",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "568",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Aquariums or accessories",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "569",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Skating (activity, apparel or equipment) not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "570",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Fishing (activity, apparel or equipment",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "571",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Other grills or stoves",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "572",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Ice or snow boating (activity, apparel or equipment)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "573",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Water polo (activity, apparel or equipment)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "574",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Sports and recreational activity, not elsewhere classified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "575",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Basketball (activity, apparel or equipment)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "576",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Volleyball (activity, apparel or equipment)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "577",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Swimming pool equipment (excluding chemicals, diving boards and swimming pool slides)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "578",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Tennis (activity, apparel or equipment)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "579",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Snow tubing (activity, apparel or equipment)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "580",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Fencing (activity, apparel or equipment)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "581",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Dune buggies/beach buggies",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "582",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Water slides, not elsewhere classified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "583",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Water slides, backyard/home (not swimming pool slides)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "584",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Croquet (activity, apparel or equipment)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "585",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Sleds",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "586",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Tetherball (activity, apparel or equipment)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "587",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Exercise equipment (excluding weight lifting or gymnastic equipment)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "588",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Snow skiing (activity, apparel or equipment)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "589",
+    "active": "TRUE",
+    "value_2": "SPORTS_RECREATION",
+    "value_1": "Darts, for indoor use (activity or equipment)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "590",
+    "active": "TRUE",
+    "value_2": "STRUCTURES_CONSTRUCTION",
+    "value_1": "Garage doors (excluding automatic garage doors or door openers)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "591",
+    "active": "TRUE",
+    "value_2": "STRUCTURES_CONSTRUCTION",
+    "value_1": "Fences or fence posts",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "592",
+    "active": "TRUE",
+    "value_2": "STRUCTURES_CONSTRUCTION",
+    "value_1": "Tree stands (hunting)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "593",
+    "active": "TRUE",
+    "value_2": "STRUCTURES_CONSTRUCTION",
+    "value_1": "Pull-down or folding stairs",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "594",
+    "active": "TRUE",
+    "value_2": "STRUCTURES_CONSTRUCTION",
+    "value_1": "Tool sheds",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "595",
+    "active": "TRUE",
+    "value_2": "STRUCTURES_CONSTRUCTION",
+    "value_1": "Doors, other or not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "596",
+    "active": "TRUE",
+    "value_2": "STRUCTURES_CONSTRUCTION",
+    "value_1": "Elevators or other lifts (excl. escalators, hoists, jacks, forklifts and automotive lifts)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "597",
+    "active": "TRUE",
+    "value_2": "STRUCTURES_CONSTRUCTION",
+    "value_1": "Thermal or sound insulation materials",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "598",
+    "active": "TRUE",
+    "value_2": "STRUCTURES_CONSTRUCTION",
+    "value_1": "Gutters, drainpipes, downspouts or run-off pipes",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "599",
+    "active": "TRUE",
+    "value_2": "STRUCTURES_CONSTRUCTION",
+    "value_1": "Windowsills or frames",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "600",
+    "active": "TRUE",
+    "value_2": "STRUCTURES_CONSTRUCTION",
+    "value_1": "Escalators",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "601",
+    "active": "TRUE",
+    "value_2": "STRUCTURES_CONSTRUCTION",
+    "value_1": "Drywall in a completed structure",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "602",
+    "active": "TRUE",
+    "value_2": "STRUCTURES_CONSTRUCTION",
+    "value_1": "Nails, screws, carpet tacks or thumbtacks -> Nails, screws, tacks or bolts",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "603",
+    "active": "TRUE",
+    "value_2": "STRUCTURES_CONSTRUCTION",
+    "value_1": "Storm windows",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "604",
+    "active": "TRUE",
+    "value_2": "STRUCTURES_CONSTRUCTION",
+    "value_1": "Artificial turf",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "605",
+    "active": "TRUE",
+    "value_2": "STRUCTURES_CONSTRUCTION",
+    "value_1": "Ceilings and walls (interior part of completed structure)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "606",
+    "active": "TRUE",
+    "value_2": "STRUCTURES_CONSTRUCTION",
+    "value_1": "Ramps or landings",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "607",
+    "active": "TRUE",
+    "value_2": "STRUCTURES_CONSTRUCTION",
+    "value_1": "Plastic panels for doors or windows",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "608",
+    "active": "TRUE",
+    "value_2": "STRUCTURES_CONSTRUCTION",
+    "value_1": "Carbon monoxide poisonings (when source is unknown)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "609",
+    "active": "TRUE",
+    "value_2": "STRUCTURES_CONSTRUCTION",
+    "value_1": "Cisterns, cesspools or septic tanks",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "610",
+    "active": "TRUE",
+    "value_2": "STRUCTURES_CONSTRUCTION",
+    "value_1": "Counters or countertops (excluding bars)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "611",
+    "active": "TRUE",
+    "value_2": "STRUCTURES_CONSTRUCTION",
+    "value_1": "Window or door security barriers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "612",
+    "active": "TRUE",
+    "value_2": "STRUCTURES_CONSTRUCTION",
+    "value_1": "Porches, balconies, open-side floors or floor openings",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "613",
+    "active": "TRUE",
+    "value_2": "STRUCTURES_CONSTRUCTION",
+    "value_1": "Poles (excluding fence posts, fishing, pole vaults and play-ground equipment)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "614",
+    "active": "TRUE",
+    "value_2": "STRUCTURES_CONSTRUCTION",
+    "value_1": "House repair or construction materials, not elsewhere classified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "615",
+    "active": "TRUE",
+    "value_2": "STRUCTURES_CONSTRUCTION",
+    "value_1": "Stairs or steps (excluding pull-down and folding stairs)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "616",
+    "active": "TRUE",
+    "value_2": "STRUCTURES_CONSTRUCTION",
+    "value_1": "Scaffolding",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "617",
+    "active": "TRUE",
+    "value_2": "STRUCTURES_CONSTRUCTION",
+    "value_1": "Wood paneling and particleboard",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "618",
+    "active": "TRUE",
+    "value_2": "STRUCTURES_CONSTRUCTION",
+    "value_1": "Floors or flooring materials",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "619",
+    "active": "TRUE",
+    "value_2": "STRUCTURES_CONSTRUCTION",
+    "value_1": "Window screens",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "620",
+    "active": "TRUE",
+    "value_2": "STRUCTURES_CONSTRUCTION",
+    "value_1": "Cabinet or door hardware",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "621",
+    "active": "TRUE",
+    "value_2": "STRUCTURES_CONSTRUCTION",
+    "value_1": "Clotheslines or clothes drying racks (excluding poles)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "622",
+    "active": "TRUE",
+    "value_2": "STRUCTURES_CONSTRUCTION",
+    "value_1": "General home or room involvement in fires",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "623",
+    "active": "TRUE",
+    "value_2": "STRUCTURES_CONSTRUCTION",
+    "value_1": "Doorsills or frames",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "624",
+    "active": "TRUE",
+    "value_2": "STRUCTURES_CONSTRUCTION",
+    "value_1": "Handrails, railings or banisters",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "625",
+    "active": "TRUE",
+    "value_2": "STRUCTURES_CONSTRUCTION",
+    "value_1": "Glass doors or doors with glass panels",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "626",
+    "active": "TRUE",
+    "value_2": "STRUCTURES_CONSTRUCTION",
+    "value_1": "Gas fumes or gas vapors of unknown origin",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "627",
+    "active": "TRUE",
+    "value_2": "STRUCTURES_CONSTRUCTION",
+    "value_1": "Outdoor awnings or shutters",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "628",
+    "active": "TRUE",
+    "value_2": "STRUCTURES_CONSTRUCTION",
+    "value_1": "Windows and window glass, other than storm windows",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "629",
+    "active": "TRUE",
+    "value_2": "STRUCTURES_CONSTRUCTION",
+    "value_1": "W allpaper",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "630",
+    "active": "TRUE",
+    "value_2": "STRUCTURES_CONSTRUCTION",
+    "value_1": "Moving walks",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "631",
+    "active": "TRUE",
+    "value_2": "TOYS",
+    "value_1": "Fireworks",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "632",
+    "active": "TRUE",
+    "value_2": "TOYS",
+    "value_1": "Toy musical instruments",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "633",
+    "active": "TRUE",
+    "value_2": "TOYS",
+    "value_1": "Wheeled riding toys, unpowered (excluding bicycles and tricycles)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "634",
+    "active": "TRUE",
+    "value_2": "TOYS",
+    "value_1": "Toy bows or arrows",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "635",
+    "active": "TRUE",
+    "value_2": "TOYS",
+    "value_1": "Skateboards",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "636",
+    "active": "TRUE",
+    "value_2": "TOYS",
+    "value_1": "Building sets",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "637",
+    "active": "TRUE",
+    "value_2": "TOYS",
+    "value_1": "Tricycles (children's)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "638",
+    "active": "TRUE",
+    "value_2": "TOYS",
+    "value_1": "Toys, not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "639",
+    "active": "TRUE",
+    "value_2": "TOYS",
+    "value_1": "Toy guns with projectiles",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "640",
+    "active": "TRUE",
+    "value_2": "TOYS",
+    "value_1": "Pogo sticks",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "641",
+    "active": "TRUE",
+    "value_2": "TOYS",
+    "value_1": "Metal or plastic molding sets",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "642",
+    "active": "TRUE",
+    "value_2": "TOYS",
+    "value_1": "Toy guns, not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "643",
+    "active": "TRUE",
+    "value_2": "TOYS",
+    "value_1": "Dolls, plush toys, and action figures",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "644",
+    "active": "TRUE",
+    "value_2": "TOYS",
+    "value_1": "Wagons (children's)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "645",
+    "active": "TRUE",
+    "value_2": "TOYS",
+    "value_1": "Balloons (toy)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "646",
+    "active": "TRUE",
+    "value_2": "TOYS",
+    "value_1": "Stilts",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "647",
+    "active": "TRUE",
+    "value_2": "TOYS",
+    "value_1": "Blocks, stacking toys or pull toys",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "648",
+    "active": "TRUE",
+    "value_2": "TOYS",
+    "value_1": "Powered riding toys",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "649",
+    "active": "TRUE",
+    "value_2": "TOYS",
+    "value_1": "Scooters, unpowered",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "650",
+    "active": "TRUE",
+    "value_2": "TOYS",
+    "value_1": "Marbles",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "651",
+    "active": "TRUE",
+    "value_2": "TOYS",
+    "value_1": "Other toy weapons (nonprojectile)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "652",
+    "active": "TRUE",
+    "value_2": "TOYS",
+    "value_1": "Toy sports equipment",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "653",
+    "active": "TRUE",
+    "value_2": "TOYS",
+    "value_1": "Rocketry sets",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "654",
+    "active": "TRUE",
+    "value_2": "TOYS",
+    "value_1": "Squeeze or squeaker toys",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "655",
+    "active": "TRUE",
+    "value_2": "TOYS",
+    "value_1": "Water toys (excluding squeeze or squeaker toys and inner tubes or similar flotation equipment)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "656",
+    "active": "TRUE",
+    "value_2": "TOYS",
+    "value_1": "Nonwheeled riding toys, unpowered (e.g., rocking or bouncing horses, etc.)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "657",
+    "active": "TRUE",
+    "value_2": "TOYS",
+    "value_1": "Molding compounds",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "658",
+    "active": "TRUE",
+    "value_2": "TOYS",
+    "value_1": "Inflatable toys (excluding balls & balloons)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "659",
+    "active": "TRUE",
+    "value_2": "TOYS",
+    "value_1": "Children's play tents, play tunnels or other enclosures",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "660",
+    "active": "TRUE",
+    "value_2": "TOYS",
+    "value_1": "Kites or kite string",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "661",
+    "active": "TRUE",
+    "value_2": "TOYS",
+    "value_1": "Costumes or masks",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "662",
+    "active": "TRUE",
+    "value_2": "TOYS",
+    "value_1": "Woodburning kits",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "663",
+    "active": "TRUE",
+    "value_2": "TOYS",
+    "value_1": "Clacker balls",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "664",
+    "active": "TRUE",
+    "value_2": "TOYS",
+    "value_1": "Toy boxes or chests",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "665",
+    "active": "TRUE",
+    "value_2": "TOYS",
+    "value_1": "Toys, not elsewhere classified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "666",
+    "active": "TRUE",
+    "value_2": "TOYS",
+    "value_1": "Chemistry sets or science kits",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "667",
+    "active": "TRUE",
+    "value_2": "TOYS",
+    "value_1": "Slingshots or sling-propelled toys",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "668",
+    "active": "TRUE",
+    "value_2": "TOYS_MOBILITY_OTHER",
+    "value_1": "Scooters/skateboards, powered",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "669",
+    "active": "TRUE",
+    "value_2": "TOYS_MOBILITY_OTHER",
+    "value_1": "Balls, other or not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "670",
+    "active": "TRUE",
+    "value_2": "TOYS_MOBILITY_OTHER",
+    "value_1": "Two-wheeled, powered, off-road vehicles (incl. dirt bikes and trail bikes",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "671",
+    "active": "TRUE",
+    "value_2": "TOYS_MOBILITY_OTHER",
+    "value_1": "Other toy guns",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "672",
+    "active": "TRUE",
+    "value_2": "TOYS_MOBILITY_OTHER",
+    "value_1": "Camping equipment (excl. trailers, lighting equipment, sleeping bags, cots, hammocks, coolers, stoves and heaters)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "673",
+    "active": "TRUE",
+    "value_2": "TOYS_MOBILITY_OTHER",
+    "value_1": "Other toy weapons (projectile)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "674",
+    "active": "TRUE",
+    "value_2": "TOYS_MOBILITY_OTHER",
+    "value_1": "Hammocks",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "675",
+    "active": "TRUE",
+    "value_2": "TOYS_MOBILITY_OTHER",
+    "value_1": "Crayons or chalk (excluding billiard or pool chalk)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "676",
+    "active": "TRUE",
+    "value_2": "TOYS_MOBILITY_OTHER",
+    "value_1": "Toy caps, cap toys or cap guns",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "677",
+    "active": "TRUE",
+    "value_2": "TOYS_MOBILITY_OTHER",
+    "value_1": "Flying discs and boomerangs",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "678",
+    "active": "TRUE",
+    "value_2": "TOYS_MOBILITY_OTHER",
+    "value_1": "Toy vehicles (excluding riding toys)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "679",
+    "active": "TRUE",
+    "value_2": "TOYS_MOBILITY_OTHER",
+    "value_1": "Softball (activity, apparel or equipment)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "680",
+    "active": "TRUE",
+    "value_2": "TOYS_MOBILITY_OTHER",
+    "value_1": "Riding toys (excluding bicycles and tricycles), not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "681",
+    "active": "TRUE",
+    "value_2": "TOYS_MOBILITY_OTHER",
+    "value_1": "Toy weapons, not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "682",
+    "active": "TRUE",
+    "value_2": "TOYS_MOBILITY_OTHER",
+    "value_1": "Snow boarding (activity, apparel or equipment)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "683",
+    "active": "TRUE",
+    "value_2": "TOYS_MOBILITY_OTHER",
+    "value_1": "Mountain or all-terrain bicycles or accessories",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "684",
+    "active": "TRUE",
+    "value_2": "TOYS_MOBILITY_OTHER",
+    "value_1": "Portable swimming pools",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "685",
+    "active": "TRUE",
+    "value_2": "TOYS_MOBILITY_OTHER",
+    "value_1": "Games or game parts (excluding marbles and computer games)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "686",
+    "active": "TRUE",
+    "value_2": "TOYS_MOBILITY_OTHER",
+    "value_1": "Book bags or back carriers (excluding baby carriers, luggage and camping equipment)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "687",
+    "active": "TRUE",
+    "value_2": "TOYS_MOBILITY_OTHER",
+    "value_1": "Baseball (activity, apparel or equipment",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "688",
+    "active": "TRUE",
+    "value_2": "TOYS_MOBILITY_OTHER",
+    "value_1": "Pretend electronics, tools, housewares, and appliances",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "689",
+    "active": "TRUE",
+    "value_2": "TOYS_MOBILITY_OTHER",
+    "value_1": "Toy make-up kits or cosmetics (excluding mirrors)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "690",
+    "active": "TRUE",
+    "value_2": "TOYS_MOBILITY_OTHER",
+    "value_1": "Doll houses and other play scenes",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "691",
+    "active": "TRUE",
+    "value_2": "TOYS_MOBILITY_OTHER",
+    "value_1": "Track and field (activity, apparel or equipment",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "692",
+    "active": "TRUE",
+    "value_2": "TOYS_MOBILITY_OTHER",
+    "value_1": "Roller hockey (activity, apparel or equipment)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "693",
+    "active": "TRUE",
+    "value_2": "TOYS_MOBILITY_OTHER",
+    "value_1": "Bicycles or accessories (excluding mountain or all-terrain bicycles)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "694",
+    "active": "TRUE",
+    "value_2": "TOYS_MOBILITY_OTHER",
+    "value_1": "Utility vehicles",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "695",
+    "active": "TRUE",
+    "value_2": "TOYS_MOBILITY_OTHER",
+    "value_1": "Fitness/activity tracker, personal (including pedometers and non-medical heart rate monitors)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "696",
+    "active": "TRUE",
+    "value_2": "TOYS_MOBILITY_OTHER",
+    "value_1": "Minibikes, powered",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "697",
+    "active": "TRUE",
+    "value_2": "WORKSHOP_TOOL_APPARATUS",
+    "value_1": "Hammers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "698",
+    "active": "TRUE",
+    "value_2": "WORKSHOP_TOOL_APPARATUS",
+    "value_1": "Stretch cords or stretch straps",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "699",
+    "active": "TRUE",
+    "value_2": "WORKSHOP_TOOL_APPARATUS",
+    "value_1": "Trouble lights or extension work lights",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "700",
+    "active": "TRUE",
+    "value_2": "WORKSHOP_TOOL_APPARATUS",
+    "value_1": "Tools, not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "701",
+    "active": "TRUE",
+    "value_2": "WORKSHOP_TOOL_APPARATUS",
+    "value_1": "Power saws, other or not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "702",
+    "active": "TRUE",
+    "value_2": "WORKSHOP_TOOL_APPARATUS",
+    "value_1": "Power lathes",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "703",
+    "active": "TRUE",
+    "value_2": "WORKSHOP_TOOL_APPARATUS",
+    "value_1": "Internal combustion engines (nonvehicular)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "704",
+    "active": "TRUE",
+    "value_2": "WORKSHOP_TOOL_APPARATUS",
+    "value_1": "Heavy-duty workshop staplers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "705",
+    "active": "TRUE",
+    "value_2": "WORKSHOP_TOOL_APPARATUS",
+    "value_1": "Band saws",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "706",
+    "active": "TRUE",
+    "value_2": "WORKSHOP_TOOL_APPARATUS",
+    "value_1": "Air compressors (separate)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "707",
+    "active": "TRUE",
+    "value_2": "WORKSHOP_TOOL_APPARATUS",
+    "value_1": "Workshop furnishings",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "708",
+    "active": "TRUE",
+    "value_2": "WORKSHOP_TOOL_APPARATUS",
+    "value_1": "Nonelectric soldering equipment",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "709",
+    "active": "TRUE",
+    "value_2": "WORKSHOP_TOOL_APPARATUS",
+    "value_1": "Awls, chisels or planes",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "710",
+    "active": "TRUE",
+    "value_2": "WORKSHOP_TOOL_APPARATUS",
+    "value_1": "Power shapers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "711",
+    "active": "TRUE",
+    "value_2": "WORKSHOP_TOOL_APPARATUS",
+    "value_1": "Vises or workshop clamps",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "712",
+    "active": "TRUE",
+    "value_2": "WORKSHOP_TOOL_APPARATUS",
+    "value_1": "Sprayers, not elsewhere classified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "713",
+    "active": "TRUE",
+    "value_2": "WORKSHOP_TOOL_APPARATUS",
+    "value_1": "Other portable or stationary power tools",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "714",
+    "active": "TRUE",
+    "value_2": "WORKSHOP_TOOL_APPARATUS",
+    "value_1": "Radial arm saws",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "715",
+    "active": "TRUE",
+    "value_2": "WORKSHOP_TOOL_APPARATUS",
+    "value_1": "Glue guns",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "716",
+    "active": "TRUE",
+    "value_2": "WORKSHOP_TOOL_APPARATUS",
+    "value_1": "Hand saws",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "717",
+    "active": "TRUE",
+    "value_2": "WORKSHOP_TOOL_APPARATUS",
+    "value_1": "Cutting torches",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "718",
+    "active": "TRUE",
+    "value_2": "WORKSHOP_TOOL_APPARATUS",
+    "value_1": "Rope or string (excluding mountain climbing or jump ropes and kite strings)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "719",
+    "active": "TRUE",
+    "value_2": "WORKSHOP_TOOL_APPARATUS",
+    "value_1": "Workshop grinders, buffers, or polishers, not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "720",
+    "active": "TRUE",
+    "value_2": "WORKSHOP_TOOL_APPARATUS",
+    "value_1": "Jigsaws",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "721",
+    "active": "TRUE",
+    "value_2": "WORKSHOP_TOOL_APPARATUS",
+    "value_1": "Chains, not elsewhere classified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "722",
+    "active": "TRUE",
+    "value_2": "WORKSHOP_TOOL_APPARATUS",
+    "value_1": "Knives with replaceable blades",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "723",
+    "active": "TRUE",
+    "value_2": "WORKSHOP_TOOL_APPARATUS",
+    "value_1": "Manual drills",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "724",
+    "active": "TRUE",
+    "value_2": "WORKSHOP_TOOL_APPARATUS",
+    "value_1": "Sabre saws",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "725",
+    "active": "TRUE",
+    "value_2": "WORKSHOP_TOOL_APPARATUS",
+    "value_1": "Welding equipment",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "726",
+    "active": "TRUE",
+    "value_2": "WORKSHOP_TOOL_APPARATUS",
+    "value_1": "Manual workshop grinders, buffers or polishers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "727",
+    "active": "TRUE",
+    "value_2": "WORKSHOP_TOOL_APPARATUS",
+    "value_1": "Electrical testing equipment",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "728",
+    "active": "TRUE",
+    "value_2": "WORKSHOP_TOOL_APPARATUS",
+    "value_1": "Electric motors (separate)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "729",
+    "active": "TRUE",
+    "value_2": "WORKSHOP_TOOL_APPARATUS",
+    "value_1": "Saws, not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "730",
+    "active": "TRUE",
+    "value_2": "WORKSHOP_TOOL_APPARATUS",
+    "value_1": "Reamers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "731",
+    "active": "TRUE",
+    "value_2": "WORKSHOP_TOOL_APPARATUS",
+    "value_1": "Toolboxes or tool kits (excluding tools)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "732",
+    "active": "TRUE",
+    "value_2": "WORKSHOP_TOOL_APPARATUS",
+    "value_1": "Stationary power drills and accessories",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "733",
+    "active": "TRUE",
+    "value_2": "WORKSHOP_TOOL_APPARATUS",
+    "value_1": "Nail guns or stud drivers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "734",
+    "active": "TRUE",
+    "value_2": "WORKSHOP_TOOL_APPARATUS",
+    "value_1": "Battery chargers/adapters",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "735",
+    "active": "TRUE",
+    "value_2": "WORKSHOP_TOOL_APPARATUS",
+    "value_1": "Torches, not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "736",
+    "active": "TRUE",
+    "value_2": "WORKSHOP_TOOL_APPARATUS",
+    "value_1": "Screwdrivers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "737",
+    "active": "TRUE",
+    "value_2": "WORKSHOP_TOOL_APPARATUS",
+    "value_1": "Manual filing or sanding tools",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "738",
+    "active": "TRUE",
+    "value_2": "WORKSHOP_TOOL_APPARATUS",
+    "value_1": "Power routers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "739",
+    "active": "TRUE",
+    "value_2": "WORKSHOP_TOOL_APPARATUS",
+    "value_1": "Hoists, lifts, jacks or jack stands",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "740",
+    "active": "TRUE",
+    "value_2": "WORKSHOP_TOOL_APPARATUS",
+    "value_1": "Power workshop grinders, buffers or polishers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "741",
+    "active": "TRUE",
+    "value_2": "WORKSHOP_TOOL_APPARATUS",
+    "value_1": "Bench or table saws",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "742",
+    "active": "TRUE",
+    "value_2": "WORKSHOP_TOOL_APPARATUS",
+    "value_1": "Power drills or accessories, not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "743",
+    "active": "TRUE",
+    "value_2": "WORKSHOP_TOOL_APPARATUS",
+    "value_1": "Batteries",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "744",
+    "active": "TRUE",
+    "value_2": "WORKSHOP_TOOL_APPARATUS",
+    "value_1": "Power sanders",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "745",
+    "active": "TRUE",
+    "value_2": "WORKSHOP_TOOL_APPARATUS",
+    "value_1": "Levels",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "746",
+    "active": "TRUE",
+    "value_2": "WORKSHOP_TOOL_APPARATUS",
+    "value_1": "Drain snakes",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "747",
+    "active": "TRUE",
+    "value_2": "WORKSHOP_TOOL_APPARATUS",
+    "value_1": "Other manual workshop tools",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "748",
+    "active": "TRUE",
+    "value_2": "WORKSHOP_TOOL_APPARATUS",
+    "value_1": "Painting equipment, powered (including sprayers, rollers or brushes)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "749",
+    "active": "TRUE",
+    "value_2": "WORKSHOP_TOOL_APPARATUS",
+    "value_1": "Power jointers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "750",
+    "active": "TRUE",
+    "value_2": "WORKSHOP_TOOL_APPARATUS",
+    "value_1": "Automotive tools or accessories",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "751",
+    "active": "TRUE",
+    "value_2": "WORKSHOP_TOOL_APPARATUS",
+    "value_1": "Portable circular power saws",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "752",
+    "active": "TRUE",
+    "value_2": "WORKSHOP_TOOL_APPARATUS",
+    "value_1": "Wire, not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "753",
+    "active": "TRUE",
+    "value_2": "WORKSHOP_TOOL_APPARATUS",
+    "value_1": "Drills, not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "754",
+    "active": "TRUE",
+    "value_2": "WORKSHOP_TOOL_APPARATUS",
+    "value_1": "Hacksaws",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "755",
+    "active": "TRUE",
+    "value_2": "WORKSHOP_TOOL_APPARATUS",
+    "value_1": "Pliers, wire cutters or wrenches",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "756",
+    "active": "TRUE",
+    "value_2": "WORKSHOP_TOOL_APPARATUS",
+    "value_1": "Workshop compounds or chemicals",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "757",
+    "active": "TRUE",
+    "value_2": "WORKSHOP_TOOL_APPARATUS",
+    "value_1": "Soldering equipment, not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "758",
+    "active": "TRUE",
+    "value_2": "WORKSHOP_TOOL_APPARATUS",
+    "value_1": "Electric soldering equipment",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "759",
+    "active": "TRUE",
+    "value_2": "WORKSHOP_TOOL_APPARATUS",
+    "value_1": "Portable power drills and accessories",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "760",
+    "active": "TRUE",
+    "value_2": "YARD_GARDEN_EQUIPMENT",
+    "value_1": "Garden hoses, nozzles or sprinklers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "761",
+    "active": "TRUE",
+    "value_2": "YARD_GARDEN_EQUIPMENT",
+    "value_1": "Pruning or trimming equipment, not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "762",
+    "active": "TRUE",
+    "value_2": "YARD_GARDEN_EQUIPMENT",
+    "value_1": "Insect traps, powered",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "763",
+    "active": "TRUE",
+    "value_2": "YARD_GARDEN_EQUIPMENT",
+    "value_1": "Decorative water features, including man-made ponds and fountains",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "764",
+    "active": "TRUE",
+    "value_2": "YARD_GARDEN_EQUIPMENT",
+    "value_1": "Grass and leaf catchers (attachments for lawn mowers)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "765",
+    "active": "TRUE",
+    "value_2": "YARD_GARDEN_EQUIPMENT",
+    "value_1": "Lawn mowers, not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "766",
+    "active": "TRUE",
+    "value_2": "YARD_GARDEN_EQUIPMENT",
+    "value_1": "Leaf blowers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "767",
+    "active": "TRUE",
+    "value_2": "YARD_GARDEN_EQUIPMENT",
+    "value_1": "Brushcutters, powered",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "768",
+    "active": "TRUE",
+    "value_2": "YARD_GARDEN_EQUIPMENT",
+    "value_1": "Manual push mowers (unpowered)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "769",
+    "active": "TRUE",
+    "value_2": "YARD_GARDEN_EQUIPMENT",
+    "value_1": "Other unpowered garden tools",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "770",
+    "active": "TRUE",
+    "value_2": "YARD_GARDEN_EQUIPMENT",
+    "value_1": "Decorative yard equipment, excluding water features",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "771",
+    "active": "TRUE",
+    "value_2": "YARD_GARDEN_EQUIPMENT",
+    "value_1": "Animal traps",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "772",
+    "active": "TRUE",
+    "value_2": "YARD_GARDEN_EQUIPMENT",
+    "value_1": "Lawn vacuums",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "773",
+    "active": "TRUE",
+    "value_2": "YARD_GARDEN_EQUIPMENT",
+    "value_1": "Power lawn mowers, not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "774",
+    "active": "TRUE",
+    "value_2": "YARD_GARDEN_EQUIPMENT",
+    "value_1": "Other manual pruning or trimming equipment",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "775",
+    "active": "TRUE",
+    "value_2": "YARD_GARDEN_EQUIPMENT",
+    "value_1": "Manual hedge trimmers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "776",
+    "active": "TRUE",
+    "value_2": "YARD_GARDEN_EQUIPMENT",
+    "value_1": "Other power pruning or trimming equipment",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "777",
+    "active": "TRUE",
+    "value_2": "YARD_GARDEN_EQUIPMENT",
+    "value_1": "Manual pruning or trimming equipment, not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "778",
+    "active": "TRUE",
+    "value_2": "YARD_GARDEN_EQUIPMENT",
+    "value_1": "Pumps, not elsewhere classified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "779",
+    "active": "TRUE",
+    "value_2": "YARD_GARDEN_EQUIPMENT",
+    "value_1": "Power hedge trimmers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "780",
+    "active": "TRUE",
+    "value_2": "YARD_GARDEN_EQUIPMENT",
+    "value_1": "Power leaf mulchers and grinders",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "781",
+    "active": "TRUE",
+    "value_2": "YARD_GARDEN_EQUIPMENT",
+    "value_1": "Plant foods or fertilizers for potted plants",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "782",
+    "active": "TRUE",
+    "value_2": "YARD_GARDEN_EQUIPMENT",
+    "value_1": "Lawn trimmers or edgers, powered (excluding brushcutters)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "783",
+    "active": "TRUE",
+    "value_2": "YARD_GARDEN_EQUIPMENT",
+    "value_1": "Wheelbarrows or lawn carts",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "784",
+    "active": "TRUE",
+    "value_2": "YARD_GARDEN_EQUIPMENT",
+    "value_1": "Rotary power lawn mowers (walk-behind)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "785",
+    "active": "TRUE",
+    "value_2": "YARD_GARDEN_EQUIPMENT",
+    "value_1": "Snow throwers/blowers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "786",
+    "active": "TRUE",
+    "value_2": "YARD_GARDEN_EQUIPMENT",
+    "value_1": "Garden sprayers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "787",
+    "active": "TRUE",
+    "value_2": "YARD_GARDEN_EQUIPMENT",
+    "value_1": "Seed and fertilizer spreaders",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "788",
+    "active": "TRUE",
+    "value_2": "YARD_GARDEN_EQUIPMENT",
+    "value_1": "Power tillers or cultivators (not farm equipment)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "789",
+    "active": "TRUE",
+    "value_2": "YARD_GARDEN_EQUIPMENT",
+    "value_1": "Manual lawn trimmers or edgers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "790",
+    "active": "TRUE",
+    "value_2": "YARD_GARDEN_EQUIPMENT",
+    "value_1": "Power pruning or trimming equipment, not specified",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "791",
+    "active": "TRUE",
+    "value_2": "YARD_GARDEN_EQUIPMENT",
+    "value_1": "Garden tractors",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "792",
+    "active": "TRUE",
+    "value_2": "YARD_GARDEN_EQUIPMENT",
+    "value_1": "Riding power lawn mowers",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "793",
+    "active": "TRUE",
+    "value_2": "YARD_GARDEN_EQUIPMENT",
+    "value_1": "Other power garden tools",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "794",
+    "active": "TRUE",
+    "value_2": "YARD_GARDEN_EQUIPMENT",
+    "value_1": "Chain saws",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "795",
+    "active": "TRUE",
+    "value_2": "YARD_GARDEN_EQUIPMENT",
+    "value_1": "Greenhouse or gardening supplies (excluding plant stands, tools, hoses, sprayers and chemicals)",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "796",
+    "active": "TRUE",
+    "value_2": "YARD_GARDEN_EQUIPMENT",
+    "value_1": "Manual snow or ice removal tools",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "797",
+    "active": "TRUE",
+    "value_2": "YARD_GARDEN_EQUIPMENT",
+    "value_1": "Hatchets or axes",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "798",
+    "active": "TRUE",
+    "value_2": "YARD_GARDEN_EQUIPMENT",
+    "value_1": "Outdoor electric lighting equipment",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "799",
+    "active": "TRUE",
+    "value_2": "YARD_GARDEN_EQUIPMENT",
+    "value_1": "Log splitters",
+    "definition": "",
+    "source": ""
+  }
+]

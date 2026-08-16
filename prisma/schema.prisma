@@ -1,0 +1,403 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  MEMBER
+  OFFICER
+  CHIEF
+  ADMIN
+}
+
+enum ReviewStatus {
+  OPEN
+  SUBMITTED
+  REVIEWED
+  APPROVED
+  SENT
+  CONFIRMED
+  ERROR
+}
+
+enum NerisEnvironment {
+  SANDBOX
+  PRODUCTION
+}
+
+enum SubmissionTrigger {
+  APPROVAL_AUTO
+  SCHEDULED_SWEEP
+  MANUAL_RESEND
+}
+
+model Department {
+  id                     String           @id @default(cuid())
+  name                   String
+  nerisFdId              String?          @unique
+  nerisVendorClientId    String?
+  nerisVendorSecretCipher String?
+  nerisEnvironment       NerisEnvironment @default(SANDBOX)
+  createdAt              DateTime         @default(now())
+  updatedAt              DateTime         @updatedAt
+  users                  User[]
+  incidents              Incident[]
+}
+
+model User {
+  id                String         @id @default(cuid())
+  departmentId      String
+  department        Department     @relation(fields: [departmentId], references: [id])
+  clerkId           String         @unique
+  name              String
+  email             String
+  role              UserRole       @default(MEMBER)
+  createdAt         DateTime       @default(now())
+  updatedAt         DateTime       @updatedAt
+  incidentsCreated  Incident[]     @relation("CreatedBy")
+  incidentsReviewed Incident[]     @relation("ReviewedBy")
+  incidentsApproved Incident[]     @relation("ApprovedBy")
+  reviewEvents      ReviewEvent[]
+
+  @@index([departmentId])
+}
+
+model Incident {
+  id                       String                  @id @default(cuid())
+  departmentId             String
+  department               Department              @relation(fields: [departmentId], references: [id])
+  internalId               String
+  nerisIncidentId          String?                 @unique
+  reviewStatus             ReviewStatus            @default(OPEN)
+  createdById              String
+  createdBy                User                    @relation("CreatedBy", fields: [createdById], references: [id])
+  reviewedById             String?
+  reviewedBy               User?                   @relation("ReviewedBy", fields: [reviewedById], references: [id])
+  approvedById             String?
+  approvedBy               User?                   @relation("ApprovedBy", fields: [approvedById], references: [id])
+  incidentDate             DateTime
+  alarmTime                DateTime
+  specialModifiers         String[]
+  incidentPointLat         Float?
+  incidentPointLng         Float?
+  incidentPeoplePresent    Boolean?
+  incidentDisplacedNumber  Int?
+  incidentDisplacedCauses  String[]
+  incidentRescueAnimal     Int?
+  incidentNoActionReason   String?
+  aidDirection             String?
+  aidType                  String?
+  aidDepartmentNames       String[]
+  aidNonFdTypes            String[]
+  narrativeImpediment      String?
+  narrativeOutcome         String?
+  dispatchTimeCallCreate   DateTime?
+  dispatchTimeCallAnswer   DateTime?
+  dispatchTimeCallArrival  DateTime?
+  dispatchAutomaticAlarm   Boolean?
+  dispatchFinalDisposition String?
+  dispatchDeterminateCode  String?
+  dispatchIncidentCode     String?
+  createdAt                DateTime                @default(now())
+  updatedAt                DateTime                @updatedAt
+  types                    IncidentType[]
+  actionsTaken             IncidentActionTaken[]
+  dispatchComments         IncidentDispatchComment[]
+  location                 IncidentLocation?
+  exposures                IncidentExposure[]
+  fire                     IncidentFire?
+  medicals                 IncidentMedical[]
+  hazsit                   IncidentHazsit?
+  rescuesFf                IncidentRescueFf[]
+  rescuesNonFf             IncidentRescueNonFf[]
+  unitResponses            IncidentUnitResponse[]
+  riskReduction            IncidentRiskReduction?
+  emergingHazards          IncidentEmergingHazard[]
+  tacticTimestamps         IncidentTacticTimestamps?
+  reviewEvents             ReviewEvent[]
+  nerisSubmissions         NerisSubmission[]
+
+  @@unique([departmentId, internalId])
+  @@index([departmentId, reviewStatus])
+}
+
+model IncidentType {
+  id         String   @id @default(cuid())
+  incidentId String
+  incident   Incident @relation(fields: [incidentId], references: [id], onDelete: Cascade)
+  value1     String
+  value2     String?
+  value3     String?
+  isPrimary  Boolean  @default(false)
+  sortOrder  Int      @default(0)
+
+  @@index([incidentId])
+}
+
+model IncidentActionTaken {
+  id         String   @id @default(cuid())
+  incidentId String
+  incident   Incident @relation(fields: [incidentId], references: [id], onDelete: Cascade)
+  value1     String
+  value2     String?
+  sortOrder  Int      @default(0)
+
+  @@index([incidentId])
+}
+
+model IncidentDispatchComment {
+  id         String   @id @default(cuid())
+  incidentId String
+  incident   Incident @relation(fields: [incidentId], references: [id], onDelete: Cascade)
+  comment    String
+  timestamp  DateTime
+
+  @@index([incidentId])
+}
+
+model IncidentLocation {
+  id                    String   @id @default(cuid())
+  incidentId            String   @unique
+  incident              Incident @relation(fields: [incidentId], references: [id], onDelete: Cascade)
+  streetAddressComplete String
+  city                  String?
+  county                String?
+  state                 String
+  postalCode            String?
+  country               String   @default("US")
+  place                 String?
+  useType               String?
+  useSubtype            String?
+  useVacancy            String?
+  civicLocationCipher   Json?
+}
+
+model IncidentExposure {
+  id                   String   @id @default(cuid())
+  incidentId           String
+  incident             Incident @relation(fields: [incidentId], references: [id], onDelete: Cascade)
+  exposureType         String
+  exposureItem         String
+  exposureDamage       String?
+  exposurePeoplePresent Boolean?
+  exposureDisplacedNumber Int?
+  exposureDisplacedCauses String[]
+
+  @@index([incidentId])
+}
+
+model IncidentFire {
+  id                          String   @id @default(cuid())
+  incidentId                  String   @unique
+  incident                    Incident @relation(fields: [incidentId], references: [id], onDelete: Cascade)
+  fireSuppressionAppliance    String[]
+  fireWaterSupply              String
+  fireInvestigationNeed        String
+  fireInvestigationType        String[]
+  structureArrivalConditions   String
+  structureProgressionConditions Boolean?
+  structureDamage               String
+  structureFloorOfOrigin        Int?
+  structureRoomOfOrigin         String
+  structureFireCause            String
+  outsideFireCause               String
+  outsideFireAcresBurned          Float?
+}
+
+model IncidentMedical {
+  id                     String   @id @default(cuid())
+  incidentId             String
+  incident               Incident @relation(fields: [incidentId], references: [id], onDelete: Cascade)
+  patientCareReport      String?
+  patientEvaluationCare  String
+  patientImprovedStatus  String
+  medicalDisposition     String
+
+  @@index([incidentId])
+}
+
+model IncidentHazsit {
+  id                String                    @id @default(cuid())
+  incidentId        String                    @unique
+  incident          Incident                  @relation(fields: [incidentId], references: [id], onDelete: Cascade)
+  hazsitDisposition String
+  hazsitEvacuated   Int?
+  chemicals         IncidentHazardChemical[]
+}
+
+model IncidentHazardChemical {
+  id                String         @id @default(cuid())
+  hazsitId          String
+  hazsit            IncidentHazsit @relation(fields: [hazsitId], references: [id], onDelete: Cascade)
+  dotClass          String
+  chemicalName      String?
+  releaseOccurred   Boolean?
+  amountEst         Float?
+  amountEstUnits    String
+  physicalState     String
+  releaseInto       String
+  releaseCause      String
+
+  @@index([hazsitId])
+}
+
+model IncidentRescueFf {
+  id                     String   @id @default(cuid())
+  incidentId             String
+  incident               Incident @relation(fields: [incidentId], references: [id], onDelete: Cascade)
+  birthMonthYear         String?
+  gender                 String
+  race                   String
+  casualtyRank           String?
+  rescueType             String
+  primaryMode            String?
+  actions                String[]
+  impedimentTypes        String[]
+  mayday                 Boolean?
+  maydayRelativeTime     String?
+  ritActivated           Boolean?
+  roomType               String?
+  elevationType          String?
+  removalPathType        String?
+  fireRelativeTime       String?
+  casualtyType           String
+  casualtyClassification String?
+  linkedUnitId           String
+  reportedUnitId         String?
+  dutyType               String?
+  casualtyCause          String?
+  casualtyAction         String?
+  casualtyPpe            String[]
+  incidentCommand        Boolean?
+  casualtyTimeline       String?
+
+  @@index([incidentId])
+}
+
+model IncidentRescueNonFf {
+  id                 String   @id @default(cuid())
+  incidentId         String
+  incident           Incident @relation(fields: [incidentId], references: [id], onDelete: Cascade)
+  birthMonthYear     String?
+  gender             String
+  race               String
+  rescueType         String
+  presenceKnown      String?
+  primaryMode        String?
+  actions            String[]
+  impedimentTypes    String[]
+  roomType           String?
+  elevationType      String?
+  removalPathType    String?
+  fireRelativeTime   String?
+  casualtyType       String
+  casualtyCause      String?
+
+  @@index([incidentId])
+}
+
+model IncidentUnitResponse {
+  id                  String    @id @default(cuid())
+  incidentId          String
+  incident            Incident  @relation(fields: [incidentId], references: [id], onDelete: Cascade)
+  unitIdLinked        String
+  unitIdReported      String?
+  unitStaffingReported Int?
+  unableToDispatch    Boolean?
+  responseMode        String
+  timeDispatch        DateTime?
+  timeEnrouteToScene  DateTime?
+  timeOnScene         DateTime?
+  timeCanceledEnroute DateTime?
+  timeStaging         DateTime?
+  timeUnitClear       DateTime?
+  transportMode       String
+
+  @@index([incidentId])
+}
+
+model IncidentRiskReduction {
+  id                              String   @id @default(cuid())
+  incidentId                      String   @unique
+  incident                        Incident @relation(fields: [incidentId], references: [id], onDelete: Cascade)
+  smokeAlarmPresence               String
+  smokeAlarmType                   String[]
+  smokeAlarmWorking                Boolean?
+  smokeAlarmOperation               String
+  fireAlarmPresence                  String
+  fireAlarmType                      String[]
+  fireAlarmOperation                  String
+  fireSuppressionPresence              String
+  fireSuppressionType                  String[]
+  fireSuppressionOperation              String
+  cookingFireSuppressionPresence          String
+  cookingFireSuppressionType              String[]
+}
+
+model IncidentEmergingHazard {
+  id                 String   @id @default(cuid())
+  incidentId         String
+  incident           Incident @relation(fields: [incidentId], references: [id], onDelete: Cascade)
+  elecCategory       String?
+  elecType           String?
+  elecSubtype        String?
+  elecTarget         String?
+  elecSuppress       String[]
+  elecReignition     Boolean?
+  elecVehicleStatus  Boolean?
+  powergenHardwareType String[]
+  powergenPvIgnition String?
+  powergenPvType     String?
+  csstIgnitionSource Boolean?
+  csstLightning      String?
+  csstGrounded       String?
+
+  @@index([incidentId])
+}
+
+model IncidentTacticTimestamps {
+  id                       String    @id @default(cuid())
+  incidentId               String    @unique
+  incident                 Incident  @relation(fields: [incidentId], references: [id], onDelete: Cascade)
+  timeCommandEstablished   DateTime?
+  timeSizeupCompleted      DateTime?
+  timeSuppressionComplete  DateTime?
+  timePrimarySearchBegin   DateTime?
+  timePrimarySearchComplete DateTime?
+  timeWaterOnFire          DateTime?
+  timeFireUnderControl     DateTime?
+  timeFireKnockedDown      DateTime?
+  timeExtricationComplete  DateTime?
+}
+
+model ReviewEvent {
+  id         String       @id @default(cuid())
+  incidentId String
+  incident   Incident     @relation(fields: [incidentId], references: [id], onDelete: Cascade)
+  actorId    String
+  actor      User         @relation(fields: [actorId], references: [id])
+  fromStatus ReviewStatus
+  toStatus   ReviewStatus
+  note       String?
+  createdAt  DateTime     @default(now())
+
+  @@index([incidentId])
+}
+
+model NerisSubmission {
+  id             String            @id @default(cuid())
+  incidentId     String
+  incident       Incident          @relation(fields: [incidentId], references: [id], onDelete: Cascade)
+  trigger        SubmissionTrigger
+  requestPayload Json
+  responseStatus Int?
+  responseBody   Json?
+  succeeded      Boolean           @default(false)
+  createdAt      DateTime          @default(now())
+
+  @@index([incidentId])
+}

@@ -1,0 +1,233 @@
+[
+  {
+    "value": "GAS_CUBIC_FOOT",
+    "active": "TRUE",
+    "description": "Gas - Cubic Foot ",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "value": "GAS_CUBIC_INCH",
+    "active": "TRUE",
+    "description": "Gas - Cubic Inch ",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "value": "GAS_CUBIC_CENTIMETER",
+    "active": "TRUE",
+    "description": "Gas - Cubic Centimeter ",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "value": "GAS_CUBIC_METER",
+    "active": "TRUE",
+    "description": "Gas - Cubic Meter ",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "value": "GAS_POUND",
+    "active": "TRUE",
+    "description": "Gas - Pound ",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "value": "LIQUID_CUBIC_CENTIMETER",
+    "active": "TRUE",
+    "description": "Liquid - Cubic Centimeter ",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "value": "LIQUID_CUP",
+    "active": "TRUE",
+    "description": "Liquid - Cup ",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "value": "LIQUID_GALLON",
+    "active": "TRUE",
+    "description": "Liquid - Gallon ",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "value": "LIQUID_GRAM",
+    "active": "TRUE",
+    "description": "Liquid - Gram ",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "value": "LIQUID_KILOGRAM",
+    "active": "TRUE",
+    "description": "Liquid - Kilogram ",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "value": "LIQUID_POUND",
+    "active": "TRUE",
+    "description": "Liquid - Pound ",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "value": "LIQUID_LITER",
+    "active": "TRUE",
+    "description": "Liquid - Liter ",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "value": "LIQUID_MILLIGRAM",
+    "active": "TRUE",
+    "description": "Liquid - Milligram ",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "value": "LIQUID_MILLILITER",
+    "active": "TRUE",
+    "description": "Liquid - Milliliter ",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "value": "LIQUID_OUNCE",
+    "active": "TRUE",
+    "description": "Liquid - Ounce ",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "value": "LIQUID_PINT",
+    "active": "TRUE",
+    "description": "Liquid - Pint ",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "value": "LIQUID_QUART",
+    "active": "TRUE",
+    "description": "Liquid - Quart ",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "value": "LIQUID_TABLESPOON",
+    "active": "TRUE",
+    "description": "Liquid - Tablespoon ",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "value": "LIQUID_TEASPOON",
+    "active": "TRUE",
+    "description": "Liquid - Teaspoon ",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "value": "SOLID_GRAM",
+    "active": "TRUE",
+    "description": "Solid - Gram ",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "value": "SOLID_KILOGRAM",
+    "active": "TRUE",
+    "description": "Solid - Kilogram ",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "value": "SOLID_POUND",
+    "active": "TRUE",
+    "description": "Solid - Pound ",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "value": "SOLID_LITER",
+    "active": "TRUE",
+    "description": "Solid - Liter ",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "value": "SOLID_MILLIGRAM",
+    "active": "TRUE",
+    "description": "Solid - Milligram ",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "value": "SOLID_OUNCE",
+    "active": "TRUE",
+    "description": "Solid - Ounce ",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "value": "SOLID_TABLESPOON",
+    "active": "TRUE",
+    "description": "Solid - Tablespoon ",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "value": "SOLID_TON",
+    "active": "TRUE",
+    "description": "Solid - Ton ",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "value": "SOLID_TEASPOON",
+    "active": "TRUE",
+    "description": "Solid - Teaspoon ",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "value": "RADIOACTIVE_CURIE",
+    "active": "TRUE",
+    "description": "Radioactive - Curie ",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "value": "RADIOACTIVE_MEGABECQUEREL",
+    "active": "TRUE",
+    "description": "Radioactive - Megabecquerel ",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "value": "RADIOACTIVE_MILLICURIE",
+    "active": "TRUE",
+    "description": "Radioactive - Millicurie ",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "value": "RADIOACTIVE_TERABECQUEREL",
+    "active": "TRUE",
+    "description": "Radioactive - Terabecquerel ",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "value": "RADIOACTIVE_MICROCURIE",
+    "active": "TRUE",
+    "description": "Radioactive - Microcurie ",
+    "definition": "",
+    "source": ""
+  }
+]

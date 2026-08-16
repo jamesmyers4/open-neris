@@ -1,0 +1,782 @@
+[
+  {
+    "active": "TRUE",
+    "value_1": "AGRICULTURE_STRUCT",
+    "value_2": "STORAGE_SILO",
+    "description_1": "Agriculture Structure",
+    "description_2": "Crop or Product Storage / Silo",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": "816"
+  },
+  {
+    "active": "TRUE",
+    "value_1": "AGRICULTURE_STRUCT",
+    "value_2": "FARM_BUILDING",
+    "description_1": "Agriculture Structure",
+    "description_2": "Farm (Building)",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": ""
+  },
+  {
+    "active": "TRUE",
+    "value_1": "AGRICULTURE_STRUCT",
+    "value_2": "AUCTION_FEEDLOT",
+    "description_1": "Agriculture Structure",
+    "description_2": "Auction / Feedlot",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": ""
+  },
+  {
+    "active": "TRUE",
+    "value_1": "AGRICULTURE_STRUCT",
+    "value_2": "ANIMAL_PROCESSING",
+    "description_1": "Agriculture Structure",
+    "description_2": "Animal Processing",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": "659"
+  },
+  {
+    "active": "TRUE",
+    "value_1": "AGRICULTURE_STRUCT",
+    "value_2": "VETERINARY_LIVESTOCK",
+    "description_1": "Agriculture Structure",
+    "description_2": "Veterinary (Livestock)",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": "819"
+  },
+  {
+    "active": "TRUE",
+    "value_1": "ASSEMBLY",
+    "value_2": "COMMUNITY_CENTER",
+    "description_1": "Assembly",
+    "description_2": "Community Center",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": "116"
+  },
+  {
+    "active": "TRUE",
+    "value_1": "ASSEMBLY",
+    "value_2": "CONVENTION_CENTER",
+    "description_1": "Assembly",
+    "description_2": "Convention Center",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": "122"
+  },
+  {
+    "active": "TRUE",
+    "value_1": "ASSEMBLY",
+    "value_2": "INDOOR_ARENA",
+    "description_1": "Assembly",
+    "description_2": "Indoor Arena",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": "123, 182"
+  },
+  {
+    "active": "TRUE",
+    "value_1": "ASSEMBLY",
+    "value_2": "OUTDOOR_ARENA_AMPHITHEATER_PARK",
+    "description_1": "Assembly",
+    "description_2": "Outdoor Arena / Amphitheater / Amusement Park",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": "152, 151"
+  },
+  {
+    "active": "TRUE",
+    "value_1": "ASSEMBLY",
+    "value_2": "TEMP_OUTDOOR_STRUCT_EVENT",
+    "description_1": "Assembly",
+    "description_2": "Temporary Outdoor Structure / Event",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": "152, 151"
+  },
+  {
+    "active": "TRUE",
+    "value_1": "ASSEMBLY",
+    "value_2": "RELIGIOUS",
+    "description_1": "Assembly",
+    "description_2": "Religious",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": "130, 131, 134"
+  },
+  {
+    "active": "TRUE",
+    "value_1": "ASSEMBLY",
+    "value_2": "MUSEUM_EXHIBIT_HALL_LIBRARY",
+    "description_1": "Assembly",
+    "description_2": "Museum / Exhibit Hall / Library",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": "152, 151"
+  },
+  {
+    "active": "TRUE",
+    "value_1": "COMMERCIAL",
+    "value_2": "ENTERTAINMENT_RECREATION",
+    "description_1": "Commercial",
+    "description_2": "Entertainment and Recreation",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": "111, 112, 113, 114, 115, 116, 120, 121, 129, 140, 141, 142, 144"
+  },
+  {
+    "active": "TRUE",
+    "value_1": "COMMERCIAL",
+    "value_2": "RESTAURANT_CAFE",
+    "description_1": "Commercial",
+    "description_2": "Restaurant / Cafe",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": "519, 142, 160, 161"
+  },
+  {
+    "active": "TRUE",
+    "value_1": "COMMERCIAL",
+    "value_2": "BAR_NIGHTCLUB",
+    "description_1": "Commercial",
+    "description_2": "Bar / Nightclub",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": "162"
+  },
+  {
+    "active": "TRUE",
+    "value_1": "COMMERCIAL",
+    "value_2": "OFFICE_OTHER_TECHNICAL_SERVICES",
+    "description_1": "Commercial",
+    "description_2": "Office / Other Technical Services",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": "599, 596, 593, 635, 639,"
+  },
+  {
+    "active": "TRUE",
+    "value_1": "COMMERCIAL",
+    "value_2": "RETAIL_WHOLESALE_TRADE",
+    "description_1": "Commercial",
+    "description_2": "Retail / Wholesale / Trade",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": "500, 511, 519, 529, 539, 549, 557, 559, 564, 569, 580, 581, 592"
+  },
+  {
+    "active": "TRUE",
+    "value_1": "COMMERCIAL",
+    "value_2": "THEATERS_STUDIO",
+    "description_1": "Commercial",
+    "description_2": "Theaters/Studio",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": "180, 181, 182, 183, 185, 186"
+  },
+  {
+    "active": "TRUE",
+    "value_1": "COMMERCIAL",
+    "value_2": "VEHICLE_REPAIR_SERVICES",
+    "description_1": "Commercial",
+    "description_2": "Vehicle Repair Services",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": "579, 579"
+  },
+  {
+    "active": "TRUE",
+    "value_1": "COMMERCIAL",
+    "value_2": "VEHICLE_FUELING_CHARGING_STATION",
+    "description_1": "Commercial",
+    "description_2": "Vehicle Fueling / Charging Station",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": "571"
+  },
+  {
+    "active": "TRUE",
+    "value_1": "COMMERCIAL",
+    "value_2": "VETERINARY_PET ",
+    "description_1": "Commercial",
+    "description_2": "Veterinary (Pet)",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": "300"
+  },
+  {
+    "active": "TRUE",
+    "value_1": "EDUCATION",
+    "value_2": "COLLEGES_UNIVERSITIES",
+    "description_1": "Education",
+    "description_2": "Colleges/Universities",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": "241"
+  },
+  {
+    "active": "TRUE",
+    "value_1": "EDUCATION",
+    "value_2": "OTHER_EDUCATIONAL_BUILDINGS",
+    "description_1": "Education",
+    "description_2": "Other Educational Buildings",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": "200, 210"
+  },
+  {
+    "active": "TRUE",
+    "value_1": "EDUCATION",
+    "value_2": "PREK_DAYCARE",
+    "description_1": "Education",
+    "description_2": "Pre-K / Day Care",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": "211, 250, 254, 255, 256"
+  },
+  {
+    "active": "TRUE",
+    "value_1": "EDUCATION",
+    "value_2": "K_12_SCHOOLS",
+    "description_1": "Education",
+    "description_2": "K - 12 Schools",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": "213, 215"
+  },
+  {
+    "active": "TRUE",
+    "value_1": "GOVERNMENT",
+    "value_2": "POLICE_EMERGENCY_STATION",
+    "description_1": "Government",
+    "description_2": "Police Station / Emergency Response",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": "365"
+  },
+  {
+    "active": "TRUE",
+    "value_1": "GOVERNMENT",
+    "value_2": "FIRE_MEDICAL_STATION",
+    "description_1": "Government",
+    "description_2": "Fire Station / Medical Response Station",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": "888"
+  },
+  {
+    "active": "TRUE",
+    "value_1": "GOVERNMENT",
+    "value_2": "JAIL_PRISON_REFORMATORY",
+    "description_1": "Government",
+    "description_2": "Jail / Prison / Reformatory / Incarceration ",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": "361, 363"
+  },
+  {
+    "active": "TRUE",
+    "value_1": "GOVERNMENT",
+    "value_2": "GENERAL_SERVICES",
+    "description_1": "Government",
+    "description_2": "General Services",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": "150, 155"
+  },
+  {
+    "active": "TRUE",
+    "value_1": "GOVERNMENT",
+    "value_2": "NON_CIVILIAN_STRUCTURES",
+    "description_1": "Government",
+    "description_2": "Non-Civilian Structures (Defense, Military)",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": "631"
+  },
+  {
+    "active": "TRUE",
+    "value_1": "INDUSTRIAL",
+    "value_2": "CHEMICAL",
+    "description_1": "Industrial",
+    "description_2": "Chemical",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": ""
+  },
+  {
+    "active": "TRUE",
+    "value_1": "INDUSTRIAL",
+    "value_2": "COLD_STORAGE",
+    "description_1": "Industrial",
+    "description_2": "Cold Storage",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": ""
+  },
+  {
+    "active": "TRUE",
+    "value_1": "INDUSTRIAL",
+    "value_2": "FOOD_DRUGS",
+    "description_1": "Industrial",
+    "description_2": "Food / Drugs",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": ""
+  },
+  {
+    "active": "TRUE",
+    "value_1": "INDUSTRIAL",
+    "value_2": "HEAVY",
+    "description_1": "Industrial",
+    "description_2": "Heavy ",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": ""
+  },
+  {
+    "active": "TRUE",
+    "value_1": "INDUSTRIAL",
+    "value_2": "LIGHT",
+    "description_1": "Industrial",
+    "description_2": "Light",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": "700"
+  },
+  {
+    "active": "TRUE",
+    "value_1": "INDUSTRIAL",
+    "value_2": "METALS_MINERALS_PROCESSING",
+    "description_1": "Industrial",
+    "description_2": "Metals/Minerals Processing",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": ""
+  },
+  {
+    "active": "TRUE",
+    "value_1": "HEALTH_CARE",
+    "value_2": "MEDICAL_OFFICE_CLINIC",
+    "description_1": "Health Care",
+    "description_2": "Medical Office/Clinic",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": "340, 341, 342"
+  },
+  {
+    "active": "TRUE",
+    "value_1": "HEALTH_CARE",
+    "value_2": "HOSPITAL_24_HOUR_MEDICAL_FACILITIES ",
+    "description_1": "Health Care",
+    "description_2": "Hospital / 24-Hour Medical Facilities / Institutional",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": "331"
+  },
+  {
+    "active": "TRUE",
+    "value_1": "HEALTH_CARE",
+    "value_2": "NURSING_HOME_ASSISTED_LIVING_RESIDENCE_ONSITE",
+    "description_1": "Health Care",
+    "description_2": "Nursing Home / Assisted Living / Residence with Onsite care and support",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": "311, 321, 323, "
+  },
+  {
+    "active": "TRUE",
+    "value_1": "HEALTH_CARE",
+    "value_2": "ALCOHOL_DRUG_REHABILITATION_CENTER",
+    "description_1": "Health Care",
+    "description_2": "Alcohol / Drug Rehabilitation Center",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": ""
+  },
+  {
+    "active": "TRUE",
+    "value_1": "RESIDENTIAL",
+    "value_2": "CONGREGATE_HOUSING",
+    "description_1": "Residential",
+    "description_2": "Congregate Housing",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": "322, 439, 459, 460, 462"
+  },
+  {
+    "active": "TRUE",
+    "value_1": "RESIDENTIAL",
+    "value_2": "MANUFACTURED_MOBILE_HOME",
+    "description_1": "Residential",
+    "description_2": "Manufactured/Mobile Home",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": ""
+  },
+  {
+    "active": "TRUE",
+    "value_1": "RESIDENTIAL",
+    "value_2": "DETATCHED_SINGLE_FAMILY_DWELLING",
+    "description_1": "Residential",
+    "description_2": "Detached Single Family Dwelling",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": "419"
+  },
+  {
+    "active": "TRUE",
+    "value_1": "RESIDENTIAL",
+    "value_2": "ATTACHED_SINGLE_FAMILY_DWELLING",
+    "description_1": "Residential",
+    "description_2": "Attached Single Family Dwelling",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": ""
+  },
+  {
+    "active": "TRUE",
+    "value_1": "RESIDENTIAL",
+    "value_2": "MULTI_FAMILY_LOWRISE_DWELLING",
+    "description_1": "Residential",
+    "description_2": "Multi-Family Lowrise Dwelling (<=4 Stories)",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": "429"
+  },
+  {
+    "active": "TRUE",
+    "value_1": "RESIDENTIAL",
+    "value_2": "MULTI_FAMILY_MIDRISE_DWELLING",
+    "description_1": "Residential",
+    "description_2": "Multi-Family Midrise Dwelling (5-8 Stories)",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": "429"
+  },
+  {
+    "active": "TRUE",
+    "value_1": "RESIDENTIAL",
+    "value_2": "MULTI_FAMILY_HIGHRISE_DWELLING",
+    "description_1": "Residential",
+    "description_2": "Multi-Family Highrise Dwelling (>= 9 Stories)",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": "429"
+  },
+  {
+    "active": "TRUE",
+    "value_1": "RESIDENTIAL",
+    "value_2": "DETATCHED_GARAGE",
+    "description_1": "Residential",
+    "description_2": "Detached Garage",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": "808"
+  },
+  {
+    "active": "TRUE",
+    "value_1": "RESIDENTIAL",
+    "value_2": "UNHOUSED_TEMPORARY_SHELTER",
+    "description_1": "Residential",
+    "description_2": "Unhoused/Temporary Shelter",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": ""
+  },
+  {
+    "active": "TRUE",
+    "value_1": "RESIDENTIAL",
+    "value_2": "TEMPORARY_LODGING_HOTEL_MOTEL",
+    "description_1": "Residential",
+    "description_2": "Temporary Lodging / Hotel / Motel",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": "449"
+  },
+  {
+    "active": "TRUE",
+    "value_1": "UNCLASSIFIED",
+    "value_2": "UNCLASSIFIED",
+    "description_1": "Unclassified",
+    "description_2": "Unclassified",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": ""
+  },
+  {
+    "active": "TRUE",
+    "value_1": "UTILITY_MISC",
+    "value_2": "TRANSPORTATION_STATION_HUB_AREA",
+    "description_1": "Utility and Misc",
+    "description_2": "Transportation Station / Hub / Area (Airport / Bus / Train / Passenger Terminal",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": "974, 972, 973, 171, 173, 174, 632"
+  },
+  {
+    "active": "TRUE",
+    "value_1": "UTILITY_MISC",
+    "value_2": "ENERGY_FACILITY_INFRASTRUCTURE",
+    "description_1": "Utility and Misc",
+    "description_2": "Energy Facility / Infrastructure",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": "610, 614, 615, 642, 644, 645,  983"
+  },
+  {
+    "active": "TRUE",
+    "value_1": "UTILITY_MISC",
+    "value_2": "WATER_SANITATION_FACILITY_INFRASTRUCTURE",
+    "description_1": "Utility and Misc",
+    "description_2": "Water and Sanitation Facility / Infrastructure",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": "647"
+  },
+  {
+    "active": "TRUE",
+    "value_1": "UTILITY_MISC",
+    "value_2": "TRASH_RECYCLING_FACILITY",
+    "description_1": "Utility and Misc",
+    "description_2": "Trash / Recycling Facility",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": "648"
+  },
+  {
+    "active": "TRUE",
+    "value_1": "STORAGE",
+    "value_2": "STORAGE_PORTABLE_BUILDING",
+    "description_1": "Storage",
+    "description_2": "Storage - Portable Building",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": ""
+  },
+  {
+    "active": "TRUE",
+    "value_1": "STORAGE",
+    "value_2": "STORAGE_MULTI_TENANT",
+    "description_1": "Storage",
+    "description_2": "Storage - Multi-Tenant",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": ""
+  },
+  {
+    "active": "TRUE",
+    "value_1": "STORAGE",
+    "value_2": "STORAGE_SINGLE_TENANT",
+    "description_1": "Storage",
+    "description_2": "Storage -  Single-Tenant",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": ""
+  },
+  {
+    "active": "TRUE",
+    "value_1": "ROADWAY_ACCESS",
+    "value_2": "SIDEWALK",
+    "description_1": "Roadway/Access",
+    "description_2": "Sidewalk",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": ""
+  },
+  {
+    "active": "TRUE",
+    "value_1": "ROADWAY_ACCESS",
+    "value_2": "STREET",
+    "description_1": "Roadway/Access",
+    "description_2": "Street",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": "960, 962, 963"
+  },
+  {
+    "active": "TRUE",
+    "value_1": "ROADWAY_ACCESS",
+    "value_2": "HIGHWAY_INTERSTATE",
+    "description_1": "Roadway/Access",
+    "description_2": "Highway / Interstate ",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": "961"
+  },
+  {
+    "active": "TRUE",
+    "value_1": "ROADWAY_ACCESS",
+    "value_2": "LIMITED_ACCESS_HIGHWAY_INTERSTATE",
+    "description_1": "Roadway/Access",
+    "description_2": "Limited Access Highway / Interstate",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": ""
+  },
+  {
+    "active": "TRUE",
+    "value_1": "ROADWAY_ACCESS",
+    "value_2": "BRIDGE",
+    "description_1": "Roadway/Access",
+    "description_2": "Bridge",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": "921"
+  },
+  {
+    "active": "TRUE",
+    "value_1": "ROADWAY_ACCESS",
+    "value_2": "TUNNEL",
+    "description_1": "Roadway/Access",
+    "description_2": "Tunnel",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": "922"
+  },
+  {
+    "active": "TRUE",
+    "value_1": "ROADWAY_ACCESS",
+    "value_2": "RAILROAD_RAILYARD",
+    "description_1": "Roadway/Access",
+    "description_2": "Railroad or Railroad Yard",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": "951, 952"
+  },
+  {
+    "active": "TRUE",
+    "value_1": "ROADWAY_ACCESS",
+    "value_2": "PARKING_LOT_GARAGE",
+    "description_1": "Roadway/Access",
+    "description_2": "Parking Lot / Parking Garage",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": "881, 882, 965"
+  },
+  {
+    "active": "TRUE",
+    "value_1": "OUTDOOR",
+    "value_2": "GROUND_VACANT_LAND",
+    "description_1": "Outdoor",
+    "description_2": "Ground / Vacant Land",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": "931, 936 "
+  },
+  {
+    "active": "TRUE",
+    "value_1": "OUTDOOR",
+    "value_2": "CAMP_SITE",
+    "description_1": "Outdoor",
+    "description_2": "Camp Site",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": "935"
+  },
+  {
+    "active": "TRUE",
+    "value_1": "OUTDOOR",
+    "value_2": "PLAYGROUND_PARK_RECREATIONAL_AREA",
+    "description_1": "Outdoor",
+    "description_2": "Playground / Park / Recreational Area / Monument / Statue",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": "110, 121, 124, 154"
+  },
+  {
+    "active": "TRUE",
+    "value_1": "OUTDOOR",
+    "value_2": "HIKING_TRAIL",
+    "description_1": "Outdoor",
+    "description_2": "Hiking Trail",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": ""
+  },
+  {
+    "active": "TRUE",
+    "value_1": "OUTDOOR",
+    "value_2": "ORCHARD_CROPS_FARMLAND",
+    "description_1": "Outdoor",
+    "description_2": "Orchard / Crops / Farm (non-building)",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": "655"
+  },
+  {
+    "active": "TRUE",
+    "value_1": "OUTDOOR",
+    "value_2": "FOREST_GRASSLANDS_WOODLAND_WILDLAND_AREAS",
+    "description_1": "Outdoor",
+    "description_2": "Forest / Grasslands / Woodland / Wildland Area",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": "669"
+  },
+  {
+    "active": "TRUE",
+    "value_1": "OUTDOOR",
+    "value_2": "WATERFRONT",
+    "description_1": "Outdoor",
+    "description_2": "Waterfront (Beach / Dock)",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": "937, 143, 898, 940"
+  },
+  {
+    "active": "TRUE",
+    "value_1": "OUTDOOR",
+    "value_2": "OPEN_WATER",
+    "description_1": "Outdoor",
+    "description_2": "Open Water (Lake / River/ Pond / Ocean)",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": "941, 946"
+  },
+  {
+    "active": "TRUE",
+    "value_1": "OUTDOOR_INDUSTRIAL",
+    "value_2": "DUMP_LANDFILL",
+    "description_1": "Outdoor Industrial",
+    "description_2": "Dump / Landfill",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": "919"
+  },
+  {
+    "active": "TRUE",
+    "value_1": "OUTDOOR_INDUSTRIAL",
+    "value_2": "INDUSTRIAL_YARD",
+    "description_1": "Outdoor Industrial",
+    "description_2": "Industrial Yard",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": "984"
+  },
+  {
+    "active": "TRUE",
+    "value_1": "OUTDOOR_INDUSTRIAL",
+    "value_2": "MINE",
+    "description_1": "Outdoor Industrial",
+    "description_2": "Mine (non-building) / Oil Field",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": "679, 982"
+  },
+  {
+    "active": "TRUE",
+    "value_1": "OUTDOOR_INDUSTRIAL",
+    "value_2": "CONSTRUCTION_SITE",
+    "description_1": "Outdoor Industrial",
+    "description_2": "Construction Site",
+    "definition": "",
+    "source": "",
+    "nfirs crosswalk": "981"
+  }
+]

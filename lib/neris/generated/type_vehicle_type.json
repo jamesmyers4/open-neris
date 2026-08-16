@@ -1,0 +1,202 @@
+[
+  {
+    "": "0",
+    "active": "True",
+    "value": "AUTOMOBILE",
+    "description": "Automobile",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "1",
+    "active": "True",
+    "value": "AIRPLANE",
+    "description": "Airplane",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "2",
+    "active": "True",
+    "value": "HELICOPTER",
+    "description": "Helicopter",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "3",
+    "active": "True",
+    "value": "AERIAL_OTHER",
+    "description": "Aerial - Other",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "4",
+    "active": "True",
+    "value": "BOAT_SHIP",
+    "description": "Boat / Ship",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "5",
+    "active": "True",
+    "value": "MOTORCYCLE",
+    "description": "Motorcycle",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "6",
+    "active": "True",
+    "value": "RAIL",
+    "description": "Rail",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "7",
+    "active": "True",
+    "value": "TRAILER",
+    "description": "Trailer",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "8",
+    "active": "True",
+    "value": "FARM",
+    "description": "Farm",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "9",
+    "active": "True",
+    "value": "FOOD_TRUCK",
+    "description": "Food Truck",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "10",
+    "active": "True",
+    "value": "CONSTRUCTION",
+    "description": "Construction",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "11",
+    "active": "True",
+    "value": "MOTORIZED_HOME",
+    "description": "Motorized Home",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "12",
+    "active": "True",
+    "value": "BUS",
+    "description": "Bus",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "13",
+    "active": "True",
+    "value": "ATV",
+    "description": "ATV",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "14",
+    "active": "True",
+    "value": "SPORT_UTILITY",
+    "description": "Sport Utility",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "15",
+    "active": "True",
+    "value": "MILITARY_OTHER",
+    "description": "Miltary - Other",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "16",
+    "active": "True",
+    "value": "UTILITY_VEHICLE",
+    "description": "Utility Vehicles",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "17",
+    "active": "True",
+    "value": "AERIAL_LIFT_PLATFORM",
+    "description": "Aerial Lift Platform",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "18",
+    "active": "True",
+    "value": "TOW_TRUCK",
+    "description": "Tow Truck",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "19",
+    "active": "True",
+    "value": "VAN",
+    "description": "Van",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "20",
+    "active": "True",
+    "value": "CARGO",
+    "description": "Cargo",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "21",
+    "active": "True",
+    "value": "FREIGHT",
+    "description": "Freight",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "22",
+    "active": "True",
+    "value": "SCOOTER_MOPED",
+    "description": "Scooter / Moped",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "23",
+    "active": "True",
+    "value": "BICYCLE",
+    "description": "Bicycle",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "24",
+    "active": "True",
+    "value": "JET_SKI",
+    "description": "Jet Ski",
+    "definition": "",
+    "source": ""
+  }
+]

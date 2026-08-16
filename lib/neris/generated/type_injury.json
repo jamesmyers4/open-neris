@@ -1,0 +1,410 @@
+[
+  {
+    "": "0",
+    "active": "True",
+    "value": "SMOKE_INHALATION",
+    "description": "Smoke inhalation",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "1",
+    "active": "True",
+    "value": "HAZARDOUS_FUMES_INHALATION",
+    "description": "Hazardous fumes inhalation",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "2",
+    "active": "True",
+    "value": "DIFFICULTY_BREATHING",
+    "description": "Difficulty breathing, shortness of breath",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "3",
+    "active": "True",
+    "value": "BURNS_THERMAL",
+    "description": "Burns, thermal",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "4",
+    "active": "True",
+    "value": "BURNS_SCALD",
+    "description": "Burns, scald",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "5",
+    "active": "True",
+    "value": "BURNS_CHEMICAL",
+    "description": "Burns, chemical",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "6",
+    "active": "True",
+    "value": "BURNS_ELECTRIC",
+    "description": "Burns, electric",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "7",
+    "active": "True",
+    "value": "CUT_LACERATION",
+    "description": "Cut or laceration",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "8",
+    "active": "True",
+    "value": "STAB_PUNCTURE_WOUND",
+    "description": "Stab or puncture wound",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "9",
+    "active": "True",
+    "value": "GUNSHOT_PROJECTILE_WOUND",
+    "description": "Gunshot or projectile wound",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "10",
+    "active": "True",
+    "value": "CONTUSION_BRUISE",
+    "description": "Contusion or bruise",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "11",
+    "active": "True",
+    "value": "ABRASION",
+    "description": "Abrasion",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "12",
+    "active": "True",
+    "value": "DISLOCATION",
+    "description": "Dislocation",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "13",
+    "active": "True",
+    "value": "STRAIN_SPRAIN",
+    "description": "Strain or sprain",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "14",
+    "active": "True",
+    "value": "FRACTURE",
+    "description": "Fracture",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "15",
+    "active": "True",
+    "value": "SWELLING",
+    "description": "Swelling",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "16",
+    "active": "True",
+    "value": "CRUSHING",
+    "description": "Crushing",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "17",
+    "active": "True",
+    "value": "AMPUTATION",
+    "description": "Amputation",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "18",
+    "active": "True",
+    "value": "CARDIAC_SYMPTOMS",
+    "description": "Cardiac symptoms",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "19",
+    "active": "True",
+    "value": "CARDIAC_ARREST",
+    "description": "Cardiac arrest",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "20",
+    "active": "True",
+    "value": "STROKE",
+    "description": "Stroke",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "21",
+    "active": "True",
+    "value": "RESPIRATORY_ARREST",
+    "description": "Respiratory arrest",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "22",
+    "active": "True",
+    "value": "CHILLS",
+    "description": "Chills",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "23",
+    "active": "True",
+    "value": "FEVER",
+    "description": "Fever",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "24",
+    "active": "True",
+    "value": "NAUSEA",
+    "description": "Nausea",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "25",
+    "active": "True",
+    "value": "VOMITING",
+    "description": "Vomiting",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "26",
+    "active": "True",
+    "value": "NUMBNESS_TINGLING_PARESTHESIA",
+    "description": "Numbness, tingling, or paresthesia",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "27",
+    "active": "True",
+    "value": "PARALYSIS",
+    "description": "Paralysis",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "28",
+    "active": "True",
+    "value": "FROSTBITE",
+    "description": "Frostbite",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "29",
+    "active": "True",
+    "value": "PREGNANCY_CHILDBRITH_MISCARRIAGE",
+    "description": "Pregnancy/childbirth/miscarriage",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "30",
+    "active": "True",
+    "value": "EYE_TRAUMA",
+    "description": "Eye trauma",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "31",
+    "active": "True",
+    "value": "DROWNING",
+    "description": "Drowning",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "32",
+    "active": "True",
+    "value": "FOREIGN_BODY_OBSTRUCTION",
+    "description": "Foreign body obstruction",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "33",
+    "active": "True",
+    "value": "ELECTRIC_SHOCK",
+    "description": "Electric shock",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "34",
+    "active": "True",
+    "value": "POISON",
+    "description": "Poison",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "35",
+    "active": "True",
+    "value": "CONVULSION_SEIZURE",
+    "description": "Convulsion or seizure",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "36",
+    "active": "True",
+    "value": "INTERNAL_TRAUMA",
+    "description": "Internal trauma",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "37",
+    "active": "True",
+    "value": "HEMORRHAGING_INTERNAL_BLEEDING",
+    "description": "Hemorrhaging, internal bleeding",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "38",
+    "active": "True",
+    "value": "DISORIENTATION",
+    "description": "Disorientation",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "39",
+    "active": "True",
+    "value": "DIZZINESS_FAINTING_WEAKNESS",
+    "description": "Dizziness, fainting, weakness",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "40",
+    "active": "True",
+    "value": "HEAT_STROKE",
+    "description": "Heat stroke",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "41",
+    "active": "True",
+    "value": "DEHYDRATION",
+    "description": "Dehydration",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "42",
+    "active": "True",
+    "value": "ALLERGIC_REACTION",
+    "description": "Allergic reaction",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "43",
+    "active": "True",
+    "value": "DRUG_OVERDOSE_DRUG_RELATED",
+    "description": "Drug overdose or drug-related",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "44",
+    "active": "True",
+    "value": "ALCOHOL_IMIPAIRMENT",
+    "description": "Alcohol impairment",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "45",
+    "active": "True",
+    "value": "EMOTIONAL_PSYCHOLOGICAL_DISTRESS",
+    "description": "Emotional or psychological distress",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "46",
+    "active": "True",
+    "value": "MENTAL_HEALTH",
+    "description": "Mental health",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "47",
+    "active": "True",
+    "value": "SHOCK",
+    "description": "Shock ",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "48",
+    "active": "True",
+    "value": "UNCONSCIOUS",
+    "description": "Unconscious",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "49",
+    "active": "True",
+    "value": "PAIN_ONLY",
+    "description": "Pain only",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "50",
+    "active": "True",
+    "value": "OTHER",
+    "description": "Other",
+    "definition": "",
+    "source": ""
+  }
+]

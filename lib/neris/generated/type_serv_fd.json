@@ -1,0 +1,261 @@
+[
+  {
+    "value": "STRUCTURAL_FIREFIGHTING",
+    "active": "TRUE",
+    "description": "Conventional Structural and Other Fire Response",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "value": "HIGHRISE_FIREFIGHTING",
+    "active": "TRUE",
+    "description": "High-Rise Structural Firefighting",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "value": "WILDLAND_FIREFIGHTING",
+    "active": "TRUE",
+    "description": "Wildfire Response / Wildland Urban Interface",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "value": "PETROCHEM_FIREFIGHTING",
+    "active": "TRUE",
+    "description": "Hydrocarbon and Petrochemical Firefighting",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "value": "ARFF_FIREFIGHTING",
+    "active": "TRUE",
+    "description": "Aircraft Rescue and Firefighting (ARFF) Response",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "value": "MARINE_FIREFIGHTING",
+    "active": "TRUE",
+    "description": "Marine/Oceanic/Shipboard Fire Suppression",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "value": "HAZMAT_OPS",
+    "active": "TRUE",
+    "description": "Hazardous Materials Operations Level",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "value": "HAZMAT_TECHNICIAN",
+    "active": "TRUE",
+    "description": "Hazardous Materials Technician Level",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "value": "ROPE_RESCUE",
+    "active": "TRUE",
+    "description": "Rope Rescue",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "value": "COLLAPSE_RESCUE",
+    "active": "TRUE",
+    "description": "Structural Collapse Search and Rescue",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "value": "VEHICLE_RESCUE",
+    "active": "TRUE",
+    "description": "Vehicle Search and Rescue",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "value": "ANIMAL_TECHRESCUE",
+    "active": "TRUE",
+    "description": "Animal Technical Rescue",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "value": "WILDERNESS_SAR",
+    "active": "TRUE",
+    "description": "Wilderness Search and Rescue",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "value": "TRENCH_RESCUE",
+    "active": "TRUE",
+    "description": "Trench Search and Rescue",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "value": "CONFINED_SPACE",
+    "active": "TRUE",
+    "description": "Confined Space Rescue",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "value": "MACHINERY_RESCUE",
+    "active": "TRUE",
+    "description": "Machinery Search and Rescue",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "value": "CAVE_SAR",
+    "active": "TRUE",
+    "description": "Cave Search and Rescue",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "value": "MINE_SAR",
+    "active": "TRUE",
+    "description": "Mine and Tunnel Search and Rescue",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "value": "HELO_SAR",
+    "active": "TRUE",
+    "description": "Helicopter Search and Rescue",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "value": "WATER_SAR",
+    "active": "TRUE",
+    "description": "Surface Water Search and Rescue",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "value": "SWIFTWATER_SAR",
+    "active": "TRUE",
+    "description": "Swiftwater Search and Rescue",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "value": "DIVE_SAR",
+    "active": "TRUE",
+    "description": "Dive Search and Rescue",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "value": "ICE_RESCUE",
+    "active": "TRUE",
+    "description": "Ice Search and Rescue",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "value": "SURF_RESCUE",
+    "active": "TRUE",
+    "description": "Surf Search and Rescue",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "value": "WATERCRAFT_RESCUE",
+    "active": "TRUE",
+    "description": "Watercraft Search and Rescue",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "value": "FLOOD_SAR",
+    "active": "TRUE",
+    "description": "Flood Search and Rescue",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "value": "TOWER_SAR",
+    "active": "TRUE",
+    "description": "Tower Search and Rescue",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "value": "REHABILITATION",
+    "active": "TRUE",
+    "description": "Rehabilitation Services",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "value": "RRD_EXISTING",
+    "active": "TRUE",
+    "description": "Risk Reduction: Existing Building Fire Inspection",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "value": "RRD_NEWCONST",
+    "active": "TRUE",
+    "description": "Risk Reduction: New Construction Fire Inspection",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "value": "RRD_PUBLICED",
+    "active": "TRUE",
+    "description": "Risk Reduction: Public Fire, Life Safety, Injury Prevention Education",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "value": "RRD_PLANS",
+    "active": "TRUE",
+    "description": "Risk Reduction: Plan Review",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "value": "CAUSE_ORIGIN",
+    "active": "TRUE",
+    "description": "Fire Cause Determination and Investigation",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "value": "TRAINING_ELF",
+    "active": "TRUE",
+    "description": "Training Academy, Entry-Level Firefighter",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "value": "TRAINING_VETFF",
+    "active": "TRUE",
+    "description": "Training Academy, Incumbent Firefighter",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "value": "TRAINING_OD",
+    "active": "TRUE",
+    "description": "Training Academy, Officer Development",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "value": "TRAINING_DRIVER",
+    "active": "TRUE",
+    "description": "Training Academy, Driver/Operator",
+    "definition": "",
+    "source": ""
+  }
+]

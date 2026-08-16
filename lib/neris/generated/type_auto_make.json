@@ -1,0 +1,530 @@
+[
+  {
+    "": "0",
+    "active": "True",
+    "value": "Acura",
+    "description": "",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "1",
+    "active": "True",
+    "value": "Alfa Romeo",
+    "description": "",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "2",
+    "active": "True",
+    "value": "Aston Martin",
+    "description": "",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "3",
+    "active": "True",
+    "value": "Audi",
+    "description": "",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "4",
+    "active": "True",
+    "value": "BMW",
+    "description": "",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "5",
+    "active": "True",
+    "value": "Bentley Motors",
+    "description": "",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "6",
+    "active": "True",
+    "value": "Bollinger Motors",
+    "description": "",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "7",
+    "active": "True",
+    "value": "Bugatti",
+    "description": "",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "8",
+    "active": "True",
+    "value": "Buick",
+    "description": "",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "9",
+    "active": "True",
+    "value": "Cadillac",
+    "description": "",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "10",
+    "active": "True",
+    "value": "Canoo",
+    "description": "",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "11",
+    "active": "True",
+    "value": "Chevrolet",
+    "description": "",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "12",
+    "active": "True",
+    "value": "Chrysler",
+    "description": "",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "13",
+    "active": "True",
+    "value": "DeLorean Motor Company",
+    "description": "",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "14",
+    "active": "True",
+    "value": "Dodge",
+    "description": "",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "15",
+    "active": "True",
+    "value": "Ferrari",
+    "description": "",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "16",
+    "active": "True",
+    "value": "Fiat",
+    "description": "",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "17",
+    "active": "True",
+    "value": "Fisker",
+    "description": "",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "18",
+    "active": "True",
+    "value": "Ford",
+    "description": "",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "19",
+    "active": "True",
+    "value": "GMC",
+    "description": "",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "20",
+    "active": "True",
+    "value": "Genesis",
+    "description": "",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "21",
+    "active": "True",
+    "value": "Honda",
+    "description": "",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "22",
+    "active": "True",
+    "value": "Hummer",
+    "description": "",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "23",
+    "active": "True",
+    "value": "Hyundai",
+    "description": "",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "24",
+    "active": "True",
+    "value": "Ineos",
+    "description": "",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "25",
+    "active": "True",
+    "value": "Infiniti",
+    "description": "",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "26",
+    "active": "True",
+    "value": "Jaguar",
+    "description": "",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "27",
+    "active": "True",
+    "value": "Jeep",
+    "description": "",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "28",
+    "active": "True",
+    "value": "Karma",
+    "description": "",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "29",
+    "active": "True",
+    "value": "Kia",
+    "description": "",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "30",
+    "active": "True",
+    "value": "Lamborghini",
+    "description": "",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "31",
+    "active": "True",
+    "value": "Land Rover",
+    "description": "",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "32",
+    "active": "True",
+    "value": "Lexus",
+    "description": "",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "33",
+    "active": "True",
+    "value": "Lincoln",
+    "description": "",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "34",
+    "active": "True",
+    "value": "Lordstown Motors",
+    "description": "",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "35",
+    "active": "True",
+    "value": "Lotus",
+    "description": "",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "36",
+    "active": "True",
+    "value": "Lucid Motors",
+    "description": "",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "37",
+    "active": "True",
+    "value": "Maserati",
+    "description": "",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "38",
+    "active": "True",
+    "value": "Maybach",
+    "description": "",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "39",
+    "active": "True",
+    "value": "Mazda",
+    "description": "",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "40",
+    "active": "True",
+    "value": "McLaren",
+    "description": "",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "41",
+    "active": "True",
+    "value": "Mercedes-AMG",
+    "description": "",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "42",
+    "active": "True",
+    "value": "Mercedes-Benz",
+    "description": "",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "43",
+    "active": "True",
+    "value": "Mercury",
+    "description": "",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "44",
+    "active": "True",
+    "value": "Mini",
+    "description": "",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "45",
+    "active": "True",
+    "value": "Mitsubishi",
+    "description": "",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "46",
+    "active": "True",
+    "value": "Nissan",
+    "description": "",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "47",
+    "active": "True",
+    "value": "Oldsmobile",
+    "description": "",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "48",
+    "active": "True",
+    "value": "Polestar",
+    "description": "",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "49",
+    "active": "True",
+    "value": "Pontiac",
+    "description": "",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "50",
+    "active": "True",
+    "value": "Porsche",
+    "description": "",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "51",
+    "active": "True",
+    "value": "Plymouth",
+    "description": "",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "52",
+    "active": "True",
+    "value": "Ram",
+    "description": "",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "53",
+    "active": "True",
+    "value": "Rivian",
+    "description": "",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "54",
+    "active": "True",
+    "value": "Rolls-Royce",
+    "description": "",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "55",
+    "active": "True",
+    "value": "Saab",
+    "description": "",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "56",
+    "active": "True",
+    "value": "Saturn",
+    "description": "",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "57",
+    "active": "True",
+    "value": "Scion",
+    "description": "",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "58",
+    "active": "True",
+    "value": "Smart",
+    "description": "",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "59",
+    "active": "True",
+    "value": "Subaru",
+    "description": "",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "60",
+    "active": "True",
+    "value": "Suzuki",
+    "description": "",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "61",
+    "active": "True",
+    "value": "Tesla",
+    "description": "",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "62",
+    "active": "True",
+    "value": "Toyota",
+    "description": "",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "63",
+    "active": "True",
+    "value": "Volkswagen",
+    "description": "",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "64",
+    "active": "True",
+    "value": "VinFast",
+    "description": "",
+    "definition": "",
+    "source": ""
+  },
+  {
+    "": "65",
+    "active": "True",
+    "value": "Volvo",
+    "description": "",
+    "definition": "",
+    "source": ""
+  }
+]

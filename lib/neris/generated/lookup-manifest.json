@@ -1,0 +1,102 @@
+[
+  {
+    "name": "type_action_tactic",
+    "file": "type_action_tactic.json",
+    "rowCount": 89
+  },
+  {
+    "name": "type_emerghaz_elec",
+    "file": "type_emerghaz_elec.json",
+    "rowCount": 48
+  },
+  {
+    "name": "type_hazard_unit",
+    "file": "type_hazard_unit.json",
+    "rowCount": 33
+  },
+  {
+    "name": "type_incident",
+    "file": "type_incident.json",
+    "rowCount": 128
+  },
+  {
+    "name": "type_location_use",
+    "file": "type_location_use.json",
+    "rowCount": 78
+  },
+  {
+    "name": "type_loc_csp_country",
+    "file": "type_loc_csp_country.json",
+    "rowCount": 249
+  },
+  {
+    "name": "type_loc_place",
+    "file": "type_loc_place.json",
+    "rowCount": 45
+  },
+  {
+    "name": "type_loc_sn_pre_post",
+    "file": "type_loc_sn_pre_post.json",
+    "rowCount": 389
+  },
+  {
+    "name": "type_serv_fd",
+    "file": "type_serv_fd.json",
+    "rowCount": 37
+  },
+  {
+    "name": "type_unit",
+    "file": "type_unit.json",
+    "rowCount": 49
+  },
+  {
+    "name": "type_appliances_equipment",
+    "file": "type_appliances_equipment.json",
+    "rowCount": 35
+  },
+  {
+    "name": "type_auto_make",
+    "file": "type_auto_make.json",
+    "rowCount": 66
+  },
+  {
+    "name": "type_body_part_injured",
+    "file": "type_body_part_injured.json",
+    "rowCount": 22
+  },
+  {
+    "name": "type_consumer_product",
+    "file": "type_consumer_product.json",
+    "rowCount": 800
+  },
+  {
+    "name": "type_crr_activities",
+    "file": "type_crr_activities.json",
+    "rowCount": 59
+  },
+  {
+    "name": "type_hazsit_release_factors",
+    "file": "type_hazsit_release_factors.json",
+    "rowCount": 23
+  },
+  {
+    "name": "type_indoor_cause",
+    "file": "type_indoor_cause.json",
+    "rowCount": 99
+  },
+  {
+    "name": "type_injury",
+    "file": "type_injury.json",
+    "rowCount": 51
+  },
+  {
+    "name": "type_outdoor_cause",
+    "file": "type_outdoor_cause.json",
+    "rowCount": 137
+  },
+  {
+    "name": "type_vehicle_type",
+    "file": "type_vehicle_type.json",
+    "rowCount": 25
+  }
+]

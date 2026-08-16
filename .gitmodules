@@ -1,0 +1,3 @@
+[submodule "vendor/neris-framework"]
+	path = vendor/neris-framework
+	url = https://github.com/ulfsri/neris-framework

@@ -67,3 +67,11 @@ Roles: Member (drafts, submits), Officer (reviews, can kick back), Chief (approv
 - Attachments (see above).
 - Whether the hosted version (if one exists) is free-for-all or department-verified-only, given NERIS submission requires a real department entity per integration.
 - Reporting dashboard scope — deferred to phase 2, schema already supports the basics (counts by type/month, time-to-approval, submission compliance).
+
+## Deployment model
+
+Self-hosting is not the primary path for real departments — every competitor in this market (Responserack, Station Boss, Fire Station Software, ResponseMaster) is SaaS, and there's no reason to believe a volunteer department wants to run their own server and manage their own backups for their system of record. The primary path is one hosted, multi-tenant instance (Vercel + Neon) that departments sign up for directly — this is exactly why the schema went multi-tenant from day one.
+
+`prisma dev` stays as the local development tool for contributors, decoupled from this decision — it's not what departments would ever touch.
+
+Self-hosting remains technically possible (the code doesn't prevent it) for departments with specific data-sovereignty requirements, offered as a paid setup/support service rather than a self-serve README path. Not a priority now — revisit if a real department asks for it specifically.

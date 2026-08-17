@@ -1,6 +1,7 @@
 import { notFound, redirect } from 'next/navigation'
 import { getCurrentAppUser } from '@/lib/auth/current-user'
 import { getIncidentDetail } from '@/lib/incidents/get-incident-detail'
+import { NarrativeForm } from './narrative-form'
 
 export default async function NarrativeTabPage(props: PageProps<'/incidents/[id]/narrative'>) {
   const user = await getCurrentAppUser()
@@ -11,10 +12,12 @@ export default async function NarrativeTabPage(props: PageProps<'/incidents/[id]
   if (!incident) notFound()
 
   return (
-    <section className="space-y-1 text-sm">
-      <h2 className="font-semibold">Narrative</h2>
-      <p>Impediment: {incident.narrativeImpediment ?? '—'}</p>
-      <p>Outcome: {incident.narrativeOutcome ?? '—'}</p>
-    </section>
+    <NarrativeForm
+      incidentId={incident.id}
+      initial={{
+        narrativeImpediment: incident.narrativeImpediment,
+        narrativeOutcome: incident.narrativeOutcome
+      }}
+    />
   )
 }

@@ -3,13 +3,9 @@
 import { useActionState, useMemo, useState } from "react";
 import { useFormStatus } from "react-dom";
 import { createIncident, type CreateIncidentState } from "../actions";
-import {
-  TypeAid,
-  TypeAidDirection,
-  TypeAidNonfd,
-  TypeNoaction,
-} from "@/lib/neris/generated/enums";
-import type { IncidentTypeOption, LocPlaceOption } from "@/lib/neris/lookups";
+import { TypeSpecialModifier } from "@/lib/neris/generated/enums";
+import type { IncidentTypeOption } from "@/lib/neris/lookups";
+import { DateTime24Field } from "@/components/DateTime24Field";
 
 type TypeRow = {
   value1: string;
@@ -23,56 +19,6 @@ const emptyRow: TypeRow = {
   value2: "",
   value3: "",
   isPrimary: true,
-};
-
-type FormValues = {
-  internalId: string;
-  incidentDate: string;
-  alarmTime: string;
-  dispatchTimeCallCreate: string;
-  dispatchTimeCallAnswer: string;
-  dispatchTimeCallArrival: string;
-  streetAddressComplete: string;
-  city: string;
-  county: string;
-  state: string;
-  postalCode: string;
-  country: string;
-  place: string;
-  incidentPeoplePresent: string;
-  incidentRescueAnimal: string;
-  incidentNoActionReason: string;
-  aidDirection: string;
-  aidType: string;
-  aidDepartmentNames: string;
-  aidNonFdTypes: string;
-  narrativeImpediment: string;
-  narrativeOutcome: string;
-};
-
-const emptyValues: FormValues = {
-  internalId: "",
-  incidentDate: "",
-  alarmTime: "",
-  dispatchTimeCallCreate: "",
-  dispatchTimeCallAnswer: "",
-  dispatchTimeCallArrival: "",
-  streetAddressComplete: "",
-  city: "",
-  county: "",
-  state: "",
-  postalCode: "",
-  country: "US",
-  place: "",
-  incidentPeoplePresent: "",
-  incidentRescueAnimal: "",
-  incidentNoActionReason: "",
-  aidDirection: "",
-  aidType: "",
-  aidDepartmentNames: "",
-  aidNonFdTypes: "",
-  narrativeImpediment: "",
-  narrativeOutcome: "",
 };
 
 function uniqueBy<T>(items: T[], keyFn: (item: T) => string): T[] {
@@ -96,7 +42,7 @@ function SubmitButton() {
       disabled={pending}
       className="rounded bg-slate-900 px-4 py-2 text-white disabled:opacity-50"
     >
-      {pending ? "Saving…" : "Create incident"}
+      {pending ? "Creating…" : "Create incident"}
     </button>
   );
 }
@@ -244,15 +190,15 @@ function TypePicker({
 
 export function IncidentForm({
   incidentTypeOptions,
-  locPlaceOptions,
 }: {
   incidentTypeOptions: IncidentTypeOption[];
-  locPlaceOptions: LocPlaceOption[];
 }) {
   const initialState: CreateIncidentState = {};
   const [state, formAction] = useActionState(createIncident, initialState);
   const [rows, setRows] = useState<TypeRow[]>([emptyRow]);
-  const [values, setValues] = useState<FormValues>(emptyValues);
+  const [specialModifiers, setSpecialModifiers] = useState<string[]>([]);
+  const [alarmDate, setAlarmDate] = useState("");
+  const [alarmTime, setAlarmTime] = useState("");
 
   const allErrors = state.errors
     ? Object.values(state.errors)
@@ -260,13 +206,12 @@ export function IncidentForm({
         .filter((e): e is string => Boolean(e))
     : [];
 
-  const handleChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-    >,
-  ) => {
-    const { name, value } = e.target;
-    setValues((v) => ({ ...v, [name]: value }));
+  const toggleSpecialModifier = (modifier: string) => {
+    setSpecialModifiers((current) =>
+      current.includes(modifier)
+        ? current.filter((m) => m !== modifier)
+        : [...current, modifier],
+    );
   };
 
   return (
@@ -300,44 +245,6 @@ export function IncidentForm({
       )}
 
       <section className="space-y-3">
-        <h2 className="font-semibold">Incident</h2>
-        <div className="grid grid-cols-2 gap-3">
-          <label className="flex flex-col gap-1 text-sm">
-            Internal ID
-            <input
-              name="internalId"
-              required
-              value={values.internalId}
-              onChange={handleChange}
-              className="rounded border border-slate-300 px-2 py-1"
-            />
-          </label>
-          <label className="flex flex-col gap-1 text-sm">
-            Incident date
-            <input
-              type="date"
-              name="incidentDate"
-              required
-              value={values.incidentDate}
-              onChange={handleChange}
-              className="rounded border border-slate-300 px-2 py-1"
-            />
-          </label>
-          <label className="flex flex-col gap-1 text-sm">
-            Alarm time
-            <input
-              type="datetime-local"
-              name="alarmTime"
-              required
-              value={values.alarmTime}
-              onChange={handleChange}
-              className="rounded border border-slate-300 px-2 py-1"
-            />
-          </label>
-        </div>
-      </section>
-
-      <section className="space-y-3">
         <h2 className="font-semibold">Incident type</h2>
         <TypePicker
           options={incidentTypeOptions}
@@ -347,244 +254,34 @@ export function IncidentForm({
       </section>
 
       <section className="space-y-3">
-        <h2 className="font-semibold">Dispatch times</h2>
-        <div className="grid grid-cols-3 gap-3">
-          <label className="flex flex-col gap-1 text-sm">
-            Call created
-            <input
-              type="datetime-local"
-              name="dispatchTimeCallCreate"
-              value={values.dispatchTimeCallCreate}
-              onChange={handleChange}
-              className="rounded border border-slate-300 px-2 py-1"
-            />
-          </label>
-          <label className="flex flex-col gap-1 text-sm">
-            Call answered
-            <input
-              type="datetime-local"
-              name="dispatchTimeCallAnswer"
-              value={values.dispatchTimeCallAnswer}
-              onChange={handleChange}
-              className="rounded border border-slate-300 px-2 py-1"
-            />
-          </label>
-          <label className="flex flex-col gap-1 text-sm">
-            Call arrival
-            <input
-              type="datetime-local"
-              name="dispatchTimeCallArrival"
-              value={values.dispatchTimeCallArrival}
-              onChange={handleChange}
-              className="rounded border border-slate-300 px-2 py-1"
-            />
-          </label>
-        </div>
+        <h2 className="font-semibold">Special modifiers</h2>
+        <fieldset className="flex flex-wrap gap-3">
+          {TypeSpecialModifier.map((modifier) => (
+            <label key={modifier} className="flex items-center gap-1 text-sm">
+              <input
+                type="checkbox"
+                name="specialModifiers"
+                value={modifier}
+                checked={specialModifiers.includes(modifier)}
+                onChange={() => toggleSpecialModifier(modifier)}
+              />
+              {modifier}
+            </label>
+          ))}
+        </fieldset>
       </section>
 
       <section className="space-y-3">
-        <h2 className="font-semibold">Location</h2>
-        <div className="grid grid-cols-2 gap-3">
-          <label className="col-span-2 flex flex-col gap-1 text-sm">
-            Street address
-            <input
-              name="streetAddressComplete"
-              required
-              value={values.streetAddressComplete}
-              onChange={handleChange}
-              className="rounded border border-slate-300 px-2 py-1"
-            />
-          </label>
-          <label className="flex flex-col gap-1 text-sm">
-            City
-            <input
-              name="city"
-              value={values.city}
-              onChange={handleChange}
-              className="rounded border border-slate-300 px-2 py-1"
-            />
-          </label>
-          <label className="flex flex-col gap-1 text-sm">
-            County
-            <input
-              name="county"
-              value={values.county}
-              onChange={handleChange}
-              className="rounded border border-slate-300 px-2 py-1"
-            />
-          </label>
-          <label className="flex flex-col gap-1 text-sm">
-            State
-            <input
-              name="state"
-              required
-              maxLength={2}
-              value={values.state}
-              onChange={handleChange}
-              className="rounded border border-slate-300 px-2 py-1 uppercase"
-            />
-          </label>
-          <label className="flex flex-col gap-1 text-sm">
-            Postal code
-            <input
-              name="postalCode"
-              value={values.postalCode}
-              onChange={handleChange}
-              className="rounded border border-slate-300 px-2 py-1"
-            />
-          </label>
-          <label className="flex flex-col gap-1 text-sm">
-            Country
-            <input
-              name="country"
-              value={values.country}
-              onChange={handleChange}
-              className="rounded border border-slate-300 px-2 py-1"
-            />
-          </label>
-          <label className="flex flex-col gap-1 text-sm">
-            Place
-            <select
-              name="place"
-              value={values.place}
-              onChange={handleChange}
-              className="rounded border border-slate-300 px-2 py-1"
-            >
-              <option value="">—</option>
-              {locPlaceOptions.map((o) => (
-                <option key={o.value} value={o.value}>
-                  {o.description}
-                </option>
-              ))}
-            </select>
-          </label>
-        </div>
-      </section>
-
-      <section className="space-y-3">
-        <h2 className="font-semibold">People and displacement</h2>
-        <div className="grid grid-cols-2 gap-3">
-          <label className="flex flex-col gap-1 text-sm">
-            People present
-            <select
-              name="incidentPeoplePresent"
-              value={values.incidentPeoplePresent}
-              onChange={handleChange}
-              className="rounded border border-slate-300 px-2 py-1"
-            >
-              <option value="">Unknown</option>
-              <option value="true">Yes</option>
-              <option value="false">No</option>
-            </select>
-          </label>
-          <label className="flex flex-col gap-1 text-sm">
-            Animals rescued
-            <input
-              type="number"
-              min={0}
-              name="incidentRescueAnimal"
-              value={values.incidentRescueAnimal}
-              onChange={handleChange}
-              className="rounded border border-slate-300 px-2 py-1"
-            />
-          </label>
-        </div>
-        <label className="flex flex-col gap-1 text-sm">
-          No-action reason
-          <select
-            name="incidentNoActionReason"
-            value={values.incidentNoActionReason}
-            onChange={handleChange}
-            className="rounded border border-slate-300 px-2 py-1"
-          >
-            <option value="">—</option>
-            {TypeNoaction.map((reason) => (
-              <option key={reason} value={reason}>
-                {reason}
-              </option>
-            ))}
-          </select>
-        </label>
-      </section>
-
-      <section className="space-y-3">
-        <h2 className="font-semibold">Mutual aid</h2>
-        <div className="grid grid-cols-2 gap-3">
-          <label className="flex flex-col gap-1 text-sm">
-            Aid direction
-            <select
-              name="aidDirection"
-              value={values.aidDirection}
-              onChange={handleChange}
-              className="rounded border border-slate-300 px-2 py-1"
-            >
-              <option value="">—</option>
-              {TypeAidDirection.map((v) => (
-                <option key={v} value={v}>
-                  {v}
-                </option>
-              ))}
-            </select>
-          </label>
-          <label className="flex flex-col gap-1 text-sm">
-            Aid type
-            <select
-              name="aidType"
-              value={values.aidType}
-              onChange={handleChange}
-              className="rounded border border-slate-300 px-2 py-1"
-            >
-              <option value="">—</option>
-              {TypeAid.map((v) => (
-                <option key={v} value={v}>
-                  {v}
-                </option>
-              ))}
-            </select>
-          </label>
-          <label className="flex flex-col gap-1 text-sm">
-            Aid department names (comma-separated)
-            <input
-              name="aidDepartmentNames"
-              value={values.aidDepartmentNames}
-              onChange={handleChange}
-              className="rounded border border-slate-300 px-2 py-1"
-            />
-          </label>
-          <label className="flex flex-col gap-1 text-sm">
-            Non-FD aid types (comma-separated: {TypeAidNonfd.join(", ")})
-            <input
-              name="aidNonFdTypes"
-              value={values.aidNonFdTypes}
-              onChange={handleChange}
-              className="rounded border border-slate-300 px-2 py-1"
-            />
-          </label>
-        </div>
-      </section>
-
-      <section className="space-y-3">
-        <h2 className="font-semibold">Narrative</h2>
-        <label className="flex flex-col gap-1 text-sm">
-          Impediment
-          <textarea
-            name="narrativeImpediment"
-            rows={3}
-            value={values.narrativeImpediment}
-            onChange={handleChange}
-            className="rounded border border-slate-300 px-2 py-1"
-          />
-        </label>
-        <label className="flex flex-col gap-1 text-sm">
-          Outcome
-          <textarea
-            name="narrativeOutcome"
-            rows={3}
-            value={values.narrativeOutcome}
-            onChange={handleChange}
-            className="rounded border border-slate-300 px-2 py-1"
-          />
-        </label>
+        <h2 className="font-semibold">Alarm time</h2>
+        <DateTime24Field
+          label="Alarm time"
+          fieldName="alarmTime"
+          date={alarmDate}
+          time={alarmTime}
+          onDateChange={setAlarmDate}
+          onTimeChange={setAlarmTime}
+          required
+        />
       </section>
 
       <SubmitButton />

@@ -33,7 +33,19 @@ export async function updateDispatch(incidentId: string, _prevState: DispatchFor
     return { errors: parsed.error.flatten().fieldErrors, message: 'Fix the errors below and try again.' }
   }
 
-  await prisma.incident.update({ where: { id: incidentId }, data: parsed.data })
+  await prisma.incident.update({
+    where: { id: incidentId },
+    data: {
+      dispatchTimeCallArrival: parsed.data.dispatchTimeCallArrival ?? null,
+      dispatchTimeCallAnswer: parsed.data.dispatchTimeCallAnswer ?? null,
+      dispatchTimeCallCreate: parsed.data.dispatchTimeCallCreate ?? null,
+      timeIncidentClear: parsed.data.timeIncidentClear ?? null,
+      dispatchAutomaticAlarm: parsed.data.dispatchAutomaticAlarm ?? null,
+      dispatchDeterminateCode: parsed.data.dispatchDeterminateCode ?? null,
+      dispatchIncidentCode: parsed.data.dispatchIncidentCode ?? null,
+      dispatchFinalDisposition: parsed.data.dispatchFinalDisposition ?? null
+    }
+  })
 
   revalidatePath(`/incidents/${incidentId}/dispatch`)
   return { message: 'Saved.' }

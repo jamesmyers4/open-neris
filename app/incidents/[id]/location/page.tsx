@@ -1,6 +1,8 @@
 import { notFound, redirect } from 'next/navigation'
 import { getCurrentAppUser } from '@/lib/auth/current-user'
 import { getIncidentDetail } from '@/lib/incidents/get-incident-detail'
+import { locationUseOptions, locPlaceOptions } from '@/lib/neris/lookups'
+import { LocationForm } from './location-form'
 
 export default async function LocationTabPage(props: PageProps<'/incidents/[id]/location'>) {
   const user = await getCurrentAppUser()
@@ -11,21 +13,22 @@ export default async function LocationTabPage(props: PageProps<'/incidents/[id]/
   if (!incident) notFound()
 
   return (
-    <section className="space-y-1 text-sm">
-      <h2 className="font-semibold">Location</h2>
-      {incident.location ? (
-        <>
-          <p>{incident.location.streetAddressComplete}</p>
-          <p>
-            {[incident.location.city, incident.location.county, incident.location.state, incident.location.postalCode]
-              .filter(Boolean)
-              .join(', ')}
-          </p>
-          <p>Place: {incident.location.place ?? '—'}</p>
-        </>
-      ) : (
-        <p>—</p>
-      )}
-    </section>
+    <LocationForm
+      incidentId={incident.id}
+      locationUseOptions={locationUseOptions}
+      locPlaceOptions={locPlaceOptions}
+      initial={{
+        streetAddressComplete: incident.location?.streetAddressComplete ?? '',
+        city: incident.location?.city ?? '',
+        county: incident.location?.county ?? '',
+        state: incident.location?.state ?? '',
+        postalCode: incident.location?.postalCode ?? '',
+        country: incident.location?.country ?? 'US',
+        place: incident.location?.place ?? '',
+        useType: incident.location?.useType ?? '',
+        useSubtype: incident.location?.useSubtype ?? '',
+        useVacancy: incident.location?.useVacancy ?? ''
+      }}
+    />
   )
 }

@@ -42,14 +42,11 @@ export const incidentCoreSchema = z.object({
   dispatchTimeCallAnswer: z.coerce.date().optional(),
   dispatchTimeCallArrival: z.coerce.date().optional()
 }).superRefine((data, ctx) => {
+  if (data.dispatchTimeCallArrival && data.dispatchTimeCallCreate && data.dispatchTimeCallArrival > data.dispatchTimeCallCreate) {
+    ctx.addIssue({ code: z.ZodIssueCode.custom, path: ['dispatchTimeCallCreate'], message: 'call create time must be at or after call arrival at dispatch' })
+  }
   if (data.dispatchTimeCallCreate && data.dispatchTimeCallAnswer && data.dispatchTimeCallCreate > data.dispatchTimeCallAnswer) {
-    ctx.addIssue({ code: z.ZodIssueCode.custom, path: ['dispatchTimeCallAnswer'], message: 'call answered time must be after call create time' })
-  }
-  if (data.dispatchTimeCallAnswer && data.dispatchTimeCallArrival && data.dispatchTimeCallAnswer > data.dispatchTimeCallArrival) {
-    ctx.addIssue({ code: z.ZodIssueCode.custom, path: ['dispatchTimeCallArrival'], message: 'call arrival time must be after call answered time' })
-  }
-  if (data.dispatchTimeCallArrival && data.dispatchTimeCallArrival > data.alarmTime) {
-    ctx.addIssue({ code: z.ZodIssueCode.custom, path: ['alarmTime'], message: 'alarm time must be at or after call arrival time' })
+    ctx.addIssue({ code: z.ZodIssueCode.custom, path: ['dispatchTimeCallAnswer'], message: 'call answered time must be at or after call create time' })
   }
 })
 

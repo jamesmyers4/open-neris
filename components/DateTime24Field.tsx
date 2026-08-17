@@ -3,6 +3,8 @@
 const hours = Array.from({ length: 24 }, (_, i) => String(i).padStart(2, "0"));
 const minutes = Array.from({ length: 60 }, (_, i) => String(i).padStart(2, "0"));
 
+export type DateTimeValue = { date: string; time: string };
+
 export function DateTime24Field({
   label,
   fieldName,
@@ -11,6 +13,8 @@ export function DateTime24Field({
   onDateChange,
   onTimeChange,
   required,
+  min,
+  max,
 }: {
   label: string;
   fieldName: string;
@@ -19,8 +23,18 @@ export function DateTime24Field({
   onDateChange: (value: string) => void;
   onTimeChange: (value: string) => void;
   required?: boolean;
+  min?: DateTimeValue;
+  max?: DateTimeValue;
 }) {
   const [hour, minute] = time ? time.split(":") : ["", ""];
+  const [minHour, minMinute] = min ? min.time.split(":") : ["", ""];
+  const [maxHour, maxMinute] = max ? max.time.split(":") : ["", ""];
+  const onMinDay = Boolean(min && date === min.date);
+  const onMaxDay = Boolean(max && date === max.date);
+
+  const isHourDisabled = (h: string) => (onMinDay && h < minHour) || (onMaxDay && h > maxHour);
+  const isMinuteDisabled = (m: string) =>
+    (onMinDay && hour === minHour && m < minMinute) || (onMaxDay && hour === maxHour && m > maxMinute);
 
   return (
     <label className="flex flex-col gap-1 text-sm">
@@ -30,6 +44,8 @@ export function DateTime24Field({
           type="date"
           required={required}
           value={date}
+          min={min?.date || undefined}
+          max={max?.date || undefined}
           onChange={(e) => onDateChange(e.target.value)}
           className="rounded border border-slate-300 px-2 py-1"
         />
@@ -41,7 +57,7 @@ export function DateTime24Field({
         >
           <option value="">HH</option>
           {hours.map((h) => (
-            <option key={h} value={h}>
+            <option key={h} value={h} disabled={isHourDisabled(h)}>
               {h}
             </option>
           ))}
@@ -55,7 +71,7 @@ export function DateTime24Field({
         >
           <option value="">MM</option>
           {minutes.map((m) => (
-            <option key={m} value={m}>
+            <option key={m} value={m} disabled={isMinuteDisabled(m)}>
               {m}
             </option>
           ))}

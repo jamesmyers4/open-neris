@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { currentUser } from '@clerk/nextjs/server'
 import { UserButton } from '@clerk/nextjs'
 
@@ -9,9 +10,10 @@ export default async function Home() {
         <div className="flex items-center gap-4">
           <p>Signed in as {user.primaryEmailAddress?.emailAddress}</p>
           <UserButton />
+          <Link href="/incidents" className="underline">Incidents</Link>
         </div>
       ) : (
-        <a href="/sign-in">Sign in</a>
+        <Link href="/sign-in">Sign in</Link>
       )}
     </main>
   )

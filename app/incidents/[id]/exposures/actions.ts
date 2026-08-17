@@ -45,5 +45,5 @@ export async function createExposure(incidentId: string, _prevState: CreateExpos
     }
   })
 
-  redirect(`/incidents/${incidentId}`)
+  redirect(`/incidents/${incidentId}/exposures`)
 }

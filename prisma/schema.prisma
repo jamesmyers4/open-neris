@@ -42,10 +42,23 @@ model Department {
   nerisVendorClientId    String?
   nerisVendorSecretCipher String?
   nerisEnvironment       NerisEnvironment @default(SANDBOX)
+  internalIdMode         String           @default("YEAR_SEQUENTIAL")
+  internalIdTemplate     String?
   createdAt              DateTime         @default(now())
   updatedAt              DateTime         @updatedAt
   users                  User[]
   incidents              Incident[]
+  idCounters             DepartmentIdCounter[]
+}
+
+model DepartmentIdCounter {
+  id           String     @id @default(cuid())
+  departmentId String
+  department   Department @relation(fields: [departmentId], references: [id], onDelete: Cascade)
+  year         Int
+  counter      Int        @default(0)
+
+  @@unique([departmentId, year])
 }
 
 model User {
@@ -85,8 +98,6 @@ model Incident {
   incidentPointLat         Float?
   incidentPointLng         Float?
   incidentPeoplePresent    Boolean?
-  incidentDisplacedNumber  Int?
-  incidentDisplacedCauses  String[]
   incidentRescueAnimal     Int?
   incidentNoActionReason   String?
   aidDirection             String?
@@ -98,6 +109,7 @@ model Incident {
   dispatchTimeCallCreate   DateTime?
   dispatchTimeCallAnswer   DateTime?
   dispatchTimeCallArrival  DateTime?
+  timeIncidentClear        DateTime?
   dispatchAutomaticAlarm   Boolean?
   dispatchFinalDisposition String?
   dispatchDeterminateCode  String?
@@ -107,6 +119,7 @@ model Incident {
   types                    IncidentType[]
   actionsTaken             IncidentActionTaken[]
   dispatchComments         IncidentDispatchComment[]
+  displacements            IncidentDisplacement[]
   location                 IncidentLocation?
   exposures                IncidentExposure[]
   fire                     IncidentFire?
@@ -155,6 +168,15 @@ model IncidentDispatchComment {
   incident   Incident @relation(fields: [incidentId], references: [id], onDelete: Cascade)
   comment    String
   timestamp  DateTime
+
+  @@index([incidentId])
+}
+
+model IncidentDisplacement {
+  id         String   @id @default(cuid())
+  incidentId String
+  incident   Incident @relation(fields: [incidentId], references: [id], onDelete: Cascade)
+  causes     String[]
 
   @@index([incidentId])
 }

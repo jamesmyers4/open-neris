@@ -1,6 +1,7 @@
 import { notFound, redirect } from 'next/navigation'
 import { getCurrentAppUser } from '@/lib/auth/current-user'
 import { getIncidentDetail } from '@/lib/incidents/get-incident-detail'
+import { PeopleForm, DisplacementForm } from './people-displacement-form'
 
 export default async function PeopleDisplacementTabPage(props: PageProps<'/incidents/[id]/people-displacement'>) {
   const user = await getCurrentAppUser()
@@ -11,24 +12,29 @@ export default async function PeopleDisplacementTabPage(props: PageProps<'/incid
   if (!incident) notFound()
 
   return (
-    <section className="space-y-1 text-sm">
-      <h2 className="font-semibold">People & displacement</h2>
-      <p>
-        People present: {incident.incidentPeoplePresent === null ? 'Unknown' : incident.incidentPeoplePresent ? 'Yes' : 'No'}
-      </p>
-      <p>Animals rescued: {incident.incidentRescueAnimal ?? '—'}</p>
-      {incident.displacements.length === 0 ? (
-        <p>Displaced persons: —</p>
-      ) : (
-        <div>
-          <p className="font-medium">Displaced persons ({incident.displacements.length})</p>
+    <div className="space-y-6">
+      <PeopleForm
+        incidentId={incident.id}
+        initial={{
+          incidentPeoplePresent: incident.incidentPeoplePresent,
+          incidentRescueAnimal: incident.incidentRescueAnimal
+        }}
+      />
+
+      <section className="space-y-3 border-t border-slate-200 pt-6 text-sm">
+        <h2 className="font-semibold">Displaced persons ({incident.displacements.length})</h2>
+        {incident.displacements.length === 0 ? (
+          <p>—</p>
+        ) : (
           <ul className="list-disc pl-5">
             {incident.displacements.map(d => (
               <li key={d.id}>{d.causes.join(', ') || '—'}</li>
             ))}
           </ul>
-        </div>
-      )}
-    </section>
+        )}
+      </section>
+
+      <DisplacementForm incidentId={incident.id} />
+    </div>
   )
 }

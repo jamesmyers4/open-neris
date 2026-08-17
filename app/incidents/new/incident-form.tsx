@@ -7,7 +7,7 @@ import {
   TypeAid,
   TypeAidDirection,
   TypeAidNonfd,
-  TypeDisplaceCause,
+  TypeNoaction,
 } from "@/lib/neris/generated/enums";
 import type { IncidentTypeOption, LocPlaceOption } from "@/lib/neris/lookups";
 
@@ -40,7 +40,6 @@ type FormValues = {
   country: string;
   place: string;
   incidentPeoplePresent: string;
-  incidentDisplacedNumber: string;
   incidentRescueAnimal: string;
   incidentNoActionReason: string;
   aidDirection: string;
@@ -66,7 +65,6 @@ const emptyValues: FormValues = {
   country: "US",
   place: "",
   incidentPeoplePresent: "",
-  incidentDisplacedNumber: "",
   incidentRescueAnimal: "",
   incidentNoActionReason: "",
   aidDirection: "",
@@ -255,7 +253,6 @@ export function IncidentForm({
   const [state, formAction] = useActionState(createIncident, initialState);
   const [rows, setRows] = useState<TypeRow[]>([emptyRow]);
   const [values, setValues] = useState<FormValues>(emptyValues);
-  const [causes, setCauses] = useState<string[]>([]);
 
   const allErrors = state.errors
     ? Object.values(state.errors)
@@ -270,12 +267,6 @@ export function IncidentForm({
   ) => {
     const { name, value } = e.target;
     setValues((v) => ({ ...v, [name]: value }));
-  };
-
-  const toggleCause = (cause: string) => {
-    setCauses((c) =>
-      c.includes(cause) ? c.filter((x) => x !== cause) : [...c, cause],
-    );
   };
 
   return (
@@ -487,17 +478,6 @@ export function IncidentForm({
             </select>
           </label>
           <label className="flex flex-col gap-1 text-sm">
-            Number displaced
-            <input
-              type="number"
-              min={0}
-              name="incidentDisplacedNumber"
-              value={values.incidentDisplacedNumber}
-              onChange={handleChange}
-              className="rounded border border-slate-300 px-2 py-1"
-            />
-          </label>
-          <label className="flex flex-col gap-1 text-sm">
             Animals rescued
             <input
               type="number"
@@ -509,29 +489,21 @@ export function IncidentForm({
             />
           </label>
         </div>
-        <fieldset className="flex flex-wrap gap-3">
-          <legend className="text-sm font-medium">Displacement causes</legend>
-          {TypeDisplaceCause.map((cause) => (
-            <label key={cause} className="flex items-center gap-1 text-sm">
-              <input
-                type="checkbox"
-                name="incidentDisplacedCauses"
-                value={cause}
-                checked={causes.includes(cause)}
-                onChange={() => toggleCause(cause)}
-              />
-              {cause}
-            </label>
-          ))}
-        </fieldset>
         <label className="flex flex-col gap-1 text-sm">
           No-action reason
-          <input
+          <select
             name="incidentNoActionReason"
             value={values.incidentNoActionReason}
             onChange={handleChange}
             className="rounded border border-slate-300 px-2 py-1"
-          />
+          >
+            <option value="">—</option>
+            {TypeNoaction.map((reason) => (
+              <option key={reason} value={reason}>
+                {reason}
+              </option>
+            ))}
+          </select>
         </label>
       </section>
 

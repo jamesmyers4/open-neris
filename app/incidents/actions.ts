@@ -41,8 +41,6 @@ export async function createIncident(_prevState: CreateIncidentState, formData: 
       place: formData.get('place') || undefined
     },
     incidentPeoplePresent: formData.get('incidentPeoplePresent') ? formData.get('incidentPeoplePresent') === 'true' : undefined,
-    incidentDisplacedNumber: formData.get('incidentDisplacedNumber') ? Number(formData.get('incidentDisplacedNumber')) : undefined,
-    incidentDisplacedCauses: formData.getAll('incidentDisplacedCauses'),
     incidentRescueAnimal: formData.get('incidentRescueAnimal') ? Number(formData.get('incidentRescueAnimal')) : undefined,
     incidentNoActionReason: formData.get('incidentNoActionReason') || undefined,
     aidDirection: formData.get('aidDirection') || undefined,
@@ -73,8 +71,6 @@ export async function createIncident(_prevState: CreateIncidentState, formData: 
         incidentDate: data.incidentDate,
         alarmTime: data.alarmTime,
         incidentPeoplePresent: data.incidentPeoplePresent,
-        incidentDisplacedNumber: data.incidentDisplacedNumber,
-        incidentDisplacedCauses: data.incidentDisplacedCauses,
         incidentRescueAnimal: data.incidentRescueAnimal,
         incidentNoActionReason: data.incidentNoActionReason,
         aidDirection: data.aidDirection,

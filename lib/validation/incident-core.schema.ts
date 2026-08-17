@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { TypeAidDirection, TypeAid, TypeCasualty, TypeDisplaceCause } from '../neris/generated/enums'
+import { TypeAidDirection, TypeAid, TypeCasualty, TypeNoaction } from '../neris/generated/enums'
 
 export const incidentTypeSchema = z.object({
   value1: z.string().min(1),
@@ -28,10 +28,8 @@ export const incidentCoreSchema = z.object({
   ),
   location: incidentLocationSchema,
   incidentPeoplePresent: z.boolean().optional(),
-  incidentDisplacedNumber: z.number().int().nonnegative().optional(),
-  incidentDisplacedCauses: z.array(z.enum(TypeDisplaceCause)).default([]),
   incidentRescueAnimal: z.number().int().nonnegative().optional(),
-  incidentNoActionReason: z.string().optional(),
+  incidentNoActionReason: z.enum(TypeNoaction).optional(),
   aidDirection: z.enum(TypeAidDirection).optional(),
   aidType: z.enum(TypeAid).optional(),
   aidDepartmentNames: z.array(z.string()).default([]),
@@ -45,8 +43,11 @@ export const incidentCoreSchema = z.object({
   if (data.dispatchTimeCallArrival && data.dispatchTimeCallCreate && data.dispatchTimeCallArrival > data.dispatchTimeCallCreate) {
     ctx.addIssue({ code: z.ZodIssueCode.custom, path: ['dispatchTimeCallCreate'], message: 'call create time must be at or after call arrival at dispatch' })
   }
-  if (data.dispatchTimeCallCreate && data.dispatchTimeCallAnswer && data.dispatchTimeCallCreate > data.dispatchTimeCallAnswer) {
-    ctx.addIssue({ code: z.ZodIssueCode.custom, path: ['dispatchTimeCallAnswer'], message: 'call answered time must be at or after call create time' })
+  if (data.dispatchTimeCallArrival && data.dispatchTimeCallAnswer && data.dispatchTimeCallArrival > data.dispatchTimeCallAnswer) {
+    ctx.addIssue({ code: z.ZodIssueCode.custom, path: ['dispatchTimeCallAnswer'], message: 'call answered time must be at or after call arrival at dispatch' })
+  }
+  if (data.dispatchTimeCallAnswer && data.dispatchTimeCallCreate && data.dispatchTimeCallAnswer > data.dispatchTimeCallCreate) {
+    ctx.addIssue({ code: z.ZodIssueCode.custom, path: ['dispatchTimeCallCreate'], message: 'call create time must be at or after call answered time' })
   }
 })
 

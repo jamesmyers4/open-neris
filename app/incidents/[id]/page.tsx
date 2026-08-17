@@ -97,8 +97,6 @@ export default async function IncidentDetailPage(props: PageProps<'/incidents/[i
         <p>
           People present: {incident.incidentPeoplePresent === null || incident.incidentPeoplePresent === undefined ? 'Unknown' : incident.incidentPeoplePresent ? 'Yes' : 'No'}
         </p>
-        <p>Number displaced: {incident.incidentDisplacedNumber ?? '—'}</p>
-        <p>Displacement causes: {incident.incidentDisplacedCauses.length > 0 ? incident.incidentDisplacedCauses.join(', ') : '—'}</p>
         <p>Animals rescued: {incident.incidentRescueAnimal ?? '—'}</p>
         <p>No-action reason: {incident.incidentNoActionReason ?? '—'}</p>
       </section>

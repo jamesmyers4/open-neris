@@ -1,6 +1,7 @@
 import { notFound, redirect } from 'next/navigation'
 import { getCurrentAppUser } from '@/lib/auth/current-user'
 import { getIncidentDetail } from '@/lib/incidents/get-incident-detail'
+import { MutualAidForm } from './mutual-aid-form'
 
 export default async function MutualAidTabPage(props: PageProps<'/incidents/[id]/mutual-aid'>) {
   const user = await getCurrentAppUser()
@@ -11,12 +12,14 @@ export default async function MutualAidTabPage(props: PageProps<'/incidents/[id]
   if (!incident) notFound()
 
   return (
-    <section className="space-y-1 text-sm">
-      <h2 className="font-semibold">Mutual aid</h2>
-      <p>Direction: {incident.aidDirection ?? '—'}</p>
-      <p>Type: {incident.aidType ?? '—'}</p>
-      <p>Departments: {incident.aidDepartmentNames.length > 0 ? incident.aidDepartmentNames.join(', ') : '—'}</p>
-      <p>Non-FD types: {incident.aidNonFdTypes.length > 0 ? incident.aidNonFdTypes.join(', ') : '—'}</p>
-    </section>
+    <MutualAidForm
+      incidentId={incident.id}
+      initial={{
+        aidDirection: incident.aidDirection,
+        aidType: incident.aidType,
+        aidDepartmentNames: incident.aidDepartmentNames,
+        aidNonFdTypes: incident.aidNonFdTypes
+      }}
+    />
   )
 }

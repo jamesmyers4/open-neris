@@ -19,7 +19,7 @@ export async function createExposure(incidentId: string, _prevState: CreateExpos
 
   const raw = {
     exposureType: formData.get('exposureType'),
-    exposureItem: formData.get('exposureItem'),
+    exposureItem: formData.get('exposureItem') || undefined,
     exposureDamage: formData.get('exposureDamage') || undefined,
     exposurePeoplePresent: formData.get('exposurePeoplePresent') ? formData.get('exposurePeoplePresent') === 'true' : undefined,
     exposureDisplacedNumber: formData.get('exposureDisplacedNumber') ? Number(formData.get('exposureDisplacedNumber')) : undefined,

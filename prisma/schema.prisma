@@ -203,7 +203,7 @@ model IncidentExposure {
   incidentId           String
   incident             Incident @relation(fields: [incidentId], references: [id], onDelete: Cascade)
   exposureType         String
-  exposureItem         String
+  exposureItem         String?
   exposureDamage       String?
   exposurePeoplePresent Boolean?
   exposureDisplacedNumber Int?

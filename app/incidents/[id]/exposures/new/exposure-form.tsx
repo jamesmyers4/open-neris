@@ -1,25 +1,35 @@
-'use client'
+"use client";
 
-import { useActionState } from 'react'
-import { useFormStatus } from 'react-dom'
-import { createExposure, type CreateExposureState } from '../actions'
-import { TypeDisplaceCause, TypeExposureDamage, TypeExposureItem, TypeExposureLoc } from '@/lib/neris/generated/enums'
+import { useState } from "react";
+import { useActionState } from "react";
+import { useFormStatus } from "react-dom";
+import { createExposure, type CreateExposureState } from "../actions";
+import { TypeDisplaceCause, TypeExposureDamage, TypeExposureItem, TypeExposureLoc } from "@/lib/neris/generated/enums";
 
 function SubmitButton() {
-  const { pending } = useFormStatus()
+  const { pending } = useFormStatus();
   return (
     <button type="submit" disabled={pending} className="rounded bg-slate-900 px-4 py-2 text-white disabled:opacity-50">
-      {pending ? 'Saving…' : 'Add exposure'}
+      {pending ? "Saving…" : "Add exposure"}
     </button>
-  )
+  );
 }
 
 export function ExposureForm({ incidentId }: { incidentId: string }) {
-  const initialState: CreateExposureState = {}
-  const action = createExposure.bind(null, incidentId)
-  const [state, formAction] = useActionState(action, initialState)
+  const initialState: CreateExposureState = {};
+  const action = createExposure.bind(null, incidentId);
+  const [state, formAction] = useActionState(action, initialState);
 
-  const allErrors = state.errors ? Object.values(state.errors).flat().filter((e): e is string => Boolean(e)) : []
+  const [exposureType, setExposureType] = useState("");
+  const [exposureItem, setExposureItem] = useState("");
+  const [exposureDamage, setExposureDamage] = useState("");
+  const [peoplePresent, setPeoplePresent] = useState("");
+  const [displacedNumber, setDisplacedNumber] = useState("");
+  const [displacedCauses, setDisplacedCauses] = useState<string[]>([]);
+
+  const isExternal = exposureType === "EXTERNAL_EXPOSURE";
+
+  const allErrors = state.errors ? Object.values(state.errors).flat().filter((e): e is string => Boolean(e)) : [];
 
   return (
     <form action={formAction} className="space-y-6">
@@ -36,34 +46,67 @@ export function ExposureForm({ incidentId }: { incidentId: string }) {
         <div className="grid grid-cols-2 gap-3">
           <label className="flex flex-col gap-1 text-sm">
             Exposure type
-            <select name="exposureType" required defaultValue="" className="rounded border border-slate-300 px-2 py-1">
+            <select
+              name="exposureType"
+              required
+              value={exposureType}
+              onChange={(e) => {
+                setExposureType(e.target.value);
+                if (e.target.value !== "EXTERNAL_EXPOSURE") setExposureItem("");
+              }}
+              className="rounded border border-slate-300 px-2 py-1"
+            >
               <option value="">—</option>
-              {TypeExposureLoc.map(v => (
-                <option key={v} value={v}>{v}</option>
+              {TypeExposureLoc.map((v) => (
+                <option key={v} value={v}>
+                  {v}
+                </option>
               ))}
             </select>
           </label>
           <label className="flex flex-col gap-1 text-sm">
             Exposure item
-            <select name="exposureItem" required defaultValue="" className="rounded border border-slate-300 px-2 py-1">
+            <select
+              name="exposureItem"
+              required={isExternal}
+              disabled={!isExternal}
+              value={exposureItem}
+              onChange={(e) => setExposureItem(e.target.value)}
+              className="rounded border border-slate-300 px-2 py-1 disabled:bg-slate-100 disabled:text-slate-400"
+            >
               <option value="">—</option>
-              {TypeExposureItem.map(v => (
-                <option key={v} value={v}>{v}</option>
+              {TypeExposureItem.map((v) => (
+                <option key={v} value={v}>
+                  {v}
+                </option>
               ))}
             </select>
           </label>
           <label className="flex flex-col gap-1 text-sm">
             Damage
-            <select name="exposureDamage" defaultValue="" className="rounded border border-slate-300 px-2 py-1">
+            <select
+              name="exposureDamage"
+              required
+              value={exposureDamage}
+              onChange={(e) => setExposureDamage(e.target.value)}
+              className="rounded border border-slate-300 px-2 py-1"
+            >
               <option value="">—</option>
-              {TypeExposureDamage.map(v => (
-                <option key={v} value={v}>{v}</option>
+              {TypeExposureDamage.map((v) => (
+                <option key={v} value={v}>
+                  {v}
+                </option>
               ))}
             </select>
           </label>
           <label className="flex flex-col gap-1 text-sm">
             People present
-            <select name="exposurePeoplePresent" defaultValue="" className="rounded border border-slate-300 px-2 py-1">
+            <select
+              name="exposurePeoplePresent"
+              value={peoplePresent}
+              onChange={(e) => setPeoplePresent(e.target.value)}
+              className="rounded border border-slate-300 px-2 py-1"
+            >
               <option value="">Unknown</option>
               <option value="true">Yes</option>
               <option value="false">No</option>
@@ -71,14 +114,29 @@ export function ExposureForm({ incidentId }: { incidentId: string }) {
           </label>
           <label className="flex flex-col gap-1 text-sm">
             Number displaced
-            <input type="number" min={0} name="exposureDisplacedNumber" className="rounded border border-slate-300 px-2 py-1" />
+            <input
+              type="number"
+              min={0}
+              name="exposureDisplacedNumber"
+              value={displacedNumber}
+              onChange={(e) => setDisplacedNumber(e.target.value)}
+              className="rounded border border-slate-300 px-2 py-1"
+            />
           </label>
         </div>
         <fieldset className="flex flex-wrap gap-3">
           <legend className="text-sm font-medium">Displacement causes</legend>
-          {TypeDisplaceCause.map(cause => (
+          {TypeDisplaceCause.map((cause) => (
             <label key={cause} className="flex items-center gap-1 text-sm">
-              <input type="checkbox" name="exposureDisplacedCauses" value={cause} />
+              <input
+                type="checkbox"
+                name="exposureDisplacedCauses"
+                value={cause}
+                checked={displacedCauses.includes(cause)}
+                onChange={(e) =>
+                  setDisplacedCauses((v) => (e.target.checked ? [...v, cause] : v.filter((c) => c !== cause)))
+                }
+              />
               {cause}
             </label>
           ))}
@@ -87,5 +145,5 @@ export function ExposureForm({ incidentId }: { incidentId: string }) {
 
       <SubmitButton />
     </form>
-  )
+  );
 }

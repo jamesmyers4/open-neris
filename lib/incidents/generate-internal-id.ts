@@ -12,7 +12,7 @@ async function nextCounterValue(tx: Prisma.TransactionClient, departmentId: stri
   return rows[0].counter
 }
 
-function applyTemplate(template: string, year: number, seq: number): string {
+export function applyTemplate(template: string, year: number, seq: number): string {
   return template
     .replace(/\{year\}/g, String(year))
     .replace(/\{seq:(\d+)\}/g, (_match, width: string) => String(seq).padStart(Number(width), '0'))

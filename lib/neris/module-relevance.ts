@@ -19,10 +19,15 @@ export function getRelevantModules(types: IncidentTypeRow[]): ModuleKey[] {
   const value1s = new Set(types.map(t => t.value1))
   const value2s = new Set(types.map(t => t.value2).filter((v): v is string => Boolean(v)))
 
-  const relevant: ModuleKey[] = ['exposures', 'unitResponse', 'rescuesFf', 'rescuesNonFf', 'emergingHazard']
+  // tacticTimestamps' own `possible_if` in core_mod_incident.csv is unconditional — the
+  // "final incident type includes fire" text lives in its `neris_core_if` column instead,
+  // which governs federal-reporting requiredness, not tab availability. Most of its fields
+  // (command established, sizeup, primary search, extrication) apply to any incident type;
+  // only water_on_fire/fire_under_control/fire_knocked_down are actually FIRE-specific.
+  const relevant: ModuleKey[] = ['exposures', 'unitResponse', 'rescuesFf', 'rescuesNonFf', 'emergingHazard', 'tacticTimestamps']
 
   if (value1s.has('FIRE')) {
-    relevant.push('fire', 'tacticTimestamps')
+    relevant.push('fire')
   }
   if (value1s.has('MEDICAL')) {
     relevant.push('medical')

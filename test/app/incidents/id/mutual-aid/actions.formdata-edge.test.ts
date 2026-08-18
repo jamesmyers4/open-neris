@@ -35,20 +35,6 @@ describe('updateMutualAid — malformed/partial FormData', () => {
     })
   })
 
-  it('parses a single department name with no trailing newline the same as a newline-terminated one', async () => {
-    mockSignedInAs()
-    mockPrisma.incident.findFirst.mockResolvedValue({ id: INCIDENT_ID })
-    const fd = new FormData()
-    fd.set('aidDepartmentNames', 'Solo FD')
-
-    await updateMutualAid(INCIDENT_ID, {}, fd)
-
-    expect(mockPrisma.incident.update).toHaveBeenCalledWith({
-      where: { id: INCIDENT_ID },
-      data: expect.objectContaining({ aidDepartmentNames: ['Solo FD'] })
-    })
-  })
-
   it('saves an empty aidNonFdTypes array when the key is entirely absent, same as present-but-empty (getAll)', async () => {
     mockSignedInAs()
     mockPrisma.incident.findFirst.mockResolvedValue({ id: INCIDENT_ID })

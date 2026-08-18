@@ -7,10 +7,8 @@ import { afterAll, beforeAll, beforeEach, describe, expect, it, vi } from 'vites
 // confirmed empirically. This factory never touches the real module at all.
 vi.mock('@/lib/auth/current-user', () => ({ getCurrentAppUser: vi.fn() }))
 
-import { redirect } from 'next/navigation'
 import { startTestDatabase, stopTestDatabase, type TestDatabase } from '@/test/helpers/db'
-import { createTestDepartment, createTestUser } from '@/test/helpers/db-fixtures'
-import { mockSignedInAs } from '@/test/helpers/auth'
+import { setupCallerContext, createAndGetIncidentId, typesFormData } from '@/test/helpers/journey'
 
 type Actions = {
   createIncident: typeof import('@/app/incidents/actions').createIncident
@@ -62,32 +60,10 @@ describe('Incident lifecycle journeys (multi-action, real DB)', () => {
     vi.resetAllMocks()
   })
 
-  async function setupCallerContext() {
-    const department = await createTestDepartment(db.prisma)
-    const user = await createTestUser(db.prisma, department.id)
-    mockSignedInAs({ id: user.id, departmentId: department.id, clerkId: user.clerkId, name: user.name, email: user.email, role: user.role })
-    return { department, user }
-  }
-
-  async function createAndGetIncidentId(formData: FormData): Promise<string> {
-    vi.mocked(redirect).mockClear()
-    await actions.createIncident({}, formData)
-    const path = vi.mocked(redirect).mock.calls.at(-1)?.[0] as string | undefined
-    if (!path) throw new Error('createIncident did not redirect — creation likely failed')
-    return path.split('/').pop()!
-  }
-
-  function typesFormData(value1: string, value2?: string) {
-    const fd = new FormData()
-    fd.set('typesJson', JSON.stringify([{ value1, value2, isPrimary: true }]))
-    fd.set('alarmTime', '2026-02-01T12:00:00Z')
-    return fd
-  }
-
   it('creates, fills, gates, completes, and submits an incident end to end', async () => {
-    const { user } = await setupCallerContext()
+    const { user } = await setupCallerContext(db.prisma)
 
-    const incidentId = await createAndGetIncidentId(typesFormData('FIRE', 'STRUCTURE_FIRE'))
+    const incidentId = await createAndGetIncidentId(actions.createIncident, typesFormData('FIRE', 'STRUCTURE_FIRE'))
     const created = await db.prisma.incident.findUniqueOrThrow({ where: { id: incidentId } })
     expect(created.reviewStatus).toBe('OPEN')
 
@@ -135,7 +111,7 @@ describe('Incident lifecycle journeys (multi-action, real DB)', () => {
 
   describe('type-gating path', () => {
     async function runMinimalCoreJourney(value1: string): Promise<string> {
-      const incidentId = await createAndGetIncidentId(typesFormData(value1))
+      const incidentId = await createAndGetIncidentId(actions.createIncident, typesFormData(value1))
 
       const dispatchFd = new FormData()
       dispatchFd.set('dispatchTimeCallArrival', '2026-02-01T12:00:00Z')
@@ -178,7 +154,7 @@ describe('Incident lifecycle journeys (multi-action, real DB)', () => {
     // the new (differing) behavior rather than treating the failure as a
     // regression to silently fix.
     it('TODO_pending_sections_2_7_completeness_gate: FIRE-primary and MEDICAL-primary journeys currently have identical completeness requirements', async () => {
-      await setupCallerContext()
+      await setupCallerContext(db.prisma)
 
       const fireStatus = await runMinimalCoreJourney('FIRE')
       const medicalStatus = await runMinimalCoreJourney('MEDICAL')

@@ -120,6 +120,18 @@ describe('Cross-department id-guessing (Testcontainers Postgres)', () => {
       expect(await db.prisma.incidentActionTaken.count({ where: { incidentId: incidentA.id } })).toBe(0)
     })
 
+    it('rejects removeActionTaken (real cross-department case — see the nested-row describe block below for the same-department variant)', async () => {
+      const { userB, incidentA } = await setupTwoDepartments()
+      const actionOnIncidentA = await db.prisma.incidentActionTaken.create({
+        data: { incidentId: incidentA.id, value1: 'FORCIBLE_ENTRY' }
+      })
+      actAsUserB(userB)
+
+      await actions.removeActionTaken(incidentA.id, actionOnIncidentA.id)
+
+      expect(await db.prisma.incidentActionTaken.findUnique({ where: { id: actionOnIncidentA.id } })).not.toBeNull()
+    })
+
     it('rejects updateDispatch', async () => {
       const { userB, incidentA } = await setupTwoDepartments()
       actAsUserB(userB)

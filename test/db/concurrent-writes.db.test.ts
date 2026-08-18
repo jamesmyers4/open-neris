@@ -6,10 +6,8 @@ import { afterAll, beforeAll, beforeEach, describe, expect, it, vi } from 'vites
 // gets a chance to point DATABASE_URL at the test container.
 vi.mock('@/lib/auth/current-user', () => ({ getCurrentAppUser: vi.fn() }))
 
-import { redirect } from 'next/navigation'
 import { startTestDatabase, stopTestDatabase, type TestDatabase } from '@/test/helpers/db'
-import { createTestDepartment, createTestUser } from '@/test/helpers/db-fixtures'
-import { mockSignedInAs } from '@/test/helpers/auth'
+import { setupCallerContext, createAndGetIncidentId, typesFormData } from '@/test/helpers/journey'
 
 type Actions = {
   createIncident: typeof import('@/app/incidents/actions').createIncident
@@ -63,28 +61,10 @@ describe('Concurrent-write races (Testcontainers Postgres)', () => {
     vi.resetAllMocks()
   })
 
-  async function setupCallerContext() {
-    const department = await createTestDepartment(db.prisma)
-    const user = await createTestUser(db.prisma, department.id)
-    mockSignedInAs({ id: user.id, departmentId: department.id, clerkId: user.clerkId, name: user.name, email: user.email, role: user.role })
-    return { department, user }
-  }
-
-  async function createAndGetIncidentId(): Promise<string> {
-    vi.mocked(redirect).mockClear()
-    const fd = new FormData()
-    fd.set('typesJson', JSON.stringify([{ value1: 'FIRE', isPrimary: true }]))
-    fd.set('alarmTime', '2026-02-01T12:00:00Z')
-    await actions.createIncident({}, fd)
-    const path = vi.mocked(redirect).mock.calls.at(-1)?.[0] as string | undefined
-    if (!path) throw new Error('createIncident did not redirect — creation likely failed')
-    return path.split('/').pop()!
-  }
-
   describe('two simultaneous updateDispatch calls on the same incident', () => {
     it('lands on exactly one of the two payloads, never a field-level mix of both (single-statement UPDATE has no torn-write risk)', async () => {
-      await setupCallerContext()
-      const incidentId = await createAndGetIncidentId()
+      await setupCallerContext(db.prisma)
+      const incidentId = await createAndGetIncidentId(actions.createIncident, typesFormData('FIRE'))
 
       const fdA = new FormData()
       fdA.set('dispatchTimeCallArrival', '2026-02-01T12:00:00Z')
@@ -126,7 +106,7 @@ describe('Concurrent-write races (Testcontainers Postgres)', () => {
 
   describe('double-submit race on submitIncident', () => {
     async function buildCompleteOpenIncident(): Promise<string> {
-      const incidentId = await createAndGetIncidentId()
+      const incidentId = await createAndGetIncidentId(actions.createIncident, typesFormData('FIRE'))
 
       const dispatchFd = new FormData()
       dispatchFd.set('dispatchTimeCallArrival', '2026-02-01T12:00:00Z')
@@ -152,7 +132,7 @@ describe('Concurrent-write races (Testcontainers Postgres)', () => {
     }
 
     it('ends up SUBMITTED exactly once in reviewStatus, and does not corrupt the record, under two racing calls', async () => {
-      await setupCallerContext()
+      await setupCallerContext(db.prisma)
       const incidentId = await buildCompleteOpenIncident()
 
       await Promise.all([actions.submitIncident(incidentId), actions.submitIncident(incidentId)])

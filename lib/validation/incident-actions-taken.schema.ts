@@ -24,5 +24,10 @@ export const incidentActionsTakenSchema = z.object({
   }
 })
 
+export const incidentNoActionReasonSchema = z.object({
+  incidentNoActionReason: z.enum(TypeNoaction).optional()
+})
+
 export type IncidentActionTakenEntryInput = z.infer<typeof incidentActionTakenEntrySchema>
 export type IncidentActionsTakenInput = z.infer<typeof incidentActionsTakenSchema>
+export type IncidentNoActionReasonInput = z.infer<typeof incidentNoActionReasonSchema>

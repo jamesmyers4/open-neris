@@ -10,6 +10,7 @@ export default defineConfig({
   test: {
     environment: 'node',
     globals: false,
+    setupFiles: ['./test/setup.ts'],
     include: ['**/*.db.test.ts'],
     exclude: ['**/node_modules/**', '**/.next/**', 'vendor/**'],
     // DB tests spin up a real Postgres container and run journeys through it —

@@ -8,7 +8,13 @@ Planning session output for `open-neris-app`, produced by walking the `test-plan
 
 **This file is reactivated, not closed out.** The original Phases 0–6 pass left a "Deferred / flagged" backlog and two characterized-not-fixed bugs. This revision (2026-08-18, same day) turns that backlog into **Phases 7–12** below — one actionable now, five blocked on external conditions named explicitly per phase. Per `TEST-PLAN-CONTEXT.md` v0.7's "resuming deferred or blocked work" guidance: this doc is not a delete-when-Phase-6-lands artifact — expect it to gain further phase blocks like this one whenever a blocked item's gating condition changes. Don't delete it; update its Status section instead when a new wave completes.
 
-**Phase 7 implemented 2026-08-18 (see its Result subsection below) — both known bugs fixed, suites green, not yet committed** (manual-review commit mode; awaiting the dev's own commit). Phases 8–12 remain blocked per their individually named gating conditions — re-check each before starting.
+**Phase 7 complete** (commit `92c3afa`, 2026-08-18 — see its Result subsection below): both known bugs fixed, suites green.
+
+**Paused here as of 2026-08-18.** Phases 8–12 all remain blocked per their individually named gating conditions (re-checked Phase 8's specifically — see its own subsection below, still blocked). The dev is now going to finish the Sections 2–7 UI rebuild directly (outside this process) — that's the exact condition Phase 8 (and, on the same gate, Phase 9) is waiting on — and then wants to come back and set up the UI test suite, i.e. resume straight into Phase 8/9 rather than re-running the earlier bootstrap phases. **When resuming:**
+1. Re-check `CONTEXT.md`'s Roadmap and the tab shell (`app/incidents/[id]/layout.tsx`'s `sectionLinks`) again, the same way this pause note did — don't assume the UI is stable just because the dev said they were going to finish it; confirm Fire/Medical/HazSit/Rescues/Responding Units no longer show `(not built yet)`.
+2. If stable, Phase 8 (Playwright E2E) is next in sequence, then Phase 9 (accessibility, rides on Phase 8's suite) — see their subsections below for shape.
+3. Phase 10 (visual regression) and Phase 11 (cross-browser) share the same UI-stability gate **plus** a live re-ask of their opt-in decision at pickup time — don't assume the earlier "no" still holds.
+4. Phase 12 (AI/LLM grading) is on an unrelated gate (the AI-assisted entry feature existing) — check separately, independent of the UI work.
 
 ## App shape, for context
 
@@ -58,6 +64,8 @@ Both bugs fixed as scoped, nothing deferred further:
 ## Phase 8 (BLOCKED — pending UI stabilization) — Playwright browser-driven E2E
 
 **Gating condition:** `CONTEXT.md`'s Roadmap says to run real browser E2E once Sections 2–7 are stable. Re-check that section before starting; do not start based on this doc's own age.
+
+**Re-checked 2026-08-18 — still blocked.** `CONTEXT.md`'s Roadmap section still describes Sections 2–7 as being built, not stable, and the live tab shell (`app/incidents/[id]/layout.tsx`'s `sectionLinks`) confirms it directly: Fire, Medical, HazSit, Rescues, and Responding Units all render as `(not built yet)`. Only Incident Core's six tabs and Exposures exist. Re-check again next time this phase comes up — don't reuse this note as evidence once the app has moved on.
 
 **Shape once unblocked:** `@playwright/test`, happy-path incident lifecycle (create → dispatch → type-gate → submit → review) — the same journey Phase 4's `test/db/incident-journey.db.test.ts` already exercises at the server-action level, now driven through real forms in a real browser. Reuse Phase 4's journey semantics as the spec for what "happy path" means; don't re-derive it from scratch. Runs as its own CI job (new workflow or an addition to `test-db.yml`'s nightly cadence, not the PR-gated fast job — browser E2E is slow) reusing whatever runtime `test-db.yml` already verifies, per the Runtime Viability Check discipline in `TEST-PLAN-CONTEXT.md`.
 

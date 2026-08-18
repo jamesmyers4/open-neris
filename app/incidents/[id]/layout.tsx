@@ -16,7 +16,7 @@ const incidentCoreTabs: { href: string; label: string }[] = [
 
 const sectionLinks: { label: string; moduleKeys: ModuleKey[]; href?: string }[] = [
   { label: 'Exposures', moduleKeys: ['exposures'], href: 'exposures' },
-  { label: 'Fire', moduleKeys: ['fire'] },
+  { label: 'Fire', moduleKeys: ['fire'], href: 'fire' },
   { label: 'Medical', moduleKeys: ['medical'] },
   { label: 'HazSit', moduleKeys: ['hazsit'] },
   { label: 'Rescues', moduleKeys: ['rescuesFf', 'rescuesNonFf'] },

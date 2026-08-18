@@ -45,6 +45,7 @@ export function buildIncidentDetail(overrides: Partial<IncidentDetail> = {}): In
     displacements: [],
     location: null,
     exposures: [],
+    fire: null,
     createdBy: {
       id: 'user_test_1',
       departmentId: 'dept_test_1',

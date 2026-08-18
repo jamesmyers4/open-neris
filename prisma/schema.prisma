@@ -217,16 +217,16 @@ model IncidentFire {
   incidentId                  String   @unique
   incident                    Incident @relation(fields: [incidentId], references: [id], onDelete: Cascade)
   fireSuppressionAppliance    String[]
-  fireWaterSupply              String
+  fireWaterSupply              String?
   fireInvestigationNeed        String
   fireInvestigationType        String[]
-  structureArrivalConditions   String
+  structureArrivalConditions   String?
   structureProgressionConditions Boolean?
-  structureDamage               String
+  structureDamage               String?
   structureFloorOfOrigin        Int?
-  structureRoomOfOrigin         String
-  structureFireCause            String
-  outsideFireCause               String
+  structureRoomOfOrigin         String?
+  structureFireCause            String?
+  outsideFireCause               String?
   outsideFireAcresBurned          Float?
 }
 

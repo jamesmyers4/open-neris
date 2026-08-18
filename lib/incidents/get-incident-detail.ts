@@ -10,6 +10,7 @@ export const getIncidentDetail = cache(async (id: string, departmentId: string) 
       dispatchComments: true,
       location: true,
       exposures: true,
+      fire: true,
       displacements: true,
       createdBy: true
     }

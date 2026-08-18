@@ -236,8 +236,8 @@ model IncidentMedical {
   incident               Incident @relation(fields: [incidentId], references: [id], onDelete: Cascade)
   patientCareReport      String?
   patientEvaluationCare  String
-  patientImprovedStatus  String
-  medicalDisposition     String
+  patientImprovedStatus  String?
+  medicalDisposition     String?
 
   @@index([incidentId])
 }

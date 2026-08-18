@@ -27,9 +27,24 @@ There are no `route.ts` API handlers in this app — every mutation is a Next.js
   import { mockSignedInAs, mockSignedOut, buildFakeUser } from '@/test/helpers/auth'
   ```
 
-## Known gotcha: `redirect()` in server actions
+- **`prisma-mock.ts`** — `createPrismaMock()` builds a hand-rolled mock (not a deep-mock library) covering exactly the `prisma.*` calls the 9 `actions.ts` files make, including a `$transaction` that handles both call shapes used in this codebase: the batch array form (`submitIncident`) and the interactive callback form (`createIncident`, where the callback receives the same mock as `tx`). Used for Phase 3's fast, no-container server-action tests.
 
-Every mutating action calls `redirect()` from `next/navigation` on success, which throws a `NEXT_REDIRECT` signal outside a real Next.js request context. Tests need to mock `next/navigation`'s `redirect` or catch-and-assert the thrown redirect target — a thrown error on the happy path here is expected framework behavior, not a test failure.
+- **`fixtures.ts`** — `buildIncidentDetail()`, typed directly against `IncidentDetail`. Doubles as the mocked return value for `prisma.incident.findFirst` in server-action tests that go through `getIncidentDetail` (e.g. `submitIncident`), not just Phase 1's pure-function tests.
+
+## Known gotchas: framework calls that throw/memoize outside a request context
+
+- **`redirect()`** (`next/navigation`) and **`revalidatePath()`** (`next/cache`) both throw an "Invariant: static generation store missing" error outside a real Next.js request context — confirmed empirically for both, not just documented for `redirect()`. Both are mocked globally as plain spies in `test/setup.ts` (wired into `vitest.config.ts` via `setupFiles`), so every action test gets a safe, assertable stand-in — `expect(redirect).toHaveBeenCalledWith(path)` — without needing to catch a thrown signal on every happy-path test.
+- **React's `cache()`** (wraps `getIncidentDetail`) does **not** memoize outside an actual render — confirmed empirically (two calls with identical args each invoke the wrapped function). No cross-test cache-pollution risk, but tests still use a unique incident ID per test as cheap insurance.
+- **`vi.mock('@/lib/prisma', factory)` cannot reference a top-level imported helper directly** — Vitest hoists `vi.mock` calls above imports, so `createPrismaMock` would be accessed before its import initializes (`ReferenceError`, confirmed empirically). Use a dynamic import inside the factory instead:
+
+  ```ts
+  vi.mock('@/lib/prisma', async () => {
+    const { createPrismaMock } = await import('@/test/helpers/prisma-mock')
+    return { prisma: createPrismaMock() }
+  })
+  ```
+
+- **`vi.clearAllMocks()` does not clear a standing `mockResolvedValue`/`mockReturnValue`** — confirmed empirically, it only clears call history. A value set in one test leaks into the next unless every test file uses `beforeEach(() => vi.resetAllMocks())`, which does clear implementations. This is safe for the global `redirect`/`revalidatePath` mocks too, since their reset state (a bare stub returning `undefined`) is identical to their intended default behavior.
 
 ## CI
 

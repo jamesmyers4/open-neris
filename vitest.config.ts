@@ -10,6 +10,7 @@ export default defineConfig({
   test: {
     environment: 'node',
     globals: false,
+    setupFiles: ['./test/setup.ts'],
     include: ['**/*.test.ts'],
     exclude: ['**/*.db.test.ts', '**/node_modules/**', '**/.next/**', 'vendor/**'],
     // Phase 0 ships zero real test files; later phases add them. Without this,

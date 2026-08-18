@@ -1,7 +1,8 @@
 import { execFileSync } from 'node:child_process'
 import path from 'node:path'
+import { expect } from 'vitest'
 import { PostgreSqlContainer, type StartedPostgreSqlContainer } from '@testcontainers/postgresql'
-import { PrismaClient } from '@prisma/client'
+import { PrismaClient, Prisma } from '@prisma/client'
 import { PrismaPg } from '@prisma/adapter-pg'
 
 // Invoke the Prisma CLI's JS entrypoint directly via `node`, rather than
@@ -37,4 +38,17 @@ export async function startTestDatabase(): Promise<TestDatabase> {
 export async function stopTestDatabase({ container, prisma }: TestDatabase): Promise<void> {
   await prisma.$disconnect()
   await container.stop()
+}
+
+// Asserts a promise rejects specifically with Postgres' unique-violation code
+// (Prisma P2002) — narrower than a generic rejects.toThrow(), so a failure
+// for an unrelated reason (e.g. a missing required field) doesn't false-pass.
+export async function expectUniqueConstraintViolation(promise: Promise<unknown>): Promise<void> {
+  try {
+    await promise
+    expect.unreachable('expected a unique constraint violation, but the write succeeded')
+  } catch (error) {
+    expect(error).toBeInstanceOf(Prisma.PrismaClientKnownRequestError)
+    expect((error as Prisma.PrismaClientKnownRequestError).code).toBe('P2002')
+  }
 }

@@ -72,12 +72,12 @@ describe('addDispatchComment — malformed/partial FormData', () => {
     expect(mockPrisma.incidentDispatchComment.create).not.toHaveBeenCalled()
   })
 
-  // Flagged finding, not a bug fix in this pass (see TESTING.md's Phase 5
-  // section): same z.coerce.date()-on-null quirk as createIncident's
-  // alarmTime. `timestamp: formData.get('timestamp')` has no `|| undefined`
-  // fallback, so an absent key becomes `null`, which z.coerce.date()
-  // silently coerces to the Unix epoch instead of failing validation.
-  it('silently defaults to the Unix epoch when timestamp is entirely absent, rather than rejecting (coercion quirk — see TESTING.md)', async () => {
+  // Fixed in Phase 7 (see TESTING.md): addDispatchComment's raw payload now
+  // reads `formData.get('timestamp') || undefined`, the same guard already
+  // used elsewhere in this codebase. An entirely-absent timestamp now fails
+  // validation instead of z.coerce.date() silently coercing null to the
+  // Unix epoch.
+  it('returns fieldErrors and attempts no DB write when timestamp is entirely absent', async () => {
     mockSignedInAs()
     mockPrisma.incident.findFirst.mockResolvedValue({ id: INCIDENT_ID })
     const fd = new FormData()
@@ -85,9 +85,7 @@ describe('addDispatchComment — malformed/partial FormData', () => {
 
     const result = await addDispatchComment(INCIDENT_ID, {}, fd)
 
-    expect(mockPrisma.incidentDispatchComment.create).toHaveBeenCalledWith({
-      data: { incidentId: INCIDENT_ID, comment: 'Crew on scene', timestamp: new Date('1970-01-01T00:00:00Z') }
-    })
-    expect(result.message).toBe('Comment added.')
+    expect(result.errors).toBeDefined()
+    expect(mockPrisma.incidentDispatchComment.create).not.toHaveBeenCalled()
   })
 })

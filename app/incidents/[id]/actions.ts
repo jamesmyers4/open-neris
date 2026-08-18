@@ -17,12 +17,18 @@ export async function submitIncident(incidentId: string): Promise<void> {
   const completeness = getSubmitCompleteness(incident)
   if (!completeness.complete) return
 
-  await prisma.$transaction([
-    prisma.incident.update({ where: { id: incidentId }, data: { reviewStatus: 'SUBMITTED' } }),
-    prisma.reviewEvent.create({
+  const submitted = await prisma.$transaction(async tx => {
+    const { count } = await tx.incident.updateMany({
+      where: { id: incidentId, reviewStatus: 'OPEN' },
+      data: { reviewStatus: 'SUBMITTED' }
+    })
+    if (count === 0) return false
+
+    await tx.reviewEvent.create({
       data: { incidentId, actorId: user.id, fromStatus: 'OPEN', toStatus: 'SUBMITTED' }
     })
-  ])
+    return true
+  })
 
-  revalidatePath(`/incidents/${incidentId}`)
+  if (submitted) revalidatePath(`/incidents/${incidentId}`)
 }

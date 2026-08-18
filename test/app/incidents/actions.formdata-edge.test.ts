@@ -49,27 +49,20 @@ describe('createIncident — malformed/partial FormData', () => {
     expect(mockPrisma.$transaction).not.toHaveBeenCalled()
   })
 
-  // Flagged finding, not a bug fix in this pass (see TESTING.md's Phase 5
-  // section): createIncident's raw payload reads `formData.get('alarmTime')`
-  // with no `|| undefined` fallback, unlike every other action in this
-  // codebase. When the key is absent, .get() returns `null`, and
-  // z.coerce.date() coerces `null` to the Unix epoch (confirmed empirically:
-  // `new Date(null)` === 1970-01-01, not Invalid Date) rather than failing
-  // validation — so an incident with a completely missing alarmTime silently
-  // succeeds with a 1970-01-01 alarm time instead of being rejected.
-  it('silently defaults to the Unix epoch when alarmTime is entirely absent, rather than rejecting (coercion quirk — see TESTING.md)', async () => {
+  // Fixed in Phase 7 (see TESTING.md): createIncident's raw payload now
+  // reads `formData.get('alarmTime') || undefined`, matching every other
+  // date field in this codebase. An entirely-absent alarmTime now fails
+  // validation instead of z.coerce.date() silently coercing null to the
+  // Unix epoch.
+  it('returns fieldErrors and attempts no DB write when alarmTime is entirely absent', async () => {
     const fd = baseFormData()
     fd.delete('alarmTime')
 
-    await createIncident({}, fd)
+    const result = await createIncident({}, fd)
 
-    expect(mockPrisma.incident.create).toHaveBeenCalledWith({
-      data: expect.objectContaining({
-        alarmTime: new Date('1970-01-01T00:00:00Z'),
-        incidentDate: new Date('1970-01-01T00:00:00Z')
-      })
-    })
-    expect(redirect).toHaveBeenCalled()
+    expect(result.errors).toBeDefined()
+    expect(mockPrisma.$transaction).not.toHaveBeenCalled()
+    expect(redirect).not.toHaveBeenCalled()
   })
 
   it('returns fieldErrors and attempts no DB write when alarmTime is a non-string File value', async () => {

@@ -65,7 +65,7 @@ export async function addDispatchComment(incidentId: string, _prevState: AddComm
 
   const raw = {
     comment: formData.get('comment'),
-    timestamp: formData.get('timestamp')
+    timestamp: formData.get('timestamp') || undefined
   }
 
   const parsed = dispatchCommentSchema.safeParse(raw)

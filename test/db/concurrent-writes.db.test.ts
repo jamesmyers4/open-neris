@@ -20,10 +20,12 @@ type Actions = {
 
 // Phase 5: concurrent-write races beyond the internalId counter (already
 // covered in Phase 2's ON CONFLICT ... DO UPDATE / concurrency tests). These
-// two actions have no optimistic-locking guard (no version column, no
-// conditional WHERE on the current state) — these tests characterize what
-// actually happens under a real race against a real Postgres instance,
-// rather than assuming either "it's fine" or "it's broken".
+// tests characterize what actually happens under a real race against a real
+// Postgres instance, rather than assuming either "it's fine" or "it's
+// broken". updateDispatch has no optimistic-locking guard (single-statement
+// UPDATE, last-write-wins by design); submitIncident gained one in Phase 7
+// (see TESTING.md) — a conditional updateMany re-checking reviewStatus at
+// write time.
 describe('Concurrent-write races (Testcontainers Postgres)', () => {
   let db: TestDatabase
   let actions: Actions
@@ -131,7 +133,7 @@ describe('Concurrent-write races (Testcontainers Postgres)', () => {
       return incidentId
     }
 
-    it('ends up SUBMITTED exactly once in reviewStatus, and does not corrupt the record, under two racing calls', async () => {
+    it('ends up SUBMITTED exactly once in reviewStatus, with exactly one ReviewEvent, under two racing calls', async () => {
       await setupCallerContext(db.prisma)
       const incidentId = await buildCompleteOpenIncident()
 
@@ -140,19 +142,14 @@ describe('Concurrent-write races (Testcontainers Postgres)', () => {
       const final = await db.prisma.incident.findUniqueOrThrow({ where: { id: incidentId } })
       expect(final.reviewStatus).toBe('SUBMITTED')
 
-      // No optimistic-locking guard exists on this action today (no version
-      // column, no conditional WHERE re-checking reviewStatus at write time)
-      // — both racing calls can read reviewStatus === 'OPEN' before either
-      // writes, so BOTH may proceed to write a ReviewEvent. This assertion
-      // documents that as a known, current gap rather than silently locking
-      // in "always exactly one event" as a false guarantee: at least one
-      // event is written, and every event that IS written is well-formed
-      // (correct from/to status), but the count is not guaranteed to be 1.
+      // Fixed in Phase 7 (see TESTING.md): submitIncident now re-checks
+      // reviewStatus at write time via a conditional updateMany inside the
+      // transaction, so only one of the two racing calls can win. This
+      // asserts the tightened guarantee — exactly one ReviewEvent, not just
+      // "at least one" — that wasn't safe to assert before the fix.
       const events = await db.prisma.reviewEvent.findMany({ where: { incidentId } })
-      expect(events.length).toBeGreaterThanOrEqual(1)
-      for (const event of events) {
-        expect(event).toMatchObject({ fromStatus: 'OPEN', toStatus: 'SUBMITTED' })
-      }
+      expect(events).toHaveLength(1)
+      expect(events[0]).toMatchObject({ fromStatus: 'OPEN', toStatus: 'SUBMITTED' })
     })
   })
 })

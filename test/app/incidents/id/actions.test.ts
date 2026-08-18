@@ -69,13 +69,13 @@ describe('submitIncident', () => {
     const user = mockSignedInAs({ id: 'user_1', departmentId: 'dept_1' })
     mockPrisma.incident.findFirst.mockResolvedValue(buildIncidentDetail({ id: INCIDENT_ID, reviewStatus: 'OPEN' }))
     vi.mocked(getSubmitCompleteness).mockReturnValue({ complete: true, missing: [] })
-    mockPrisma.incident.update.mockResolvedValue({ id: INCIDENT_ID, reviewStatus: 'SUBMITTED' })
+    mockPrisma.incident.updateMany.mockResolvedValue({ count: 1 })
     mockPrisma.reviewEvent.create.mockResolvedValue({ id: 'review_event_1' })
 
     await submitIncident(INCIDENT_ID)
 
-    expect(mockPrisma.incident.update).toHaveBeenCalledWith({
-      where: { id: INCIDENT_ID },
+    expect(mockPrisma.incident.updateMany).toHaveBeenCalledWith({
+      where: { id: INCIDENT_ID, reviewStatus: 'OPEN' },
       data: { reviewStatus: 'SUBMITTED' }
     })
     expect(mockPrisma.reviewEvent.create).toHaveBeenCalledWith({
@@ -83,6 +83,23 @@ describe('submitIncident', () => {
     })
     expect(mockPrisma.$transaction).toHaveBeenCalledTimes(1)
     expect(revalidatePath).toHaveBeenCalledWith(`/incidents/${INCIDENT_ID}`)
+  })
+
+  // Fixed in Phase 7 (see TESTING.md): submitIncident now re-checks
+  // reviewStatus at write time via a conditional updateMany, rather than
+  // writing unconditionally after an application-code-only OPEN check. This
+  // characterizes the losing side of that race — a request that read OPEN
+  // but lost the write to another request in between.
+  it('writes no ReviewEvent and does not revalidate when updateMany affects zero rows (lost the optimistic-locking race)', async () => {
+    mockSignedInAs({ id: 'user_1', departmentId: 'dept_1' })
+    mockPrisma.incident.findFirst.mockResolvedValue(buildIncidentDetail({ id: INCIDENT_ID, reviewStatus: 'OPEN' }))
+    vi.mocked(getSubmitCompleteness).mockReturnValue({ complete: true, missing: [] })
+    mockPrisma.incident.updateMany.mockResolvedValue({ count: 0 })
+
+    await submitIncident(INCIDENT_ID)
+
+    expect(mockPrisma.reviewEvent.create).not.toHaveBeenCalled()
+    expect(revalidatePath).not.toHaveBeenCalled()
   })
 
   it('propagates a failure from either half of the transaction rather than silently succeeding', async () => {
@@ -94,7 +111,7 @@ describe('submitIncident', () => {
     mockSignedInAs()
     mockPrisma.incident.findFirst.mockResolvedValue(buildIncidentDetail({ id: INCIDENT_ID, reviewStatus: 'OPEN' }))
     vi.mocked(getSubmitCompleteness).mockReturnValue({ complete: true, missing: [] })
-    mockPrisma.incident.update.mockResolvedValue({ id: INCIDENT_ID, reviewStatus: 'SUBMITTED' })
+    mockPrisma.incident.updateMany.mockResolvedValue({ count: 1 })
     mockPrisma.reviewEvent.create.mockRejectedValue(new Error('DB write failed'))
 
     await expect(submitIncident(INCIDENT_ID)).rejects.toThrow('DB write failed')

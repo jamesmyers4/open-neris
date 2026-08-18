@@ -4,44 +4,96 @@ Planning session output for `open-neris-app`, produced by walking the `test-plan
 
 ## Status
 
-**Phases 0–6 are complete** (commits `e04d125`..`34f4a19`, one commit per phase). Verified 2026-08-18: `npm run test` (301 tests, 38 files) and `npm run test:db` (35 tests, 6 files, Testcontainers-backed) both pass in full. Phase-by-phase conventions, helpers, findings, and known gotchas now live in `TESTING.md` — that's the living doc going forward, and it already reflects everything Phases 0–6 produced. This file no longer duplicates that content.
+**Phases 0–6 are complete** (commits `e04d125`..`34f4a19`, one commit per phase). Verified 2026-08-18: `npm run test` (301 tests, 38 files) and `npm run test:db` (35 tests, 6 files, Testcontainers-backed) both pass in full. Phase-by-phase conventions, helpers, findings, and known gotchas live in `TESTING.md` — that's the living doc for suite mechanics going forward.
 
-What remains below is background context — not a checklist — for whoever picks up the **Deferred / flagged** items next. Once those are worked through (or explicitly declined), this file can be deleted.
+**This file is reactivated, not closed out.** The original Phases 0–6 pass left a "Deferred / flagged" backlog and two characterized-not-fixed bugs. This revision (2026-08-18, same day) turns that backlog into **Phases 7–12** below — one actionable now, five blocked on external conditions named explicitly per phase. Per `TEST-PLAN-CONTEXT.md` v0.7's "resuming deferred or blocked work" guidance: this doc is not a delete-when-Phase-6-lands artifact — expect it to gain further phase blocks like this one whenever a blocked item's gating condition changes. Don't delete it; update its Status section instead when a new wave completes.
+
+**Phase 7 implemented 2026-08-18 (see its Result subsection below) — both known bugs fixed, suites green, not yet committed** (manual-review commit mode; awaiting the dev's own commit). Phases 8–12 remain blocked per their individually named gating conditions — re-check each before starting.
 
 ## App shape, for context
 
 - **No API route handlers.** Every mutation is a Next.js Server Action, called directly from a form. No HTTP surface — this is why supertest was never used (see `TESTING.md`'s "Why no supertest").
 - **DB layer directly reachable** — real Postgres (Neon in prod, Testcontainers in tests) via `lib/prisma.ts`'s singleton `PrismaClient`.
-- **UI surface is still thin and mid-rebuild.** Sections 2–7 rebuild is an open roadmap item per `CONTEXT.md` — this is the specific condition the two deferred UI-testing items below (Accessibility, Playwright E2E) are waiting on. Re-check `CONTEXT.md`'s Roadmap section before pulling either forward; don't assume the UI has stabilized without checking.
+- **UI surface is still thin and mid-rebuild.** Sections 2–7 rebuild is an open roadmap item per `CONTEXT.md` — this is the specific condition Phases 9–11 below are gated on. **Re-check `CONTEXT.md`'s Roadmap section before starting any of Phases 9–11** — don't assume the UI has stabilized without checking, and don't assume it hasn't just because this doc still lists them as blocked.
 
-## Decisions from the original planning session still relevant to deferred work
+## Decisions from the original planning session still relevant here
 
-- **Doc-touching policy** — `CONTEXT.md` and `CLAUDE.md` are left untouched unless the user explicitly confirms otherwise; this held throughout Phases 0–6 and should continue to hold for deferred-item work.
-- **Session/commit discipline** — one implementation category per session, manual review per commit, single-sitting phase sizing. Applied throughout Phases 0–6; apply the same discipline when picking up a deferred item.
-- **Stack already in place** — Vitest (`npm run test` / `npm run test:db`), Testcontainers Postgres, GitHub Actions (PR-gated fast job + nightly DB job). Any deferred item that needs new tooling (e.g. Playwright, an accessibility checker) is a net-new addition on top of this, not a replacement.
+- **Doc-touching policy** — `CONTEXT.md` and `CLAUDE.md` are left untouched unless the user explicitly confirms otherwise; holds for every phase below.
+- **Session/commit discipline** — one implementation category per session, manual review per commit, single-sitting phase sizing. Each phase below is scoped to fit that discipline; do not chain more than one phase into a single session.
+- **Stack already in place** — Vitest (`npm run test` / `npm run test:db`), Testcontainers Postgres, GitHub Actions (PR-gated fast job + nightly DB job). Any phase needing new tooling (Playwright, an accessibility checker) is a net-new addition on top of this, not a replacement.
 
-## Deferred / flagged, not default-on the original pass
+## Phase 7 — Fix the two known bugs (actionable now)
 
-- **Accessibility (WCAG/508)** — UI surface is one shared component plus inline per-tab forms, still mid-rebuild (Sections 2–7). Recommend deferring to its own targeted phase once the tab shell stabilizes, rather than auditing forms that are still likely to change shape. Check `CONTEXT.md`'s Roadmap for current UI status before starting.
-- **Visual regression** — off by default; UI too early/thin to be worth establishing baselines against yet. Same UI-stability gate as above.
-- **Cross-browser / responsive** — off by default, same reasoning as visual regression.
-- **Performance / load** — off by default; pre-launch, single-tenant-scale usage so far. Re-evaluate if usage patterns change.
-- **AI/LLM pipeline output testing** — N/A. The AI-assisted entry feature described in `CONTEXT.md`'s Roadmap (rebuilt from the old Playwright repo's `fir.ai.e2e.test.ts`) isn't built yet — nothing to grade. Revisit once that feature exists; `TEST-PLAN-CONTEXT.md`'s taxonomy entry on AI/LLM output has the grading pattern to use (LLM-as-judge over `{input, output, rubric}` triples, multiple judge models, opt-in/scheduled not blocking).
-- **BDD/Cucumber layer** — skipped by default; solo dev, no non-technical stakeholders needing a shared-language spec layer. Re-ask only if that changes (e.g. a non-technical stakeholder joins).
-- **Real browser-driven E2E (Playwright)** — deliberately not part of the original pass. `CONTEXT.md`'s roadmap says to run the full test-planning process "once the UI sections are stable," and Sections 2–7 were mid-rebuild at the time. Phase 4's server-action-level multi-action journeys (`test/db/incident-journey.db.test.ts`) cover the same user journeys in the meantime. Revisit as its own phase once the tab shell and forms settle — check `CONTEXT.md`'s Roadmap first.
-- **Golden master / characterization** — not used as its own category in the original pass; the one candidate (module-relevance) was verified against vendor CSVs instead of frozen unverified. No open item here unless a new candidate for this treatment surfaces.
+**Decision made 2026-08-18: fix both.** Not deferred further. Small, well-understood, low-risk; tests already exist to update rather than write from scratch.
 
-## Known gotcha still open (not a Phase 0–6 gap — a real, flagged application behavior)
+### 7a — `alarmTime` / `timestamp` epoch-default fix
 
-Two related findings from Phase 5, documented in full in `TESTING.md`'s "Findings flagged, not fixed, in this pass" section, are real bugs characterized as tests rather than fixed:
+Root cause (full detail in `TESTING.md`'s "Findings flagged, not fixed, in this pass"): `z.coerce.date()` coerces `null` to `1970-01-01T00:00:00.000Z` instead of failing, and two call sites read a `FormData` value with no `|| undefined` fallback — every other date field in the codebase already has this guard.
 
-- `createIncident`'s `alarmTime` and `addDispatchComment`'s `timestamp` silently default to the Unix epoch (1970-01-01) when the field is entirely absent from `FormData`, instead of being rejected — a `z.coerce.date()` + missing `|| undefined` guard issue. One-line fix available (`|| undefined`, matching every other date field in the codebase) but not applied since Phase 5's scope was characterization, not fixes.
-- `submitIncident` has no optimistic-locking guard — a genuine race can produce more than one `ReviewEvent` row for a single logical submission.
+- `app/incidents/actions.ts:28` — `alarmTime: formData.get('alarmTime')` → `alarmTime: formData.get('alarmTime') || undefined`.
+- `app/incidents/[id]/dispatch/actions.ts:68` — `timestamp: formData.get('timestamp')` → `timestamp: formData.get('timestamp') || undefined`.
+- Update both characterization tests (currently `it('silently defaults to the Unix epoch ... — see TESTING.md')` in each file's `*.formdata-edge.test.ts`) to assert the corrected behavior: a missing field now fails validation (`invalid_type`/`required`, matching the existing "field entirely absent" pattern already used for other required fields in the same files) instead of silently succeeding with epoch `1970-01-01`.
+- Update `TESTING.md`'s "Findings flagged, not fixed" section — this finding is now fixed; either remove the bullet or convert it into a one-line "fixed in Phase 7" note so the history isn't lost.
 
-Neither was in the original Deferred/flagged list — flagging here so a future session doesn't miss them. Decide whether to fix, and if so, do it as its own small session per the commit discipline above, not folded into deferred-item work.
+### 7b — `submitIncident` optimistic-locking guard
+
+Root cause: `submitIncident` (`app/incidents/[id]/actions.ts`) reads the incident, checks `reviewStatus === 'OPEN'` in application code, then writes unconditionally inside a `$transaction([...])` **batch array**. Under a genuine race, both calls can read `OPEN` before either writes, producing more than one `ReviewEvent` row.
+
+- No schema migration needed — `reviewStatus` itself is the natural guard column. Fix by switching from the batch-array transaction form to the **interactive callback form** (`prisma.$transaction(async tx => {...})`, already used elsewhere in this codebase, e.g. `createIncident`) and replacing the unconditional `prisma.incident.update(...)` with a conditional `prisma.incident.updateMany({ where: { id: incidentId, reviewStatus: 'OPEN' }, data: { reviewStatus: 'SUBMITTED' } })`. Check the returned `count`: if `0`, another request already won the race — bail out of the transaction without creating a `ReviewEvent` row (mirrors the existing early-return pattern already in this function for the non-`OPEN` and incomplete-completeness cases).
+- Update `test/db/concurrent-writes.db.test.ts`'s double-submit race test: it currently asserts only the safe invariants (ends `SUBMITTED`, every written event is well-formed) because exactly-one-`ReviewEvent` wasn't guaranteed before this fix. After the fix, tighten the assertion to exactly one `ReviewEvent` row for the race.
+- Update `TESTING.md`'s "Findings flagged, not fixed" section the same way as 7a.
+
+**Scope note:** this phase touches application code, not just tests — flag that plainly in the commit message/PR description rather than letting it read as a test-only change.
+
+### Result (2026-08-18) — complete
+
+Both bugs fixed as scoped, nothing deferred further:
+
+- **7a** — `app/incidents/actions.ts:28` and `app/incidents/[id]/dispatch/actions.ts:68` both now read `formData.get(...) || undefined`. The two `*.formdata-edge.test.ts` characterization tests ("silently defaults to the Unix epoch...") were rewritten to assert the fixed behavior: `result.errors` defined, no DB write attempted, no `redirect`.
+- **7b** — `submitIncident` (`app/incidents/[id]/actions.ts`) switched from the `$transaction([...])` batch-array form to the interactive-callback form, replacing the unconditional `incident.update` with a conditional `incident.updateMany({ where: { id, reviewStatus: 'OPEN' }, ... })`; a `count === 0` result bails out of the transaction (no `ReviewEvent`, no `revalidatePath`), mirroring the function's existing early-return style. `test/helpers/prisma-mock.ts` gained an `incident.updateMany` mock (both `$transaction` call shapes it already supported still work unchanged). `test/app/incidents/id/actions.test.ts` updated its success-path assertions to `updateMany` and gained a new test for the losing-race branch. `test/db/concurrent-writes.db.test.ts`'s double-submit race test was tightened from "at least one well-formed `ReviewEvent`" to "exactly one" — now a guaranteed invariant instead of a characterized gap.
+- `TESTING.md`'s "Findings flagged, not fixed" section was rewritten to "Findings flagged in Phase 5, fixed in Phase 7," with the fix detail for each.
+- Verified: `npm run test` (302 tests, 38 files — one net-new test), `npm run test:db` (35 tests, 6 files, Testcontainers/Docker-backed), `npx tsc --noEmit` all clean. `npm run lint` has 2 pre-existing `prefer-const` errors in `scripts/generate-neris-value-sets.ts`, unrelated to this phase and not touched.
+- Not yet committed — manual review per this repo's recorded commit mode; user will commit directly.
+
+## Phase 8 (BLOCKED — pending UI stabilization) — Playwright browser-driven E2E
+
+**Gating condition:** `CONTEXT.md`'s Roadmap says to run real browser E2E once Sections 2–7 are stable. Re-check that section before starting; do not start based on this doc's own age.
+
+**Shape once unblocked:** `@playwright/test`, happy-path incident lifecycle (create → dispatch → type-gate → submit → review) — the same journey Phase 4's `test/db/incident-journey.db.test.ts` already exercises at the server-action level, now driven through real forms in a real browser. Reuse Phase 4's journey semantics as the spec for what "happy path" means; don't re-derive it from scratch. Runs as its own CI job (new workflow or an addition to `test-db.yml`'s nightly cadence, not the PR-gated fast job — browser E2E is slow) reusing whatever runtime `test-db.yml` already verifies, per the Runtime Viability Check discipline in `TEST-PLAN-CONTEXT.md`.
+
+## Phase 9 (BLOCKED — pending UI stabilization, same gate as Phase 8) — Accessibility (WCAG/508)
+
+**Gating condition:** same as Phase 8 — re-check `CONTEXT.md`'s Roadmap.
+
+**Shape once unblocked:** axe-core integrated into Phase 8's Playwright suite (`@axe-core/playwright`) rather than a separate tool — sequence this after Phase 8, not before, since it rides on the same page interactions. Sweep the shared tab shell plus each stabilized per-tab form. Not optional/flagged-off — this is a default-on taxonomy category that was deferred for UI-churn reasons only, unlike Phases 10–11 below.
+
+## Phase 10 (BLOCKED — pending UI stabilization; also optional/opt-in) — Visual regression
+
+**Gating condition:** same UI-stability gate as Phase 8, **plus** a live re-ask of the opt-in decision at pickup time — this was off-by-default in the original pass specifically because baseline-maintenance cost wasn't worth it against a thin, still-changing UI. Don't assume the opt-in answer is still "no" just because it was "no" before, and don't assume it's now "yes" just because the UI has stabilized — ask.
+
+**Shape if opted in:** Playwright snapshot testing, layered onto Phase 8's suite once it exists.
+
+## Phase 11 (BLOCKED — pending UI stabilization; also optional/opt-in) — Cross-browser / responsive
+
+**Gating condition:** identical to Phase 10 — re-check UI stability and re-ask the opt-in decision, don't assume either answer carried forward.
+
+**Shape if opted in:** Playwright's multi-browser project config (Chromium/WebKit/Firefox) plus a small responsive-viewport matrix, layered onto Phase 8's suite.
+
+## Phase 12 (BLOCKED — pending the AI-assisted entry feature existing at all) — AI/LLM pipeline output testing
+
+**Gating condition:** independent of the UI-stability gate above. The AI-assisted entry feature described in `CONTEXT.md`'s Roadmap (rebuilt from the old Playwright repo's `fir.ai.e2e.test.ts`) isn't built yet — there is nothing to grade. Re-check `CONTEXT.md`'s Roadmap for this feature's status specifically, separate from the Sections 2–7 UI check.
+
+**Shape once unblocked:** LLM-as-judge over `{input, output, rubric}` triples per `TEST-PLAN-CONTEXT.md`'s taxonomy entry — an adapter/fixture supplies input/output pairs, grading is a pure function over them, more than one judge model/family per check, opt-in or scheduled rather than blocking on every push, hosted-judge escalation gated behind a data-sensitivity flag if graded content could be sensitive.
+
+## Not planned as phases — stays off, re-evaluate only if the trigger below fires
+
+- **Performance / load (k6)** — off by default; pre-launch, single-tenant-scale usage. Re-evaluate if usage patterns change (multiple departments, sustained concurrent load) — not a UI or feature gate, a scale gate.
+- **BDD/Cucumber layer** — skipped by default; solo dev, no non-technical stakeholder needing a shared-language spec layer. Re-ask only if that changes.
+- **Golden master / characterization** — not used as its own category; the one candidate (module-relevance) was verified against vendor CSVs instead of frozen unverified. No open item unless a new candidate surfaces.
 
 ## Pre-existing doc handling
 
-- **CONTEXT.md** — left untouched, per explicit confirmation in the original planning session. Still the source of truth for current UI/roadmap status — check it before starting any deferred item gated on UI stability.
+- **CONTEXT.md** — left untouched, per explicit confirmation in the original planning session. Still the source of truth for current UI/roadmap/feature status — check it before starting Phases 8–12, every time, not just once.
 - **CLAUDE.md** — not touched; it's the auto-regenerated `@AGENTS.md` pointer written by `next dev`, not a doc owned for extension.
-- **TESTING.md** — the living doc for suite conventions, helpers, and phase findings. Update it, not this file, as deferred items get implemented.
+- **TESTING.md** — the living doc for suite conventions, helpers, and phase findings. Update it, not this file, as each phase above gets implemented — including converting the two Phase 7 "flagged, not fixed" entries into "fixed" notes.
+- **TEST-MAINTAIN-CONTEXT.md** — new companion doc (v0.1, drafted 2026-08-18) for the still-unbuilt `test-maintain` skill. Not relevant to executing the phases above; relevant if/when `test-maintain` exists and this repo becomes a validation target for it.

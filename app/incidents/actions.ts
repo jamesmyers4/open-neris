@@ -25,7 +25,7 @@ export async function createIncident(_prevState: CreateIncidentState, formData: 
   const raw = {
     types,
     specialModifiers: formData.getAll('specialModifiers'),
-    alarmTime: formData.get('alarmTime')
+    alarmTime: formData.get('alarmTime') || undefined
   }
 
   const parsed = createIncidentSchema.safeParse(raw)

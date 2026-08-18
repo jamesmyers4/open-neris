@@ -6,3 +6,8 @@ export const incidentNarrativeTabSchema = z.object({
 })
 
 export type IncidentNarrativeTabInput = z.infer<typeof incidentNarrativeTabSchema>
+
+export const incidentNarrativeRequiredSchema = z.object({
+  narrativeImpediment: z.string().min(1),
+  narrativeOutcome: z.string().min(1)
+})

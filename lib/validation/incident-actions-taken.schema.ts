@@ -28,6 +28,15 @@ export const incidentNoActionReasonSchema = z.object({
   incidentNoActionReason: z.enum(TypeNoaction).optional()
 })
 
+export const incidentActionsTakenRequiredSchema = z.object({
+  hasActionsTaken: z.boolean(),
+  incidentNoActionReason: z.string().nullable()
+}).superRefine((data, ctx) => {
+  if (!data.hasActionsTaken && !data.incidentNoActionReason) {
+    ctx.addIssue({ code: z.ZodIssueCode.custom, path: ['incidentActionsTaken'], message: 'an action taken or a no-action reason is required' })
+  }
+})
+
 export type IncidentActionTakenEntryInput = z.infer<typeof incidentActionTakenEntrySchema>
 export type IncidentActionsTakenInput = z.infer<typeof incidentActionsTakenSchema>
 export type IncidentNoActionReasonInput = z.infer<typeof incidentNoActionReasonSchema>

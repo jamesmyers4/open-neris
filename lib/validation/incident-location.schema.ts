@@ -33,3 +33,8 @@ export const incidentLocationTabSchema = z.object({
 })
 
 export type IncidentLocationTabInput = z.infer<typeof incidentLocationTabSchema>
+
+export const incidentLocationRequiredSchema = z.object({
+  streetAddressComplete: z.string().min(1),
+  state: z.string().length(2)
+})

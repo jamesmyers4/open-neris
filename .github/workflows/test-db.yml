@@ -1,0 +1,25 @@
+name: Test (DB + journeys)
+
+on:
+  schedule:
+    # 09:00 UTC nightly
+    - cron: '0 9 * * *'
+  workflow_dispatch:
+
+jobs:
+  test-db:
+    name: DB + multi-action journey tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+
+      # Testcontainers manages its own Postgres container per test file;
+      # ubuntu-latest ships Docker preinstalled, so no extra service setup here.
+      - run: npm run test:db

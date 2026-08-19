@@ -10,11 +10,12 @@ Planning session output for `open-neris-app`, produced by walking the `test-plan
 
 **Phase 7 complete** (commit `92c3afa`, 2026-08-18 — see its Result subsection below): both known bugs fixed, suites green.
 
-**Paused here as of 2026-08-18.** Phases 8–12 all remain blocked per their individually named gating conditions (re-checked Phase 8's specifically — see its own subsection below, still blocked). The dev is now going to finish the Sections 2–7 UI rebuild directly (outside this process) — that's the exact condition Phase 8 (and, on the same gate, Phase 9) is waiting on — and then wants to come back and set up the UI test suite, i.e. resume straight into Phase 8/9 rather than re-running the earlier bootstrap phases. **When resuming:**
-1. Re-check `CONTEXT.md`'s Roadmap and the tab shell (`app/incidents/[id]/layout.tsx`'s `sectionLinks`) again, the same way this pause note did — don't assume the UI is stable just because the dev said they were going to finish it; confirm Fire/Medical/HazSit/Rescues/Responding Units no longer show `(not built yet)`.
-2. If stable, Phase 8 (Playwright E2E) is next in sequence, then Phase 9 (accessibility, rides on Phase 8's suite) — see their subsections below for shape.
-3. Phase 10 (visual regression) and Phase 11 (cross-browser) share the same UI-stability gate **plus** a live re-ask of their opt-in decision at pickup time — don't assume the earlier "no" still holds.
-4. Phase 12 (AI/LLM grading) is on an unrelated gate (the AI-assisted entry feature existing) — check separately, independent of the UI work.
+**Phase 8 complete** (2026-08-18 — see its Result subsection below). Sections 2–7's tab shell was re-checked against `app/incidents/[id]/layout.tsx` and confirmed stable (no `(not built yet)` labels remaining) before starting, per the pause note's own instructions.
+
+**Paused here as of 2026-08-18 (superseded for Phase 8 by the Result below).** Phases 9–12 remain blocked/optional per their individually named gating conditions. **When resuming:**
+1. Phase 9 (accessibility) rides on Phase 8's now-existing Playwright suite — see its subsection below for shape.
+2. Phase 10 (visual regression) and Phase 11 (cross-browser) share the UI-stability gate (now cleared) **plus** a live re-ask of their opt-in decision at pickup time — don't assume the earlier "no" still holds.
+3. Phase 12 (AI/LLM grading) is on an unrelated gate (the AI-assisted entry feature existing) — check separately, independent of the UI work.
 
 ## App shape, for context
 
@@ -61,13 +62,20 @@ Both bugs fixed as scoped, nothing deferred further:
 - Verified: `npm run test` (302 tests, 38 files — one net-new test), `npm run test:db` (35 tests, 6 files, Testcontainers/Docker-backed), `npx tsc --noEmit` all clean. `npm run lint` has 2 pre-existing `prefer-const` errors in `scripts/generate-neris-value-sets.ts`, unrelated to this phase and not touched.
 - Not yet committed — manual review per this repo's recorded commit mode; user will commit directly.
 
-## Phase 8 (BLOCKED — pending UI stabilization) — Playwright browser-driven E2E
+## Phase 8 — Playwright browser-driven E2E
 
-**Gating condition:** `CONTEXT.md`'s Roadmap says to run real browser E2E once Sections 2–7 are stable. Re-check that section before starting; do not start based on this doc's own age.
+**Gating condition (cleared 2026-08-18):** `CONTEXT.md`'s Roadmap said to run real browser E2E once Sections 2–7 are stable. Re-checked the live tab shell (`app/incidents/[id]/layout.tsx`'s `sectionLinks`) directly before starting: Fire, Medical, HazSit, Rescues, and Responding Units all render as real links now, no `(not built yet)` labels remaining.
 
-**Re-checked 2026-08-18 — still blocked.** `CONTEXT.md`'s Roadmap section still describes Sections 2–7 as being built, not stable, and the live tab shell (`app/incidents/[id]/layout.tsx`'s `sectionLinks`) confirms it directly: Fire, Medical, HazSit, Rescues, and Responding Units all render as `(not built yet)`. Only Incident Core's six tabs and Exposures exist. Re-check again next time this phase comes up — don't reuse this note as evidence once the app has moved on.
+**Shape:** `@playwright/test`, happy-path incident lifecycle (create → dispatch → type-gate → submit) — the same journey Phase 4's `test/db/incident-journey.db.test.ts` already exercises at the server-action level, now driven through real forms in a real browser. Reused Phase 4's journey semantics as the spec for what "happy path" means (same field values, same FIRE/STRUCTURE_FIRE type, same dispatch times) rather than re-deriving it. "Review" in the original phase description is folded into the final assertion (the Overview tab's status badge reading `SUBMITTED`) rather than a separate reviewer-role UI step — that UI doesn't exist yet per `CONTEXT.md`'s Roadmap.
 
-**Shape once unblocked:** `@playwright/test`, happy-path incident lifecycle (create → dispatch → type-gate → submit → review) — the same journey Phase 4's `test/db/incident-journey.db.test.ts` already exercises at the server-action level, now driven through real forms in a real browser. Reuse Phase 4's journey semantics as the spec for what "happy path" means; don't re-derive it from scratch. Runs as its own CI job (new workflow or an addition to `test-db.yml`'s nightly cadence, not the PR-gated fast job — browser E2E is slow) reusing whatever runtime `test-db.yml` already verifies, per the Runtime Viability Check discipline in `TEST-PLAN-CONTEXT.md`.
+### Result (2026-08-18) — complete, local-only
+
+- `test/e2e/incident-lifecycle.spec.ts` — one spec, signs in as a real Clerk test user (via `@clerk/testing/playwright`'s ticket-based `clerk.signIn({ emailAddress })`, not the password strategy — see `TESTING.md`'s "E2E suite" section for why that mattered, not just style), creates a FIRE/STRUCTURE_FIRE incident through the real `/incidents/new` form, fills Dispatch/Location/Narrative/Actions-Taken through their real tabs, asserts the Overview tab's completeness gate blocks submission on the missing Fire module (`Fire: investigation need` visible, no Submit button rendered — the UI's own gate, not a rejected click), fills the Fire tab, then submits and asserts the status badge reads `SUBMITTED`. Passed twice in a row locally, not flaky.
+- `test/e2e/global-setup.ts` owns the whole server/DB lifecycle itself (Playwright's `webServer` option starts before `globalSetup` runs, confirmed against the installed package — too late to point a fresh container's `DATABASE_URL` at). Full mechanics, the `distDir` isolation fix (`next dev` refused to start a second instance against the developer's own running `.next` dir), and the Clerk-auth gotcha are all documented in `TESTING.md`'s new "E2E suite" section rather than duplicated here.
+- `test/helpers/testcontainers-db.ts` — extracted the vitest-independent half of `test/helpers/db.ts`'s container start/stop, so Playwright's global setup doesn't pull `vitest` in as a dependency. `test/helpers/db.ts` re-exports it; existing DB tests unaffected (`npm run test:db` re-verified green after the extraction).
+- **Decision made 2026-08-18, mid-phase: local-only for this pass, not wired into CI.** Real browser E2E is the first suite needing real Clerk secrets (`CLERK_SECRET_KEY`, a test user's password, a Clerk user ID) — `TESTING.md`'s CI section previously stated neither workflow needs real secrets; wiring this into GitHub Actions would break that invariant deliberately, not by accident, so it's deferred to an explicit follow-up rather than bundled into this phase. `npm run test:e2e` runs locally now; `.github/workflows/test-e2e.yml` (or an addition to an existing workflow) plus the actual GitHub Actions secrets are the follow-up's scope.
+- Verified: `npm run test:e2e` passes (2/2 runs). `npm run test` (309 tests, 38 files) and `npm run test:db` (36 tests, 6 files) both re-verified green after this phase's changes. `npx tsc --noEmit` clean.
+- Not yet committed — manual review per this repo's recorded commit mode; user will commit directly.
 
 ## Phase 9 (BLOCKED — pending UI stabilization, same gate as Phase 8) — Accessibility (WCAG/508)
 

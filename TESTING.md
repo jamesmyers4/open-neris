@@ -96,3 +96,41 @@ Closing step per `TEST-PLAN-CONTEXT.md`: reviewed what Phases 0-5 already wrote,
 - `.github/workflows/test-db.yml` — nightly (09:00 UTC) plus manual `workflow_dispatch`. DB + journey suite. `ubuntu-latest` ships Docker preinstalled, so no extra service container setup is needed — Testcontainers manages its own.
 
 Both jobs use Node 24 (matches this environment's verified runtime) and rely on `npm ci`'s `postinstall` to run `prisma generate`. Neither job needs real secrets (`DATABASE_URL`, Clerk keys): the fast suite mocks auth/DB directly, and `test:db` provisions its own throwaway Postgres rather than touching the real Neon dev database.
+
+`npm run test:e2e` (Playwright, see below) is **not** wired into either workflow yet — deliberately deferred to a follow-up per `TEST-PLAN.md`'s Phase 8, since it's the first suite that needs real Clerk secrets in CI, breaking the "no real secrets needed" invariant above on purpose. Local-only for now.
+
+## E2E suite (Phase 8, `test/e2e/`)
+
+Real-browser Playwright tests driving the actual forms, not server actions called directly — the one suite in this repo where the request genuinely goes through Clerk's middleware (`proxy.ts`) end to end. `npm run test:e2e` runs it; `npx playwright show-trace <path>` opens a failed run's trace (auto-captured via `trace: 'retain-on-failure'`).
+
+### Why this suite owns its own server lifecycle
+
+Playwright's built-in `webServer` config option starts **before** `globalSetup` runs (confirmed against the installed `playwright` package's task ordering — `createPluginSetupTasks` precedes `globalSetups` in `createGlobalSetupTasks`). That's too late here: the dev server needs `DATABASE_URL` pointed at a Testcontainers Postgres that doesn't exist yet at that point. So `test/e2e/global-setup.ts` skips `webServer` entirely and owns the whole lifecycle itself, in order:
+
+1. Start a throwaway Postgres container and migrate it (`test/helpers/testcontainers-db.ts` — the vitest-independent half of what `test/helpers/db.ts` already did; extracted so Playwright's global setup doesn't pull `vitest` in as a dependency, `test/helpers/db.ts` now re-exports it and keeps only its vitest-`expect`-based `expectUniqueConstraintViolation`).
+2. Seed one `Department` and one `User` row whose `clerkId` matches a real Clerk test user (see "The Clerk test user" below) — the app's own `getCurrentAppUser()` bridges Clerk's `auth()` to this row, same as production.
+3. Call `@clerk/testing/playwright`'s `clerkSetup()` to fetch a testing token from Clerk's Backend API.
+4. Spawn `next dev -p 3100` (the CLI's JS entrypoint directly via `node`, same Windows `.cmd`-shim-avoidance reasoning as the Prisma CLI invocation above) against the container's `DATABASE_URL`, and poll until it responds.
+5. Return an async teardown function — Playwright's documented pattern (`globalSetup`'s return value is called automatically after the run) — that kills the server and stops the container.
+
+Runs serially (`fullyParallel: false`, `workers: 1` in `playwright.config.ts`): one shared server and DB for the whole run, same reasoning as `vitest.db.config.ts`'s `fileParallelism: false`.
+
+### Isolated `distDir`
+
+`next dev` refuses to start a second instance against the same `.next` directory even on a different port — it detected the developer's own `npm run dev` running locally and exited before serving anything. Fixed by giving the E2E server its own build directory: `next.config.ts` reads `NEXT_E2E_DIST_DIR` (only `global-setup.ts` sets it, to `.next-e2e`) and passes it as Next's `distDir`. `next dev` also auto-rewrites `tsconfig.json`'s `include` to add `.next-e2e/types/**/*.ts` the first time it runs against that dir — expected, harmless, same mechanism that already added the `.next/types/**/*.ts` entry.
+
+### The Clerk test user
+
+A dedicated user in the Clerk **dev** instance, password-enabled, separate from any real account — never a real user's credentials. Create one via the Clerk dashboard (Users → Create user, set email + password), then add three values to `.env` (never committed — see `.env.example` for the placeholders):
+
+```
+E2E_CLERK_USER_EMAIL=
+E2E_CLERK_USER_PASSWORD=
+E2E_CLERK_USER_ID=
+```
+
+The spec itself signs in via `clerk.signIn({ page, emailAddress: ... })` — the **ticket-based** strategy, not `signInParams: { strategy: 'password', ... }`. The password strategy was tried first and produced a genuine bug, not a flake: Clerk's client-side password verification triggers a real session-token-refresh network round-trip through the hosted Frontend API, which threw `Clerk: Refreshing the session token resulted in an infinite redirect loop` in this environment and never actually established a session (confirmed the keys themselves were correct via a direct Backend API call to `GET /v1/users/{id}` before concluding it was the strategy, not the credentials). The ticket-based `emailAddress` form sidesteps that path entirely — it mints a sign-in token server-side via the Backend API and applies it client-side, no password round-trip. `E2E_CLERK_USER_PASSWORD` is kept in `.env` regardless, since the user needs a password set for `password_enabled: true` on the Clerk side even though the spec's sign-in call doesn't use it directly.
+
+### One real gotcha worth flagging for future specs
+
+A URL regex used to confirm "we've landed on the new incident's detail page" — `/\/incidents\/[^/]+$/` — also matches `/incidents/new` itself (`new` satisfies `[^/]+` too). `await expect(page).toHaveURL(...)` polls and resolves the instant *any* URL satisfies the pattern, so on a fast redirect this could resolve against the pre-redirect URL rather than waiting for the real one, silently capturing the wrong page. Fixed by waiting for something that only exists on the actual destination (the tab nav's "Dispatch" link) before trusting the URL, with the regex itself tightened to `/\/incidents\/(?!new$)[^/]+$/` as a backstop. Worth the same care in any future spec that captures a created-record's URL from a redirect.

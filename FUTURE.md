@@ -26,3 +26,5 @@
 ## Dashboard - Useful reports and statistics
 
 -research all the canned reports they are used to seeing - what format and what data and replicate that in a dashboard and individual report list.
+
+## plan through the UI colors and layout and functions better

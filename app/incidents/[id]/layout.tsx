@@ -20,7 +20,7 @@ const sectionLinks: { label: string; moduleKeys: ModuleKey[]; href?: string }[] 
   { label: 'Medical', moduleKeys: ['medical'], href: 'medical' },
   { label: 'HazSit', moduleKeys: ['hazsit'], href: 'hazsit' },
   { label: 'Rescues', moduleKeys: ['rescuesFf', 'rescuesNonFf'], href: 'rescues' },
-  { label: 'Responding Units', moduleKeys: ['unitResponse'] }
+  { label: 'Responding Units', moduleKeys: ['unitResponse'], href: 'unit-response' }
 ]
 
 export default async function IncidentLayout({

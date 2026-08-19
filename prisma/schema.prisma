@@ -333,14 +333,14 @@ model IncidentUnitResponse {
   unitIdReported      String?
   unitStaffingReported Int?
   unableToDispatch    Boolean?
-  responseMode        String
+  responseMode        String?
   timeDispatch        DateTime?
   timeEnrouteToScene  DateTime?
   timeOnScene         DateTime?
   timeCanceledEnroute DateTime?
   timeStaging         DateTime?
   timeUnitClear       DateTime?
-  transportMode       String
+  transportMode       String?
 
   @@index([incidentId])
 }

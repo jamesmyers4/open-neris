@@ -50,6 +50,7 @@ export function buildIncidentDetail(overrides: Partial<IncidentDetail> = {}): In
     hazsit: null,
     rescuesFf: [],
     rescuesNonFf: [],
+    unitResponses: [],
     createdBy: {
       id: 'user_test_1',
       departmentId: 'dept_test_1',

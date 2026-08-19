@@ -15,6 +15,7 @@ export const getIncidentDetail = cache(async (id: string, departmentId: string) 
       hazsit: { include: { chemicals: true } },
       rescuesFf: true,
       rescuesNonFf: true,
+      unitResponses: true,
       displacements: true,
       createdBy: true
     }

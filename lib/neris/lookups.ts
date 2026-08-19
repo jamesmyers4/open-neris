@@ -2,6 +2,7 @@ import typeIncidentRaw from './generated/type_incident.json'
 import typeLocPlaceRaw from './generated/type_loc_place.json'
 import typeActionTacticRaw from './generated/type_action_tactic.json'
 import typeLocationUseRaw from './generated/type_location_use.json'
+import typeHazardUnitRaw from './generated/type_hazard_unit.json'
 
 export type IncidentTypeOption = {
   value1: string
@@ -63,3 +64,12 @@ export const locationUseOptions: LocationUseOption[] = typeLocationUseRaw
     description1: row.description_1,
     description2: row.description_2
   }))
+
+export type HazardUnitOption = {
+  value: string
+  description: string
+}
+
+export const hazardUnitOptions: HazardUnitOption[] = typeHazardUnitRaw
+  .filter(row => row.active === 'TRUE')
+  .map(row => ({ value: row.value, description: row.description }))

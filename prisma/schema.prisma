@@ -259,10 +259,10 @@ model IncidentHazardChemical {
   chemicalName      String?
   releaseOccurred   Boolean?
   amountEst         Float?
-  amountEstUnits    String
-  physicalState     String
-  releaseInto       String
-  releaseCause      String
+  amountEstUnits    String?
+  physicalState     String?
+  releaseInto       String?
+  releaseCause      String?
 
   @@index([hazsitId])
 }

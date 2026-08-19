@@ -18,7 +18,7 @@ const sectionLinks: { label: string; moduleKeys: ModuleKey[]; href?: string }[] 
   { label: 'Exposures', moduleKeys: ['exposures'], href: 'exposures' },
   { label: 'Fire', moduleKeys: ['fire'], href: 'fire' },
   { label: 'Medical', moduleKeys: ['medical'], href: 'medical' },
-  { label: 'HazSit', moduleKeys: ['hazsit'] },
+  { label: 'HazSit', moduleKeys: ['hazsit'], href: 'hazsit' },
   { label: 'Rescues', moduleKeys: ['rescuesFf', 'rescuesNonFf'] },
   { label: 'Responding Units', moduleKeys: ['unitResponse'] }
 ]

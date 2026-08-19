@@ -19,7 +19,7 @@ const sectionLinks: { label: string; moduleKeys: ModuleKey[]; href?: string }[] 
   { label: 'Fire', moduleKeys: ['fire'], href: 'fire' },
   { label: 'Medical', moduleKeys: ['medical'], href: 'medical' },
   { label: 'HazSit', moduleKeys: ['hazsit'], href: 'hazsit' },
-  { label: 'Rescues', moduleKeys: ['rescuesFf', 'rescuesNonFf'] },
+  { label: 'Rescues', moduleKeys: ['rescuesFf', 'rescuesNonFf'], href: 'rescues' },
   { label: 'Responding Units', moduleKeys: ['unitResponse'] }
 ]
 

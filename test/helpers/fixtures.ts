@@ -48,6 +48,8 @@ export function buildIncidentDetail(overrides: Partial<IncidentDetail> = {}): In
     fire: null,
     medicals: [],
     hazsit: null,
+    rescuesFf: [],
+    rescuesNonFf: [],
     createdBy: {
       id: 'user_test_1',
       departmentId: 'dept_test_1',

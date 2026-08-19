@@ -272,9 +272,10 @@ model IncidentRescueFf {
   incidentId             String
   incident               Incident @relation(fields: [incidentId], references: [id], onDelete: Cascade)
   birthMonthYear         String?
-  gender                 String
-  race                   String
+  gender                 String?
+  race                   String?
   casualtyRank           String?
+  casualtyService        Float?
   rescueType             String
   primaryMode            String?
   actions                String[]
@@ -284,9 +285,10 @@ model IncidentRescueFf {
   ritActivated           Boolean?
   roomType               String?
   elevationType          String?
+  gasIsolation           Boolean?
   removalPathType        String?
   fireRelativeTime       String?
-  casualtyType           String
+  casualtyType           String?
   casualtyClassification String?
   linkedUnitId           String
   reportedUnitId         String?
@@ -305,18 +307,19 @@ model IncidentRescueNonFf {
   incidentId         String
   incident           Incident @relation(fields: [incidentId], references: [id], onDelete: Cascade)
   birthMonthYear     String?
-  gender             String
-  race               String
-  rescueType         String
+  gender             String?
+  race               String?
+  rescueType         String?
   presenceKnown      String?
   primaryMode        String?
   actions            String[]
   impedimentTypes    String[]
   roomType           String?
   elevationType      String?
+  gasIsolation       Boolean?
   removalPathType    String?
   fireRelativeTime   String?
-  casualtyType       String
+  casualtyType       String?
   casualtyCause      String?
 
   @@index([incidentId])

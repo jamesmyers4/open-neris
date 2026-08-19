@@ -20,5 +20,10 @@ export const incidentHazardChemicalSchema = z.object({
   releaseCause: z.enum(TypeHazardCause).optional()
 })
 
+export const incidentHazsitRequiredSchema = z.object({
+  hazsitDisposition: z.string().min(1),
+  hazsitEvacuated: z.number().int().nonnegative()
+})
+
 export type IncidentHazsitInput = z.infer<typeof incidentHazsitSchema>
 export type IncidentHazardChemicalInput = z.infer<typeof incidentHazardChemicalSchema>

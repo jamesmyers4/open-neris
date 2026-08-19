@@ -99,12 +99,67 @@ describe('getSubmitCompleteness', () => {
     expect(result.missing.length).toBeGreaterThanOrEqual(6)
   })
 
-  it('runs the same required checks regardless of the incident types set (all tagged core)', () => {
+  it('runs the same core-only checks regardless of incident types, when no type-gated module applies', () => {
     const withNoTypes = getSubmitCompleteness(completeIncident({ types: [] }))
-    const withFireType = getSubmitCompleteness(
-      completeIncident({ types: [{ id: 't1', incidentId: 'incident_test_1', value1: 'FIRE', value2: null, value3: null, isPrimary: true, sortOrder: 0 }] })
-    )
     expect(withNoTypes.complete).toBe(true)
-    expect(withFireType.complete).toBe(true)
+  })
+
+  const fireType = { id: 't1', incidentId: 'incident_test_1', value1: 'FIRE', value2: null, value3: null, isPrimary: true, sortOrder: 0 }
+  const medicalType = { id: 't1', incidentId: 'incident_test_1', value1: 'MEDICAL', value2: null, value3: null, isPrimary: true, sortOrder: 0 }
+  const hazsitType = { id: 't1', incidentId: 'incident_test_1', value1: 'HAZSIT', value2: null, value3: null, isPrimary: true, sortOrder: 0 }
+
+  it('reports missing fire details for a FIRE incident with no fire record', () => {
+    const result = getSubmitCompleteness(completeIncident({ types: [fireType], fire: null }))
+    expect(result.complete).toBe(false)
+    expect(result.missing.map(m => m.path)).toEqual(['fireInvestigationNeed'])
+  })
+
+  it('is satisfied by a FIRE incident with fire investigation-need recorded', () => {
+    const result = getSubmitCompleteness(completeIncident({
+      types: [fireType],
+      fire: {
+        id: 'fire_1', incidentId: 'incident_test_1', fireSuppressionAppliance: [], fireWaterSupply: null,
+        fireInvestigationNeed: 'NO', fireInvestigationType: [], structureArrivalConditions: null,
+        structureProgressionConditions: null, structureDamage: null, structureFloorOfOrigin: null,
+        structureRoomOfOrigin: null, structureFireCause: null, outsideFireCause: null, outsideFireAcresBurned: null
+      }
+    }))
+    expect(result.complete).toBe(true)
+  })
+
+  it('does not require fire details for a non-FIRE incident', () => {
+    const result = getSubmitCompleteness(completeIncident({ types: [], fire: null }))
+    expect(result.complete).toBe(true)
+  })
+
+  it('reports missing patient record for a MEDICAL incident with no medicals', () => {
+    const result = getSubmitCompleteness(completeIncident({ types: [medicalType], medicals: [] }))
+    expect(result.complete).toBe(false)
+    expect(result.missing.map(m => m.path)).toEqual(['hasPatientRecord'])
+  })
+
+  it('is satisfied by a MEDICAL incident with at least one patient record', () => {
+    const result = getSubmitCompleteness(completeIncident({
+      types: [medicalType],
+      medicals: [{
+        id: 'med_1', incidentId: 'incident_test_1', patientCareReport: null,
+        patientEvaluationCare: 'PATIENT_EVALUATED_CARE_PROVIDED', patientImprovedStatus: null, medicalDisposition: null
+      }]
+    }))
+    expect(result.complete).toBe(true)
+  })
+
+  it('reports missing hazsit details for a HAZSIT incident with no hazsit record', () => {
+    const result = getSubmitCompleteness(completeIncident({ types: [hazsitType], hazsit: null }))
+    expect(result.complete).toBe(false)
+    expect(result.missing.map(m => m.path).sort()).toEqual(['hazsitDisposition', 'hazsitEvacuated'])
+  })
+
+  it('is satisfied by a HAZSIT incident with disposition and evacuated count recorded', () => {
+    const result = getSubmitCompleteness(completeIncident({
+      types: [hazsitType],
+      hazsit: { id: 'hazsit_1', incidentId: 'incident_test_1', hazsitDisposition: 'COMPLETED_FIRE_SERVICE_ONLY', hazsitEvacuated: 0, chemicals: [] }
+    }))
+    expect(result.complete).toBe(true)
   })
 })

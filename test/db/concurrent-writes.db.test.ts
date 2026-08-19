@@ -16,6 +16,7 @@ type Actions = {
   updateLocation: typeof import('@/app/incidents/[id]/location/actions').updateLocation
   updateNarrative: typeof import('@/app/incidents/[id]/narrative/actions').updateNarrative
   setNoActionReason: typeof import('@/app/incidents/[id]/actions-taken/actions').setNoActionReason
+  upsertFire: typeof import('@/app/incidents/[id]/fire/actions').upsertFire
 }
 
 // Phase 5: concurrent-write races beyond the internalId counter (already
@@ -36,13 +37,14 @@ describe('Concurrent-write races (Testcontainers Postgres)', () => {
     ;(globalThis as { prisma?: unknown }).prisma = undefined
     process.env.DATABASE_URL = db.container.getConnectionUri()
 
-    const [incidentActions, idActions, dispatchActions, locationActions, narrativeActions, actionsTakenActions] = await Promise.all([
+    const [incidentActions, idActions, dispatchActions, locationActions, narrativeActions, actionsTakenActions, fireActions] = await Promise.all([
       import('@/app/incidents/actions'),
       import('@/app/incidents/[id]/actions'),
       import('@/app/incidents/[id]/dispatch/actions'),
       import('@/app/incidents/[id]/location/actions'),
       import('@/app/incidents/[id]/narrative/actions'),
-      import('@/app/incidents/[id]/actions-taken/actions')
+      import('@/app/incidents/[id]/actions-taken/actions'),
+      import('@/app/incidents/[id]/fire/actions')
     ])
 
     actions = {
@@ -51,7 +53,8 @@ describe('Concurrent-write races (Testcontainers Postgres)', () => {
       updateDispatch: dispatchActions.updateDispatch,
       updateLocation: locationActions.updateLocation,
       updateNarrative: narrativeActions.updateNarrative,
-      setNoActionReason: actionsTakenActions.setNoActionReason
+      setNoActionReason: actionsTakenActions.setNoActionReason,
+      upsertFire: fireActions.upsertFire
     }
   })
 
@@ -129,6 +132,10 @@ describe('Concurrent-write races (Testcontainers Postgres)', () => {
       const noActionFd = new FormData()
       noActionFd.set('incidentNoActionReason', 'CANCELLED')
       await actions.setNoActionReason(incidentId, {}, noActionFd)
+
+      const fireFd = new FormData()
+      fireFd.set('fireInvestigationNeed', 'NO')
+      await actions.upsertFire(incidentId, {}, fireFd)
 
       return incidentId
     }

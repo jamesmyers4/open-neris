@@ -17,6 +17,8 @@ type Actions = {
   updateLocation: typeof import('@/app/incidents/[id]/location/actions').updateLocation
   updateNarrative: typeof import('@/app/incidents/[id]/narrative/actions').updateNarrative
   setNoActionReason: typeof import('@/app/incidents/[id]/actions-taken/actions').setNoActionReason
+  upsertFire: typeof import('@/app/incidents/[id]/fire/actions').upsertFire
+  createMedical: typeof import('@/app/incidents/[id]/medical/actions').createMedical
 }
 
 describe('Incident lifecycle journeys (multi-action, real DB)', () => {
@@ -33,14 +35,17 @@ describe('Incident lifecycle journeys (multi-action, real DB)', () => {
     ;(globalThis as { prisma?: unknown }).prisma = undefined
     process.env.DATABASE_URL = db.container.getConnectionUri()
 
-    const [incidentActions, idActions, dispatchActions, locationActions, narrativeActions, actionsTakenActions] = await Promise.all([
-      import('@/app/incidents/actions'),
-      import('@/app/incidents/[id]/actions'),
-      import('@/app/incidents/[id]/dispatch/actions'),
-      import('@/app/incidents/[id]/location/actions'),
-      import('@/app/incidents/[id]/narrative/actions'),
-      import('@/app/incidents/[id]/actions-taken/actions')
-    ])
+    const [incidentActions, idActions, dispatchActions, locationActions, narrativeActions, actionsTakenActions, fireActions, medicalActions] =
+      await Promise.all([
+        import('@/app/incidents/actions'),
+        import('@/app/incidents/[id]/actions'),
+        import('@/app/incidents/[id]/dispatch/actions'),
+        import('@/app/incidents/[id]/location/actions'),
+        import('@/app/incidents/[id]/narrative/actions'),
+        import('@/app/incidents/[id]/actions-taken/actions'),
+        import('@/app/incidents/[id]/fire/actions'),
+        import('@/app/incidents/[id]/medical/actions')
+      ])
 
     actions = {
       createIncident: incidentActions.createIncident,
@@ -48,7 +53,9 @@ describe('Incident lifecycle journeys (multi-action, real DB)', () => {
       updateDispatch: dispatchActions.updateDispatch,
       updateLocation: locationActions.updateLocation,
       updateNarrative: narrativeActions.updateNarrative,
-      setNoActionReason: actionsTakenActions.setNoActionReason
+      setNoActionReason: actionsTakenActions.setNoActionReason,
+      upsertFire: fireActions.upsertFire,
+      createMedical: medicalActions.createMedical
     }
   })
 
@@ -100,7 +107,17 @@ describe('Incident lifecycle journeys (multi-action, real DB)', () => {
     noActionFd.set('incidentNoActionReason', 'CANCELLED')
     await actions.setNoActionReason(incidentId, {}, noActionFd)
 
-    // Every required core field is now present — submit succeeds.
+    // Core fields are complete, but this is a FIRE incident — fire-module
+    // details are still missing, so submit must still be rejected.
+    await actions.submitIncident(incidentId)
+    const afterThirdAttempt = await db.prisma.incident.findUniqueOrThrow({ where: { id: incidentId } })
+    expect(afterThirdAttempt.reviewStatus).toBe('OPEN')
+
+    const fireFd = new FormData()
+    fireFd.set('fireInvestigationNeed', 'NO')
+    await actions.upsertFire(incidentId, {}, fireFd)
+
+    // Every required core and fire-module field is now present — submit succeeds.
     await actions.submitIncident(incidentId)
     const final = await db.prisma.incident.findUniqueOrThrow({ where: { id: incidentId } })
     expect(final.reviewStatus).toBe('SUBMITTED')
@@ -110,7 +127,7 @@ describe('Incident lifecycle journeys (multi-action, real DB)', () => {
   })
 
   describe('type-gating path', () => {
-    async function runMinimalCoreJourney(value1: string): Promise<string> {
+    async function runCoreOnlyJourney(value1: string): Promise<string> {
       const incidentId = await createAndGetIncidentId(actions.createIncident, typesFormData(value1))
 
       const dispatchFd = new FormData()
@@ -133,34 +150,47 @@ describe('Incident lifecycle journeys (multi-action, real DB)', () => {
       noActionFd.set('incidentNoActionReason', 'CANCELLED')
       await actions.setNoActionReason(incidentId, {}, noActionFd)
 
-      await actions.submitIncident(incidentId)
-      const result = await db.prisma.incident.findUniqueOrThrow({ where: { id: incidentId } })
-      return result.reviewStatus
+      return incidentId
     }
 
-    // TODO_pending_sections_2_7_completeness_gate: lib/incidents/get-submit-completeness.ts
-    // tags all four of its checks (dispatch/location/narrative/actions-taken)
-    // as 'core', which checkIncidentCompleteness always includes regardless
-    // of incident type — so the submit gate does NOT currently differ by
-    // module relevance at all. That's correct today: Sections 2-7
-    // (Fire/Medical/HazSit/etc, see CONTEXT.md's Roadmap) are still
-    // mid-rebuild and don't have required-schemas wired into this gate yet.
-    // This test is a deliberate tripwire, not stale documentation: once
-    // Sections 2-7's required fields DO get wired into getSubmitCompleteness,
-    // a FIRE-primary incident should start requiring fire-module fields that
-    // a MEDICAL-primary incident doesn't (or vice versa), and this test
-    // SHOULD start failing. That failure is the correct, intended outcome —
-    // it means the gate genuinely changed — so update this test to assert
-    // the new (differing) behavior rather than treating the failure as a
-    // regression to silently fix.
-    it('TODO_pending_sections_2_7_completeness_gate: FIRE-primary and MEDICAL-primary journeys currently have identical completeness requirements', async () => {
+    // get-submit-completeness.ts now wires Fire/Medical/HazSit required-schemas
+    // in alongside the always-on core checks, gated by module relevance — so a
+    // FIRE-primary incident and a MEDICAL-primary incident genuinely diverge:
+    // core-only completion blocks both (each is missing its own module's
+    // required data), and each unblocks independently once its own
+    // module-specific data is added.
+    it('a FIRE-primary incident is blocked on fire-module completeness that a MEDICAL-primary incident does not require', async () => {
       await setupCallerContext(db.prisma)
 
-      const fireStatus = await runMinimalCoreJourney('FIRE')
-      const medicalStatus = await runMinimalCoreJourney('MEDICAL')
+      const fireIncidentId = await runCoreOnlyJourney('FIRE')
+      await actions.submitIncident(fireIncidentId)
+      const blocked = await db.prisma.incident.findUniqueOrThrow({ where: { id: fireIncidentId } })
+      expect(blocked.reviewStatus).toBe('OPEN')
 
-      expect(fireStatus).toBe('SUBMITTED')
-      expect(medicalStatus).toBe('SUBMITTED')
+      const fireFd = new FormData()
+      fireFd.set('fireInvestigationNeed', 'NO')
+      await actions.upsertFire(fireIncidentId, {}, fireFd)
+
+      await actions.submitIncident(fireIncidentId)
+      const submitted = await db.prisma.incident.findUniqueOrThrow({ where: { id: fireIncidentId } })
+      expect(submitted.reviewStatus).toBe('SUBMITTED')
+    })
+
+    it('a MEDICAL-primary incident is blocked until at least one patient record exists', async () => {
+      await setupCallerContext(db.prisma)
+
+      const medicalIncidentId = await runCoreOnlyJourney('MEDICAL')
+      await actions.submitIncident(medicalIncidentId)
+      const blocked = await db.prisma.incident.findUniqueOrThrow({ where: { id: medicalIncidentId } })
+      expect(blocked.reviewStatus).toBe('OPEN')
+
+      const medicalFd = new FormData()
+      medicalFd.set('patientEvaluationCare', 'PATIENT_EVALUATED_CARE_PROVIDED')
+      await actions.createMedical(medicalIncidentId, {}, medicalFd)
+
+      await actions.submitIncident(medicalIncidentId)
+      const submitted = await db.prisma.incident.findUniqueOrThrow({ where: { id: medicalIncidentId } })
+      expect(submitted.reviewStatus).toBe('SUBMITTED')
     })
   })
 })

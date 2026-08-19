@@ -12,7 +12,11 @@ const MISSING_FIELD_LABELS: Record<string, string> = {
   state: 'Location: state',
   narrativeImpediment: 'Narrative: impediment',
   narrativeOutcome: 'Narrative: outcome',
-  incidentActionsTaken: 'Actions Taken: an action taken or a no-action reason'
+  incidentActionsTaken: 'Actions Taken: an action taken or a no-action reason',
+  fireInvestigationNeed: 'Fire: investigation need',
+  hasPatientRecord: 'Medical: at least one patient record',
+  hazsitDisposition: 'HazSit: disposition',
+  hazsitEvacuated: 'HazSit: people/businesses evacuated'
 }
 
 export default async function IncidentOverviewPage(props: PageProps<'/incidents/[id]'>) {

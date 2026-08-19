@@ -26,4 +26,8 @@ export const incidentFireSchema = z.object({
   outsideFireAcresBurned: z.number().nonnegative().optional()
 })
 
+export const incidentFireRequiredSchema = z.object({
+  fireInvestigationNeed: z.string().min(1)
+})
+
 export type IncidentFireInput = z.infer<typeof incidentFireSchema>

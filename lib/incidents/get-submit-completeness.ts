@@ -4,6 +4,9 @@ import { incidentDispatchRequiredSchema } from '../validation/incident-dispatch.
 import { incidentLocationRequiredSchema } from '../validation/incident-location.schema'
 import { incidentNarrativeRequiredSchema } from '../validation/incident-narrative.schema'
 import { incidentActionsTakenRequiredSchema } from '../validation/incident-actions-taken.schema'
+import { incidentFireRequiredSchema } from '../validation/incident-fire.schema'
+import { incidentMedicalRequiredSchema } from '../validation/incident-medical.schema'
+import { incidentHazsitRequiredSchema } from '../validation/incident-hazsit.schema'
 
 export function getSubmitCompleteness(incident: IncidentDetail): CompletenessResult {
   const checks: ModuleCheck[] = [
@@ -38,6 +41,28 @@ export function getSubmitCompleteness(incident: IncidentDetail): CompletenessRes
       data: {
         hasActionsTaken: incident.actionsTaken.length > 0,
         incidentNoActionReason: incident.incidentNoActionReason
+      }
+    },
+    {
+      module: 'fire',
+      schema: incidentFireRequiredSchema,
+      data: {
+        fireInvestigationNeed: incident.fire?.fireInvestigationNeed ?? null
+      }
+    },
+    {
+      module: 'medical',
+      schema: incidentMedicalRequiredSchema,
+      data: {
+        hasPatientRecord: incident.medicals.length > 0
+      }
+    },
+    {
+      module: 'hazsit',
+      schema: incidentHazsitRequiredSchema,
+      data: {
+        hazsitDisposition: incident.hazsit?.hazsitDisposition ?? null,
+        hazsitEvacuated: incident.hazsit?.hazsitEvacuated ?? null
       }
     }
   ]

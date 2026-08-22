@@ -5,7 +5,8 @@ import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
 import { createUnitResponse, type CreateUnitResponseState } from "./actions";
 import { TypeResponseMode } from "@/lib/neris/generated/enums";
-import { DateTime24Field, type DateTimeValue } from "@/components/DateTime24Field";
+import { DateTime24Field, isoToDateTimeValue, type DateTimeValue } from "@/components/DateTime24Field";
+import { DateTimeQuickSelect } from "@/components/DateTimeQuickSelect";
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -18,7 +19,19 @@ function SubmitButton() {
 
 const emptyTime: DateTimeValue = { date: "", time: "" };
 
-export function UnitResponseForm({ incidentId }: { incidentId: string }) {
+export function UnitResponseForm({
+  incidentId,
+  carryOver,
+}: {
+  incidentId: string;
+  carryOver: {
+    alarmTime: string;
+    dispatchTimeCallArrival: string | null;
+    dispatchTimeCallAnswer: string | null;
+    dispatchTimeCallCreate: string | null;
+    timeIncidentClear: string | null;
+  };
+}) {
   const initialState: CreateUnitResponseState = {};
   const action = createUnitResponse.bind(null, incidentId);
   const [state, formAction] = useActionState(action, initialState);
@@ -38,6 +51,14 @@ export function UnitResponseForm({ incidentId }: { incidentId: string }) {
   const [unitClear, setUnitClear] = useState<DateTimeValue>(emptyTime);
 
   const allErrors = state.errors ? Object.values(state.errors).flat().filter((e): e is string => Boolean(e)) : [];
+
+  const carryOverOptions = [
+    { label: "Use alarm time", value: isoToDateTimeValue(carryOver.alarmTime) },
+    { label: "Use call received at dispatch", value: isoToDateTimeValue(carryOver.dispatchTimeCallArrival) },
+    { label: "Use call answered time", value: isoToDateTimeValue(carryOver.dispatchTimeCallAnswer) },
+    { label: "Use call created time", value: isoToDateTimeValue(carryOver.dispatchTimeCallCreate) },
+    { label: "Use incident clear time", value: isoToDateTimeValue(carryOver.timeIncidentClear) }
+  ];
 
   return (
     <form action={formAction} className="space-y-6">
@@ -142,6 +163,7 @@ export function UnitResponseForm({ incidentId }: { incidentId: string }) {
             onDateChange={(d) => setDispatch((v) => ({ ...v, date: d }))}
             onTimeChange={(t) => setDispatch((v) => ({ ...v, time: t }))}
           />
+          <DateTimeQuickSelect options={carryOverOptions} onSelect={setDispatch} />
           <DateTime24Field
             label="En route to scene"
             fieldName="timeEnrouteToScene"
@@ -150,6 +172,7 @@ export function UnitResponseForm({ incidentId }: { incidentId: string }) {
             onDateChange={(d) => setEnroute((v) => ({ ...v, date: d }))}
             onTimeChange={(t) => setEnroute((v) => ({ ...v, time: t }))}
           />
+          <DateTimeQuickSelect options={carryOverOptions} onSelect={setEnroute} />
           <DateTime24Field
             label="On scene"
             fieldName="timeOnScene"
@@ -158,6 +181,7 @@ export function UnitResponseForm({ incidentId }: { incidentId: string }) {
             onDateChange={(d) => setOnScene((v) => ({ ...v, date: d }))}
             onTimeChange={(t) => setOnScene((v) => ({ ...v, time: t }))}
           />
+          <DateTimeQuickSelect options={carryOverOptions} onSelect={setOnScene} />
           <DateTime24Field
             label="Staging"
             fieldName="timeStaging"
@@ -166,6 +190,7 @@ export function UnitResponseForm({ incidentId }: { incidentId: string }) {
             onDateChange={(d) => setStaging((v) => ({ ...v, date: d }))}
             onTimeChange={(t) => setStaging((v) => ({ ...v, time: t }))}
           />
+          <DateTimeQuickSelect options={carryOverOptions} onSelect={setStaging} />
           <DateTime24Field
             label="Canceled en route"
             fieldName="timeCanceledEnroute"
@@ -174,6 +199,7 @@ export function UnitResponseForm({ incidentId }: { incidentId: string }) {
             onDateChange={(d) => setCanceledEnroute((v) => ({ ...v, date: d }))}
             onTimeChange={(t) => setCanceledEnroute((v) => ({ ...v, time: t }))}
           />
+          <DateTimeQuickSelect options={carryOverOptions} onSelect={setCanceledEnroute} />
           <DateTime24Field
             label="Unit clear"
             fieldName="timeUnitClear"
@@ -181,6 +207,10 @@ export function UnitResponseForm({ incidentId }: { incidentId: string }) {
             time={unitClear.time}
             onDateChange={(d) => setUnitClear((v) => ({ ...v, date: d }))}
             onTimeChange={(t) => setUnitClear((v) => ({ ...v, time: t }))}
+          />
+          <DateTimeQuickSelect
+            options={[...carryOverOptions, { label: "Use on-scene time", value: onScene }]}
+            onSelect={setUnitClear}
           />
         </div>
       </section>

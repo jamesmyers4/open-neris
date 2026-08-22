@@ -15,6 +15,7 @@ export default async function DispatchTabPage(props: PageProps<'/incidents/[id]/
     <div className="space-y-6">
       <DispatchForm
         incidentId={incident.id}
+        alarmTime={incident.alarmTime.toISOString()}
         initial={{
           dispatchTimeCallArrival: incident.dispatchTimeCallArrival?.toISOString() ?? null,
           dispatchTimeCallAnswer: incident.dispatchTimeCallAnswer?.toISOString() ?? null,

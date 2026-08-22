@@ -15,7 +15,16 @@ export default async function NewUnitResponsePage(props: PageProps<'/incidents/[
   return (
     <main className="mx-auto max-w-2xl p-8">
       <h1 className="mb-6 text-2xl font-bold">Add unit</h1>
-      <UnitResponseForm incidentId={incident.id} />
+      <UnitResponseForm
+        incidentId={incident.id}
+        carryOver={{
+          alarmTime: incident.alarmTime.toISOString(),
+          dispatchTimeCallArrival: incident.dispatchTimeCallArrival?.toISOString() ?? null,
+          dispatchTimeCallAnswer: incident.dispatchTimeCallAnswer?.toISOString() ?? null,
+          dispatchTimeCallCreate: incident.dispatchTimeCallCreate?.toISOString() ?? null,
+          timeIncidentClear: incident.timeIncidentClear?.toISOString() ?? null
+        }}
+      />
     </main>
   )
 }

@@ -4,17 +4,8 @@ import { useState } from "react";
 import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
 import { updateDispatch, addDispatchComment, type DispatchFormState, type AddCommentState } from "./actions";
-import { DateTime24Field, type DateTimeValue } from "@/components/DateTime24Field";
-
-function toLocalParts(iso: string | null): DateTimeValue {
-  if (!iso) return { date: "", time: "" };
-  const d = new Date(iso);
-  const pad = (n: number) => String(n).padStart(2, "0");
-  return {
-    date: `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`,
-    time: `${pad(d.getHours())}:${pad(d.getMinutes())}`,
-  };
-}
+import { DateTime24Field, isoToDateTimeValue, type DateTimeValue } from "@/components/DateTime24Field";
+import { DateTimeQuickSelect } from "@/components/DateTimeQuickSelect";
 
 function isComplete(v: DateTimeValue): boolean {
   return Boolean(v.date && v.time);
@@ -35,9 +26,11 @@ function SaveButton({ label }: { label: string }) {
 
 export function DispatchForm({
   incidentId,
+  alarmTime,
   initial,
 }: {
   incidentId: string;
+  alarmTime: string;
   initial: {
     dispatchTimeCallArrival: string | null;
     dispatchTimeCallAnswer: string | null;
@@ -53,10 +46,12 @@ export function DispatchForm({
   const action = updateDispatch.bind(null, incidentId);
   const [state, formAction] = useActionState(action, initialState);
 
-  const [arrival, setArrival] = useState<DateTimeValue>(() => toLocalParts(initial.dispatchTimeCallArrival));
-  const [answered, setAnswered] = useState<DateTimeValue>(() => toLocalParts(initial.dispatchTimeCallAnswer));
-  const [created, setCreated] = useState<DateTimeValue>(() => toLocalParts(initial.dispatchTimeCallCreate));
-  const [cleared, setCleared] = useState<DateTimeValue>(() => toLocalParts(initial.timeIncidentClear));
+  const [arrival, setArrival] = useState<DateTimeValue>(() => isoToDateTimeValue(initial.dispatchTimeCallArrival));
+  const [answered, setAnswered] = useState<DateTimeValue>(() => isoToDateTimeValue(initial.dispatchTimeCallAnswer));
+  const [created, setCreated] = useState<DateTimeValue>(() => isoToDateTimeValue(initial.dispatchTimeCallCreate));
+  const [cleared, setCleared] = useState<DateTimeValue>(() => isoToDateTimeValue(initial.timeIncidentClear));
+
+  const alarmTimeOption = { label: "Use alarm time", value: isoToDateTimeValue(alarmTime) };
 
   const [automaticAlarm, setAutomaticAlarm] = useState(
     initial.dispatchAutomaticAlarm === null ? "" : String(initial.dispatchAutomaticAlarm),
@@ -99,6 +94,7 @@ export function DispatchForm({
               }}
               onTimeChange={(t) => setArrival((v) => ({ ...v, time: t }))}
             />
+            <DateTimeQuickSelect options={[alarmTimeOption]} onSelect={setArrival} />
             <DateTime24Field
               label="Call answered"
               fieldName="dispatchTimeCallAnswer"
@@ -112,6 +108,7 @@ export function DispatchForm({
               }}
               onTimeChange={(t) => setAnswered((v) => ({ ...v, time: t }))}
             />
+            <DateTimeQuickSelect options={[alarmTimeOption]} onSelect={setAnswered} />
             <DateTime24Field
               label="Call created"
               fieldName="dispatchTimeCallCreate"
@@ -124,6 +121,7 @@ export function DispatchForm({
               }}
               onTimeChange={(t) => setCreated((v) => ({ ...v, time: t }))}
             />
+            <DateTimeQuickSelect options={[alarmTimeOption]} onSelect={setCreated} />
             <DateTime24Field
               label="Incident clear"
               fieldName="timeIncidentClear"
@@ -131,6 +129,10 @@ export function DispatchForm({
               time={cleared.time}
               onDateChange={(d) => setCleared((v) => ({ ...v, date: d }))}
               onTimeChange={(t) => setCleared((v) => ({ ...v, time: t }))}
+            />
+            <DateTimeQuickSelect
+              options={[alarmTimeOption, { label: "Use call created time", value: created }]}
+              onSelect={setCleared}
             />
           </div>
         </section>

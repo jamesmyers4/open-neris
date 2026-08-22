@@ -5,6 +5,16 @@ const minutes = Array.from({ length: 60 }, (_, i) => String(i).padStart(2, "0"))
 
 export type DateTimeValue = { date: string; time: string };
 
+export function isoToDateTimeValue(iso: string | null): DateTimeValue {
+  if (!iso) return { date: "", time: "" };
+  const d = new Date(iso);
+  const pad = (n: number) => String(n).padStart(2, "0");
+  return {
+    date: `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`,
+    time: `${pad(d.getHours())}:${pad(d.getMinutes())}`,
+  };
+}
+
 export function DateTime24Field({
   label,
   fieldName,

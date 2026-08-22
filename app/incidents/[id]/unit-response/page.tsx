@@ -16,7 +16,16 @@ export default async function UnitResponseListPage(props: PageProps<'/incidents/
     return (
       <section className="space-y-3 text-sm">
         <h2 className="font-semibold">Responding units</h2>
-        <UnitResponseForm incidentId={incident.id} />
+        <UnitResponseForm
+          incidentId={incident.id}
+          carryOver={{
+            alarmTime: incident.alarmTime.toISOString(),
+            dispatchTimeCallArrival: incident.dispatchTimeCallArrival?.toISOString() ?? null,
+            dispatchTimeCallAnswer: incident.dispatchTimeCallAnswer?.toISOString() ?? null,
+            dispatchTimeCallCreate: incident.dispatchTimeCallCreate?.toISOString() ?? null,
+            timeIncidentClear: incident.timeIncidentClear?.toISOString() ?? null
+          }}
+        />
       </section>
     )
   }

@@ -6,7 +6,30 @@ This is an independent, community project. It is not built, endorsed, or support
 
 ## Status
 
-Early. Schema and validation are in place; the app itself is not built yet. See `CONTEXT.md` for architecture decisions and open questions.
+The core incident workflow is built and working end to end: create an incident, work through it tab by tab (Dispatch, Location, People & Displacement, Mutual Aid, Narrative, Actions Taken), add the repeatable sections that apply to it (Exposures, Fire, Medical, HazSit, Rescues, Responding Units), pass the final validation gate, and submit. Type-gating already hides sections that don't apply to a given incident type.
+
+Right now this is fine-tuning, not new sections — form UX, field-level polish, time-entry components, that kind of thing.
+
+Not done yet:
+- Actual submission to NERIS. The workflow ends at `Submitted` today; the API call to NERIS itself isn't wired up.
+- Personnel tracking. Employee/roster data, shift and apparatus assignment, and department-level access control all depend on this. It's next after the current UI is settled.
+- Review & Approve. The status chain and audit log exist in the schema; the reviewer/chief UI (kickback notes, email and in-app alerts) doesn't.
+- Admin department settings screen.
+- Attachments, reporting/dashboard views.
+
+See `CONTEXT.md` for the architecture decisions and reasoning behind all of this, and `UI_KICKOFF.md` for the section-by-section build log.
+
+## What's next
+
+**Personnel tracking** is the next real feature, once the current UI stops moving. It's the gating dependency for a few other things:
+
+- Access control inside the app — who can see and do what.
+- Multi-department support — a firehouse only sees its own data, with room for a parent organization (district/region) to see across the departments under it.
+- Auto-populating crew, shift, and apparatus context on an incident instead of typing it by hand.
+
+Once personnel exists as a concept, other department services planned on top of it: certifications, fit-test tracking, annual physicals, SCBA/breathing-apparatus compliance — the kind of federal/departmental recordkeeping that runs alongside NERIS rather than through it.
+
+Test coverage is solid for what's built — 300+ unit/integration tests, a Testcontainers-backed DB suite, and a Playwright browser E2E suite (local only for now, not yet wired into CI). See `TESTING.md`.
 
 ## Stack
 
@@ -25,6 +48,16 @@ npm run dev
 ```
 
 `--recurse-submodules` matters — the NERIS field definitions live in `vendor/neris-framework` as a submodule, not a static copy, since NERIS is still in beta and its schema is expected to change.
+
+## Testing
+
+```bash
+npm run test       # fast suite, no external dependencies
+npm run test:db    # Testcontainers-backed, needs Docker running
+npm run test:e2e   # Playwright, browser-driven, needs a real Clerk test user
+```
+
+Details and gotchas in `TESTING.md`.
 
 ## Contributing
 

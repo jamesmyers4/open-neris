@@ -6,9 +6,9 @@ This is an independent, community project. It is not built, endorsed, or support
 
 ## Status
 
-The core incident workflow is built and working end to end: create an incident, work through it tab by tab (Dispatch, Location, People & Displacement, Mutual Aid, Narrative, Actions Taken), add the repeatable sections that apply to it (Exposures, Fire, Medical, HazSit, Rescues, Responding Units), pass the final validation gate, and submit. Type-gating already hides sections that don't apply to a given incident type.
+The core incident workflow is built and working end to end: create an incident, work through it tab by tab (Dispatch, Location, People & Displacement, Mutual Aid, Narrative, Actions Taken), add the repeatable sections that apply to it (Exposures, Fire, Medical, HazSit, Rescues, Responding Units), pass the final validation gate, and submit. Type-gating already hides sections that don't apply to a given incident type, and date/time fields carry over between tabs via quick-select rather than needing re-entry.
 
-Right now this is fine-tuning, not new sections — form UX, field-level polish, time-entry components, that kind of thing.
+This build pass is done. Next up is Personnel tracking, then the NERIS API feed itself — see `FUTURE.md`.
 
 Not done yet:
 - Actual submission to NERIS. The workflow ends at `Submitted` today; the API call to NERIS itself isn't wired up.
@@ -17,7 +17,7 @@ Not done yet:
 - Admin department settings screen.
 - Attachments, reporting/dashboard views.
 
-See `CONTEXT.md` for the architecture decisions and reasoning behind all of this, and `UI_KICKOFF.md` for the section-by-section build log.
+See `CONTEXT.md` for the architecture decisions and reasoning behind all of this, and `FUTURE.md` for what's planned next.
 
 ## What's next
 

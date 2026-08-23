@@ -6,6 +6,9 @@ import { useFormStatus } from "react-dom";
 import { updateDispatch, addDispatchComment, type DispatchFormState, type AddCommentState } from "./actions";
 import { DateTime24Field, isoToDateTimeValue, type DateTimeValue } from "@/components/DateTime24Field";
 import { DateTimeQuickSelect } from "@/components/DateTimeQuickSelect";
+import { RequiredFieldIndicator } from "@/components/RequiredFieldIndicator";
+import { incidentDispatchRequiredSchema } from "@/lib/validation/incident-dispatch.schema";
+import { missingPaths } from "@/lib/validation/missing-paths";
 
 function isComplete(v: DateTimeValue): boolean {
   return Boolean(v.date && v.time);
@@ -61,6 +64,10 @@ export function DispatchForm({
   const [finalDisposition, setFinalDisposition] = useState(initial.dispatchFinalDisposition ?? "");
 
   const allErrors = state.errors ? Object.values(state.errors).flat().filter((e): e is string => Boolean(e)) : [];
+
+  const missing = missingPaths(incidentDispatchRequiredSchema, {
+    timeIncidentClear: isComplete(cleared) ? new Date(`${cleared.date}T${cleared.time}:00`) : undefined,
+  });
 
   const arrivalMax = isComplete(answered) ? answered : isComplete(created) ? created : undefined;
   const answeredMin = isComplete(arrival) ? arrival : undefined;
@@ -123,7 +130,12 @@ export function DispatchForm({
             />
             <DateTimeQuickSelect options={[alarmTimeOption]} onSelect={setCreated} />
             <DateTime24Field
-              label="Incident clear"
+              label={
+                <>
+                  Incident clear
+                  <RequiredFieldIndicator show={missing.has("timeIncidentClear")} hint="required to submit" />
+                </>
+              }
               fieldName="timeIncidentClear"
               date={cleared.date}
               time={cleared.time}

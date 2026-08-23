@@ -5,6 +5,9 @@ import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
 import { createExposure, type CreateExposureState } from "../actions";
 import { TypeDisplaceCause, TypeExposureDamage, TypeExposureItem, TypeExposureLoc } from "@/lib/neris/generated/enums";
+import { RequiredFieldIndicator } from "@/components/RequiredFieldIndicator";
+import { incidentExposureSchema } from "@/lib/validation/incident-exposure.schema";
+import { missingPaths } from "@/lib/validation/missing-paths";
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -31,6 +34,15 @@ export function ExposureForm({ incidentId }: { incidentId: string }) {
 
   const allErrors = state.errors ? Object.values(state.errors).flat().filter((e): e is string => Boolean(e)) : [];
 
+  const missing = missingPaths(incidentExposureSchema, {
+    exposureType: exposureType || undefined,
+    exposureItem: exposureItem || undefined,
+    exposureDamage: exposureDamage || undefined,
+    exposurePeoplePresent: peoplePresent === "" ? undefined : peoplePresent === "true",
+    exposureDisplacedNumber: displacedNumber === "" ? undefined : Number(displacedNumber),
+    exposureDisplacedCauses: displacedCauses,
+  });
+
   return (
     <form action={formAction} className="space-y-6">
       {state.message && <p className="rounded bg-amber-50 p-3 text-sm text-amber-900">{state.message}</p>}
@@ -46,6 +58,7 @@ export function ExposureForm({ incidentId }: { incidentId: string }) {
         <div className="grid grid-cols-2 gap-3">
           <label className="flex flex-col gap-1 text-sm">
             Exposure type
+            <RequiredFieldIndicator show={missing.has("exposureType")} hint="required to add this exposure" />
             <select
               name="exposureType"
               required
@@ -66,6 +79,7 @@ export function ExposureForm({ incidentId }: { incidentId: string }) {
           </label>
           <label className="flex flex-col gap-1 text-sm">
             Exposure item
+            <RequiredFieldIndicator show={missing.has("exposureItem")} hint="required for an external exposure" />
             <select
               name="exposureItem"
               required={isExternal}
@@ -84,6 +98,7 @@ export function ExposureForm({ incidentId }: { incidentId: string }) {
           </label>
           <label className="flex flex-col gap-1 text-sm">
             Damage
+            <RequiredFieldIndicator show={missing.has("exposureDamage")} hint="required to add this exposure" />
             <select
               name="exposureDamage"
               required
@@ -125,7 +140,13 @@ export function ExposureForm({ incidentId }: { incidentId: string }) {
           </label>
         </div>
         <fieldset className="flex flex-wrap gap-3">
-          <legend className="text-sm font-medium">Displacement causes</legend>
+          <legend className="text-sm font-medium">
+            Displacement causes
+            <RequiredFieldIndicator
+              show={missing.has("exposureDisplacedCauses")}
+              hint="required when a displaced number is recorded"
+            />
+          </legend>
           {TypeDisplaceCause.map((cause) => (
             <label key={cause} className="flex items-center gap-1 text-sm">
               <input

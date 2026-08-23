@@ -5,6 +5,9 @@ import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
 import { useRouter, usePathname } from "next/navigation";
 import { upsertFire, type FireFormState } from "./actions";
+import { RequiredFieldIndicator } from "@/components/RequiredFieldIndicator";
+import { incidentFireRequiredSchema } from "@/lib/validation/incident-fire.schema";
+import { missingPaths } from "@/lib/validation/missing-paths";
 import {
   TypeSuppressAppliance,
   TypeWaterSupply,
@@ -83,6 +86,10 @@ export function FireForm({
 
   const allErrors = state.errors ? Object.values(state.errors).flat().filter((e): e is string => Boolean(e)) : [];
 
+  const missing = missingPaths(incidentFireRequiredSchema, {
+    fireInvestigationNeed: investigationNeed || undefined,
+  });
+
   return (
     <form action={formAction} className="space-y-8">
       {state.message && <p className="rounded bg-amber-50 p-3 text-sm text-amber-900">{state.message}</p>}
@@ -136,6 +143,7 @@ export function FireForm({
         <div className="grid grid-cols-2 gap-3">
           <label className="flex flex-col gap-1 text-sm">
             Investigation need
+            <RequiredFieldIndicator show={missing.has("fireInvestigationNeed")} hint="required to submit" />
             <select
               name="fireInvestigationNeed"
               required

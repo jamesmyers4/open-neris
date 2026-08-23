@@ -5,6 +5,9 @@ import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
 import { updatePeople, addDisplacement, type PeopleFormState, type AddDisplacementState } from "./actions";
 import { TypeDisplaceCause } from "@/lib/neris/generated/enums";
+import { RequiredFieldIndicator } from "@/components/RequiredFieldIndicator";
+import { incidentDisplacementSchema } from "@/lib/validation/incident-people-displacement.schema";
+import { missingPaths } from "@/lib/validation/missing-paths";
 
 function SaveButton({ label }: { label: string }) {
   const { pending } = useFormStatus();
@@ -93,7 +96,11 @@ export function DisplacementForm({ incidentId }: { incidentId: string }) {
   const action = addDisplacement.bind(null, incidentId);
   const [state, formAction] = useActionState(action, initialState);
 
+  const [causes, setCauses] = useState<string[]>([]);
+
   const allErrors = state.errors ? Object.values(state.errors).flat().filter((e): e is string => Boolean(e)) : [];
+
+  const missing = missingPaths(incidentDisplacementSchema, { causes });
 
   return (
     <form action={formAction} className="space-y-3 border-t border-slate-200 pt-6">
@@ -107,10 +114,19 @@ export function DisplacementForm({ incidentId }: { incidentId: string }) {
         </ul>
       )}
       <fieldset className="flex flex-wrap gap-3">
-        <legend className="text-sm font-medium">Cause(s) for displacement</legend>
+        <legend className="text-sm font-medium">
+          Cause(s) for displacement
+          <RequiredFieldIndicator show={missing.has("causes")} hint="pick at least one cause" />
+        </legend>
         {TypeDisplaceCause.map((cause) => (
           <label key={cause} className="flex items-center gap-1 text-sm">
-            <input type="checkbox" name="causes" value={cause} />
+            <input
+              type="checkbox"
+              name="causes"
+              value={cause}
+              checked={causes.includes(cause)}
+              onChange={(e) => setCauses((v) => (e.target.checked ? [...v, cause] : v.filter((c) => c !== cause)))}
+            />
             {cause}
           </label>
         ))}

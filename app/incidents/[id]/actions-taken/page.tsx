@@ -18,7 +18,12 @@ export default async function ActionsTakenTabPage(props: PageProps<'/incidents/[
 
   return (
     <div className="space-y-6">
-      <NoActionForm incidentId={incident.id} initial={incident.incidentNoActionReason} blocked={hasActionsTaken} />
+      <NoActionForm
+        incidentId={incident.id}
+        initial={incident.incidentNoActionReason}
+        blocked={hasActionsTaken}
+        hasActionsTaken={hasActionsTaken}
+      />
 
       <section className="space-y-3 border-t border-slate-200 pt-6 text-sm">
         <h2 className="font-semibold">Actions taken</h2>

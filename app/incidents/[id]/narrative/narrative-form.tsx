@@ -4,6 +4,9 @@ import { useState } from "react";
 import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
 import { updateNarrative, type NarrativeFormState } from "./actions";
+import { RequiredFieldIndicator } from "@/components/RequiredFieldIndicator";
+import { incidentNarrativeRequiredSchema } from "@/lib/validation/incident-narrative.schema";
+import { missingPaths } from "@/lib/validation/missing-paths";
 
 const NARRATIVE_MAX = 100000;
 
@@ -39,6 +42,11 @@ export function NarrativeForm({
 
   const allErrors = state.errors ? Object.values(state.errors).flat().filter((e): e is string => Boolean(e)) : [];
 
+  const missing = missingPaths(incidentNarrativeRequiredSchema, {
+    narrativeImpediment: impediment || undefined,
+    narrativeOutcome: outcome || undefined,
+  });
+
   return (
     <form action={formAction} className="space-y-6">
       {state.message && <p className="rounded bg-amber-50 p-3 text-sm text-amber-900">{state.message}</p>}
@@ -53,6 +61,7 @@ export function NarrativeForm({
       <section className="space-y-3">
         <label className="flex flex-col gap-1 text-sm">
           Impediment
+          <RequiredFieldIndicator show={missing.has("narrativeImpediment")} hint="required to submit" />
           <span className="text-xs text-slate-500">Any obstacles that impacted the incident.</span>
           <textarea
             name="narrativeImpediment"
@@ -69,6 +78,7 @@ export function NarrativeForm({
 
         <label className="flex flex-col gap-1 text-sm">
           Outcome
+          <RequiredFieldIndicator show={missing.has("narrativeOutcome")} hint="required to submit" />
           <span className="text-xs text-slate-500">The final disposition of the incident.</span>
           <textarea
             name="narrativeOutcome"

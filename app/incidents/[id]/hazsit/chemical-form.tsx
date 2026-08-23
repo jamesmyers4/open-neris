@@ -6,6 +6,9 @@ import { useFormStatus } from "react-dom";
 import { createHazardChemical, type CreateChemicalState } from "./actions";
 import { TypeHazardDot, TypeHazardPhysicalState, TypeHazardReleasedInto, TypeHazardCause } from "@/lib/neris/generated/enums";
 import { hazardUnitOptions } from "@/lib/neris/lookups";
+import { RequiredFieldIndicator } from "@/components/RequiredFieldIndicator";
+import { incidentHazardChemicalSchema } from "@/lib/validation/incident-hazsit.schema";
+import { missingPaths } from "@/lib/validation/missing-paths";
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -32,6 +35,12 @@ export function ChemicalForm({ incidentId }: { incidentId: string }) {
 
   const allErrors = state.errors ? Object.values(state.errors).flat().filter((e): e is string => Boolean(e)) : [];
 
+  const missing = missingPaths(incidentHazardChemicalSchema, {
+    dotClass: dotClass || undefined,
+    chemicalName: chemicalName || undefined,
+    releaseOccurred: releaseOccurred === "" ? undefined : releaseOccurred === "true",
+  });
+
   return (
     <form action={formAction} className="space-y-6">
       {state.message && <p className="rounded bg-amber-50 p-3 text-sm text-amber-900">{state.message}</p>}
@@ -46,6 +55,7 @@ export function ChemicalForm({ incidentId }: { incidentId: string }) {
       <div className="grid grid-cols-2 gap-3">
         <label className="flex flex-col gap-1 text-sm">
           Chemical name
+          <RequiredFieldIndicator show={missing.has("chemicalName")} hint="required to add this chemical" />
           <input
             name="chemicalName"
             required
@@ -57,6 +67,7 @@ export function ChemicalForm({ incidentId }: { incidentId: string }) {
         </label>
         <label className="flex flex-col gap-1 text-sm">
           DOT hazard class
+          <RequiredFieldIndicator show={missing.has("dotClass")} hint="required to add this chemical" />
           <select
             name="dotClass"
             required
@@ -74,6 +85,7 @@ export function ChemicalForm({ incidentId }: { incidentId: string }) {
         </label>
         <label className="flex flex-col gap-1 text-sm">
           Release occurred
+          <RequiredFieldIndicator show={missing.has("releaseOccurred")} hint="required to add this chemical" />
           <select
             name="releaseOccurred"
             required

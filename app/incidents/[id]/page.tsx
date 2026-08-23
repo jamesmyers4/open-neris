@@ -5,9 +5,7 @@ import { getSubmitCompleteness } from '@/lib/incidents/get-submit-completeness'
 import { submitIncident } from './actions'
 
 const MISSING_FIELD_LABELS: Record<string, string> = {
-  dispatchTimeCallArrival: 'Dispatch: call received at dispatch center',
-  dispatchTimeCallAnswer: 'Dispatch: call answered',
-  dispatchTimeCallCreate: 'Dispatch: call created',
+  timeIncidentClear: 'Dispatch: incident clear',
   streetAddressComplete: 'Location: street address',
   state: 'Location: state',
   narrativeImpediment: 'Narrative: impediment',
@@ -16,7 +14,33 @@ const MISSING_FIELD_LABELS: Record<string, string> = {
   fireInvestigationNeed: 'Fire: investigation need',
   hasPatientRecord: 'Medical: at least one patient record',
   hazsitDisposition: 'HazSit: disposition',
-  hazsitEvacuated: 'HazSit: people/businesses evacuated'
+  hazsitEvacuated: 'HazSit: people/businesses evacuated',
+  unitResponses: 'Responding Units: at least one responding unit'
+}
+
+const MODULE_LABELS: Record<string, string> = {
+  core: 'Core',
+  fire: 'Fire',
+  medical: 'Medical',
+  hazsit: 'HazSit',
+  exposures: 'Exposures',
+  unitResponse: 'Responding Units',
+  rescuesFf: 'Firefighter Rescues',
+  rescuesNonFf: 'Civilian Rescues'
+}
+
+function formatMissingField(m: { module: string; path: string }): string {
+  const known = MISSING_FIELD_LABELS[m.path]
+  if (known) return known
+
+  const moduleLabel = MODULE_LABELS[m.module] ?? m.module
+  const rowMatch = m.path.match(/^\w+\.(\d+)\.(.+)$/)
+  if (rowMatch) {
+    const [, index, field] = rowMatch
+    return `${moduleLabel}: record ${Number(index) + 1} — ${field}`
+  }
+
+  return `${moduleLabel}: ${m.path}`
 }
 
 export default async function IncidentOverviewPage(props: PageProps<'/incidents/[id]'>) {
@@ -74,7 +98,7 @@ export default async function IncidentOverviewPage(props: PageProps<'/incidents/
             <p>Complete these before this incident can be submitted:</p>
             <ul className="list-disc rounded bg-amber-50 p-3 pl-6 text-amber-900">
               {completeness.missing.map((m, i) => (
-                <li key={i}>{MISSING_FIELD_LABELS[m.path] ?? `${m.module}: ${m.path}`}</li>
+                <li key={i}>{formatMissingField(m)}</li>
               ))}
             </ul>
           </div>

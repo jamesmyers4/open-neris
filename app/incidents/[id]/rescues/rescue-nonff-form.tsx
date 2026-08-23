@@ -5,6 +5,9 @@ import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
 import { createRescueNonFf, type CreateRescueState } from "./actions";
 import { CheckboxGroup } from "./checkbox-group";
+import { RequiredFieldIndicator } from "@/components/RequiredFieldIndicator";
+import { incidentRescueNonFfSchema } from "@/lib/validation/incident-rescue.schema";
+import { missingPaths } from "@/lib/validation/missing-paths";
 import {
   TypeGender,
   TypeRace,
@@ -52,6 +55,11 @@ export function RescueNonFfForm({ incidentId }: { incidentId: string }) {
   const [casualtyCause, setCasualtyCause] = useState("");
 
   const allErrors = state.errors ? Object.values(state.errors).flat().filter((e): e is string => Boolean(e)) : [];
+
+  const missing = missingPaths(incidentRescueNonFfSchema, {
+    rescueType: rescueType || undefined,
+    casualtyType: casualtyType || undefined,
+  });
 
   return (
     <form action={formAction} className="space-y-6">
@@ -107,8 +115,10 @@ export function RescueNonFfForm({ incidentId }: { incidentId: string }) {
         <div className="grid grid-cols-2 gap-3">
           <label className="flex flex-col gap-1 text-sm">
             Rescue type
+            <RequiredFieldIndicator show={missing.has("rescueType")} hint="required to add this casualty" />
             <select
               name="rescueType"
+              required
               value={rescueType}
               onChange={(e) => setRescueType(e.target.value)}
               className="rounded border border-slate-300 px-2 py-1"
@@ -248,8 +258,10 @@ export function RescueNonFfForm({ incidentId }: { incidentId: string }) {
         <div className="grid grid-cols-2 gap-3">
           <label className="flex flex-col gap-1 text-sm">
             Casualty type
+            <RequiredFieldIndicator show={missing.has("casualtyType")} hint="required to add this casualty" />
             <select
               name="casualtyType"
+              required
               value={casualtyType}
               onChange={(e) => setCasualtyType(e.target.value)}
               className="rounded border border-slate-300 px-2 py-1"

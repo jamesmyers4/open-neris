@@ -5,6 +5,9 @@ import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
 import { createRescueFf, type CreateRescueState } from "./actions";
 import { CheckboxGroup } from "./checkbox-group";
+import { RequiredFieldIndicator } from "@/components/RequiredFieldIndicator";
+import { incidentRescueFfSchema } from "@/lib/validation/incident-rescue.schema";
+import { missingPaths } from "@/lib/validation/missing-paths";
 import {
   TypeGender,
   TypeRace,
@@ -68,6 +71,13 @@ export function RescueFfForm({ incidentId }: { incidentId: string }) {
   const [casualtyTimeline, setCasualtyTimeline] = useState("");
 
   const allErrors = state.errors ? Object.values(state.errors).flat().filter((e): e is string => Boolean(e)) : [];
+
+  const missing = missingPaths(incidentRescueFfSchema, {
+    rescueType: rescueType || undefined,
+    mayday: mayday === "" ? undefined : mayday === "true",
+    linkedUnitId: linkedUnitId || undefined,
+    casualtyType: casualtyType || undefined,
+  });
 
   return (
     <form action={formAction} className="space-y-6">
@@ -139,6 +149,7 @@ export function RescueFfForm({ incidentId }: { incidentId: string }) {
           </label>
           <label className="flex flex-col gap-1 text-sm">
             Linked unit ID
+            <RequiredFieldIndicator show={missing.has("linkedUnitId")} hint="required to add this casualty" />
             <input
               name="linkedUnitId"
               required
@@ -176,6 +187,7 @@ export function RescueFfForm({ incidentId }: { incidentId: string }) {
         <div className="grid grid-cols-2 gap-3">
           <label className="flex flex-col gap-1 text-sm">
             Rescue type
+            <RequiredFieldIndicator show={missing.has("rescueType")} hint="required to add this casualty" />
             <select
               name="rescueType"
               required
@@ -223,6 +235,7 @@ export function RescueFfForm({ incidentId }: { incidentId: string }) {
         <div className="grid grid-cols-2 gap-3">
           <label className="flex flex-col gap-1 text-sm">
             Mayday called
+            <RequiredFieldIndicator show={missing.has("mayday")} hint="required to add this casualty" />
             <select name="mayday" required value={mayday} onChange={(e) => setMayday(e.target.value)} className="rounded border border-slate-300 px-2 py-1">
               <option value="">—</option>
               <option value="true">Yes</option>
@@ -345,8 +358,10 @@ export function RescueFfForm({ incidentId }: { incidentId: string }) {
         <div className="grid grid-cols-2 gap-3">
           <label className="flex flex-col gap-1 text-sm">
             Casualty type
+            <RequiredFieldIndicator show={missing.has("casualtyType")} hint="required to add this casualty" />
             <select
               name="casualtyType"
+              required
               value={casualtyType}
               onChange={(e) => setCasualtyType(e.target.value)}
               className="rounded border border-slate-300 px-2 py-1"

@@ -43,6 +43,7 @@ test('creates, fills, gates, and submits a FIRE incident end to end through real
   await fillDateTime(page, 'Call received at dispatch center', '2026-02-01', '12', '00')
   await fillDateTime(page, 'Call answered', '2026-02-01', '12', '01')
   await fillDateTime(page, 'Call created', '2026-02-01', '12', '02')
+  await fillDateTime(page, 'Incident clear', '2026-02-01', '13', '00')
   await page.getByRole('button', { name: 'Save dispatch' }).click()
   await expect(page.getByText('Saved.')).toBeVisible()
 
@@ -63,9 +64,17 @@ test('creates, fills, gates, and submits a FIRE incident end to end through real
   await page.getByRole('button', { name: 'Save no-action reason' }).click()
   await expect(page.getByText('Saved.')).toBeVisible()
 
-  // Core fields are complete, but this is a FIRE-primary incident — Fire
-  // module details are still missing, so the Overview tab must not offer a
-  // Submit button at all (the UI's own gate, not a rejected click).
+  // dispatch_unit_response is neris_core_app=TRUE, unconditional (Session 1's
+  // finding) — every incident needs at least one responding unit, regardless
+  // of type. Wired into the completeness gate in Session 2.
+  await page.getByRole('link', { name: 'Responding Units' }).click()
+  await page.locator('input[name="unitIdLinked"]').fill('ENGINE_1')
+  await page.getByRole('button', { name: 'Add unit' }).click()
+
+  // Core + unit-response fields are complete, but this is a FIRE-primary
+  // incident — Fire module details are still missing, so the Overview tab
+  // must not offer a Submit button at all (the UI's own gate, not a
+  // rejected click).
   await page.goto(incidentUrl)
   await expect(page.getByText('Fire: investigation need')).toBeVisible()
   await expect(page.getByRole('button', { name: 'Submit for review' })).toHaveCount(0)

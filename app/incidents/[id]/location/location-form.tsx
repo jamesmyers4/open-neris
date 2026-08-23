@@ -5,6 +5,9 @@ import { useFormStatus } from "react-dom";
 import { updateLocation, type LocationFormState } from "./actions";
 import { TypeVacancy } from "@/lib/neris/generated/enums";
 import type { LocationUseOption, LocPlaceOption } from "@/lib/neris/lookups";
+import { RequiredFieldIndicator } from "@/components/RequiredFieldIndicator";
+import { incidentLocationRequiredSchema } from "@/lib/validation/incident-location.schema";
+import { missingPaths } from "@/lib/validation/missing-paths";
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -45,6 +48,11 @@ export function LocationForm({
 
   const allErrors = state.errors ? Object.values(state.errors).flat().filter((e): e is string => Boolean(e)) : [];
 
+  const missing = missingPaths(incidentLocationRequiredSchema, {
+    streetAddressComplete: values.streetAddressComplete,
+    state: values.state,
+  });
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setValues(v => ({ ...v, [name]: value }));
@@ -69,6 +77,7 @@ export function LocationForm({
         <div className="grid grid-cols-2 gap-3">
           <label className="col-span-2 flex flex-col gap-1 text-sm">
             Street address
+            <RequiredFieldIndicator show={missing.has("streetAddressComplete")} hint="required to submit" />
             <input
               name="streetAddressComplete"
               required
@@ -87,6 +96,7 @@ export function LocationForm({
           </label>
           <label className="flex flex-col gap-1 text-sm">
             State
+            <RequiredFieldIndicator show={missing.has("state")} hint="required to submit" />
             <input
               name="state"
               required

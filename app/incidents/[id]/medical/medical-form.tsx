@@ -5,6 +5,9 @@ import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
 import { createMedical, type CreateMedicalState } from "./actions";
 import { TypeMedicalPatientCare, TypeMedicalPatientStatus, TypeMedicalTransport } from "@/lib/neris/generated/enums";
+import { RequiredFieldIndicator } from "@/components/RequiredFieldIndicator";
+import { incidentMedicalSchema } from "@/lib/validation/incident-medical.schema";
+import { missingPaths } from "@/lib/validation/missing-paths";
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -26,6 +29,10 @@ export function MedicalForm({ incidentId }: { incidentId: string }) {
   const [disposition, setDisposition] = useState("");
 
   const allErrors = state.errors ? Object.values(state.errors).flat().filter((e): e is string => Boolean(e)) : [];
+
+  const missing = missingPaths(incidentMedicalSchema, {
+    patientEvaluationCare: evaluationCare || undefined,
+  });
 
   return (
     <form action={formAction} className="space-y-6">
@@ -52,6 +59,7 @@ export function MedicalForm({ incidentId }: { incidentId: string }) {
           </label>
           <label className="flex flex-col gap-1 text-sm">
             Evaluation / care provided
+            <RequiredFieldIndicator show={missing.has("patientEvaluationCare")} hint="required to add this patient" />
             <select
               name="patientEvaluationCare"
               required

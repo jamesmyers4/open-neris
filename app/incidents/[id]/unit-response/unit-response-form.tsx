@@ -7,6 +7,9 @@ import { createUnitResponse, type CreateUnitResponseState } from "./actions";
 import { TypeResponseMode } from "@/lib/neris/generated/enums";
 import { DateTime24Field, isoToDateTimeValue, type DateTimeValue } from "@/components/DateTime24Field";
 import { DateTimeQuickSelect } from "@/components/DateTimeQuickSelect";
+import { RequiredFieldIndicator } from "@/components/RequiredFieldIndicator";
+import { incidentUnitResponseSchema } from "@/lib/validation/incident-unit-response.schema";
+import { missingPaths } from "@/lib/validation/missing-paths";
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -52,6 +55,10 @@ export function UnitResponseForm({
 
   const allErrors = state.errors ? Object.values(state.errors).flat().filter((e): e is string => Boolean(e)) : [];
 
+  const missing = missingPaths(incidentUnitResponseSchema, {
+    unitIdLinked: unitIdLinked || undefined,
+  });
+
   const carryOverOptions = [
     { label: "Use alarm time", value: isoToDateTimeValue(carryOver.alarmTime) },
     { label: "Use call received at dispatch", value: isoToDateTimeValue(carryOver.dispatchTimeCallArrival) },
@@ -75,6 +82,7 @@ export function UnitResponseForm({
         <div className="grid grid-cols-2 gap-3">
           <label className="flex flex-col gap-1 text-sm">
             Unit ID
+            <RequiredFieldIndicator show={missing.has("unitIdLinked")} hint="required to add this unit" />
             <input
               name="unitIdLinked"
               required

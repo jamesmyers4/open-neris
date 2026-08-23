@@ -6,6 +6,9 @@ import { useFormStatus } from "react-dom";
 import { setNoActionReason, addActionTaken, type NoActionFormState, type AddActionTakenState } from "./actions";
 import { TypeNoaction } from "@/lib/neris/generated/enums";
 import type { ActionTacticOption } from "@/lib/neris/lookups";
+import { RequiredFieldIndicator } from "@/components/RequiredFieldIndicator";
+import { incidentActionsTakenRequiredSchema } from "@/lib/validation/incident-actions-taken.schema";
+import { missingPaths } from "@/lib/validation/missing-paths";
 
 function SaveButton({ label, disabled }: { label: string; disabled?: boolean }) {
   const { pending } = useFormStatus();
@@ -24,10 +27,12 @@ export function NoActionForm({
   incidentId,
   initial,
   blocked,
+  hasActionsTaken,
 }: {
   incidentId: string;
   initial: string | null;
   blocked: boolean;
+  hasActionsTaken: boolean;
 }) {
   const initialState: NoActionFormState = {};
   const action = setNoActionReason.bind(null, incidentId);
@@ -35,6 +40,11 @@ export function NoActionForm({
   const [reason, setReason] = useState(initial ?? "");
 
   const allErrors = state.errors ? Object.values(state.errors).flat().filter((e): e is string => Boolean(e)) : [];
+
+  const missing = missingPaths(incidentActionsTakenRequiredSchema, {
+    hasActionsTaken,
+    incidentNoActionReason: reason || null,
+  });
 
   return (
     <form action={formAction} className="space-y-3">
@@ -54,6 +64,10 @@ export function NoActionForm({
       )}
       <label className="flex flex-col gap-1 text-sm">
         Reason
+        <RequiredFieldIndicator
+          show={missing.has("incidentActionsTaken")}
+          hint="pick a reason, or add an action taken below"
+        />
         <select
           name="incidentNoActionReason"
           value={reason}

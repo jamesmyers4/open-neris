@@ -26,7 +26,7 @@ export function DateTime24Field({
   min,
   max,
 }: {
-  label: string;
+  label: React.ReactNode;
   fieldName: string;
   date: string;
   time: string;

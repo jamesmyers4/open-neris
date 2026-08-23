@@ -6,6 +6,9 @@ import { useFormStatus } from "react-dom";
 import { useRouter, usePathname } from "next/navigation";
 import { upsertHazsit, type HazsitFormState } from "./actions";
 import { TypeHazardDisposition } from "@/lib/neris/generated/enums";
+import { RequiredFieldIndicator } from "@/components/RequiredFieldIndicator";
+import { incidentHazsitRequiredSchema } from "@/lib/validation/incident-hazsit.schema";
+import { missingPaths } from "@/lib/validation/missing-paths";
 
 function SaveButton({ justSaved }: { justSaved: boolean }) {
   const { pending } = useFormStatus();
@@ -46,6 +49,11 @@ export function HazsitForm({
 
   const allErrors = state.errors ? Object.values(state.errors).flat().filter((e): e is string => Boolean(e)) : [];
 
+  const missing = missingPaths(incidentHazsitRequiredSchema, {
+    hazsitDisposition: disposition || undefined,
+    hazsitEvacuated: evacuated === "" ? undefined : Number(evacuated),
+  });
+
   return (
     <form action={formAction} className="space-y-6">
       {state.message && <p className="rounded bg-amber-50 p-3 text-sm text-amber-900">{state.message}</p>}
@@ -60,6 +68,7 @@ export function HazsitForm({
       <div className="grid grid-cols-2 gap-3">
         <label className="flex flex-col gap-1 text-sm">
           Disposition
+          <RequiredFieldIndicator show={missing.has("hazsitDisposition")} hint="required to submit" />
           <select
             name="hazsitDisposition"
             required
@@ -77,6 +86,7 @@ export function HazsitForm({
         </label>
         <label className="flex flex-col gap-1 text-sm">
           People/businesses evacuated
+          <RequiredFieldIndicator show={missing.has("hazsitEvacuated")} hint="required to submit" />
           <input
             type="number"
             min={0}

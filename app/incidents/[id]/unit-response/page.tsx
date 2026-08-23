@@ -16,6 +16,7 @@ export default async function UnitResponseListPage(props: PageProps<'/incidents/
     return (
       <section className="space-y-3 text-sm">
         <h2 className="font-semibold">Responding units</h2>
+        <p className="text-xs text-red-600">* At least one responding unit is required to submit this incident.</p>
         <UnitResponseForm
           incidentId={incident.id}
           carryOver={{

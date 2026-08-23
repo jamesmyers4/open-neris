@@ -16,6 +16,7 @@ export default async function MedicalListPage(props: PageProps<'/incidents/[id]/
     return (
       <section className="space-y-3 text-sm">
         <h2 className="font-semibold">Medical</h2>
+        <p className="text-xs text-red-600">* At least one patient record is required to submit this incident.</p>
         <MedicalForm incidentId={incident.id} />
       </section>
     )

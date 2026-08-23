@@ -7,6 +7,13 @@ import { incidentActionsTakenRequiredSchema } from '../validation/incident-actio
 import { incidentFireRequiredSchema } from '../validation/incident-fire.schema'
 import { incidentMedicalRequiredSchema } from '../validation/incident-medical.schema'
 import { incidentHazsitRequiredSchema } from '../validation/incident-hazsit.schema'
+import { incidentExposureRequiredSchema } from '../validation/incident-exposure.schema'
+import { incidentUnitResponseRequiredSchema } from '../validation/incident-unit-response.schema'
+import { incidentRescueFfRequiredSchema, incidentRescueNonFfRequiredSchema } from '../validation/incident-rescue.schema'
+
+function stripNulls<T extends Record<string, unknown>>(row: T): T {
+  return Object.fromEntries(Object.entries(row).map(([key, value]) => [key, value === null ? undefined : value])) as T
+}
 
 export function getSubmitCompleteness(incident: IncidentDetail): CompletenessResult {
   const checks: ModuleCheck[] = [
@@ -62,6 +69,26 @@ export function getSubmitCompleteness(incident: IncidentDetail): CompletenessRes
         hazsitDisposition: incident.hazsit?.hazsitDisposition ?? null,
         hazsitEvacuated: incident.hazsit?.hazsitEvacuated ?? null
       }
+    },
+    {
+      module: 'exposures',
+      schema: incidentExposureRequiredSchema,
+      data: { exposures: incident.exposures.map(stripNulls) }
+    },
+    {
+      module: 'unitResponse',
+      schema: incidentUnitResponseRequiredSchema,
+      data: { unitResponses: incident.unitResponses.map(stripNulls) }
+    },
+    {
+      module: 'rescuesFf',
+      schema: incidentRescueFfRequiredSchema,
+      data: { rescuesFf: incident.rescuesFf.map(stripNulls) }
+    },
+    {
+      module: 'rescuesNonFf',
+      schema: incidentRescueNonFfRequiredSchema,
+      data: { rescuesNonFf: incident.rescuesNonFf.map(stripNulls) }
     }
   ]
 

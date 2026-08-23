@@ -38,11 +38,11 @@ export const incidentRescueFfSchema = z.object({
   gasIsolation: z.boolean().optional(),
   removalPathType: z.enum(TypeRescuePath).optional(),
   fireRelativeTime: z.enum(TypeSuppressTime).optional(),
-  casualtyType: z.enum(TypeCasualty).optional(),
   casualtyClassification: z.enum(TypeJobClassification).optional(),
   linkedUnitId: z.string().min(1),
   reportedUnitId: z.string().max(255).optional(),
   dutyType: z.enum(TypeDuty).optional(),
+  casualtyType: z.enum(TypeCasualty),
   casualtyCause: z.enum(TypeCasualtyCause).optional(),
   casualtyAction: z.enum(TypeCasualtyAction).optional(),
   casualtyPpe: z.array(z.enum(TypeCasualtyPpe)).default([]),
@@ -54,7 +54,7 @@ export const incidentRescueNonFfSchema = z.object({
   birthMonthYear: z.string().max(7).optional(),
   gender: z.enum(TypeGender).optional(),
   race: z.enum(TypeRace).optional(),
-  rescueType: z.enum(TypeRescue).optional(),
+  rescueType: z.enum(TypeRescue),
   presenceKnown: z.enum(TypeRescuePresenceKnown).optional(),
   primaryMode: z.enum(TypeRescueMode).optional(),
   actions: z.array(z.enum(TypeRescueAction)).default([]),
@@ -64,9 +64,17 @@ export const incidentRescueNonFfSchema = z.object({
   gasIsolation: z.boolean().optional(),
   removalPathType: z.enum(TypeRescuePath).optional(),
   fireRelativeTime: z.enum(TypeSuppressTime).optional(),
-  casualtyType: z.enum(TypeCasualty).optional(),
+  casualtyType: z.enum(TypeCasualty),
   casualtyCause: z.enum(TypeCasualtyCause).optional()
 })
 
 export type IncidentRescueFfInput = z.infer<typeof incidentRescueFfSchema>
 export type IncidentRescueNonFfInput = z.infer<typeof incidentRescueNonFfSchema>
+
+export const incidentRescueFfRequiredSchema = z.object({
+  rescuesFf: z.array(incidentRescueFfSchema)
+})
+
+export const incidentRescueNonFfRequiredSchema = z.object({
+  rescuesNonFf: z.array(incidentRescueNonFfSchema)
+})

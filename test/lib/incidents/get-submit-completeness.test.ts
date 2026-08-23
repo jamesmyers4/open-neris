@@ -19,6 +19,13 @@ const completeLocation: IncidentDetail['location'] = {
   civicLocationCipher: null
 }
 
+const completeUnitResponse: IncidentDetail['unitResponses'][number] = {
+  id: 'ur_1', incidentId: 'incident_test_1', unitIdLinked: 'ENGINE_1', unitIdReported: null,
+  unitStaffingReported: null, unableToDispatch: null, responseMode: null, timeDispatch: null,
+  timeEnrouteToScene: null, timeOnScene: null, timeCanceledEnroute: null, timeStaging: null,
+  timeUnitClear: null, transportMode: null
+}
+
 function completeIncident(overrides: Partial<IncidentDetail> = {}) {
   return buildIncidentDetail({
     timeIncidentClear: new Date('2026-01-01T01:00:00Z'),
@@ -27,6 +34,7 @@ function completeIncident(overrides: Partial<IncidentDetail> = {}) {
     narrativeOutcome: 'Resolved on scene',
     incidentNoActionReason: 'CANCELLED',
     actionsTaken: [],
+    unitResponses: [completeUnitResponse],
     ...overrides
   })
 }
@@ -90,10 +98,11 @@ describe('getSubmitCompleteness', () => {
       narrativeImpediment: null,
       narrativeOutcome: null,
       incidentNoActionReason: null,
-      actionsTaken: []
+      actionsTaken: [],
+      unitResponses: []
     }))
     expect(result.complete).toBe(false)
-    expect(result.missing.length).toBeGreaterThanOrEqual(4)
+    expect(result.missing.length).toBeGreaterThanOrEqual(5)
   })
 
   it('runs the same core-only checks regardless of incident types, when no type-gated module applies', () => {
@@ -158,5 +167,114 @@ describe('getSubmitCompleteness', () => {
       hazsit: { id: 'hazsit_1', incidentId: 'incident_test_1', hazsitDisposition: 'COMPLETED_FIRE_SERVICE_ONLY', hazsitEvacuated: 0, chemicals: [] }
     }))
     expect(result.complete).toBe(true)
+  })
+
+  describe('unit response (dispatch_unit_response is neris_core_app=TRUE, unconditional)', () => {
+    it('reports a missing unit response when none is recorded, regardless of incident type', () => {
+      const result = getSubmitCompleteness(completeIncident({ types: [], unitResponses: [] }))
+      expect(result.complete).toBe(false)
+      expect(result.missing.map(m => m.path)).toEqual(['unitResponses'])
+    })
+
+    it('is satisfied by at least one recorded unit response', () => {
+      const result = getSubmitCompleteness(completeIncident({ unitResponses: [completeUnitResponse] }))
+      expect(result.complete).toBe(true)
+    })
+  })
+
+  describe('exposures (no cardinality requirement — neris_core_if on exposure is ambiguous, see FUTURE-PLAN.md Session 2 findings; per-row validation only)', () => {
+    it('does not require any exposure row to exist', () => {
+      const result = getSubmitCompleteness(completeIncident({ exposures: [] }))
+      expect(result.complete).toBe(true)
+    })
+
+    it('reports a missing exposureItem on an external exposure row', () => {
+      const result = getSubmitCompleteness(completeIncident({
+        exposures: [{
+          id: 'exp_1', incidentId: 'incident_test_1', exposureType: 'EXTERNAL_EXPOSURE', exposureItem: null,
+          exposureDamage: 'NO_DAMAGE', exposurePeoplePresent: null, exposureDisplacedNumber: null, exposureDisplacedCauses: []
+        }]
+      }))
+      expect(result.complete).toBe(false)
+      expect(result.missing.map(m => m.path)).toEqual(['exposures.0.exposureItem'])
+    })
+
+    it('reports a missing displacement cause when a displaced number is recorded', () => {
+      const result = getSubmitCompleteness(completeIncident({
+        exposures: [{
+          id: 'exp_1', incidentId: 'incident_test_1', exposureType: 'INTERNAL_EXPOSURE', exposureItem: null,
+          exposureDamage: 'MINOR_DAMAGE', exposurePeoplePresent: null, exposureDisplacedNumber: 2, exposureDisplacedCauses: []
+        }]
+      }))
+      expect(result.complete).toBe(false)
+      expect(result.missing.map(m => m.path)).toEqual(['exposures.0.exposureDisplacedCauses'])
+    })
+
+    it('is satisfied by a fully populated exposure row', () => {
+      const result = getSubmitCompleteness(completeIncident({
+        exposures: [{
+          id: 'exp_1', incidentId: 'incident_test_1', exposureType: 'INTERNAL_EXPOSURE', exposureItem: null,
+          exposureDamage: 'MINOR_DAMAGE', exposurePeoplePresent: null, exposureDisplacedNumber: null, exposureDisplacedCauses: []
+        }]
+      }))
+      expect(result.complete).toBe(true)
+    })
+  })
+
+  describe('rescues (no cardinality requirement — neris_core_if is self-referential "was a rescue involved"; per-row validation only)', () => {
+    it('does not require any rescue row to exist', () => {
+      const result = getSubmitCompleteness(completeIncident({ rescuesFf: [], rescuesNonFf: [] }))
+      expect(result.complete).toBe(true)
+    })
+
+    it('reports a missing casualtyType on a firefighter rescue row (ff_casualty_type is neris_core=TRUE, unconditional)', () => {
+      const result = getSubmitCompleteness(completeIncident({
+        rescuesFf: [{
+          id: 'rf_1', incidentId: 'incident_test_1', birthMonthYear: null, gender: null, race: null,
+          casualtyRank: null, casualtyService: null, rescueType: 'NO_RESCUE_NEEDED', primaryMode: null,
+          actions: [], impedimentTypes: [], mayday: false, maydayRelativeTime: null, ritActivated: null,
+          roomType: null, elevationType: null, gasIsolation: null, removalPathType: null, fireRelativeTime: null,
+          casualtyType: null, casualtyClassification: null, linkedUnitId: 'ENGINE_1', reportedUnitId: null,
+          dutyType: null, casualtyCause: null, casualtyAction: null, casualtyPpe: [], incidentCommand: null,
+          casualtyTimeline: null
+        }]
+      }))
+      expect(result.complete).toBe(false)
+      expect(result.missing.map(m => m.path)).toEqual(['rescuesFf.0.casualtyType'])
+    })
+
+    it('reports a missing rescueType on a civilian rescue row (nonff_rescue_type is neris_core=TRUE, unconditional)', () => {
+      const result = getSubmitCompleteness(completeIncident({
+        rescuesNonFf: [{
+          id: 'rn_1', incidentId: 'incident_test_1', birthMonthYear: null, gender: null, race: null,
+          rescueType: null, presenceKnown: null, primaryMode: null, actions: [], impedimentTypes: [],
+          roomType: null, elevationType: null, gasIsolation: null, removalPathType: null, fireRelativeTime: null,
+          casualtyType: 'UNINJURED', casualtyCause: null
+        }]
+      }))
+      expect(result.complete).toBe(false)
+      expect(result.missing.map(m => m.path)).toEqual(['rescuesNonFf.0.rescueType'])
+    })
+
+    it('is satisfied by fully populated ff and non-ff rescue rows', () => {
+      const result = getSubmitCompleteness(completeIncident({
+        rescuesFf: [{
+          id: 'rf_1', incidentId: 'incident_test_1', birthMonthYear: null, gender: null, race: null,
+          casualtyRank: null, casualtyService: null, rescueType: 'NO_RESCUE_NEEDED', primaryMode: null,
+          actions: [], impedimentTypes: [], mayday: false, maydayRelativeTime: null, ritActivated: null,
+          roomType: null, elevationType: null, gasIsolation: null, removalPathType: null, fireRelativeTime: null,
+          casualtyType: 'UNINJURED', casualtyClassification: null, linkedUnitId: 'ENGINE_1', reportedUnitId: null,
+          dutyType: null, casualtyCause: null, casualtyAction: null, casualtyPpe: [], incidentCommand: null,
+          casualtyTimeline: null
+        }],
+        rescuesNonFf: [{
+          id: 'rn_1', incidentId: 'incident_test_1', birthMonthYear: null, gender: null, race: null,
+          rescueType: 'NO_RESCUE_NEEDED', presenceKnown: null, primaryMode: null, actions: [], impedimentTypes: [],
+          roomType: null, elevationType: null, gasIsolation: null, removalPathType: null, fireRelativeTime: null,
+          casualtyType: 'UNINJURED', casualtyCause: null
+        }]
+      }))
+      expect(result.complete).toBe(true)
+    })
   })
 })

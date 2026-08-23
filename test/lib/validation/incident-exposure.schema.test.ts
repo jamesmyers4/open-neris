@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { incidentExposureSchema } from '@/lib/validation/incident-exposure.schema'
+import { incidentExposureSchema, incidentExposureRequiredSchema } from '@/lib/validation/incident-exposure.schema'
 
 function validExposure(overrides: Record<string, unknown> = {}) {
   return {
@@ -78,5 +78,49 @@ describe('incidentExposureSchema', () => {
       )
       expect(result.success).toBe(false)
     })
+  })
+
+  describe('exposureDisplacedCauses, required only when exposureDisplacedNumber > 0', () => {
+    it('accepts a displaced number of 0 with no causes', () => {
+      const result = incidentExposureSchema.safeParse(validExposure({ exposureDisplacedNumber: 0 }))
+      expect(result.success).toBe(true)
+    })
+
+    it('accepts no displaced number at all, with no causes', () => {
+      const result = incidentExposureSchema.safeParse(validExposure())
+      expect(result.success).toBe(true)
+    })
+
+    it('rejects a positive displaced number with no causes recorded', () => {
+      const result = incidentExposureSchema.safeParse(validExposure({ exposureDisplacedNumber: 3 }))
+      expect(result.success).toBe(false)
+      if (!result.success) expect(result.error.issues.some(i => i.path.join('.') === 'exposureDisplacedCauses')).toBe(true)
+    })
+
+    it('accepts a positive displaced number with at least one cause recorded', () => {
+      const result = incidentExposureSchema.safeParse(
+        validExposure({ exposureDisplacedNumber: 3, exposureDisplacedCauses: ['FIRE'] })
+      )
+      expect(result.success).toBe(true)
+    })
+  })
+})
+
+describe('incidentExposureRequiredSchema', () => {
+  it('accepts an empty exposures array (no cardinality requirement)', () => {
+    expect(incidentExposureRequiredSchema.safeParse({ exposures: [] }).success).toBe(true)
+  })
+
+  it('validates each row in the exposures array against the same rules as incidentExposureSchema', () => {
+    const result = incidentExposureRequiredSchema.safeParse({
+      exposures: [validExposure({ exposureType: 'EXTERNAL_EXPOSURE' })]
+    })
+    expect(result.success).toBe(false)
+    if (!result.success) expect(result.error.issues.some(i => i.path.join('.') === 'exposures.0.exposureItem')).toBe(true)
+  })
+
+  it('accepts an array of fully valid exposure rows', () => {
+    const result = incidentExposureRequiredSchema.safeParse({ exposures: [validExposure()] })
+    expect(result.success).toBe(true)
   })
 })

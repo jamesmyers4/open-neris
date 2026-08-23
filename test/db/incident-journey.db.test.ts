@@ -19,6 +19,7 @@ type Actions = {
   setNoActionReason: typeof import('@/app/incidents/[id]/actions-taken/actions').setNoActionReason
   upsertFire: typeof import('@/app/incidents/[id]/fire/actions').upsertFire
   createMedical: typeof import('@/app/incidents/[id]/medical/actions').createMedical
+  createUnitResponse: typeof import('@/app/incidents/[id]/unit-response/actions').createUnitResponse
 }
 
 describe('Incident lifecycle journeys (multi-action, real DB)', () => {
@@ -35,7 +36,7 @@ describe('Incident lifecycle journeys (multi-action, real DB)', () => {
     ;(globalThis as { prisma?: unknown }).prisma = undefined
     process.env.DATABASE_URL = db.container.getConnectionUri()
 
-    const [incidentActions, idActions, dispatchActions, locationActions, narrativeActions, actionsTakenActions, fireActions, medicalActions] =
+    const [incidentActions, idActions, dispatchActions, locationActions, narrativeActions, actionsTakenActions, fireActions, medicalActions, unitResponseActions] =
       await Promise.all([
         import('@/app/incidents/actions'),
         import('@/app/incidents/[id]/actions'),
@@ -44,7 +45,8 @@ describe('Incident lifecycle journeys (multi-action, real DB)', () => {
         import('@/app/incidents/[id]/narrative/actions'),
         import('@/app/incidents/[id]/actions-taken/actions'),
         import('@/app/incidents/[id]/fire/actions'),
-        import('@/app/incidents/[id]/medical/actions')
+        import('@/app/incidents/[id]/medical/actions'),
+        import('@/app/incidents/[id]/unit-response/actions')
       ])
 
     actions = {
@@ -55,7 +57,8 @@ describe('Incident lifecycle journeys (multi-action, real DB)', () => {
       updateNarrative: narrativeActions.updateNarrative,
       setNoActionReason: actionsTakenActions.setNoActionReason,
       upsertFire: fireActions.upsertFire,
-      createMedical: medicalActions.createMedical
+      createMedical: medicalActions.createMedical,
+      createUnitResponse: unitResponseActions.createUnitResponse
     }
   })
 
@@ -75,9 +78,7 @@ describe('Incident lifecycle journeys (multi-action, real DB)', () => {
     expect(created.reviewStatus).toBe('OPEN')
 
     const dispatchFd = new FormData()
-    dispatchFd.set('dispatchTimeCallArrival', '2026-02-01T12:00:00Z')
-    dispatchFd.set('dispatchTimeCallAnswer', '2026-02-01T12:01:00Z')
-    dispatchFd.set('dispatchTimeCallCreate', '2026-02-01T12:02:00Z')
+    dispatchFd.set('timeIncidentClear', '2026-02-01T13:00:00Z')
     const dispatchResult = await actions.updateDispatch(incidentId, {}, dispatchFd)
     expect(dispatchResult.message).toBe('Saved.')
 
@@ -107,17 +108,28 @@ describe('Incident lifecycle journeys (multi-action, real DB)', () => {
     noActionFd.set('incidentNoActionReason', 'CANCELLED')
     await actions.setNoActionReason(incidentId, {}, noActionFd)
 
-    // Core fields are complete, but this is a FIRE incident — fire-module
-    // details are still missing, so submit must still be rejected.
+    // No responding unit recorded yet — submit must still be rejected
+    // (dispatch_unit_response is neris_core_app=TRUE, unconditional).
     await actions.submitIncident(incidentId)
     const afterThirdAttempt = await db.prisma.incident.findUniqueOrThrow({ where: { id: incidentId } })
     expect(afterThirdAttempt.reviewStatus).toBe('OPEN')
+
+    const unitResponseFd = new FormData()
+    unitResponseFd.set('unitIdLinked', 'ENGINE_1')
+    await actions.createUnitResponse(incidentId, {}, unitResponseFd)
+
+    // Core fields and unit response are complete, but this is a FIRE
+    // incident — fire-module details are still missing, so submit must
+    // still be rejected.
+    await actions.submitIncident(incidentId)
+    const afterFourthAttempt = await db.prisma.incident.findUniqueOrThrow({ where: { id: incidentId } })
+    expect(afterFourthAttempt.reviewStatus).toBe('OPEN')
 
     const fireFd = new FormData()
     fireFd.set('fireInvestigationNeed', 'NO')
     await actions.upsertFire(incidentId, {}, fireFd)
 
-    // Every required core and fire-module field is now present — submit succeeds.
+    // Every required core, unit-response, and fire-module field is now present — submit succeeds.
     await actions.submitIncident(incidentId)
     const final = await db.prisma.incident.findUniqueOrThrow({ where: { id: incidentId } })
     expect(final.reviewStatus).toBe('SUBMITTED')
@@ -131,9 +143,7 @@ describe('Incident lifecycle journeys (multi-action, real DB)', () => {
       const incidentId = await createAndGetIncidentId(actions.createIncident, typesFormData(value1))
 
       const dispatchFd = new FormData()
-      dispatchFd.set('dispatchTimeCallArrival', '2026-02-01T12:00:00Z')
-      dispatchFd.set('dispatchTimeCallAnswer', '2026-02-01T12:01:00Z')
-      dispatchFd.set('dispatchTimeCallCreate', '2026-02-01T12:02:00Z')
+      dispatchFd.set('timeIncidentClear', '2026-02-01T13:00:00Z')
       await actions.updateDispatch(incidentId, {}, dispatchFd)
 
       const locationFd = new FormData()
@@ -150,15 +160,19 @@ describe('Incident lifecycle journeys (multi-action, real DB)', () => {
       noActionFd.set('incidentNoActionReason', 'CANCELLED')
       await actions.setNoActionReason(incidentId, {}, noActionFd)
 
+      const unitResponseFd = new FormData()
+      unitResponseFd.set('unitIdLinked', 'ENGINE_1')
+      await actions.createUnitResponse(incidentId, {}, unitResponseFd)
+
       return incidentId
     }
 
     // get-submit-completeness.ts now wires Fire/Medical/HazSit required-schemas
-    // in alongside the always-on core checks, gated by module relevance — so a
-    // FIRE-primary incident and a MEDICAL-primary incident genuinely diverge:
-    // core-only completion blocks both (each is missing its own module's
-    // required data), and each unblocks independently once its own
-    // module-specific data is added.
+    // in alongside the always-on core + unit-response checks, gated by module
+    // relevance — so a FIRE-primary incident and a MEDICAL-primary incident
+    // genuinely diverge: core+unit-response completion blocks both (each is
+    // still missing its own module's required data), and each unblocks
+    // independently once its own module-specific data is added.
     it('a FIRE-primary incident is blocked on fire-module completeness that a MEDICAL-primary incident does not require', async () => {
       await setupCallerContext(db.prisma)
 

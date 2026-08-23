@@ -17,3 +17,7 @@ export const incidentUnitResponseSchema = z.object({
 })
 
 export type IncidentUnitResponseInput = z.infer<typeof incidentUnitResponseSchema>
+
+export const incidentUnitResponseRequiredSchema = z.object({
+  unitResponses: z.array(incidentUnitResponseSchema).min(1, { message: 'at least one responding unit is required' })
+})

@@ -17,6 +17,7 @@ type Actions = {
   updateNarrative: typeof import('@/app/incidents/[id]/narrative/actions').updateNarrative
   setNoActionReason: typeof import('@/app/incidents/[id]/actions-taken/actions').setNoActionReason
   upsertFire: typeof import('@/app/incidents/[id]/fire/actions').upsertFire
+  createUnitResponse: typeof import('@/app/incidents/[id]/unit-response/actions').createUnitResponse
 }
 
 // Phase 5: concurrent-write races beyond the internalId counter (already
@@ -37,14 +38,15 @@ describe('Concurrent-write races (Testcontainers Postgres)', () => {
     ;(globalThis as { prisma?: unknown }).prisma = undefined
     process.env.DATABASE_URL = db.container.getConnectionUri()
 
-    const [incidentActions, idActions, dispatchActions, locationActions, narrativeActions, actionsTakenActions, fireActions] = await Promise.all([
+    const [incidentActions, idActions, dispatchActions, locationActions, narrativeActions, actionsTakenActions, fireActions, unitResponseActions] = await Promise.all([
       import('@/app/incidents/actions'),
       import('@/app/incidents/[id]/actions'),
       import('@/app/incidents/[id]/dispatch/actions'),
       import('@/app/incidents/[id]/location/actions'),
       import('@/app/incidents/[id]/narrative/actions'),
       import('@/app/incidents/[id]/actions-taken/actions'),
-      import('@/app/incidents/[id]/fire/actions')
+      import('@/app/incidents/[id]/fire/actions'),
+      import('@/app/incidents/[id]/unit-response/actions')
     ])
 
     actions = {
@@ -54,7 +56,8 @@ describe('Concurrent-write races (Testcontainers Postgres)', () => {
       updateLocation: locationActions.updateLocation,
       updateNarrative: narrativeActions.updateNarrative,
       setNoActionReason: actionsTakenActions.setNoActionReason,
-      upsertFire: fireActions.upsertFire
+      upsertFire: fireActions.upsertFire,
+      createUnitResponse: unitResponseActions.createUnitResponse
     }
   })
 
@@ -114,9 +117,7 @@ describe('Concurrent-write races (Testcontainers Postgres)', () => {
       const incidentId = await createAndGetIncidentId(actions.createIncident, typesFormData('FIRE'))
 
       const dispatchFd = new FormData()
-      dispatchFd.set('dispatchTimeCallArrival', '2026-02-01T12:00:00Z')
-      dispatchFd.set('dispatchTimeCallAnswer', '2026-02-01T12:01:00Z')
-      dispatchFd.set('dispatchTimeCallCreate', '2026-02-01T12:02:00Z')
+      dispatchFd.set('timeIncidentClear', '2026-02-01T13:00:00Z')
       await actions.updateDispatch(incidentId, {}, dispatchFd)
 
       const locationFd = new FormData()
@@ -132,6 +133,10 @@ describe('Concurrent-write races (Testcontainers Postgres)', () => {
       const noActionFd = new FormData()
       noActionFd.set('incidentNoActionReason', 'CANCELLED')
       await actions.setNoActionReason(incidentId, {}, noActionFd)
+
+      const unitResponseFd = new FormData()
+      unitResponseFd.set('unitIdLinked', 'ENGINE_1')
+      await actions.createUnitResponse(incidentId, {}, unitResponseFd)
 
       const fireFd = new FormData()
       fireFd.set('fireInvestigationNeed', 'NO')

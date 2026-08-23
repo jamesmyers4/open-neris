@@ -12,6 +12,13 @@ export const incidentExposureSchema = z.object({
   if (data.exposureType === 'EXTERNAL_EXPOSURE' && !data.exposureItem) {
     ctx.addIssue({ code: z.ZodIssueCode.custom, path: ['exposureItem'], message: 'exposure item is required for an external exposure' })
   }
+  if ((data.exposureDisplacedNumber ?? 0) > 0 && data.exposureDisplacedCauses.length === 0) {
+    ctx.addIssue({ code: z.ZodIssueCode.custom, path: ['exposureDisplacedCauses'], message: 'at least one displacement cause is required when a displaced number is recorded' })
+  }
 })
 
 export type IncidentExposureInput = z.infer<typeof incidentExposureSchema>
+
+export const incidentExposureRequiredSchema = z.object({
+  exposures: z.array(incidentExposureSchema)
+})

@@ -11,6 +11,9 @@ export type MockPrismaClient = {
   incidentExposure: { create: Mock }
   incidentLocation: { upsert: Mock }
   incidentDisplacement: { create: Mock }
+  incidentUnitResponse: { create: Mock }
+  station: { findFirst: Mock; create: Mock }
+  unit: { findFirst: Mock; findMany: Mock; create: Mock }
   reviewEvent: { create: Mock }
   $transaction: Mock
 }
@@ -24,6 +27,9 @@ export function createPrismaMock(): MockPrismaClient {
     incidentExposure: { create: vi.fn() },
     incidentLocation: { upsert: vi.fn() },
     incidentDisplacement: { create: vi.fn() },
+    incidentUnitResponse: { create: vi.fn() },
+    station: { findFirst: vi.fn(), create: vi.fn() },
+    unit: { findFirst: vi.fn(), findMany: vi.fn(), create: vi.fn() },
     reviewEvent: { create: vi.fn() }
   } as MockPrismaClient
 

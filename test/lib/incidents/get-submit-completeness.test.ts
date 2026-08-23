@@ -20,10 +20,14 @@ const completeLocation: IncidentDetail['location'] = {
 }
 
 const completeUnitResponse: IncidentDetail['unitResponses'][number] = {
-  id: 'ur_1', incidentId: 'incident_test_1', unitIdLinked: 'ENGINE_1', unitIdReported: null,
+  id: 'ur_1', incidentId: 'incident_test_1', unitIdLinked: 'unit_1', unitIdReported: null,
   unitStaffingReported: null, unableToDispatch: null, responseMode: null, timeDispatch: null,
   timeEnrouteToScene: null, timeOnScene: null, timeCanceledEnroute: null, timeStaging: null,
-  timeUnitClear: null, transportMode: null
+  timeUnitClear: null, transportMode: null,
+  unit: {
+    id: 'unit_1', stationId: 'station_1', designation: 'ENGINE_1', capabilityType: null,
+    nerisUnitId: null, createdAt: new Date('2026-01-01T00:00:00Z'), updatedAt: new Date('2026-01-01T00:00:00Z')
+  }
 }
 
 function completeIncident(overrides: Partial<IncidentDetail> = {}) {

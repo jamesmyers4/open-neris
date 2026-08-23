@@ -71,7 +71,7 @@ describe('Incident lifecycle journeys (multi-action, real DB)', () => {
   })
 
   it('creates, fills, gates, completes, and submits an incident end to end', async () => {
-    const { user } = await setupCallerContext(db.prisma)
+    const { user, unit } = await setupCallerContext(db.prisma)
 
     const incidentId = await createAndGetIncidentId(actions.createIncident, typesFormData('FIRE', 'STRUCTURE_FIRE'))
     const created = await db.prisma.incident.findUniqueOrThrow({ where: { id: incidentId } })
@@ -115,7 +115,7 @@ describe('Incident lifecycle journeys (multi-action, real DB)', () => {
     expect(afterThirdAttempt.reviewStatus).toBe('OPEN')
 
     const unitResponseFd = new FormData()
-    unitResponseFd.set('unitIdLinked', 'ENGINE_1')
+    unitResponseFd.set('unitIdLinked', unit.id)
     await actions.createUnitResponse(incidentId, {}, unitResponseFd)
 
     // Core fields and unit response are complete, but this is a FIRE
@@ -139,7 +139,7 @@ describe('Incident lifecycle journeys (multi-action, real DB)', () => {
   })
 
   describe('type-gating path', () => {
-    async function runCoreOnlyJourney(value1: string): Promise<string> {
+    async function runCoreOnlyJourney(value1: string, unitId: string): Promise<string> {
       const incidentId = await createAndGetIncidentId(actions.createIncident, typesFormData(value1))
 
       const dispatchFd = new FormData()
@@ -161,7 +161,7 @@ describe('Incident lifecycle journeys (multi-action, real DB)', () => {
       await actions.setNoActionReason(incidentId, {}, noActionFd)
 
       const unitResponseFd = new FormData()
-      unitResponseFd.set('unitIdLinked', 'ENGINE_1')
+      unitResponseFd.set('unitIdLinked', unitId)
       await actions.createUnitResponse(incidentId, {}, unitResponseFd)
 
       return incidentId
@@ -174,9 +174,9 @@ describe('Incident lifecycle journeys (multi-action, real DB)', () => {
     // still missing its own module's required data), and each unblocks
     // independently once its own module-specific data is added.
     it('a FIRE-primary incident is blocked on fire-module completeness that a MEDICAL-primary incident does not require', async () => {
-      await setupCallerContext(db.prisma)
+      const { unit } = await setupCallerContext(db.prisma)
 
-      const fireIncidentId = await runCoreOnlyJourney('FIRE')
+      const fireIncidentId = await runCoreOnlyJourney('FIRE', unit.id)
       await actions.submitIncident(fireIncidentId)
       const blocked = await db.prisma.incident.findUniqueOrThrow({ where: { id: fireIncidentId } })
       expect(blocked.reviewStatus).toBe('OPEN')
@@ -191,9 +191,9 @@ describe('Incident lifecycle journeys (multi-action, real DB)', () => {
     })
 
     it('a MEDICAL-primary incident is blocked until at least one patient record exists', async () => {
-      await setupCallerContext(db.prisma)
+      const { unit } = await setupCallerContext(db.prisma)
 
-      const medicalIncidentId = await runCoreOnlyJourney('MEDICAL')
+      const medicalIncidentId = await runCoreOnlyJourney('MEDICAL', unit.id)
       await actions.submitIncident(medicalIncidentId)
       const blocked = await db.prisma.incident.findUniqueOrThrow({ where: { id: medicalIncidentId } })
       expect(blocked.reviewStatus).toBe('OPEN')

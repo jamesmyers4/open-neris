@@ -1,13 +1,13 @@
 import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 import type { PrismaClient } from '@prisma/client'
 import { startTestDatabase, stopTestDatabase, type TestDatabase } from '@/test/helpers/db'
-import { createTestDepartment, createTestUser, createTestIncident } from '@/test/helpers/db-fixtures'
+import { createTestDepartment, createTestUser, createTestIncident, createTestStation, createTestUnit } from '@/test/helpers/db-fixtures'
 
 // Inserts exactly one row into every child table that hangs off an Incident
 // (plus IncidentHazardChemical, hanging off IncidentHazsit), satisfying each
 // table's required-column constraints with arbitrary values — the DB itself
 // doesn't validate NERIS semantics, only NOT NULL/type, so any string does.
-async function seedAllIncidentChildren(prisma: PrismaClient, incidentId: string, actorId: string) {
+async function seedAllIncidentChildren(prisma: PrismaClient, incidentId: string, actorId: string, unitId: string) {
   await prisma.incidentType.create({ data: { incidentId, value1: 'FIRE' } })
   await prisma.incidentActionTaken.create({ data: { incidentId, value1: 'FORCIBLE_ENTRY' } })
   await prisma.incidentDispatchComment.create({ data: { incidentId, comment: 'note', timestamp: new Date() } })
@@ -47,7 +47,7 @@ async function seedAllIncidentChildren(prisma: PrismaClient, incidentId: string,
     data: { incidentId, gender: 'UNKNOWN', race: 'UNKNOWN', rescueType: 'SELF_RESCUE', casualtyType: 'UNINJURED' }
   })
   await prisma.incidentUnitResponse.create({
-    data: { incidentId, unitIdLinked: 'E731', responseMode: 'EMERGENCY', transportMode: 'GROUND' }
+    data: { incidentId, unitIdLinked: unitId, responseMode: 'EMERGENCY', transportMode: 'GROUND' }
   })
   await prisma.incidentRiskReduction.create({
     data: {
@@ -108,8 +108,10 @@ describe('Cascade deletes', () => {
     const department = await createTestDepartment(db.prisma)
     const user = await createTestUser(db.prisma, department.id)
     const incident = await createTestIncident(db.prisma, department.id, user.id)
+    const station = await createTestStation(db.prisma, department.id)
+    const unit = await createTestUnit(db.prisma, station.id)
 
-    await seedAllIncidentChildren(db.prisma, incident.id, user.id)
+    await seedAllIncidentChildren(db.prisma, incident.id, user.id, unit.id)
 
     const before = await countAll(db.prisma, incident.id)
     expect(Object.values(before).every(count => count === 1)).toBe(true)

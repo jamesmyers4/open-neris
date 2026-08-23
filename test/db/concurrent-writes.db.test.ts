@@ -113,7 +113,7 @@ describe('Concurrent-write races (Testcontainers Postgres)', () => {
   })
 
   describe('double-submit race on submitIncident', () => {
-    async function buildCompleteOpenIncident(): Promise<string> {
+    async function buildCompleteOpenIncident(unitId: string): Promise<string> {
       const incidentId = await createAndGetIncidentId(actions.createIncident, typesFormData('FIRE'))
 
       const dispatchFd = new FormData()
@@ -135,7 +135,7 @@ describe('Concurrent-write races (Testcontainers Postgres)', () => {
       await actions.setNoActionReason(incidentId, {}, noActionFd)
 
       const unitResponseFd = new FormData()
-      unitResponseFd.set('unitIdLinked', 'ENGINE_1')
+      unitResponseFd.set('unitIdLinked', unitId)
       await actions.createUnitResponse(incidentId, {}, unitResponseFd)
 
       const fireFd = new FormData()
@@ -146,8 +146,8 @@ describe('Concurrent-write races (Testcontainers Postgres)', () => {
     }
 
     it('ends up SUBMITTED exactly once in reviewStatus, with exactly one ReviewEvent, under two racing calls', async () => {
-      await setupCallerContext(db.prisma)
-      const incidentId = await buildCompleteOpenIncident()
+      const { unit } = await setupCallerContext(db.prisma)
+      const incidentId = await buildCompleteOpenIncident(unit.id)
 
       await Promise.all([actions.submitIncident(incidentId), actions.submitIncident(incidentId)])
 

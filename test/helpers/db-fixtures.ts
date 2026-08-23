@@ -1,5 +1,5 @@
 import { randomUUID } from 'node:crypto'
-import type { Department, Incident, PrismaClient, User } from '@prisma/client'
+import type { Department, Incident, PrismaClient, Station, Unit, User } from '@prisma/client'
 
 // Row builders for DB-backed tests (Phase 2+). Distinct from fixtures.ts's
 // buildIncidentDetail(), which is a plain in-memory object for Phase 1's
@@ -21,6 +21,26 @@ export async function createTestUser(prisma: PrismaClient, departmentId: string,
       clerkId: `clerk_${randomUUID()}`,
       name: 'Test User',
       email: 'test@example.com',
+      ...overrides
+    }
+  })
+}
+
+export async function createTestStation(prisma: PrismaClient, departmentId: string, overrides: Partial<Station> = {}): Promise<Station> {
+  return prisma.station.create({
+    data: {
+      departmentId,
+      label: 'Test Station',
+      ...overrides
+    }
+  })
+}
+
+export async function createTestUnit(prisma: PrismaClient, stationId: string, overrides: Partial<Unit> = {}): Promise<Unit> {
+  return prisma.unit.create({
+    data: {
+      stationId,
+      designation: `TEST-${randomUUID()}`,
       ...overrides
     }
   })

@@ -24,9 +24,7 @@ export const incidentDispatchSchema = z.object({
 export type IncidentDispatchInput = z.infer<typeof incidentDispatchSchema>
 
 export const incidentDispatchRequiredSchema = z.object({
-  dispatchTimeCallArrival: z.date(),
-  dispatchTimeCallAnswer: z.date(),
-  dispatchTimeCallCreate: z.date()
+  timeIncidentClear: z.date()
 })
 
 export const dispatchCommentSchema = z.object({

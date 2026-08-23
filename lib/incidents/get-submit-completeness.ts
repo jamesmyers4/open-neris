@@ -14,9 +14,7 @@ export function getSubmitCompleteness(incident: IncidentDetail): CompletenessRes
       module: 'core',
       schema: incidentDispatchRequiredSchema,
       data: {
-        dispatchTimeCallArrival: incident.dispatchTimeCallArrival,
-        dispatchTimeCallAnswer: incident.dispatchTimeCallAnswer,
-        dispatchTimeCallCreate: incident.dispatchTimeCallCreate
+        timeIncidentClear: incident.timeIncidentClear
       }
     },
     {

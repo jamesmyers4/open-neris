@@ -21,9 +21,7 @@ const completeLocation: IncidentDetail['location'] = {
 
 function completeIncident(overrides: Partial<IncidentDetail> = {}) {
   return buildIncidentDetail({
-    dispatchTimeCallArrival: new Date('2026-01-01T00:00:00Z'),
-    dispatchTimeCallAnswer: new Date('2026-01-01T00:01:00Z'),
-    dispatchTimeCallCreate: new Date('2026-01-01T00:02:00Z'),
+    timeIncidentClear: new Date('2026-01-01T01:00:00Z'),
     location: completeLocation,
     narrativeImpediment: 'None',
     narrativeOutcome: 'Resolved on scene',
@@ -39,18 +37,19 @@ describe('getSubmitCompleteness', () => {
     expect(result).toEqual({ complete: true, missing: [] })
   })
 
-  it('reports missing dispatch timestamps', () => {
+  it('reports a missing timeIncidentClear', () => {
+    const result = getSubmitCompleteness(completeIncident({ timeIncidentClear: null }))
+    expect(result.complete).toBe(false)
+    expect(result.missing.map(m => m.path)).toEqual(['timeIncidentClear'])
+  })
+
+  it('does not require dispatchTimeCallArrival/Answer/Create (neris_core_app=FALSE — CAD-populated, not app-required)', () => {
     const result = getSubmitCompleteness(completeIncident({
       dispatchTimeCallArrival: null,
       dispatchTimeCallAnswer: null,
       dispatchTimeCallCreate: null
     }))
-    expect(result.complete).toBe(false)
-    expect(result.missing.map(m => m.path).sort()).toEqual([
-      'dispatchTimeCallAnswer',
-      'dispatchTimeCallArrival',
-      'dispatchTimeCallCreate'
-    ])
+    expect(result.complete).toBe(true)
   })
 
   it('reports missing location when no location row exists', () => {
@@ -86,9 +85,7 @@ describe('getSubmitCompleteness', () => {
 
   it('aggregates missing fields across every required check at once', () => {
     const result = getSubmitCompleteness(completeIncident({
-      dispatchTimeCallArrival: null,
-      dispatchTimeCallAnswer: null,
-      dispatchTimeCallCreate: null,
+      timeIncidentClear: null,
       location: null,
       narrativeImpediment: null,
       narrativeOutcome: null,
@@ -96,7 +93,7 @@ describe('getSubmitCompleteness', () => {
       actionsTaken: []
     }))
     expect(result.complete).toBe(false)
-    expect(result.missing.length).toBeGreaterThanOrEqual(6)
+    expect(result.missing.length).toBeGreaterThanOrEqual(4)
   })
 
   it('runs the same core-only checks regardless of incident types, when no type-gated module applies', () => {

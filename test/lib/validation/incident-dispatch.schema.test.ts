@@ -69,39 +69,36 @@ describe('incidentDispatchSchema', () => {
 })
 
 describe('incidentDispatchRequiredSchema', () => {
-  it('accepts all three timestamps as real Date instances', () => {
+  it('accepts timeIncidentClear as a real Date instance', () => {
     const result = incidentDispatchRequiredSchema.safeParse({
-      dispatchTimeCallArrival: new Date('2026-01-01T00:00:00Z'),
-      dispatchTimeCallAnswer: new Date('2026-01-01T00:01:00Z'),
-      dispatchTimeCallCreate: new Date('2026-01-01T00:02:00Z')
+      timeIncidentClear: new Date('2026-01-01T01:00:00Z')
     })
     expect(result.success).toBe(true)
   })
 
-  it('rejects a missing timestamp', () => {
-    const result = incidentDispatchRequiredSchema.safeParse({
-      dispatchTimeCallArrival: new Date(),
-      dispatchTimeCallAnswer: new Date()
-    })
+  it('rejects a missing timeIncidentClear', () => {
+    const result = incidentDispatchRequiredSchema.safeParse({})
     expect(result.success).toBe(false)
   })
 
-  it('rejects a null timestamp (no coercion, unlike the tab schema)', () => {
-    const result = incidentDispatchRequiredSchema.safeParse({
-      dispatchTimeCallArrival: null,
-      dispatchTimeCallAnswer: new Date(),
-      dispatchTimeCallCreate: new Date()
-    })
+  it('rejects a null timeIncidentClear (no coercion, unlike the tab schema)', () => {
+    const result = incidentDispatchRequiredSchema.safeParse({ timeIncidentClear: null })
     expect(result.success).toBe(false)
   })
 
   it('rejects an ISO string, since this schema does not coerce', () => {
-    const result = incidentDispatchRequiredSchema.safeParse({
-      dispatchTimeCallArrival: '2026-01-01T00:00:00Z',
-      dispatchTimeCallAnswer: new Date(),
-      dispatchTimeCallCreate: new Date()
-    })
+    const result = incidentDispatchRequiredSchema.safeParse({ timeIncidentClear: '2026-01-01T01:00:00Z' })
     expect(result.success).toBe(false)
+  })
+
+  it('dispatchTimeCallArrival/Answer/Create are genuinely optional (neris_core_app=FALSE, CAD-populated fields, not app-required)', () => {
+    const result = incidentDispatchRequiredSchema.safeParse({
+      timeIncidentClear: new Date(),
+      dispatchTimeCallArrival: undefined,
+      dispatchTimeCallAnswer: undefined,
+      dispatchTimeCallCreate: undefined
+    })
+    expect(result.success).toBe(true)
   })
 })
 

@@ -4,6 +4,10 @@ Open source fire incident reporting for departments who can't justify a monthly 
 
 This is an independent, community project. It is not built, endorsed, or supported by the U.S. Fire Administration, DHS, or the Fire Safety Research Institute.
 
+## Stack
+
+Next.js 16 (App Router, Turbopack) + TypeScript, Prisma 7.9.1 + PostgreSQL (Neon), Clerk auth, Vercel hosting. PWA-enabled for the incident-entry flow specifically (installable, offline-capable via IndexedDB write queue) — review/approval/reporting assume connectivity. ulfsri/neris-nodejs-client (MIT licensed, official) as the NERIS submission layer, not yet wired up.
+
 ## Status
 
 The core incident workflow is built and working end to end: create an incident, work through it tab by tab (Dispatch, Location, People & Displacement, Mutual Aid, Narrative, Actions Taken), add the repeatable sections that apply to it (Exposures, Fire, Medical, HazSit, Rescues, Responding Units), pass the final validation gate, and submit. Type-gating already hides sections that don't apply to a given incident type, and date/time fields carry over between tabs via quick-select rather than needing re-entry.

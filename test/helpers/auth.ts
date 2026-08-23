@@ -13,6 +13,7 @@ export function buildFakeUser(overrides: Partial<User> = {}): User {
     name: 'Test User',
     email: 'test@example.com',
     role: 'MEMBER',
+    status: 'ACTIVE',
     createdAt: new Date('2026-01-01T00:00:00Z'),
     updatedAt: new Date('2026-01-01T00:00:00Z'),
     ...overrides

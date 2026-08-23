@@ -58,6 +58,7 @@ export function buildIncidentDetail(overrides: Partial<IncidentDetail> = {}): In
       name: 'Test User',
       email: 'test@example.com',
       role: 'MEMBER',
+      status: 'ACTIVE',
       createdAt: now,
       updatedAt: now
     },

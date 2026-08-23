@@ -1,20 +1,18 @@
 import Link from 'next/link'
+import { redirect } from 'next/navigation'
 import { currentUser } from '@clerk/nextjs/server'
-import { UserButton } from '@clerk/nextjs'
+import { getCurrentAppUser } from '@/lib/auth/current-user'
 
 export default async function Home() {
-  const user = await currentUser()
-  return (
-    <main className="p-8">
-      {user ? (
-        <div className="flex items-center gap-4">
-          <p>Signed in as {user.primaryEmailAddress?.emailAddress}</p>
-          <UserButton />
-          <Link href="/incidents" className="underline">Incidents</Link>
-        </div>
-      ) : (
+  const clerkUser = await currentUser()
+  if (!clerkUser) {
+    return (
+      <main className="p-8">
         <Link href="/sign-in">Sign in</Link>
-      )}
-    </main>
-  )
+      </main>
+    )
+  }
+
+  const appUser = await getCurrentAppUser()
+  redirect(appUser ? '/incidents' : '/onboarding')
 }

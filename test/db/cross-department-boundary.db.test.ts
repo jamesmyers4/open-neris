@@ -3,6 +3,7 @@ import { afterAll, beforeAll, beforeEach, describe, expect, it, vi } from 'vites
 // Same factory-mock reasoning as incident-journey.db.test.ts.
 vi.mock('@/lib/auth/current-user', () => ({ getCurrentAppUser: vi.fn() }))
 
+import type { User } from '@prisma/client'
 import { startTestDatabase, stopTestDatabase, type TestDatabase } from '@/test/helpers/db'
 import { createTestDepartment, createTestUser, createTestIncident } from '@/test/helpers/db-fixtures'
 import { mockSignedInAs } from '@/test/helpers/auth'
@@ -90,7 +91,7 @@ describe('Cross-department id-guessing (Testcontainers Postgres)', () => {
     return { departmentA, userA, incidentA, departmentB, userB, incidentB }
   }
 
-  function actAsUserB(userB: { id: string; departmentId: string; clerkId: string; name: string; email: string }) {
+  function actAsUserB(userB: User) {
     mockSignedInAs(userB)
   }
 

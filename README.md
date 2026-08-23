@@ -18,7 +18,7 @@ Not done yet:
 - Actual submission to NERIS. The workflow ends at `Submitted` today; the API call to NERIS itself isn't wired up.
 - Personnel tracking. Employee/roster data, shift and apparatus assignment, and department-level access control all depend on this. It's next after the current UI is settled.
 - Review & Approve. The status chain and audit log exist in the schema; the reviewer/chief UI (kickback notes, email and in-app alerts) doesn't.
-- Admin department settings screen.
+- Admin department settings screen — Organization/Station/Unit portion built; NERIS-credentials portion still pending.
 - Attachments, reporting/dashboard views.
 
 See `CONTEXT.md` for the architecture decisions and reasoning behind all of this, and `FUTURE.md` for what's planned next.

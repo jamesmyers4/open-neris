@@ -27,9 +27,16 @@ export default async function IncidentsPage() {
     <main className="mx-auto max-w-4xl p-8">
       <div className="mb-6 flex items-center justify-between">
         <h1 className="text-2xl font-bold">Incidents</h1>
-        <Link href="/incidents/new" className="rounded bg-slate-900 px-4 py-2 text-white">
-          New incident
-        </Link>
+        <div className="flex items-center gap-3">
+          {user.role === 'ADMIN' && (
+            <Link href="/admin/settings" className="text-sm text-slate-600 underline">
+              Organization settings
+            </Link>
+          )}
+          <Link href="/incidents/new" className="rounded bg-slate-900 px-4 py-2 text-white">
+            New incident
+          </Link>
+        </div>
       </div>
       {incidents.length === 0 ? (
         <p className="text-slate-600">No incidents yet.</p>

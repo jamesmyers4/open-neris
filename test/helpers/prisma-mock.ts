@@ -4,7 +4,7 @@ import { vi, type Mock } from 'vitest'
 // the 9 actions.ts files under test actually make, so a spy assertion on
 // e.g. mockPrisma.incident.update reads directly against real action code.
 export type MockPrismaClient = {
-  department: { findUniqueOrThrow: Mock }
+  department: { findUniqueOrThrow: Mock; update: Mock }
   incident: { findFirst: Mock; update: Mock; updateMany: Mock; create: Mock }
   incidentActionTaken: { findFirst: Mock; create: Mock; delete: Mock }
   incidentDispatchComment: { create: Mock }
@@ -12,15 +12,15 @@ export type MockPrismaClient = {
   incidentLocation: { upsert: Mock }
   incidentDisplacement: { create: Mock }
   incidentUnitResponse: { create: Mock }
-  station: { findFirst: Mock; create: Mock }
-  unit: { findFirst: Mock; findMany: Mock; create: Mock }
+  station: { findFirst: Mock; create: Mock; update: Mock; delete: Mock }
+  unit: { findFirst: Mock; findMany: Mock; create: Mock; update: Mock; delete: Mock }
   reviewEvent: { create: Mock }
   $transaction: Mock
 }
 
 export function createPrismaMock(): MockPrismaClient {
   const mock = {
-    department: { findUniqueOrThrow: vi.fn() },
+    department: { findUniqueOrThrow: vi.fn(), update: vi.fn() },
     incident: { findFirst: vi.fn(), update: vi.fn(), updateMany: vi.fn(), create: vi.fn() },
     incidentActionTaken: { findFirst: vi.fn(), create: vi.fn(), delete: vi.fn() },
     incidentDispatchComment: { create: vi.fn() },
@@ -28,8 +28,8 @@ export function createPrismaMock(): MockPrismaClient {
     incidentLocation: { upsert: vi.fn() },
     incidentDisplacement: { create: vi.fn() },
     incidentUnitResponse: { create: vi.fn() },
-    station: { findFirst: vi.fn(), create: vi.fn() },
-    unit: { findFirst: vi.fn(), findMany: vi.fn(), create: vi.fn() },
+    station: { findFirst: vi.fn(), create: vi.fn(), update: vi.fn(), delete: vi.fn() },
+    unit: { findFirst: vi.fn(), findMany: vi.fn(), create: vi.fn(), update: vi.fn(), delete: vi.fn() },
     reviewEvent: { create: vi.fn() }
   } as MockPrismaClient
 

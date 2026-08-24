@@ -9,7 +9,7 @@ vi.mock('@/lib/incidents/get-submit-completeness')
 
 import { revalidatePath } from 'next/cache'
 import { prisma } from '@/lib/prisma'
-import { submitIncident, markReviewed, approveIncident } from '@/app/incidents/[id]/actions'
+import { submitIncident, markReviewed, approveIncident, kickbackIncident } from '@/app/incidents/[id]/actions'
 import { getSubmitCompleteness } from '@/lib/incidents/get-submit-completeness'
 import { mockSignedInAs, mockSignedOut } from '@/test/helpers/auth'
 import { buildIncidentDetail } from '@/test/helpers/fixtures'
@@ -235,5 +235,99 @@ describe('approveIncident', () => {
     await approveIncident(INCIDENT_ID)
 
     expect(mockPrisma.$transaction).toHaveBeenCalledTimes(1)
+  })
+})
+
+describe('kickbackIncident', () => {
+  function formDataWithNote(note: string) {
+    const fd = new FormData()
+    fd.set('note', note)
+    return fd
+  }
+
+  it('returns a message and attempts no DB write when unauthenticated', async () => {
+    mockSignedOut()
+    const result = await kickbackIncident(INCIDENT_ID, {}, formDataWithNote('Missing info'))
+    expect(result.message).toMatch(/signed in/i)
+    expect(mockPrisma.incident.findFirst).not.toHaveBeenCalled()
+    expect(mockPrisma.$transaction).not.toHaveBeenCalled()
+  })
+
+  it('returns a message and attempts no DB write for a MEMBER (cannot kick back)', async () => {
+    mockSignedInAs({ role: 'MEMBER' })
+    const result = await kickbackIncident(INCIDENT_ID, {}, formDataWithNote('Missing info'))
+    expect(result.message).toMatch(/permission/i)
+    expect(mockPrisma.incident.findFirst).not.toHaveBeenCalled()
+    expect(mockPrisma.$transaction).not.toHaveBeenCalled()
+  })
+
+  it('returns "not found" and attempts no DB write for a cross-tenant incident', async () => {
+    mockSignedInAs({ role: 'OFFICER' })
+    mockPrisma.incident.findFirst.mockResolvedValue(null)
+    const result = await kickbackIncident(INCIDENT_ID, {}, formDataWithNote('Missing info'))
+    expect(result.message).toMatch(/not found/i)
+    expect(mockPrisma.$transaction).not.toHaveBeenCalled()
+  })
+
+  it('rejects when reviewStatus is neither REVIEWED nor APPROVED', async () => {
+    mockSignedInAs({ role: 'OFFICER' })
+    mockPrisma.incident.findFirst.mockResolvedValue({ id: INCIDENT_ID, reviewStatus: 'SUBMITTED' })
+    const result = await kickbackIncident(INCIDENT_ID, {}, formDataWithNote('Missing info'))
+    expect(result.message).toMatch(/cannot be kicked back/i)
+    expect(mockPrisma.$transaction).not.toHaveBeenCalled()
+  })
+
+  it('returns fieldErrors and attempts no DB write for an empty note', async () => {
+    mockSignedInAs({ role: 'OFFICER' })
+    mockPrisma.incident.findFirst.mockResolvedValue({ id: INCIDENT_ID, reviewStatus: 'REVIEWED' })
+    const result = await kickbackIncident(INCIDENT_ID, {}, formDataWithNote(''))
+    expect(result.errors?.note).toBeDefined()
+    expect(mockPrisma.$transaction).not.toHaveBeenCalled()
+  })
+
+  it('transitions REVIEWED to OPEN and writes a ReviewEvent with the note for an OFFICER', async () => {
+    const user = mockSignedInAs({ id: 'user_1', role: 'OFFICER' })
+    mockPrisma.incident.findFirst.mockResolvedValue({ id: INCIDENT_ID, reviewStatus: 'REVIEWED' })
+    mockPrisma.incident.updateMany.mockResolvedValue({ count: 1 })
+
+    const result = await kickbackIncident(INCIDENT_ID, {}, formDataWithNote('Missing narrative detail'))
+
+    expect(mockPrisma.incident.updateMany).toHaveBeenCalledWith({
+      where: { id: INCIDENT_ID, reviewStatus: 'REVIEWED' },
+      data: { reviewStatus: 'OPEN' }
+    })
+    expect(mockPrisma.reviewEvent.create).toHaveBeenCalledWith({
+      data: { incidentId: INCIDENT_ID, actorId: user.id, fromStatus: 'REVIEWED', toStatus: 'OPEN', note: 'Missing narrative detail' }
+    })
+    expect(revalidatePath).toHaveBeenCalledWith(`/incidents/${INCIDENT_ID}`)
+    expect(revalidatePath).toHaveBeenCalledWith('/incidents/review')
+    expect(result.message).toBe('Incident kicked back to Open.')
+  })
+
+  it('transitions APPROVED to OPEN for a CHIEF', async () => {
+    mockSignedInAs({ role: 'CHIEF' })
+    mockPrisma.incident.findFirst.mockResolvedValue({ id: INCIDENT_ID, reviewStatus: 'APPROVED' })
+    mockPrisma.incident.updateMany.mockResolvedValue({ count: 1 })
+
+    await kickbackIncident(INCIDENT_ID, {}, formDataWithNote('Needs a correction'))
+
+    expect(mockPrisma.incident.updateMany).toHaveBeenCalledWith({
+      where: { id: INCIDENT_ID, reviewStatus: 'APPROVED' },
+      data: { reviewStatus: 'OPEN' }
+    })
+    expect(mockPrisma.reviewEvent.create).toHaveBeenCalledWith({
+      data: expect.objectContaining({ fromStatus: 'APPROVED', toStatus: 'OPEN' })
+    })
+  })
+
+  it('returns a message and writes no ReviewEvent when updateMany affects zero rows (lost the race)', async () => {
+    mockSignedInAs({ role: 'OFFICER' })
+    mockPrisma.incident.findFirst.mockResolvedValue({ id: INCIDENT_ID, reviewStatus: 'REVIEWED' })
+    mockPrisma.incident.updateMany.mockResolvedValue({ count: 0 })
+
+    const result = await kickbackIncident(INCIDENT_ID, {}, formDataWithNote('Missing narrative detail'))
+
+    expect(mockPrisma.reviewEvent.create).not.toHaveBeenCalled()
+    expect(result.message).toMatch(/already changed/i)
   })
 })

@@ -4,6 +4,7 @@ import { getIncidentDetail } from '@/lib/incidents/get-incident-detail'
 import { getSubmitCompleteness } from '@/lib/incidents/get-submit-completeness'
 import { canReview, canApprove } from '@/lib/incidents/review-permissions'
 import { submitIncident, markReviewed, approveIncident } from './actions'
+import { KickbackForm } from './kickback-form'
 
 const MISSING_FIELD_LABELS: Record<string, string> = {
   timeIncidentClear: 'Dispatch: incident clear',
@@ -53,9 +54,18 @@ export default async function IncidentOverviewPage(props: PageProps<'/incidents/
   if (!incident) notFound()
 
   const completeness = getSubmitCompleteness(incident)
+  const lastEvent = incident.reviewEvents[0]
+  const lastKickback = incident.reviewStatus === 'OPEN' && lastEvent?.toStatus === 'OPEN' && lastEvent.note ? lastEvent : null
 
   return (
     <div className="space-y-6">
+      {lastKickback && (
+        <section className="rounded border border-red-200 bg-red-50 p-4 text-sm text-red-900">
+          <p className="font-semibold">Kicked back by {lastKickback.actor.name}</p>
+          <p className="mt-1 whitespace-pre-wrap">{lastKickback.note}</p>
+        </section>
+      )}
+
       <section className="space-y-1 text-sm">
         <h2 className="font-semibold">Incident</h2>
         <p>Date: {incident.incidentDate.toLocaleDateString()}</p>
@@ -125,10 +135,16 @@ export default async function IncidentOverviewPage(props: PageProps<'/incidents/
                 </button>
               </form>
             )}
+            {canReview(user.role) && <KickbackForm incidentId={incident.id} />}
           </div>
         )}
-        {(incident.reviewStatus === 'APPROVED' ||
-          incident.reviewStatus === 'SENT' ||
+        {incident.reviewStatus === 'APPROVED' && (
+          <div className="space-y-2">
+            <p>status: {incident.reviewStatus}</p>
+            {canReview(user.role) && <KickbackForm incidentId={incident.id} />}
+          </div>
+        )}
+        {(incident.reviewStatus === 'SENT' ||
           incident.reviewStatus === 'CONFIRMED' ||
           incident.reviewStatus === 'ERROR') && <p>status: {incident.reviewStatus}</p>}
       </section>

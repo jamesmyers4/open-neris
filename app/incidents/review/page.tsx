@@ -5,6 +5,7 @@ import { prisma } from '@/lib/prisma'
 import { canReview, canApprove } from '@/lib/incidents/review-permissions'
 import { getReviewQueue } from '@/lib/incidents/get-review-queue'
 import { markReviewed, approveIncident } from '@/app/incidents/[id]/actions'
+import { KickbackForm } from '@/app/incidents/[id]/kickback-form'
 
 const statusStyles: Record<string, string> = {
   SUBMITTED: 'bg-blue-100 text-blue-800',
@@ -50,20 +51,27 @@ export default async function ReviewQueuePage() {
                   </span>
                 </td>
                 <td className="py-2 pr-4">
-                  {incident.reviewStatus === 'SUBMITTED' && (
-                    <form action={markReviewed.bind(null, incident.id)}>
-                      <button type="submit" className="rounded bg-slate-900 px-3 py-1 text-white">
-                        Mark Reviewed
-                      </button>
-                    </form>
-                  )}
-                  {incident.reviewStatus === 'REVIEWED' && userCanApprove && (
-                    <form action={approveIncident.bind(null, incident.id)}>
-                      <button type="submit" className="rounded bg-slate-900 px-3 py-1 text-white">
-                        Approve
-                      </button>
-                    </form>
-                  )}
+                  <div className="flex flex-col items-start gap-2">
+                    {incident.reviewStatus === 'SUBMITTED' && (
+                      <form action={markReviewed.bind(null, incident.id)}>
+                        <button type="submit" className="rounded bg-slate-900 px-3 py-1 text-white">
+                          Mark Reviewed
+                        </button>
+                      </form>
+                    )}
+                    {incident.reviewStatus === 'REVIEWED' && (
+                      <>
+                        {userCanApprove && (
+                          <form action={approveIncident.bind(null, incident.id)}>
+                            <button type="submit" className="rounded bg-slate-900 px-3 py-1 text-white">
+                              Approve
+                            </button>
+                          </form>
+                        )}
+                        <KickbackForm incidentId={incident.id} />
+                      </>
+                    )}
+                  </div>
                 </td>
               </tr>
             ))}

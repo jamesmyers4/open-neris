@@ -5,7 +5,7 @@ import { vi, type Mock } from 'vitest'
 // e.g. mockPrisma.incident.update reads directly against real action code.
 export type MockPrismaClient = {
   department: { findUniqueOrThrow: Mock; findMany: Mock; update: Mock }
-  user: { findUnique: Mock; findFirst: Mock; findMany: Mock; create: Mock; update: Mock }
+  user: { findUnique: Mock; findFirst: Mock; findMany: Mock; count: Mock; create: Mock; update: Mock }
   incident: { findFirst: Mock; findMany: Mock; update: Mock; updateMany: Mock; create: Mock }
   incidentActionTaken: { findFirst: Mock; create: Mock; delete: Mock }
   incidentDispatchComment: { create: Mock }
@@ -16,13 +16,14 @@ export type MockPrismaClient = {
   station: { findFirst: Mock; create: Mock; update: Mock; delete: Mock }
   unit: { findFirst: Mock; findMany: Mock; create: Mock; update: Mock; delete: Mock }
   reviewEvent: { create: Mock }
+  notification: { createMany: Mock; count: Mock }
   $transaction: Mock
 }
 
 export function createPrismaMock(): MockPrismaClient {
   const mock = {
     department: { findUniqueOrThrow: vi.fn(), findMany: vi.fn(), update: vi.fn() },
-    user: { findUnique: vi.fn(), findFirst: vi.fn(), findMany: vi.fn(), create: vi.fn(), update: vi.fn() },
+    user: { findUnique: vi.fn(), findFirst: vi.fn(), findMany: vi.fn(), count: vi.fn(), create: vi.fn(), update: vi.fn() },
     incident: { findFirst: vi.fn(), findMany: vi.fn(), update: vi.fn(), updateMany: vi.fn(), create: vi.fn() },
     incidentActionTaken: { findFirst: vi.fn(), create: vi.fn(), delete: vi.fn() },
     incidentDispatchComment: { create: vi.fn() },
@@ -32,7 +33,8 @@ export function createPrismaMock(): MockPrismaClient {
     incidentUnitResponse: { create: vi.fn() },
     station: { findFirst: vi.fn(), create: vi.fn(), update: vi.fn(), delete: vi.fn() },
     unit: { findFirst: vi.fn(), findMany: vi.fn(), create: vi.fn(), update: vi.fn(), delete: vi.fn() },
-    reviewEvent: { create: vi.fn() }
+    reviewEvent: { create: vi.fn() },
+    notification: { createMany: vi.fn(), count: vi.fn() }
   } as MockPrismaClient
 
   // Supports both $transaction call shapes used in this codebase: the batch

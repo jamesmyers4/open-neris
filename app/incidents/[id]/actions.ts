@@ -7,6 +7,7 @@ import { getCurrentAppUser } from '@/lib/auth/current-user'
 import { getIncidentDetail } from '@/lib/incidents/get-incident-detail'
 import { getSubmitCompleteness } from '@/lib/incidents/get-submit-completeness'
 import { canReview, canApprove } from '@/lib/incidents/review-permissions'
+import { notifySubmittedNeedsReview, notifyReviewedNeedsApproval, notifyKickedBack } from '@/lib/notifications/notify'
 
 export async function submitIncident(incidentId: string): Promise<void> {
   const user = await getCurrentAppUser()
@@ -32,7 +33,10 @@ export async function submitIncident(incidentId: string): Promise<void> {
     return true
   })
 
-  if (submitted) revalidatePath(`/incidents/${incidentId}`)
+  if (submitted) {
+    revalidatePath(`/incidents/${incidentId}`)
+    await notifySubmittedNeedsReview(prisma, incident, user.id)
+  }
 }
 
 export async function markReviewed(incidentId: string): Promise<void> {
@@ -60,6 +64,7 @@ export async function markReviewed(incidentId: string): Promise<void> {
   if (reviewed) {
     revalidatePath(`/incidents/${incidentId}`)
     revalidatePath('/incidents/review')
+    await notifyReviewedNeedsApproval(prisma, incident, user.id)
   }
 }
 
@@ -133,5 +138,6 @@ export async function kickbackIncident(incidentId: string, _prevState: KickbackS
 
   revalidatePath(`/incidents/${incidentId}`)
   revalidatePath('/incidents/review')
+  await notifyKickedBack(prisma, incident, incident.createdById, user.id)
   return { message: 'Incident kicked back to Open.' }
 }

@@ -6,11 +6,13 @@ vi.mock('@/lib/prisma', async () => {
   return { prisma: createPrismaMock() }
 })
 vi.mock('@/lib/incidents/get-submit-completeness')
+vi.mock('@/lib/notifications/notify')
 
 import { revalidatePath } from 'next/cache'
 import { prisma } from '@/lib/prisma'
 import { submitIncident, markReviewed, approveIncident, kickbackIncident } from '@/app/incidents/[id]/actions'
 import { getSubmitCompleteness } from '@/lib/incidents/get-submit-completeness'
+import { notifySubmittedNeedsReview, notifyReviewedNeedsApproval, notifyKickedBack } from '@/lib/notifications/notify'
 import { mockSignedInAs, mockSignedOut } from '@/test/helpers/auth'
 import { buildIncidentDetail } from '@/test/helpers/fixtures'
 import { type MockPrismaClient } from '@/test/helpers/prisma-mock'
@@ -83,6 +85,11 @@ describe('submitIncident', () => {
     })
     expect(mockPrisma.$transaction).toHaveBeenCalledTimes(1)
     expect(revalidatePath).toHaveBeenCalledWith(`/incidents/${INCIDENT_ID}`)
+    expect(notifySubmittedNeedsReview).toHaveBeenCalledWith(
+      prisma,
+      expect.objectContaining({ id: INCIDENT_ID }),
+      user.id
+    )
   })
 
   // Fixed in Phase 7 (see TESTING.md): submitIncident now re-checks
@@ -90,7 +97,7 @@ describe('submitIncident', () => {
   // writing unconditionally after an application-code-only OPEN check. This
   // characterizes the losing side of that race — a request that read OPEN
   // but lost the write to another request in between.
-  it('writes no ReviewEvent and does not revalidate when updateMany affects zero rows (lost the optimistic-locking race)', async () => {
+  it('writes no ReviewEvent, does not revalidate, and sends no notification when updateMany affects zero rows (lost the optimistic-locking race)', async () => {
     mockSignedInAs({ id: 'user_1', departmentId: 'dept_1' })
     mockPrisma.incident.findFirst.mockResolvedValue(buildIncidentDetail({ id: INCIDENT_ID, reviewStatus: 'OPEN' }))
     vi.mocked(getSubmitCompleteness).mockReturnValue({ complete: true, missing: [] })
@@ -100,6 +107,7 @@ describe('submitIncident', () => {
 
     expect(mockPrisma.reviewEvent.create).not.toHaveBeenCalled()
     expect(revalidatePath).not.toHaveBeenCalled()
+    expect(notifySubmittedNeedsReview).not.toHaveBeenCalled()
   })
 
   it('propagates a failure from either half of the transaction rather than silently succeeding', async () => {
@@ -163,6 +171,11 @@ describe('markReviewed', () => {
     })
     expect(revalidatePath).toHaveBeenCalledWith(`/incidents/${INCIDENT_ID}`)
     expect(revalidatePath).toHaveBeenCalledWith('/incidents/review')
+    expect(notifyReviewedNeedsApproval).toHaveBeenCalledWith(
+      prisma,
+      expect.objectContaining({ id: INCIDENT_ID }),
+      user.id
+    )
   })
 
   it('allows an ADMIN to review too (solo-department fast path)', async () => {
@@ -184,6 +197,7 @@ describe('markReviewed', () => {
 
     expect(mockPrisma.reviewEvent.create).not.toHaveBeenCalled()
     expect(revalidatePath).not.toHaveBeenCalled()
+    expect(notifyReviewedNeedsApproval).not.toHaveBeenCalled()
   })
 })
 
@@ -225,6 +239,12 @@ describe('approveIncident', () => {
     })
     expect(revalidatePath).toHaveBeenCalledWith(`/incidents/${INCIDENT_ID}`)
     expect(revalidatePath).toHaveBeenCalledWith('/incidents/review')
+    // Per FUTURE.md's own list of notification trigger points (Submitted
+    // needing review, Reviewed needing approval, kickback) — Approved itself
+    // is not one of them, so no notify function is ever called here.
+    expect(notifySubmittedNeedsReview).not.toHaveBeenCalled()
+    expect(notifyReviewedNeedsApproval).not.toHaveBeenCalled()
+    expect(notifyKickedBack).not.toHaveBeenCalled()
   })
 
   it('allows an ADMIN to approve too (solo-department fast path)', async () => {
@@ -287,7 +307,7 @@ describe('kickbackIncident', () => {
 
   it('transitions REVIEWED to OPEN and writes a ReviewEvent with the note for an OFFICER', async () => {
     const user = mockSignedInAs({ id: 'user_1', role: 'OFFICER' })
-    mockPrisma.incident.findFirst.mockResolvedValue({ id: INCIDENT_ID, reviewStatus: 'REVIEWED' })
+    mockPrisma.incident.findFirst.mockResolvedValue({ id: INCIDENT_ID, reviewStatus: 'REVIEWED', createdById: 'submitter_1' })
     mockPrisma.incident.updateMany.mockResolvedValue({ count: 1 })
 
     const result = await kickbackIncident(INCIDENT_ID, {}, formDataWithNote('Missing narrative detail'))
@@ -301,6 +321,12 @@ describe('kickbackIncident', () => {
     })
     expect(revalidatePath).toHaveBeenCalledWith(`/incidents/${INCIDENT_ID}`)
     expect(revalidatePath).toHaveBeenCalledWith('/incidents/review')
+    expect(notifyKickedBack).toHaveBeenCalledWith(
+      prisma,
+      expect.objectContaining({ id: INCIDENT_ID }),
+      'submitter_1',
+      user.id
+    )
     expect(result.message).toBe('Incident kicked back to Open.')
   })
 
@@ -328,6 +354,7 @@ describe('kickbackIncident', () => {
     const result = await kickbackIncident(INCIDENT_ID, {}, formDataWithNote('Missing narrative detail'))
 
     expect(mockPrisma.reviewEvent.create).not.toHaveBeenCalled()
+    expect(notifyKickedBack).not.toHaveBeenCalled()
     expect(result.message).toMatch(/already changed/i)
   })
 })

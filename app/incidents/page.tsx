@@ -3,6 +3,7 @@ import { redirect } from 'next/navigation'
 import { prisma } from '@/lib/prisma'
 import { getCurrentAppUser } from '@/lib/auth/current-user'
 import { canReview } from '@/lib/incidents/review-permissions'
+import { getUnreadNotificationCount } from '@/lib/notifications/get-unread-count'
 
 const statusStyles: Record<string, string> = {
   OPEN: 'bg-slate-100 text-slate-800',
@@ -23,11 +24,19 @@ export default async function IncidentsPage() {
     include: { types: { where: { isPrimary: true }, take: 1 } },
     orderBy: { createdAt: 'desc' }
   })
+  const unreadCount = await getUnreadNotificationCount(prisma, user.id)
 
   return (
     <main className="mx-auto max-w-4xl p-8">
       <div className="mb-6 flex items-center justify-between">
-        <h1 className="text-2xl font-bold">Incidents</h1>
+        <h1 className="flex items-center gap-2 text-2xl font-bold">
+          Incidents
+          {unreadCount > 0 && (
+            <span className="rounded-full bg-red-600 px-2 py-0.5 text-xs font-medium text-white" title="Unread notifications">
+              {unreadCount}
+            </span>
+          )}
+        </h1>
         <div className="flex items-center gap-3">
           {canReview(user.role) && (
             <Link href="/incidents/review" className="text-sm text-slate-600 underline">

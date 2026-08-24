@@ -12,12 +12,11 @@ Next.js 16 (App Router, Turbopack) + TypeScript, Prisma 7.9.1 + PostgreSQL (Neon
 
 The core incident workflow is built and working end to end: create an incident, work through it tab by tab (Dispatch, Location, People & Displacement, Mutual Aid, Narrative, Actions Taken), add the repeatable sections that apply to it (Exposures, Fire, Medical, HazSit, Rescues, Responding Units), pass the final validation gate, and submit. Type-gating already hides sections that don't apply to a given incident type, and date/time fields carry over between tabs via quick-select rather than needing re-entry.
 
-This build pass is done. Next up is Personnel tracking, then the NERIS API feed itself — see `FUTURE.md`.
+This build pass is done, as is access control and Review & Approve (see "What's next" below). Next up is the NERIS API feed itself — see `FUTURE.md`.
 
 Not done yet:
 - Actual submission to NERIS. The workflow ends at `Submitted` today; the API call to NERIS itself isn't wired up.
 - Named-individual personnel/roster tracking. Rank, certs, fit-test, physicals, apparatus assignment — a separate, later epic. Access control (signup, invites, roles, deactivation) is done; this is not the same thing (see `CONTEXT.md`'s Field-verification discipline #5 for why they were split apart).
-- Review & Approve. The status chain and audit log exist in the schema; the reviewer/chief UI (kickback notes, email and in-app alerts) doesn't.
 - Admin department settings screen — Organization/Station/Unit portion built; NERIS-credentials portion still pending.
 - Attachments, reporting/dashboard views.
 
@@ -27,7 +26,7 @@ See `CONTEXT.md` for the architecture decisions and reasoning behind all of this
 
 **Access control is done**: self-serve signup, Admin-invite by email, role changes, and deactivation, scoped per-department with district-level oversight for a parent organization's Admin. See `CONTEXT.md`'s Roadmap for the Epic 3 build detail.
 
-**Review & Approve** is next — the reviewer/chief UI on top of the status chain that already exists in the schema.
+**Review & Approve is done**: the Officer/Chief review queue, kickback-with-notes, and email + in-app status-change notifications (Resend) are all built and wired into the existing status chain — see `CONTEXT.md`'s Roadmap for the Epic 4 build detail. The NERIS feed itself (Epic 5) is next.
 
 **Named-individual personnel/roster tracking** (rank, certs, fit-test, physicals, apparatus assignment, auto-populating crew context on an incident) is a separate, later epic — not gated on anything above, deliberately not scoped into the current build pass. Once it exists, other department services are planned on top of it: certifications, fit-test tracking, annual physicals, SCBA/breathing-apparatus compliance — the kind of federal/departmental recordkeeping that runs alongside NERIS rather than through it.
 

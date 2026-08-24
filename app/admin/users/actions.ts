@@ -8,6 +8,7 @@ import { prisma } from '@/lib/prisma'
 import { requireAdmin } from '@/lib/auth/require-admin'
 import { inviteSchema } from '@/lib/validation/invite.schema'
 import { getDescendantDepartmentIds } from '@/lib/organization/get-descendant-department-ids'
+import { getAppBaseUrl } from '@/lib/app-url'
 
 async function findUserInScope(adminDepartmentId: string, userId: string) {
   const target = await prisma.user.findUnique({ where: { id: userId } })
@@ -64,7 +65,7 @@ export async function createInvite(_prevState: CreateInviteState, formData: Form
     const client = await clerkClient()
     await client.invitations.createInvitation({
       emailAddress: parsed.data.email,
-      redirectUrl: `${process.env.NEXT_PUBLIC_APP_URL ?? 'http://localhost:3000'}/sign-up`
+      redirectUrl: `${getAppBaseUrl()}/sign-up`
     })
   } catch {
     return {

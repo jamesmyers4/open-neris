@@ -2,7 +2,8 @@ import { notFound, redirect } from 'next/navigation'
 import { getCurrentAppUser } from '@/lib/auth/current-user'
 import { getIncidentDetail } from '@/lib/incidents/get-incident-detail'
 import { getSubmitCompleteness } from '@/lib/incidents/get-submit-completeness'
-import { submitIncident } from './actions'
+import { canReview, canApprove } from '@/lib/incidents/review-permissions'
+import { submitIncident, markReviewed, approveIncident } from './actions'
 
 const MISSING_FIELD_LABELS: Record<string, string> = {
   timeIncidentClear: 'Dispatch: incident clear',
@@ -85,15 +86,14 @@ export default async function IncidentOverviewPage(props: PageProps<'/incidents/
 
       <section className="space-y-3 border-t border-slate-200 pt-6 text-sm">
         <h2 className="font-semibold">Submit</h2>
-        {incident.reviewStatus !== 'OPEN' ? (
-          <p>This incident has already been submitted (status: {incident.reviewStatus}).</p>
-        ) : completeness.complete ? (
+        {incident.reviewStatus === 'OPEN' && completeness.complete && (
           <form action={submitIncident.bind(null, incident.id)}>
             <button type="submit" className="rounded bg-slate-900 px-4 py-2 text-white">
               Submit for review
             </button>
           </form>
-        ) : (
+        )}
+        {incident.reviewStatus === 'OPEN' && !completeness.complete && (
           <div className="space-y-2">
             <p>Complete these before this incident can be submitted:</p>
             <ul className="list-disc rounded bg-amber-50 p-3 pl-6 text-amber-900">
@@ -103,6 +103,34 @@ export default async function IncidentOverviewPage(props: PageProps<'/incidents/
             </ul>
           </div>
         )}
+        {incident.reviewStatus === 'SUBMITTED' && (
+          <div className="space-y-2">
+            <p>status: {incident.reviewStatus}</p>
+            {canReview(user.role) && (
+              <form action={markReviewed.bind(null, incident.id)}>
+                <button type="submit" className="rounded bg-slate-900 px-4 py-2 text-white">
+                  Mark Reviewed
+                </button>
+              </form>
+            )}
+          </div>
+        )}
+        {incident.reviewStatus === 'REVIEWED' && (
+          <div className="space-y-2">
+            <p>status: {incident.reviewStatus}</p>
+            {canApprove(user.role) && (
+              <form action={approveIncident.bind(null, incident.id)}>
+                <button type="submit" className="rounded bg-slate-900 px-4 py-2 text-white">
+                  Approve
+                </button>
+              </form>
+            )}
+          </div>
+        )}
+        {(incident.reviewStatus === 'APPROVED' ||
+          incident.reviewStatus === 'SENT' ||
+          incident.reviewStatus === 'CONFIRMED' ||
+          incident.reviewStatus === 'ERROR') && <p>status: {incident.reviewStatus}</p>}
       </section>
     </div>
   )

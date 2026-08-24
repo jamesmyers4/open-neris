@@ -41,6 +41,12 @@ enum SubmissionTrigger {
   MANUAL_RESEND
 }
 
+enum NotificationType {
+  SUBMITTED_NEEDS_REVIEW
+  REVIEWED_NEEDS_APPROVAL
+  KICKED_BACK
+}
+
 model Department {
   id                            String                @id @default(cuid())
   name                          String
@@ -122,20 +128,21 @@ model DepartmentIdCounter {
 }
 
 model User {
-  id                String        @id @default(cuid())
+  id                String         @id @default(cuid())
   departmentId      String
-  department        Department    @relation(fields: [departmentId], references: [id])
-  clerkId           String?       @unique
+  department        Department     @relation(fields: [departmentId], references: [id])
+  clerkId           String?        @unique
   name              String
   email             String
-  role              UserRole      @default(MEMBER)
-  status            UserStatus    @default(ACTIVE)
-  createdAt         DateTime      @default(now())
-  updatedAt         DateTime      @updatedAt
-  incidentsCreated  Incident[]    @relation("CreatedBy")
-  incidentsReviewed Incident[]    @relation("ReviewedBy")
-  incidentsApproved Incident[]    @relation("ApprovedBy")
+  role              UserRole       @default(MEMBER)
+  status            UserStatus     @default(ACTIVE)
+  createdAt         DateTime       @default(now())
+  updatedAt         DateTime       @updatedAt
+  incidentsCreated  Incident[]     @relation("CreatedBy")
+  incidentsReviewed Incident[]     @relation("ReviewedBy")
+  incidentsApproved Incident[]     @relation("ApprovedBy")
   reviewEvents      ReviewEvent[]
+  notifications     Notification[]
 
   @@index([departmentId])
 }
@@ -194,6 +201,7 @@ model Incident {
   tacticTimestamps         IncidentTacticTimestamps?
   reviewEvents             ReviewEvent[]
   nerisSubmissions         NerisSubmission[]
+  notifications            Notification[]
 
   @@unique([departmentId, internalId])
   @@index([departmentId, reviewStatus])
@@ -487,5 +495,19 @@ model NerisSubmission {
   succeeded      Boolean           @default(false)
   createdAt      DateTime          @default(now())
 
+  @@index([incidentId])
+}
+
+model Notification {
+  id         String           @id @default(cuid())
+  userId     String
+  user       User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  incidentId String?
+  incident   Incident?        @relation(fields: [incidentId], references: [id], onDelete: Cascade)
+  type       NotificationType
+  read       Boolean          @default(false)
+  createdAt  DateTime         @default(now())
+
+  @@index([userId])
   @@index([incidentId])
 }

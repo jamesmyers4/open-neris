@@ -6,7 +6,7 @@ import { vi, type Mock } from 'vitest'
 export type MockPrismaClient = {
   department: { findUniqueOrThrow: Mock; findMany: Mock; update: Mock }
   user: { findUnique: Mock; findFirst: Mock; findMany: Mock; create: Mock; update: Mock }
-  incident: { findFirst: Mock; update: Mock; updateMany: Mock; create: Mock }
+  incident: { findFirst: Mock; findMany: Mock; update: Mock; updateMany: Mock; create: Mock }
   incidentActionTaken: { findFirst: Mock; create: Mock; delete: Mock }
   incidentDispatchComment: { create: Mock }
   incidentExposure: { create: Mock }
@@ -23,7 +23,7 @@ export function createPrismaMock(): MockPrismaClient {
   const mock = {
     department: { findUniqueOrThrow: vi.fn(), findMany: vi.fn(), update: vi.fn() },
     user: { findUnique: vi.fn(), findFirst: vi.fn(), findMany: vi.fn(), create: vi.fn(), update: vi.fn() },
-    incident: { findFirst: vi.fn(), update: vi.fn(), updateMany: vi.fn(), create: vi.fn() },
+    incident: { findFirst: vi.fn(), findMany: vi.fn(), update: vi.fn(), updateMany: vi.fn(), create: vi.fn() },
     incidentActionTaken: { findFirst: vi.fn(), create: vi.fn(), delete: vi.fn() },
     incidentDispatchComment: { create: vi.fn() },
     incidentExposure: { create: vi.fn() },

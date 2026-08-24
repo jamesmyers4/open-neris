@@ -1,11 +1,23 @@
 'use server'
 
 import { revalidatePath } from 'next/cache'
+import { z } from 'zod'
 import { clerkClient } from '@clerk/nextjs/server'
+import { UserRole } from '@prisma/client'
 import { prisma } from '@/lib/prisma'
 import { requireAdmin } from '@/lib/auth/require-admin'
 import { inviteSchema } from '@/lib/validation/invite.schema'
 import { getDescendantDepartmentIds } from '@/lib/organization/get-descendant-department-ids'
+
+async function findUserInScope(adminDepartmentId: string, userId: string) {
+  const target = await prisma.user.findUnique({ where: { id: userId } })
+  if (!target) return null
+
+  const allowedDepartmentIds = await getDescendantDepartmentIds(prisma, adminDepartmentId)
+  if (!allowedDepartmentIds.includes(target.departmentId)) return null
+
+  return target
+}
 
 export type CreateInviteState = {
   errors?: Record<string, string[] | undefined>
@@ -62,4 +74,47 @@ export async function createInvite(_prevState: CreateInviteState, formData: Form
 
   revalidatePath('/admin/users')
   return { message: 'Invite sent.' }
+}
+
+export type UpdateUserRoleState = {
+  errors?: Record<string, string[] | undefined>
+  message?: string
+}
+
+export async function updateUserRole(userId: string, _prevState: UpdateUserRoleState, formData: FormData): Promise<UpdateUserRoleState> {
+  const admin = await requireAdmin()
+  if ('error' in admin) return { message: admin.error }
+
+  const target = await findUserInScope(admin.user.departmentId, userId)
+  if (!target) return { message: 'User not found.' }
+
+  const parsed = z.object({ role: z.enum(UserRole) }).safeParse({ role: formData.get('role') || undefined })
+  if (!parsed.success) {
+    return { errors: parsed.error.flatten().fieldErrors, message: 'Fix the errors below and try again.' }
+  }
+
+  await prisma.user.update({ where: { id: userId }, data: { role: parsed.data.role } })
+
+  revalidatePath('/admin/users')
+  return { message: 'Role updated.' }
+}
+
+export type DeactivateUserState = {
+  message?: string
+}
+
+export async function deactivateUser(_prevState: DeactivateUserState, formData: FormData): Promise<DeactivateUserState> {
+  const admin = await requireAdmin()
+  if ('error' in admin) return { message: admin.error }
+
+  const userId = formData.get('userId')
+  if (typeof userId !== 'string') return { message: 'User not found.' }
+
+  const target = await findUserInScope(admin.user.departmentId, userId)
+  if (!target) return { message: 'User not found.' }
+
+  await prisma.user.update({ where: { id: userId }, data: { status: 'DEACTIVATED' } })
+
+  revalidatePath('/admin/users')
+  return { message: 'User deactivated.' }
 }

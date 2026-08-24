@@ -6,9 +6,14 @@ export async function getCurrentAppUser() {
   if (!userId) return null
 
   const linked = await prisma.user.findUnique({ where: { clerkId: userId } })
-  if (linked) return linked
+  if (linked) return linked.status === 'DEACTIVATED' ? null : linked
 
   return linkPendingInvite(userId)
+}
+
+export async function isDeactivatedClerkUser(clerkId: string): Promise<boolean> {
+  const user = await prisma.user.findUnique({ where: { clerkId } })
+  return user?.status === 'DEACTIVATED'
 }
 
 async function linkPendingInvite(clerkId: string) {

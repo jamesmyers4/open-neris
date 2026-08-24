@@ -16,7 +16,7 @@ This build pass is done. Next up is Personnel tracking, then the NERIS API feed 
 
 Not done yet:
 - Actual submission to NERIS. The workflow ends at `Submitted` today; the API call to NERIS itself isn't wired up.
-- Personnel tracking. Employee/roster data, shift and apparatus assignment, and department-level access control all depend on this. It's next after the current UI is settled.
+- Named-individual personnel/roster tracking. Rank, certs, fit-test, physicals, apparatus assignment — a separate, later epic. Access control (signup, invites, roles, deactivation) is done; this is not the same thing (see `CONTEXT.md`'s Field-verification discipline #5 for why they were split apart).
 - Review & Approve. The status chain and audit log exist in the schema; the reviewer/chief UI (kickback notes, email and in-app alerts) doesn't.
 - Admin department settings screen — Organization/Station/Unit portion built; NERIS-credentials portion still pending.
 - Attachments, reporting/dashboard views.
@@ -25,13 +25,11 @@ See `CONTEXT.md` for the architecture decisions and reasoning behind all of this
 
 ## What's next
 
-**Personnel tracking** is the next real feature, once the current UI stops moving. It's the gating dependency for a few other things:
+**Access control is done**: self-serve signup, Admin-invite by email, role changes, and deactivation, scoped per-department with district-level oversight for a parent organization's Admin. See `CONTEXT.md`'s Roadmap for the Epic 3 build detail.
 
-- Access control inside the app — who can see and do what.
-- Multi-department support — a firehouse only sees its own data, with room for a parent organization (district/region) to see across the departments under it.
-- Auto-populating crew, shift, and apparatus context on an incident instead of typing it by hand.
+**Review & Approve** is next — the reviewer/chief UI on top of the status chain that already exists in the schema.
 
-Once personnel exists as a concept, other department services planned on top of it: certifications, fit-test tracking, annual physicals, SCBA/breathing-apparatus compliance — the kind of federal/departmental recordkeeping that runs alongside NERIS rather than through it.
+**Named-individual personnel/roster tracking** (rank, certs, fit-test, physicals, apparatus assignment, auto-populating crew context on an incident) is a separate, later epic — not gated on anything above, deliberately not scoped into the current build pass. Once it exists, other department services are planned on top of it: certifications, fit-test tracking, annual physicals, SCBA/breathing-apparatus compliance — the kind of federal/departmental recordkeeping that runs alongside NERIS rather than through it.
 
 Test coverage is solid for what's built — 300+ unit/integration tests, a Testcontainers-backed DB suite, and a Playwright browser E2E suite (local only for now, not yet wired into CI). See `TESTING.md`.
 

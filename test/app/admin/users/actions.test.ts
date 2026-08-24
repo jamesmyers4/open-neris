@@ -13,7 +13,7 @@ vi.mock('@clerk/nextjs/server', () => ({
 }))
 
 import { prisma } from '@/lib/prisma'
-import { createInvite } from '@/app/admin/users/actions'
+import { createInvite, updateUserRole, deactivateUser } from '@/app/admin/users/actions'
 import { mockSignedInAs, mockSignedOut } from '@/test/helpers/auth'
 import { type MockPrismaClient } from '@/test/helpers/prisma-mock'
 
@@ -129,5 +129,107 @@ describe('createInvite', () => {
     const result = await createInvite({}, validFormData())
 
     expect(result.message).toMatch(/sign up normally/i)
+  })
+})
+
+describe('updateUserRole', () => {
+  it('returns a message and makes no change when unauthenticated', async () => {
+    mockSignedOut()
+    const fd = new FormData()
+    fd.set('role', 'OFFICER')
+
+    const result = await updateUserRole('target_user', {}, fd)
+
+    expect(result.message).toMatch(/signed in/i)
+    expect(mockPrisma.user.update).not.toHaveBeenCalled()
+  })
+
+  it('returns a message and makes no change for a non-Admin user', async () => {
+    mockSignedInAs({ departmentId: DEPARTMENT_ID, role: 'MEMBER' })
+    const fd = new FormData()
+    fd.set('role', 'OFFICER')
+
+    const result = await updateUserRole('target_user', {}, fd)
+
+    expect(result.message).toMatch(/admin/i)
+    expect(mockPrisma.user.update).not.toHaveBeenCalled()
+  })
+
+  it('returns "not found" and makes no change for a user outside the caller\'s department/district', async () => {
+    mockSignedInAs({ departmentId: DEPARTMENT_ID, role: 'ADMIN' })
+    mockPrisma.user.findUnique.mockResolvedValue({ id: 'target_user', departmentId: 'unrelated_dept' })
+    const fd = new FormData()
+    fd.set('role', 'OFFICER')
+
+    const result = await updateUserRole('target_user', {}, fd)
+
+    expect(result.message).toMatch(/not found/i)
+    expect(mockPrisma.user.update).not.toHaveBeenCalled()
+  })
+
+  it('returns fieldErrors for an invalid role without updating', async () => {
+    mockSignedInAs({ departmentId: DEPARTMENT_ID, role: 'ADMIN' })
+    mockPrisma.user.findUnique.mockResolvedValue({ id: 'target_user', departmentId: DEPARTMENT_ID })
+    const fd = new FormData()
+    fd.set('role', 'NOT_A_REAL_ROLE')
+
+    const result = await updateUserRole('target_user', {}, fd)
+
+    expect(result.errors?.role).toBeDefined()
+    expect(mockPrisma.user.update).not.toHaveBeenCalled()
+  })
+
+  it('updates the role of a user within scope on the happy path', async () => {
+    mockSignedInAs({ departmentId: DEPARTMENT_ID, role: 'ADMIN' })
+    mockPrisma.user.findUnique.mockResolvedValue({ id: 'target_user', departmentId: DEPARTMENT_ID })
+    const fd = new FormData()
+    fd.set('role', 'CHIEF')
+
+    const result = await updateUserRole('target_user', {}, fd)
+
+    expect(mockPrisma.user.update).toHaveBeenCalledWith({ where: { id: 'target_user' }, data: { role: 'CHIEF' } })
+    expect(result.message).toBe('Role updated.')
+  })
+})
+
+describe('deactivateUser', () => {
+  function formDataFor(userId: string) {
+    const fd = new FormData()
+    fd.set('userId', userId)
+    return fd
+  }
+
+  it('returns a message and makes no change when unauthenticated', async () => {
+    mockSignedOut()
+    const result = await deactivateUser({}, formDataFor('target_user'))
+    expect(result.message).toMatch(/signed in/i)
+    expect(mockPrisma.user.update).not.toHaveBeenCalled()
+  })
+
+  it('returns a message and makes no change for a non-Admin user', async () => {
+    mockSignedInAs({ departmentId: DEPARTMENT_ID, role: 'OFFICER' })
+    const result = await deactivateUser({}, formDataFor('target_user'))
+    expect(result.message).toMatch(/admin/i)
+    expect(mockPrisma.user.update).not.toHaveBeenCalled()
+  })
+
+  it('returns "not found" and makes no change for a user outside the caller\'s department/district', async () => {
+    mockSignedInAs({ departmentId: DEPARTMENT_ID, role: 'ADMIN' })
+    mockPrisma.user.findUnique.mockResolvedValue({ id: 'target_user', departmentId: 'unrelated_dept' })
+
+    const result = await deactivateUser({}, formDataFor('target_user'))
+
+    expect(result.message).toMatch(/not found/i)
+    expect(mockPrisma.user.update).not.toHaveBeenCalled()
+  })
+
+  it('deactivates a user within scope on the happy path', async () => {
+    mockSignedInAs({ departmentId: DEPARTMENT_ID, role: 'ADMIN' })
+    mockPrisma.user.findUnique.mockResolvedValue({ id: 'target_user', departmentId: DEPARTMENT_ID })
+
+    const result = await deactivateUser({}, formDataFor('target_user'))
+
+    expect(mockPrisma.user.update).toHaveBeenCalledWith({ where: { id: 'target_user' }, data: { status: 'DEACTIVATED' } })
+    expect(result.message).toBe('User deactivated.')
   })
 })

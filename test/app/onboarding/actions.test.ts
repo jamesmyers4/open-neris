@@ -8,11 +8,13 @@ vi.mock('@/lib/prisma', () => ({ prisma: {} }))
 import { redirect } from 'next/navigation'
 import { currentUser } from '@clerk/nextjs/server'
 import { resolveDepartmentSignup } from '@/lib/onboarding/resolve-department-signup'
+import { isDeactivatedClerkUser } from '@/lib/auth/current-user'
 import { submitOnboarding } from '@/app/onboarding/actions'
 import { mockSignedInAs, mockSignedOut } from '@/test/helpers/auth'
 
 const mockCurrentUser = vi.mocked(currentUser)
 const mockResolveDepartmentSignup = vi.mocked(resolveDepartmentSignup)
+const mockIsDeactivatedClerkUser = vi.mocked(isDeactivatedClerkUser)
 
 function fakeClerkUser(overrides: Partial<{ id: string; firstName: string | null; lastName: string | null; email: string | null }> = {}) {
   const { id = 'clerk_new_1', firstName = 'Jamie', lastName = 'Smith', email = 'jamie@example.com' } = overrides
@@ -52,6 +54,18 @@ describe('submitOnboarding', () => {
 
     expect(redirect).toHaveBeenCalledWith('/incidents')
     expect(mockResolveDepartmentSignup).not.toHaveBeenCalled()
+  })
+
+  it('returns a message and never calls resolveDepartmentSignup for a deactivated account', async () => {
+    mockCurrentUser.mockResolvedValue(fakeClerkUser())
+    mockSignedOut()
+    mockIsDeactivatedClerkUser.mockResolvedValue(true)
+
+    const result = await submitOnboarding({}, validFormData())
+
+    expect(result.message).toMatch(/deactivated/i)
+    expect(mockResolveDepartmentSignup).not.toHaveBeenCalled()
+    expect(redirect).not.toHaveBeenCalled()
   })
 
   it('returns a message when the Clerk account has no primary email', async () => {

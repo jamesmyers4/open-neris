@@ -12,7 +12,7 @@ vi.mock('@clerk/nextjs/server', () => ({
 }))
 
 import { prisma } from '@/lib/prisma'
-import { getCurrentAppUser } from '@/lib/auth/current-user'
+import { getCurrentAppUser, isDeactivatedClerkUser } from '@/lib/auth/current-user'
 import { type MockPrismaClient } from '@/test/helpers/prisma-mock'
 
 const mockPrisma = prisma as unknown as MockPrismaClient
@@ -78,5 +78,32 @@ describe('getCurrentAppUser', () => {
 
     expect(result).toBeNull()
     expect(mockPrisma.user.findFirst).not.toHaveBeenCalled()
+  })
+
+  it('returns null for a DEACTIVATED User row even though it is linked by clerkId', async () => {
+    mockAuth.mockResolvedValue({ userId: 'clerk_deactivated' })
+    mockPrisma.user.findUnique.mockResolvedValue({ id: 'user_1', clerkId: 'clerk_deactivated', status: 'DEACTIVATED' })
+
+    const result = await getCurrentAppUser()
+
+    expect(result).toBeNull()
+    expect(mockCurrentUser).not.toHaveBeenCalled()
+  })
+})
+
+describe('isDeactivatedClerkUser', () => {
+  it('returns true for a DEACTIVATED user', async () => {
+    mockPrisma.user.findUnique.mockResolvedValue({ status: 'DEACTIVATED' })
+    expect(await isDeactivatedClerkUser('clerk_1')).toBe(true)
+  })
+
+  it('returns false for an ACTIVE user', async () => {
+    mockPrisma.user.findUnique.mockResolvedValue({ status: 'ACTIVE' })
+    expect(await isDeactivatedClerkUser('clerk_1')).toBe(false)
+  })
+
+  it('returns false when no User row exists for that clerkId', async () => {
+    mockPrisma.user.findUnique.mockResolvedValue(null)
+    expect(await isDeactivatedClerkUser('clerk_1')).toBe(false)
   })
 })

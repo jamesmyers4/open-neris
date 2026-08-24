@@ -3,7 +3,7 @@
 import { redirect } from 'next/navigation'
 import { currentUser } from '@clerk/nextjs/server'
 import { prisma } from '@/lib/prisma'
-import { getCurrentAppUser } from '@/lib/auth/current-user'
+import { getCurrentAppUser, isDeactivatedClerkUser } from '@/lib/auth/current-user'
 import { onboardingSchema } from '@/lib/validation/onboarding.schema'
 import { resolveDepartmentSignup } from '@/lib/onboarding/resolve-department-signup'
 
@@ -21,6 +21,10 @@ export async function submitOnboarding(_prevState: OnboardingState, formData: Fo
   if (existing) {
     redirect('/incidents')
     return {}
+  }
+
+  if (await isDeactivatedClerkUser(clerkUser.id)) {
+    return { message: 'Your account has been deactivated. Contact your department administrator.' }
   }
 
   const email = clerkUser.primaryEmailAddress?.emailAddress

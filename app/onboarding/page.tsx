@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation'
 import { currentUser } from '@clerk/nextjs/server'
-import { getCurrentAppUser } from '@/lib/auth/current-user'
+import { getCurrentAppUser, isDeactivatedClerkUser } from '@/lib/auth/current-user'
 import { OnboardingForm } from './onboarding-form'
 
 export default async function OnboardingPage() {
@@ -9,6 +9,17 @@ export default async function OnboardingPage() {
 
   const appUser = await getCurrentAppUser()
   if (appUser) redirect('/incidents')
+
+  if (await isDeactivatedClerkUser(clerkUser.id)) {
+    return (
+      <main className="mx-auto max-w-md p-8">
+        <h1 className="mb-2 text-2xl font-bold">Account deactivated</h1>
+        <p className="text-sm text-slate-600">
+          Your account has been deactivated. Contact your department administrator if you believe this is a mistake.
+        </p>
+      </main>
+    )
+  }
 
   return (
     <main className="mx-auto max-w-md p-8">

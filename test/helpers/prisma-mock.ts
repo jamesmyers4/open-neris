@@ -4,7 +4,8 @@ import { vi, type Mock } from 'vitest'
 // the 9 actions.ts files under test actually make, so a spy assertion on
 // e.g. mockPrisma.incident.update reads directly against real action code.
 export type MockPrismaClient = {
-  department: { findUniqueOrThrow: Mock; update: Mock }
+  department: { findUniqueOrThrow: Mock; findMany: Mock; update: Mock }
+  user: { findUnique: Mock; findFirst: Mock; create: Mock; update: Mock }
   incident: { findFirst: Mock; update: Mock; updateMany: Mock; create: Mock }
   incidentActionTaken: { findFirst: Mock; create: Mock; delete: Mock }
   incidentDispatchComment: { create: Mock }
@@ -20,7 +21,8 @@ export type MockPrismaClient = {
 
 export function createPrismaMock(): MockPrismaClient {
   const mock = {
-    department: { findUniqueOrThrow: vi.fn(), update: vi.fn() },
+    department: { findUniqueOrThrow: vi.fn(), findMany: vi.fn(), update: vi.fn() },
+    user: { findUnique: vi.fn(), findFirst: vi.fn(), create: vi.fn(), update: vi.fn() },
     incident: { findFirst: vi.fn(), update: vi.fn(), updateMany: vi.fn(), create: vi.fn() },
     incidentActionTaken: { findFirst: vi.fn(), create: vi.fn(), delete: vi.fn() },
     incidentDispatchComment: { create: vi.fn() },

@@ -3,19 +3,10 @@
 import { revalidatePath } from 'next/cache'
 import { Prisma } from '@prisma/client'
 import { prisma } from '@/lib/prisma'
-import { getCurrentAppUser } from '@/lib/auth/current-user'
+import { requireAdmin } from '@/lib/auth/require-admin'
 import { departmentSettingsSchema } from '@/lib/validation/department-settings.schema'
 import { stationSchema } from '@/lib/validation/station.schema'
 import { unitSchema } from '@/lib/validation/unit.schema'
-
-type AdminUser = NonNullable<Awaited<ReturnType<typeof getCurrentAppUser>>>
-
-async function requireAdmin(): Promise<{ user: AdminUser } | { error: string }> {
-  const user = await getCurrentAppUser()
-  if (!user) return { error: 'You must be signed in.' }
-  if (user.role !== 'ADMIN') return { error: 'Admins only.' }
-  return { user }
-}
 
 function isForeignKeyRestriction(error: unknown): boolean {
   return error instanceof Prisma.PrismaClientKnownRequestError && error.code === 'P2003'

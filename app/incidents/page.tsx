@@ -29,9 +29,14 @@ export default async function IncidentsPage() {
         <h1 className="text-2xl font-bold">Incidents</h1>
         <div className="flex items-center gap-3">
           {user.role === 'ADMIN' && (
-            <Link href="/admin/settings" className="text-sm text-slate-600 underline">
-              Organization settings
-            </Link>
+            <>
+              <Link href="/admin/users" className="text-sm text-slate-600 underline">
+                Users
+              </Link>
+              <Link href="/admin/settings" className="text-sm text-slate-600 underline">
+                Organization settings
+              </Link>
+            </>
           )}
           <Link href="/incidents/new" className="rounded bg-slate-900 px-4 py-2 text-white">
             New incident

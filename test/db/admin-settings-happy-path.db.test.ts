@@ -3,14 +3,17 @@ import { afterAll, beforeAll, beforeEach, describe, expect, it, vi } from 'vites
 // Same factory-mock reasoning as incident-journey.db.test.ts.
 vi.mock('@/lib/auth/current-user', () => ({ getCurrentAppUser: vi.fn() }))
 
+import { randomBytes } from 'crypto'
 import { startTestDatabase, stopTestDatabase, type TestDatabase } from '@/test/helpers/db'
 import { createTestDepartment, createTestUser } from '@/test/helpers/db-fixtures'
 import { mockSignedInAs } from '@/test/helpers/auth'
+import { decryptSecret } from '@/lib/crypto/secret-cipher'
 
 type Actions = {
   updateDepartment: typeof import('@/app/admin/settings/actions').updateDepartment
   createStation: typeof import('@/app/admin/settings/actions').createStation
   createUnit: typeof import('@/app/admin/settings/actions').createUnit
+  updateNerisCredentials: typeof import('@/app/admin/settings/actions').updateNerisCredentials
 }
 
 // Session 6 (FUTURE-PLAN.md): the Admin CRUD happy path — editing department
@@ -35,7 +38,8 @@ describe('Admin settings — CRUD happy path (Testcontainers Postgres)', () => {
     actions = {
       updateDepartment: settingsActions.updateDepartment,
       createStation: settingsActions.createStation,
-      createUnit: settingsActions.createUnit
+      createUnit: settingsActions.createUnit,
+      updateNerisCredentials: settingsActions.updateNerisCredentials
     }
   })
 
@@ -45,6 +49,7 @@ describe('Admin settings — CRUD happy path (Testcontainers Postgres)', () => {
 
   beforeEach(() => {
     vi.resetAllMocks()
+    process.env.ENCRYPTION_KEY = randomBytes(32).toString('base64')
   })
 
   it('an Admin edits department fields, adds a Station, then adds a Unit under it', async () => {
@@ -92,5 +97,37 @@ describe('Admin settings — CRUD happy path (Testcontainers Postgres)', () => {
 
     const savedUnit = await db.prisma.unit.findFirstOrThrow({ where: { stationId: savedStation.id } })
     expect(savedUnit).toMatchObject({ designation: 'ENGINE 7', capabilityType: 'ENGINE_STRUCT' })
+  })
+
+  it('a stored NERIS client secret round-trips through the real encryption path', async () => {
+    const department = await createTestDepartment(db.prisma)
+    const admin = await createTestUser(db.prisma, department.id, { role: 'ADMIN' })
+    mockSignedInAs(admin)
+
+    const credentialsFd = new FormData()
+    credentialsFd.set('nerisVendorClientId', 'vendor-client-abc')
+    credentialsFd.set('nerisVendorClientSecret', 'sandbox-secret-value')
+    credentialsFd.set('nerisEnvironment', 'SANDBOX')
+
+    const result = await actions.updateNerisCredentials({}, credentialsFd)
+    expect(result.message).toBe('Saved.')
+
+    const savedDepartment = await db.prisma.department.findUniqueOrThrow({ where: { id: department.id } })
+    expect(savedDepartment.nerisVendorClientId).toBe('vendor-client-abc')
+    expect(savedDepartment.nerisEnvironment).toBe('SANDBOX')
+    expect(savedDepartment.nerisVendorSecretCipher).not.toBeNull()
+    expect(savedDepartment.nerisVendorSecretCipher).not.toBe('sandbox-secret-value')
+    expect(decryptSecret(savedDepartment.nerisVendorSecretCipher as string)).toBe('sandbox-secret-value')
+
+    const reFd = new FormData()
+    reFd.set('nerisVendorClientId', 'vendor-client-abc')
+    reFd.set('nerisEnvironment', 'PRODUCTION')
+
+    const secondResult = await actions.updateNerisCredentials({}, reFd)
+    expect(secondResult.message).toBe('Saved.')
+
+    const reloaded = await db.prisma.department.findUniqueOrThrow({ where: { id: department.id } })
+    expect(reloaded.nerisEnvironment).toBe('PRODUCTION')
+    expect(decryptSecret(reloaded.nerisVendorSecretCipher as string)).toBe('sandbox-secret-value')
   })
 })

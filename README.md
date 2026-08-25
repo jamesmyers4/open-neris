@@ -17,7 +17,6 @@ This build pass is done, as is access control and Review & Approve (see "What's 
 Not done yet:
 - Actual submission to NERIS. The workflow ends at `Submitted` today; the API call to NERIS itself isn't wired up.
 - Named-individual personnel/roster tracking. Rank, certs, fit-test, physicals, apparatus assignment — a separate, later epic. Access control (signup, invites, roles, deactivation) is done; this is not the same thing (see `CONTEXT.md`'s Field-verification discipline #5 for why they were split apart).
-- Admin department settings screen — Organization/Station/Unit portion built; NERIS-credentials portion still pending.
 - Attachments, reporting/dashboard views.
 
 See `CONTEXT.md` for the architecture decisions and reasoning behind all of this, and `FUTURE.md` for what's planned next.

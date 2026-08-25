@@ -9,6 +9,7 @@ vi.mock('next/cache', () => ({ revalidatePath: vi.fn() }))
 
 import { Prisma } from '@prisma/client'
 import { prisma } from '@/lib/prisma'
+import { randomBytes } from 'crypto'
 import {
   updateDepartment,
   createStation,
@@ -16,10 +17,12 @@ import {
   deleteStation,
   createUnit,
   updateUnit,
-  deleteUnit
+  deleteUnit,
+  updateNerisCredentials
 } from '@/app/admin/settings/actions'
 import { mockSignedInAs, mockSignedOut } from '@/test/helpers/auth'
 import { type MockPrismaClient } from '@/test/helpers/prisma-mock'
+import { decryptSecret } from '@/lib/crypto/secret-cipher'
 
 const mockPrisma = prisma as unknown as MockPrismaClient
 const DEPARTMENT_ID = 'dept_1'
@@ -30,6 +33,7 @@ function restrictError() {
 
 beforeEach(() => {
   vi.resetAllMocks()
+  process.env.ENCRYPTION_KEY = randomBytes(32).toString('base64')
 })
 
 describe('updateDepartment', () => {
@@ -214,5 +218,67 @@ describe('Unit CRUD', () => {
 
     expect(mockPrisma.unit.delete).toHaveBeenCalledWith({ where: { id: 'unit_1' } })
     expect(result.message).toMatch(/removed/i)
+  })
+})
+
+describe('updateNerisCredentials', () => {
+  function validFormData() {
+    const fd = new FormData()
+    fd.set('nerisVendorClientId', 'vendor-client-123')
+    fd.set('nerisEnvironment', 'SANDBOX')
+    return fd
+  }
+
+  it('returns a message and attempts no DB write when unauthenticated', async () => {
+    mockSignedOut()
+    const result = await updateNerisCredentials({}, validFormData())
+    expect(result.message).toMatch(/signed in/i)
+    expect(mockPrisma.department.update).not.toHaveBeenCalled()
+  })
+
+  it('returns a message and attempts no DB write for a non-Admin user', async () => {
+    mockSignedInAs({ departmentId: DEPARTMENT_ID, role: 'MEMBER' })
+    const result = await updateNerisCredentials({}, validFormData())
+    expect(result.message).toMatch(/admin/i)
+    expect(mockPrisma.department.update).not.toHaveBeenCalled()
+  })
+
+  it('rejects a nerisEnvironment not in the NerisEnvironment enum', async () => {
+    mockSignedInAs({ departmentId: DEPARTMENT_ID, role: 'ADMIN' })
+    const fd = validFormData()
+    fd.set('nerisEnvironment', 'NOT_A_REAL_ENVIRONMENT')
+    const result = await updateNerisCredentials({}, fd)
+    expect(result.errors?.nerisEnvironment).toBeDefined()
+    expect(mockPrisma.department.update).not.toHaveBeenCalled()
+  })
+
+  it('updates the client ID and environment without touching the secret when left blank', async () => {
+    mockSignedInAs({ departmentId: DEPARTMENT_ID, role: 'ADMIN' })
+    const fd = validFormData()
+    fd.set('nerisEnvironment', 'PRODUCTION')
+
+    const result = await updateNerisCredentials({}, fd)
+
+    expect(mockPrisma.department.update).toHaveBeenCalledWith({
+      where: { id: DEPARTMENT_ID },
+      data: { nerisVendorClientId: 'vendor-client-123', nerisEnvironment: 'PRODUCTION' }
+    })
+    expect(result.message).toBe('Saved.')
+  })
+
+  it('encrypts a newly-entered secret before storing it, never storing or returning the plaintext', async () => {
+    mockSignedInAs({ departmentId: DEPARTMENT_ID, role: 'ADMIN' })
+    const fd = validFormData()
+    fd.set('nerisVendorClientSecret', 'super-secret-value')
+
+    const result = await updateNerisCredentials({}, fd)
+
+    expect(mockPrisma.department.update).toHaveBeenCalledTimes(1)
+    const call = mockPrisma.department.update.mock.calls[0][0]
+    expect(call.data.nerisVendorSecretCipher).toBeDefined()
+    expect(call.data.nerisVendorSecretCipher).not.toBe('super-secret-value')
+    expect(decryptSecret(call.data.nerisVendorSecretCipher as string)).toBe('super-secret-value')
+    expect(result.message).toBe('Saved.')
+    expect(JSON.stringify(result)).not.toMatch(/super-secret-value/)
   })
 })

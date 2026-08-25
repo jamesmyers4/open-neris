@@ -3,6 +3,7 @@ import { getCurrentAppUser } from '@/lib/auth/current-user'
 import { prisma } from '@/lib/prisma'
 import { DepartmentSettingsForm } from './department-settings-form'
 import { StationsSection } from './stations-section'
+import { NerisCredentialsForm } from './neris-credentials-form'
 
 export default async function AdminSettingsPage() {
   const user = await getCurrentAppUser()
@@ -48,6 +49,14 @@ export default async function AdminSettingsPage() {
           staffActiveCiviliansVolunteer: department.staffActiveCiviliansVolunteer,
           internalIdMode: department.internalIdMode,
           internalIdTemplate: department.internalIdTemplate
+        }}
+      />
+
+      <NerisCredentialsForm
+        credentials={{
+          nerisVendorClientId: department.nerisVendorClientId,
+          nerisEnvironment: department.nerisEnvironment,
+          hasSecret: department.nerisVendorSecretCipher !== null
         }}
       />
 

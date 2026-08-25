@@ -7,6 +7,8 @@ import { requireAdmin } from '@/lib/auth/require-admin'
 import { departmentSettingsSchema } from '@/lib/validation/department-settings.schema'
 import { stationSchema } from '@/lib/validation/station.schema'
 import { unitSchema } from '@/lib/validation/unit.schema'
+import { nerisCredentialsSchema } from '@/lib/validation/neris-credentials.schema'
+import { encryptSecret } from '@/lib/crypto/secret-cipher'
 
 function isForeignKeyRestriction(error: unknown): boolean {
   return error instanceof Prisma.PrismaClientKnownRequestError && error.code === 'P2003'
@@ -78,6 +80,39 @@ export async function updateDepartment(_prevState: DepartmentSettingsState, form
       staffActiveCiviliansVolunteer: parsed.data.staffActiveCiviliansVolunteer ?? null,
       internalIdMode: parsed.data.internalIdMode,
       internalIdTemplate: parsed.data.internalIdTemplate ?? null
+    }
+  })
+
+  revalidatePath('/admin/settings')
+  return { message: 'Saved.' }
+}
+
+export type NerisCredentialsState = {
+  errors?: Record<string, string[] | undefined>
+  message?: string
+}
+
+export async function updateNerisCredentials(_prevState: NerisCredentialsState, formData: FormData): Promise<NerisCredentialsState> {
+  const admin = await requireAdmin()
+  if ('error' in admin) return { message: admin.error }
+
+  const raw = {
+    nerisVendorClientId: formData.get('nerisVendorClientId') || undefined,
+    nerisVendorClientSecret: formData.get('nerisVendorClientSecret') || undefined,
+    nerisEnvironment: formData.get('nerisEnvironment') || undefined
+  }
+
+  const parsed = nerisCredentialsSchema.safeParse(raw)
+  if (!parsed.success) {
+    return { errors: parsed.error.flatten().fieldErrors, message: 'Fix the errors below and try again.' }
+  }
+
+  await prisma.department.update({
+    where: { id: admin.user.departmentId },
+    data: {
+      nerisVendorClientId: parsed.data.nerisVendorClientId ?? null,
+      nerisEnvironment: parsed.data.nerisEnvironment,
+      ...(parsed.data.nerisVendorClientSecret ? { nerisVendorSecretCipher: encryptSecret(parsed.data.nerisVendorClientSecret) } : {})
     }
   })
 

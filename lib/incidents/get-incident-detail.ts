@@ -18,7 +18,8 @@ export const getIncidentDetail = cache(async (id: string, departmentId: string) 
       unitResponses: { include: { unit: true } },
       displacements: true,
       createdBy: true,
-      reviewEvents: { orderBy: { createdAt: 'desc' }, include: { actor: true } }
+      reviewEvents: { orderBy: { createdAt: 'desc' }, include: { actor: true } },
+      nerisSubmissions: { orderBy: { createdAt: 'desc' }, take: 1 }
     }
   })
 })

@@ -17,6 +17,7 @@ export type MockPrismaClient = {
   unit: { findFirst: Mock; findMany: Mock; create: Mock; update: Mock; delete: Mock }
   reviewEvent: { create: Mock }
   notification: { createMany: Mock; count: Mock }
+  nerisSubmission: { create: Mock }
   $transaction: Mock
 }
 
@@ -34,7 +35,8 @@ export function createPrismaMock(): MockPrismaClient {
     station: { findFirst: vi.fn(), create: vi.fn(), update: vi.fn(), delete: vi.fn() },
     unit: { findFirst: vi.fn(), findMany: vi.fn(), create: vi.fn(), update: vi.fn(), delete: vi.fn() },
     reviewEvent: { create: vi.fn() },
-    notification: { createMany: vi.fn(), count: vi.fn() }
+    notification: { createMany: vi.fn(), count: vi.fn() },
+    nerisSubmission: { create: vi.fn() }
   } as MockPrismaClient
 
   // Supports both $transaction call shapes used in this codebase: the batch

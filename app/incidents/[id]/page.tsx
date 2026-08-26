@@ -3,7 +3,7 @@ import { getCurrentAppUser } from '@/lib/auth/current-user'
 import { getIncidentDetail } from '@/lib/incidents/get-incident-detail'
 import { getSubmitCompleteness } from '@/lib/incidents/get-submit-completeness'
 import { canReview, canApprove } from '@/lib/incidents/review-permissions'
-import { submitIncident, markReviewed, approveIncident } from './actions'
+import { submitIncident, markReviewed, approveIncident, resendNerisSubmission } from './actions'
 import { KickbackForm } from './kickback-form'
 
 const MISSING_FIELD_LABELS: Record<string, string> = {
@@ -29,6 +29,20 @@ const MODULE_LABELS: Record<string, string> = {
   unitResponse: 'Responding Units',
   rescuesFf: 'Firefighter Rescues',
   rescuesNonFf: 'Civilian Rescues'
+}
+
+function formatNerisFailureReason(responseBody: unknown): string {
+  if (responseBody && typeof responseBody === 'object') {
+    const body = responseBody as { error?: unknown; detail?: unknown }
+    if (typeof body.error === 'string') return body.error
+    if (Array.isArray(body.detail)) {
+      const messages = body.detail
+        .map(d => (d && typeof d === 'object' && typeof (d as { msg?: unknown }).msg === 'string' ? (d as { msg: string }).msg : null))
+        .filter((m): m is string => Boolean(m))
+      if (messages.length > 0) return messages.join('; ')
+    }
+  }
+  return 'NERIS submission failed for an unknown reason.'
 }
 
 function formatMissingField(m: { module: string; path: string }): string {
@@ -144,9 +158,27 @@ export default async function IncidentOverviewPage(props: PageProps<'/incidents/
             {canReview(user.role) && <KickbackForm incidentId={incident.id} />}
           </div>
         )}
-        {(incident.reviewStatus === 'SENT' ||
-          incident.reviewStatus === 'CONFIRMED' ||
-          incident.reviewStatus === 'ERROR') && <p>status: {incident.reviewStatus}</p>}
+        {(incident.reviewStatus === 'SENT' || incident.reviewStatus === 'CONFIRMED') && (
+          <div className="space-y-1">
+            <p>status: {incident.reviewStatus}</p>
+            {incident.nerisIncidentId && <p className="text-xs text-slate-600">NERIS ID: {incident.nerisIncidentId}</p>}
+          </div>
+        )}
+        {incident.reviewStatus === 'ERROR' && (
+          <div className="space-y-2">
+            <p>status: {incident.reviewStatus}</p>
+            {incident.nerisSubmissions[0] && (
+              <p className="rounded bg-red-50 p-3 text-red-900">{formatNerisFailureReason(incident.nerisSubmissions[0].responseBody)}</p>
+            )}
+            {canApprove(user.role) && (
+              <form action={resendNerisSubmission.bind(null, incident.id)}>
+                <button type="submit" className="rounded bg-slate-900 px-4 py-2 text-white">
+                  Resend to NERIS
+                </button>
+              </form>
+            )}
+          </div>
+        )}
       </section>
     </div>
   )

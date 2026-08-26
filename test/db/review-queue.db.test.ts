@@ -80,12 +80,20 @@ describe('Review queue (Testcontainers Postgres)', () => {
 
       await actions.approveIncident(incident.id)
       const afterApproval = await db.prisma.incident.findUniqueOrThrow({ where: { id: incident.id } })
-      expect(afterApproval.reviewStatus).toBe('APPROVED')
       expect(afterApproval.approvedById).toBe(soloAdmin.id)
+      // approveIncident now also attempts a real NERIS submission synchronously
+      // (FUTURE-PLAN.md Session 15) — this department has no NERIS credentials
+      // configured, so the attempt fails and the incident lands in ERROR, not
+      // APPROVED. That's the correct, intended failure handling, not a bug.
+      expect(afterApproval.reviewStatus).toBe('ERROR')
 
       const events = await db.prisma.reviewEvent.findMany({ where: { incidentId: incident.id }, orderBy: { createdAt: 'asc' } })
-      expect(events.map(e => `${e.fromStatus}->${e.toStatus}`)).toEqual(['SUBMITTED->REVIEWED', 'REVIEWED->APPROVED'])
+      expect(events.map(e => `${e.fromStatus}->${e.toStatus}`)).toEqual(['SUBMITTED->REVIEWED', 'REVIEWED->APPROVED', 'APPROVED->ERROR'])
       expect(events.every(e => e.actorId === soloAdmin.id)).toBe(true)
+
+      const submissions = await db.prisma.nerisSubmission.findMany({ where: { incidentId: incident.id } })
+      expect(submissions).toHaveLength(1)
+      expect(submissions[0]).toMatchObject({ trigger: 'APPROVAL_AUTO', succeeded: false })
     })
   })
 })

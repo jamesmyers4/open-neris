@@ -8,6 +8,7 @@ import { getIncidentDetail } from '@/lib/incidents/get-incident-detail'
 import { getSubmitCompleteness } from '@/lib/incidents/get-submit-completeness'
 import { canReview, canApprove } from '@/lib/incidents/review-permissions'
 import { notifySubmittedNeedsReview, notifyReviewedNeedsApproval, notifyKickedBack } from '@/lib/notifications/notify'
+import { attemptNerisSubmission } from '@/lib/neris/submit-incident-to-neris'
 
 export async function submitIncident(incidentId: string): Promise<void> {
   const user = await getCurrentAppUser()
@@ -93,7 +94,30 @@ export async function approveIncident(incidentId: string): Promise<void> {
   if (approved) {
     revalidatePath(`/incidents/${incidentId}`)
     revalidatePath('/incidents/review')
+
+    const [department, detail] = await Promise.all([
+      prisma.department.findUniqueOrThrow({ where: { id: user.departmentId } }),
+      getIncidentDetail(incidentId, user.departmentId)
+    ])
+    if (detail) {
+      await attemptNerisSubmission(prisma, detail, department, 'APPROVAL_AUTO', user.id)
+      revalidatePath(`/incidents/${incidentId}`)
+    }
   }
+}
+
+export async function resendNerisSubmission(incidentId: string): Promise<void> {
+  const user = await getCurrentAppUser()
+  if (!user) return
+  if (!canApprove(user.role)) return
+
+  const incident = await getIncidentDetail(incidentId, user.departmentId)
+  if (!incident) return
+  if (incident.reviewStatus !== 'ERROR') return
+
+  const department = await prisma.department.findUniqueOrThrow({ where: { id: user.departmentId } })
+  await attemptNerisSubmission(prisma, incident, department, 'MANUAL_RESEND', user.id)
+  revalidatePath(`/incidents/${incidentId}`)
 }
 
 const kickbackSchema = z.object({ note: z.string().min(1) })

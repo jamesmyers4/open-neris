@@ -1,0 +1,8 @@
+{
+  "crons": [
+    {
+      "path": "/api/neris/sweep",
+      "schedule": "0 6 * * *"
+    }
+  ]
+}

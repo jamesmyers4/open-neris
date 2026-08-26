@@ -7,12 +7,14 @@ vi.mock('@/lib/prisma', async () => {
 })
 vi.mock('@/lib/incidents/get-submit-completeness')
 vi.mock('@/lib/notifications/notify')
+vi.mock('@/lib/neris/submit-incident-to-neris')
 
 import { revalidatePath } from 'next/cache'
 import { prisma } from '@/lib/prisma'
-import { submitIncident, markReviewed, approveIncident, kickbackIncident } from '@/app/incidents/[id]/actions'
+import { submitIncident, markReviewed, approveIncident, resendNerisSubmission, kickbackIncident } from '@/app/incidents/[id]/actions'
 import { getSubmitCompleteness } from '@/lib/incidents/get-submit-completeness'
 import { notifySubmittedNeedsReview, notifyReviewedNeedsApproval, notifyKickedBack } from '@/lib/notifications/notify'
+import { attemptNerisSubmission } from '@/lib/neris/submit-incident-to-neris'
 import { mockSignedInAs, mockSignedOut } from '@/test/helpers/auth'
 import { buildIncidentDetail } from '@/test/helpers/fixtures'
 import { type MockPrismaClient } from '@/test/helpers/prisma-mock'
@@ -255,6 +257,90 @@ describe('approveIncident', () => {
     await approveIncident(INCIDENT_ID)
 
     expect(mockPrisma.$transaction).toHaveBeenCalledTimes(1)
+  })
+
+  it('attempts a NERIS submission with trigger APPROVAL_AUTO after a successful Approve transition', async () => {
+    const user = mockSignedInAs({ id: 'user_1', departmentId: 'dept_1', role: 'CHIEF' })
+    const department = { id: 'dept_1', nerisFdId: 'FD24027334' }
+    mockPrisma.incident.findFirst.mockResolvedValue(buildIncidentDetail({ id: INCIDENT_ID, reviewStatus: 'REVIEWED' }))
+    mockPrisma.incident.updateMany.mockResolvedValue({ count: 1 })
+    mockPrisma.department.findUniqueOrThrow.mockResolvedValue(department)
+
+    await approveIncident(INCIDENT_ID)
+
+    expect(attemptNerisSubmission).toHaveBeenCalledWith(
+      prisma,
+      expect.objectContaining({ id: INCIDENT_ID }),
+      department,
+      'APPROVAL_AUTO',
+      user.id
+    )
+  })
+
+  it('does not attempt a NERIS submission when the Approve updateMany affects zero rows (lost the race)', async () => {
+    mockSignedInAs({ role: 'CHIEF' })
+    mockPrisma.incident.findFirst.mockResolvedValue({ id: INCIDENT_ID, reviewStatus: 'REVIEWED' })
+    mockPrisma.incident.updateMany.mockResolvedValue({ count: 0 })
+
+    await approveIncident(INCIDENT_ID)
+
+    expect(attemptNerisSubmission).not.toHaveBeenCalled()
+  })
+})
+
+describe('resendNerisSubmission', () => {
+  it('attempts no submission when unauthenticated', async () => {
+    mockSignedOut()
+    await resendNerisSubmission(INCIDENT_ID)
+    expect(attemptNerisSubmission).not.toHaveBeenCalled()
+  })
+
+  it('attempts no submission for an OFFICER (cannot approve/resend)', async () => {
+    mockSignedInAs({ role: 'OFFICER' })
+    await resendNerisSubmission(INCIDENT_ID)
+    expect(attemptNerisSubmission).not.toHaveBeenCalled()
+  })
+
+  it('attempts no submission for a cross-tenant (not found) incident', async () => {
+    mockSignedInAs({ role: 'CHIEF' })
+    mockPrisma.incident.findFirst.mockResolvedValue(null)
+    await resendNerisSubmission(INCIDENT_ID)
+    expect(attemptNerisSubmission).not.toHaveBeenCalled()
+  })
+
+  it('attempts no submission when the incident is not in ERROR status', async () => {
+    mockSignedInAs({ role: 'CHIEF' })
+    mockPrisma.incident.findFirst.mockResolvedValue(buildIncidentDetail({ id: INCIDENT_ID, reviewStatus: 'SENT' }))
+    await resendNerisSubmission(INCIDENT_ID)
+    expect(attemptNerisSubmission).not.toHaveBeenCalled()
+  })
+
+  it('retries with trigger MANUAL_RESEND for a CHIEF on an ERROR incident', async () => {
+    const user = mockSignedInAs({ id: 'user_1', departmentId: 'dept_1', role: 'CHIEF' })
+    const department = { id: 'dept_1', nerisFdId: 'FD24027334' }
+    mockPrisma.incident.findFirst.mockResolvedValue(buildIncidentDetail({ id: INCIDENT_ID, reviewStatus: 'ERROR' }))
+    mockPrisma.department.findUniqueOrThrow.mockResolvedValue(department)
+
+    await resendNerisSubmission(INCIDENT_ID)
+
+    expect(attemptNerisSubmission).toHaveBeenCalledWith(
+      prisma,
+      expect.objectContaining({ id: INCIDENT_ID }),
+      department,
+      'MANUAL_RESEND',
+      user.id
+    )
+    expect(revalidatePath).toHaveBeenCalledWith(`/incidents/${INCIDENT_ID}`)
+  })
+
+  it('allows an ADMIN to resend too', async () => {
+    mockSignedInAs({ role: 'ADMIN' })
+    mockPrisma.incident.findFirst.mockResolvedValue(buildIncidentDetail({ id: INCIDENT_ID, reviewStatus: 'ERROR' }))
+    mockPrisma.department.findUniqueOrThrow.mockResolvedValue({ id: 'dept_1' })
+
+    await resendNerisSubmission(INCIDENT_ID)
+
+    expect(attemptNerisSubmission).toHaveBeenCalledTimes(1)
   })
 })
 

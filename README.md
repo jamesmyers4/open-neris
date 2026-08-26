@@ -15,7 +15,7 @@ The core incident workflow is built and working end to end: create an incident, 
 This build pass is done, as is access control and Review & Approve (see "What's next" below). Next up is the NERIS API feed itself — see `FUTURE.md`.
 
 Not done yet:
-- Actual submission to NERIS. The workflow ends at `Submitted` today; the API call to NERIS itself isn't wired up.
+- `/validate` dry-run hardening (an extra authoritative pre-check against NERIS's own validation, gated on real sandbox credentials — `FUTURE-PLAN.md` Session 16) and a confirmed production NERIS API base URL. Actual submission itself (Approve → real NERIS `POST`, tracked per-attempt, retried on failure) is done — see "What's next" below.
 - Named-individual personnel/roster tracking. Rank, certs, fit-test, physicals, apparatus assignment — a separate, later epic. Access control (signup, invites, roles, deactivation) is done; this is not the same thing (see `CONTEXT.md`'s Field-verification discipline #5 for why they were split apart).
 - Attachments, reporting/dashboard views.
 
@@ -25,7 +25,9 @@ See `CONTEXT.md` for the architecture decisions and reasoning behind all of this
 
 **Access control is done**: self-serve signup, Admin-invite by email, role changes, and deactivation, scoped per-department with district-level oversight for a parent organization's Admin. See `CONTEXT.md`'s Roadmap for the Epic 3 build detail.
 
-**Review & Approve is done**: the Officer/Chief review queue, kickback-with-notes, and email + in-app status-change notifications (Resend) are all built and wired into the existing status chain — see `CONTEXT.md`'s Roadmap for the Epic 4 build detail. The NERIS feed itself (Epic 5) is next.
+**Review & Approve is done**: the Officer/Chief review queue, kickback-with-notes, and email + in-app status-change notifications (Resend) are all built and wired into the existing status chain — see `CONTEXT.md`'s Roadmap for the Epic 4 build detail.
+
+**NERIS submission itself is done, core**: a hand-written API client, a full incident→NERIS payload mapper, and automatic submission on Approve — tracked per-attempt, retried by a nightly sweep or a manual resend button on failure. See `CONTEXT.md`'s Workflow section for the build detail. `/validate` dry-run hardening (Session 16) is the one remaining, real-sandbox-credential-gated piece.
 
 **Named-individual personnel/roster tracking** (rank, certs, fit-test, physicals, apparatus assignment, auto-populating crew context on an incident) is a separate, later epic — not gated on anything above, deliberately not scoped into the current build pass. Once it exists, other department services are planned on top of it: certifications, fit-test tracking, annual physicals, SCBA/breathing-apparatus compliance — the kind of federal/departmental recordkeeping that runs alongside NERIS rather than through it.
 

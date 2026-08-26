@@ -8,7 +8,7 @@ Working title: OpenNERIS. Repo slug is lowercase (`open-neris`) — npm forbids 
 
 ## Stack
 
-Next.js 16 (App Router, Turbopack) + TypeScript, Prisma 7.9.1 + PostgreSQL (Neon), Clerk auth, Vercel hosting. PWA-enabled for the incident-entry flow specifically (installable, offline-capable via IndexedDB write queue) — review/approval/reporting assume connectivity. `ulfsri/neris-nodejs-client` (MIT licensed, official) as the NERIS submission layer, not yet wired up. Resend for Review & Approve status-change emails (`FUTURE-PLAN.md` Session 12).
+Next.js 16 (App Router, Turbopack) + TypeScript, Prisma 7.9.1 + PostgreSQL (Neon), Clerk auth, Vercel hosting. PWA-enabled for the incident-entry flow specifically (installable, offline-capable via IndexedDB write queue) — review/approval/reporting assume connectivity. NERIS submission is a small hand-written `fetch` client (`lib/neris/api-client.ts`), not `ulfsri/neris-nodejs-client` — that package isn't published as an installable dependency (confirmed `FUTURE-PLAN.md` Session 14: it expects you to generate a client yourself from the OpenAPI spec and vendor the result), so for the ~3 endpoints this app needs, a hand-written client was the better call. Trigger wiring (firing it on the `Approved` transition) is `FUTURE-PLAN.md` Session 15, not yet built. Resend for Review & Approve status-change emails (`FUTURE-PLAN.md` Session 12).
 
 ## Database & auth infrastructure — hard-won, don't relitigate
 

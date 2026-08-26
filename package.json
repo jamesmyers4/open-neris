@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "generate:neris": "tsx scripts/generate-neris-value-sets.ts",
+    "neris:smoke-test": "tsx scripts/neris-smoke-test.ts",
     "postinstall": "prisma generate",
     "test": "vitest run --config vitest.config.ts",
     "test:watch": "vitest --config vitest.config.ts",

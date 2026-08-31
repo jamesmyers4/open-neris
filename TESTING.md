@@ -90,6 +90,21 @@ Closing step per `TEST-PLAN-CONTEXT.md`: reviewed what Phases 0-5 already wrote,
 
 - **`vi.clearAllMocks()` does not clear a standing `mockResolvedValue`/`mockReturnValue`** — confirmed empirically, it only clears call history. A value set in one test leaks into the next unless every test file uses `beforeEach(() => vi.resetAllMocks())`, which does clear implementations. This is safe for the global `redirect`/`revalidatePath` mocks too, since their reset state (a bare stub returning `undefined`) is identical to their intended default behavior.
 
+## Coverage added by the FUTURE-PLAN epics (Sessions 1-15)
+
+Phases 0-8 above built the suite's machinery; `FUTURE-PLAN.md`'s five epics then grew it from 301 tests to **524 across 61 files** (verified 2026-08-31), each session adding its own coverage as it went rather than deferring it. `test/db/` went from 6 files to 18. Nothing in the conventions above changed — the additions follow them — but the suite's shape is worth knowing:
+
+- **`test/lib/`** mirrors `lib/` one directory per concern: `validation/` (Zod schemas), `incidents/` (completeness gate, review permissions), `organization/`, `onboarding/`, `notifications/`, `crypto/`, `neris/`.
+- **`test/app/`** mirrors the route tree for server-action tests: `app/incidents/`, `app/admin/settings/`, `app/admin/users/`, `app/onboarding/`.
+- **`test/db/`** holds the Testcontainers files. Beyond Phase 2's constraint/cascade/journey set, these now cover cross-department isolation, the Department hierarchy, users-list scoping, the review queue, kickback, notifications, and the NERIS stuck-incident sweep query.
+
+Two conventions the NERIS sessions (13-15) established that are worth following in any future NERIS-facing test:
+
+- **The HTTP layer is stubbed at `global.fetch`, never mocked one level up.** `test/lib/neris/api-client.test.ts` runs the real, unmocked `getAccessToken`/`submitIncident` against a stubbed `fetch`, which is what lets it assert the actual HTTP Basic header construction, the `grant_type=client_credentials` form body, token caching (a second call inside the TTL issues zero additional fetches), and the 401-retries-once-with-a-fresh-token path. One test specifically asserts a failed token exchange's thrown error never contains the plaintext secret.
+- **A layer under test is real; everything below it is mocked wholesale.** `submit-incident-to-neris.test.ts` runs the real `attemptNerisSubmission` with `@/lib/neris/api-client` and `@/lib/neris/build-incident-payload` both mocked; `test/app/incidents/id/actions.test.ts` runs the real `approveIncident`/`resendNerisSubmission` with `@/lib/neris/submit-incident-to-neris` mocked. This matters more here than elsewhere because `attemptNerisSubmission` deliberately never throws — it converts every failure into a recorded `ERROR` state — so a test that mocks too much can pass while proving nothing. Session 12 hit exactly that: an unmocked Prisma call inside the notify wiring was being swallowed by the try/catch that keeps notification failures from breaking the calling action, and the existing happy-path tests never noticed.
+
+**No test in either suite ever calls real NERIS.** There are no committed credentials and no live calls in `npm run test`. A real sandbox check is a manual, human-run script: `npm run neris:smoke-test -- --department <id> [--incident <id>]`. It has never been run — nobody has held sandbox credentials yet.
+
 ## CI
 
 - `.github/workflows/test.yml` — PR-triggered and on push to `main`. Fast suite only.

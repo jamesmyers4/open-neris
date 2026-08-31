@@ -17,6 +17,12 @@ Planning session output for `open-neris-app`, produced by walking the `test-plan
 2. Phase 10 (visual regression) and Phase 11 (cross-browser) share the UI-stability gate (now cleared) **plus** a live re-ask of their opt-in decision at pickup time — don't assume the earlier "no" still holds.
 3. Phase 12 (AI/LLM grading) is on an unrelated gate (the AI-assisted entry feature existing) — check separately, independent of the UI work.
 
+**Update, 2026-08-31 — suite has grown a lot since this file's numbers were written.** `FUTURE-PLAN.md`'s Sessions 1-15 (five epics: validation gate, Organization structure, access control, Review & Approve, NERIS feed) each added their own coverage as they went, per that plan's own step-4 rule. Current counts: `npm run test` is **524 tests across 61 files** (verified 2026-08-31), and `test/db/` now holds **18 Testcontainers files** rather than the 6 this Status section originally recorded. The 301/38 and 35/6 figures above describe the Phase 0-6 pass only; treat them as history, not current state.
+
+**`npm run test:db` has not been run since Session 12.** Sessions 13-15 ran in an environment with no working container runtime, so three pieces of real-Postgres coverage exist but have never executed: `test/db/neris-sweep.db.test.ts` (new), the corrected assertions in `test/db/review-queue.db.test.ts` (a real and intended consequence of Session 15's submit-on-Approve change, which now moves a credential-less department's incident to `ERROR`), and the encryption round-trip case in `test/db/admin-settings-happy-path.db.test.ts`. Run it locally with Docker before trusting any of the three.
+
+**Phases 9-11's UI-stability gate has been cleared for a while** — the UI stopped moving after Section 2-7's rebuild, and Sessions 1-15 only added screens (`/admin/settings`, `/admin/users`, `/incidents/review`) rather than reshaping existing ones. Phase 9 (accessibility) is actionable now with no further gating. Phases 10 and 11 still need the opt-in re-ask noted below, not just the gate.
+
 ## App shape, for context
 
 - **No API route handlers.** Every mutation is a Next.js Server Action, called directly from a form. No HTTP surface — this is why supertest was never used (see `TESTING.md`'s "Why no supertest").

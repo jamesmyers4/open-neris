@@ -4,6 +4,16 @@ Plan for the next build epics, produced by a `/grill-with-docs` session (2026-08
 
 **Read this alongside `CONTEXT.md`'s Roadmap section before starting any epic below.** Each epic is its own multi-session build — follow the Session/commit discipline in `CLAUDE.md` (one category per session, human verifies in-browser before the next). Don't chain epics into one session either; each is sized to be its own several-session pass.
 
+## Status as of 2026-08-31
+
+All five epics below were built out through `FUTURE-PLAN.md`'s 17-session plan. **Epics 1-4 are complete in full** (Sessions 1-12). **Epic 5's core is complete** (Sessions 13-15): credentials screen, hand-written API client, payload mapper, submit-on-Approve trigger, nightly sweep, and manual resend. The one remaining planned piece is the `/validate` dry-run hardening at the bottom of Epic 5, which is `FUTURE-PLAN.md` Session 16 and is **blocked on real NERIS sandbox credentials existing** — nothing in this codebase has ever called real NERIS.
+
+Each epic's body below is preserved as the reasoning record, not rewritten after the fact. Where a build session found something the plan got wrong or left a gap open on purpose, the correction lives in that session's "Findings" subsection in `FUTURE-PLAN.md`, and the ones that still matter are summarized in `CONTEXT.md`'s Roadmap. The single most important one: `Department.nerisFdId` is required on every NERIS submission and no screen in the app sets it, so no real department can submit yet.
+
+Still open and not part of the five epics: the named-individual personnel/roster epic, attachments, reporting and dashboards, field-level audit history, and a UI polish pass. See "Retained from earlier notes" at the bottom.
+
+---
+
 ## Sequencing — decided
 
 1. **Validation/completeness gate rebuild** — no dependency on anything else, pure incident-side work, do first.
@@ -16,7 +26,7 @@ Individual named-firefighter roster tracking (rank, certs, fit-test, physicals, 
 
 ---
 
-## Epic 1 — Validation/completeness gate rebuild
+## Epic 1 — Validation/completeness gate rebuild ✅ done (Sessions 1-3)
 
 **Goal, in the user's words:** "find a way to QA the record... to ensure without a doubt that the record has all of the required fields populated... only when everything is successfully populated will they even have the option to move to the next status." Checks need to happen as early as possible, since Members do the bulk of data entry and senior leaders mostly read/approve.
 
@@ -27,7 +37,7 @@ Individual named-firefighter roster tracking (rank, certs, fit-test, physicals, 
 - **Explicitly not this pass:** warning-only (non-blocking) surfacing of `neris_core_app=false`-but-recommended fields. Don't build that speculatively — revisit only if real-world NERIS rejections show core-required fields alone aren't enough.
 - **Explicitly not this pass, sequence after Epic 5 instead:** calling NERIS's own live `POST /incident/{neris_id_entity}/validate` dry-run endpoint (confirmed to exist, 204 valid / 422 with errors, no record created) as an extra authoritative check at the Approved→Sent boundary. That needs real sandbox credentials to test against, which don't exist until Epic 5. Build the local gate first — it also has to work fully offline, since incident entry is this app's PWA/offline-capable surface.
 
-## Epic 2 — Organization structure
+## Epic 2 — Organization structure ✅ done (Sessions 4-6)
 
 - **Self-referential `Department` hierarchy**: add a nullable `parentDepartmentId` (self-relation) to `Department`. A district sees itself plus every descendant department's data; a leaf department's Admin sees only their own. **This is a purely app-side concept, not synced to NERIS** — confirmed via the live OpenAPI spec that no parent/child relationship endpoint exists on NERIS's Entity resource at all (entity→station→unit nesting only). Whatever `fd_parent_name`/`fd_child_name` in the vendored CSVs represents, it isn't reachable through the vendor API surface this app would use — build our own hierarchy independent of it.
 - **Naming**: keep the Prisma model named `Department` (renaming is a real refactor with no functional payoff) — "Organization" is fine as product-facing copy in the UI if that's the term departments already know, but the schema/codebase keeps calling it `Department`.
@@ -37,7 +47,7 @@ Individual named-firefighter roster tracking (rank, certs, fit-test, physicals, 
   - **One confirmed exception**: `GET /entity/{neris_id_entity}` (singular) does exist and works, unlike station/unit. A low-priority, genuinely optional nice-to-have: a one-time "pull our department's info from NERIS" import to prefill the Department settings screen's name/address/FDID from NERIS directly. Not blocking — this data is also collected at signup anyway.
 - **Department-level fields worth adding regardless of any future NERIS push**: address, city, state, zip, mailing address, `fd_type` (career/volunteer/combination), and aggregate staffing counts by category (full-time/part-time career, volunteer, EMS-only, civilian — NERIS wants counts here, not names, confirmed against `core_mod_entity_fd.csv`). These live on the same Admin-only Department/Organization settings screen as the Station/Unit reference tables and (Epic 5) the NERIS credentials fields — one settings area, not three.
 
-## Epic 3 — Access control / User accounts ("Personnel Lite")
+## Epic 3 — Access control / User accounts ("Personnel Lite") ✅ done (Sessions 7-9)
 
 Confirmed this session: **individual personnel data is not a NERIS requirement anywhere in the incident schema** — the only per-incident "who responded" field is an aggregate staffing integer on `mod_unit_response`, not a roster. So this epic is purely this app's own authorization model, not NERIS data collection. Full roster tracking (rank, certs, fit-test, physicals) stays deferred to a later, separate epic exactly as FUTURE.md originally sketched it.
 
@@ -50,7 +60,7 @@ Confirmed this session: **individual personnel data is not a NERIS requirement a
   - **Solo-admin fast path is fully allowed, by default, always** — one person creating, submitting, reviewing, approving, and sending is the default assumption, matching `CONTEXT.md`'s existing "two real usage shapes" design. **No system-wide mandatory second-reviewer/separation-of-duties rule** — a genuinely one-person department must be able to complete a record start to finish alone. If a department wants to require a second sign-off once they have enough people, that's a future per-department opt-in setting, not a hard rule baked into this pass.
 - **The actual screen**: an Admin-only "Users" page — list department (or district) users, invite new ones, change roles, deactivate. That's the entirety of "Personnel Lite." No rank, no shift, no apparatus assignment, no certs — those stay in the separate, later, full Personnel epic.
 
-## Epic 4 — Review & Approve workflow
+## Epic 4 — Review & Approve workflow ✅ done (Sessions 10-12)
 
 UI for the `Open → Submitted → Reviewed → Approved → Sent → Confirmed` chain the schema and `ReviewEvent` audit log already support (per `CONTEXT.md`'s Roadmap — none of this UI exists yet).
 
@@ -59,7 +69,7 @@ UI for the `Open → Submitted → Reviewed → Approved → Sent → Confirmed`
 - **Notifications, conditional on department size**: email + in-app alert on any status change needing someone's action — explicitly skipped when there's nobody else to notify (a genuinely solo department). Email provider isn't decided (Resend is a reasonable default for a Next.js/Vercel stack, but that's an implementation detail, not a planning blocker). In-app alerts don't need anything fancier than a `Notification` table plus an unread-count badge — no real-time/websocket infrastructure needed at this scale.
 - **Solo-department fast path stays untouched**: nothing in this epic should add extra clicks/screens for a one-person department; the chain collapsing to one action in practice is the existing design, not something this epic changes.
 
-## Epic 5 — NERIS feed finalization
+## Epic 5 — NERIS feed finalization ✅ core done (Sessions 13-15); `/validate` hardening blocked
 
 - **Admin-only NERIS credentials screen**: `nerisVendorClientId` / `nerisVendorSecretCipher` entry, `nerisEnvironment` (SANDBOX/PRODUCTION) toggle. This is the one real piece of the still-unbuilt Admin department-settings page (`CONTEXT.md` Roadmap) this pass needs — build it alongside Epic 2's Organization/Station/Unit settings screen, since both are Admin-only, rarely-touched department configuration.
 - **API client — hand-written, not code-generated.** `ulfsri/neris-nodejs-client` isn't published as an installable package at all (confirmed) — it expects you to generate a client yourself from NERIS's OpenAPI spec and vendor the result. For the ~3 endpoints this app actually needs (token exchange, submit, and Epic 1's later `/validate` call), a small hand-written `fetch` client is the better call than standing up a second codegen pipeline alongside the existing CSV one — same "boring and well-established" instinct already applied elsewhere in this codebase (`pg` over the Neon WebSocket adapter). Reference the real OpenAPI spec (`api-test.neris.fsri.org/v1/openapi.json`) by hand for exact request/response shapes.
@@ -71,7 +81,17 @@ UI for the `Open → Submitted → Reviewed → Approved → Sent → Confirmed`
 
 ---
 
-## Facts worth re-verifying before Epic 5 starts
+## Facts worth re-verifying before Epic 5 starts — resolved, Session 14
+
+All three were checked directly against the real, downloaded `api-test.neris.fsri.org/v1/openapi.json` (763KB, OpenAPI 3.1, NERIS v1.4.78) rather than a summarized pass, which is what this section asked for. Answers, with full detail in Session 14's "Findings":
+
+- **The raw spec was pulled and read directly.** It overturned several of this file's summarized-pass assumptions, including the production base URL (the spec declares no production server at all) and the exact `value1||value2||value3` incident-type join format.
+- **`unit_id_linked` is genuinely optional at the API level.** Neither unit-response payload requires `unit_neris_id`; free-text `reported_unit_id` is an equally valid alternative. So Epic 2's local Unit table never needed to enforce real NERIS IDs, and a department that hasn't registered its apparatus can still submit.
+- **`fd_parent_name`/`fd_child_name` still has no confirmed API path**, which changes nothing — Epic 2 built the hierarchy as app-only regardless, as planned.
+
+The original text of this section is below for reference.
+
+### Original (pre-Session-14)
 
 This session's NERIS API research came from `WebFetch`-summarized passes over a large OpenAPI spec, not a byte-for-byte read — good enough to plan against, not to build blind against. Before writing the actual API client:
 
